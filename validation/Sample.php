@@ -1,7 +1,7 @@
 <?php
 
 
-class Sample extends Validator {
+class SampleValidator extends Validator {
   public function sampleValidator(/* parameters */) {
     if (isValid) {
       return ''; // returns empty string
