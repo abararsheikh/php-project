@@ -1,5 +1,6 @@
 <?php
 
+require_once 'Validator.php';
 
 class SampleValidator extends Validator {
   public function sampleValidator(/* parameters */) {
