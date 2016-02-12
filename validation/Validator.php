@@ -1,11 +1,13 @@
 <?php
 
 require_once 'PhoneValidator.php';
+require_once 'AddressValidator.php';
 // TODO: decide either use value or key as parameter of validation functions
 class Validator {
   protected $data;
 
   public $phoneValidator;
+  public $addressValidator;
 
   public function __construct($data) {
     if (is_array($data) && !empty($data)) {
@@ -16,6 +18,7 @@ class Validator {
 
     if (get_class($this) == 'Validator') {
       $this->phoneValidator = new PhoneValidator($data);
+      $this->addressValidator = new AddressValidator($data);
     }
   }
   // TODO: find out a way to display error message
@@ -48,6 +51,9 @@ class Validator {
   public function between($value, $lowerBound, $upperBound) {
     return ($value > $lowerBound && $value < $upperBound) ? '' : "$value is not between $lowerBound and $upperBound";
   }
+  protected function regex($value, $pattern) {
+    return preg_match($pattern, $value);
+  }
 
 }
 
@@ -60,5 +66,6 @@ $v->validate(3, [
   ['between', 0, 20]
 ]);
 
-echo $v->phoneValidator->phoneNumber(1);
-echo '<br>';
+echo $v->phoneValidator->phoneNumber(1) . '<br>';
+echo $v->addressValidator->street(3) . '<br>';
+echo $v->addressValidator->validate(3, ['street']) . '<br>';
