@@ -1,7 +1,7 @@
 <?php
 
 require_once 'PhoneValidator.php';
-
+// TODO: decide either use value or key as parameter of validation functions
 class Validator {
   protected $data;
 
@@ -40,18 +40,25 @@ class Validator {
     }
   }
   public function isEmpty($value) {
-    return empty($value) ? 'empty value' : 'not empty';
+    return empty($value) ? '' : 'not empty';
   }
   public function greaterThan($value, $number) {
     return $value > $number ? '' : "$value is not greater than $number";
+  }
+  public function between($value, $lowerBound, $upperBound) {
+    return ($value > $lowerBound && $value < $upperBound) ? '' : "$value is not between $lowerBound and $upperBound";
   }
 
 }
 
 // Test
-$v = new Validator([1,2,3]);
+$v = new Validator([1,2,3,99]);
 
-$v->validate(1, [ 'isEmpty', ['greaterThan', 3] ]);
+$v->validate(3, [
+  'isEmpty',
+  ['greaterThan', 100],
+  ['between', 0, 20]
+]);
 
 echo $v->phoneValidator->phoneNumber(1);
 echo '<br>';
