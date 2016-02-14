@@ -4,12 +4,19 @@ spl_autoload_register(function ($name) {
   require_once "$name.php";
 });
 
+/**
+ * Class Validator
+ *
+ * In order to use methods in classes from other files,
+ * please add new line using the following syntax:
+ * at method ClassName methodNameToBeUsedHere()
+ *
+ * @method AddressValidator address()
+ * @method PhoneValidator phone()
+ */
 class Validator {
   protected $data;
   protected static $error = [];
-
-  public $phoneValidator;
-  public $addressValidator;
 
   public function __construct($data) {
     if (is_array($data) && !empty($data)) {
@@ -17,11 +24,10 @@ class Validator {
     } else {
       throw new Exception('invalid input value');
     }
-
-    if (get_class($this) == 'Validator') {
-      $this->phoneValidator = new PhoneValidator($data);
-      $this->addressValidator = new AddressValidator($data);
-    }
+  }
+  public function __call($className, $arguments) {
+    $className = ucfirst($className) . 'Validator';
+    return new $className($this->data);
   }
 
   public function validate($key, $validatorArray) {
@@ -51,27 +57,23 @@ class Validator {
       echo "<$tagName>$error</$tagName>";
     }
   }
-
   public function displayErrorAll($tagName = 'p') {
-    if (!isset($this->error)) { return; }
+    if (!isset(self::$error)) { return; }
 
-    foreach ($this->error as $errorList) {
+    foreach (self::$error as $errorList) {
       foreach ($errorList as $error) {
         echo "<$tagName>$error</$tagName>";
       }
     }
   }
-
   public function isValid($key = null) {
     if (!$key) {
-      var_dump(self::$error);
       return empty(self::$error);
     }
     if ($key) {
       return !isset(self::$error);
     }
   }
-
   public function getKey($key) {
     return $this->data[$key];
   }
@@ -122,13 +124,12 @@ $v->validate('age', [
 ]);
 
 // Call additional validator
-echo $v->addressValidator->street(3) . '<br>';
+echo $v->address()->street(3) . '<br>';
 // Use getKey method to validate key value
-echo $v->phoneValidator->phoneNumber('12345') . '<br>';
-echo $v->phoneValidator->phoneNumber($v->getKey('phone')) . '<br>';
+echo $v->phone()->phoneNumber('12345') . '<br>';
+echo $v->phone()->phoneNumber($v->getKey('phone')) . '<br>';
 
-echo 'street', $v->addressValidator->validate('email', ['street']) . '<br>';
-
+echo 'street', $v->address()->validate('email', ['street']) . '<br>';
 // Errors
 echo '<hr/>';
 
