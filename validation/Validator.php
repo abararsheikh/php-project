@@ -6,7 +6,7 @@ spl_autoload_register(function ($name) {
 
 class Validator {
   protected $data;
-  protected $error = [];
+  protected static $error = [];
 
   public $phoneValidator;
   public $addressValidator;
@@ -24,7 +24,6 @@ class Validator {
     }
   }
 
-  // TODO: find out a way to display error message
   public function validate($key, $validatorArray) {
     $value = $this->data[$key];
     foreach ($validatorArray as $index => $validator) {
@@ -37,19 +36,18 @@ class Validator {
         $msg = $this->$validator($value);
       }
       if (!empty($msg)) {
-        if (!isset($this->error[$key])) {
-          $this->error[$key] = [];
+        if (!isset(self::$error[$key])) {
+          self::$error[$key] = [];
         }
-        array_push($this->error[$key], $msg);
+        array_push(self::$error[$key], $msg);
       }
-
     }
   }
 
   public function displayError($fieldName, $tagName = 'p') {
-    if (!isset($this->error[$fieldName])) { return; }
+    if (!isset(self::$error[$fieldName])) { return; }
 
-    foreach ($this->error[$fieldName] as $error) {
+    foreach (self::$error[$fieldName] as $error) {
       echo "<$tagName>$error</$tagName>";
     }
   }
@@ -66,10 +64,11 @@ class Validator {
 
   public function isValid($key = null) {
     if (!$key) {
-      return empty($this->error);
+      var_dump(self::$error);
+      return empty(self::$error);
     }
     if ($key) {
-      return !isset($this->error[$key]);
+      return !isset(self::$error);
     }
   }
 
@@ -92,7 +91,7 @@ class Validator {
 
   public function regex($value, $patternArray) {
     $pattern = $patternArray['pattern'];
-    $error = $patternArray['pattern'] || 'does not match';
+    $error = $patternArray['error'];
     return preg_match($pattern, $value) ? '' : $error;
   }
 
@@ -122,6 +121,14 @@ $v->validate('age', [
     ['between', 0, 100]
 ]);
 
+// Call additional validator
+echo $v->addressValidator->street(3) . '<br>';
+// Use getKey method to validate key value
+echo $v->phoneValidator->phoneNumber('12345') . '<br>';
+echo $v->phoneValidator->phoneNumber($v->getKey('phone')) . '<br>';
+
+echo 'street', $v->addressValidator->validate('email', ['street']) . '<br>';
+
 // Errors
 echo '<hr/>';
 
@@ -135,11 +142,3 @@ if ($v->isValid()) {
 
 echo '<hr/>';
 
-
-// Call additional validator
-echo $v->addressValidator->street(3) . '<br>';
-// Use getKey method to validate key value
-echo $v->phoneValidator->phoneNumber('12345') . '<br>';
-echo $v->phoneValidator->phoneNumber($v->getKey('phone')) . '<br>';
-
-echo $v->addressValidator->validate('age', ['street']) . '<br>';

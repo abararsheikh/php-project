@@ -6,19 +6,23 @@ class AddressValidator extends Validator {
     'pattern' => '/^([0-9]+ )?[a-zA-Z ]+$/',
     'error' => 'not a valid street'
   ];
-  const PROVINCE = '/^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT)*$/';
-  const POSTAL_CODE = '/^([ABCEGHJKLMNPRSTVXY][0-9][A-Z] [0-9][A-Z][0-9])*$/';
-
+  const PROVINCE = [
+    'pattern' => '/^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT)*$/',
+    'error' => 'not a province in Canada'
+  ];
+  const POSTAL_CODE = [
+      'pattern' => '/^([ABCEGHJKLMNPRSTVXY][0-9][A-Z] [0-9][A-Z][0-9])*$/',
+      'error' => 'not a valid Canadian'
+  ];
 
   public function street($value) {
-    return preg_match('/^([0-9]+ )?[a-zA-Z ]+$/', $value) ? '' : "$value is invalid street";
+    return $this->regex($value, self::STREET);
   }
-  public function canadianProvince($value) {
-    $pattern = '/^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT)*$/';
-    return preg_match($pattern, $value) ? '' : "$value is not a valid province";
+  public function province($value) {
+    return $this->regex($value, self::PROVINCE);
   }
-  public function canadianPostalCode($value) {
-    $pattern = '/^([ABCEGHJKLMNPRSTVXY][0-9][A-Z] [0-9][A-Z][0-9])*$/';
-    return preg_match($pattern, $value) ? '' : "$value is not a valid postal code";
+  public function postalCode($value) {
+    return $this->regex($value, self::POSTAL_CODE);
   }
+
 }
