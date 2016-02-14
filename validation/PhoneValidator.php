@@ -1,5 +1,4 @@
 <?php
-require_once 'Validator.php';
 
 class PhoneValidator extends Validator {
   public function phoneNumber($value) {

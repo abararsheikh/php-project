@@ -1,10 +1,13 @@
 <?php
 
-require_once 'PhoneValidator.php';
-require_once 'AddressValidator.php';
+spl_autoload_register( function ($name) {
+  require_once "$name.php";
+});
+
 // TODO: decide either use value or key as parameter of validation functions
 class Validator {
   protected $data;
+  protected $error = [];
 
   public $phoneValidator;
   public $addressValidator;
@@ -12,7 +15,7 @@ class Validator {
   public function __construct($data) {
     if (is_array($data) && !empty($data)) {
       $this->data = $data;
-    }else {
+    } else {
       throw new Exception('invalid input value');
     }
 
@@ -21,11 +24,14 @@ class Validator {
       $this->addressValidator = new AddressValidator($data);
     }
   }
+
   // TODO: find out a way to display error message
   public function validate($key, $validatorArray) {
     $value = $this->data[$key];
+    $this->error[$key] = [];
     foreach ($validatorArray as $index => $validator) {
-      if ( is_array($validator) ) {
+
+      if (is_array($validator)) {
         // Takes first item in array as function name
         // Items after as parameters
         $validatorName = $validator[0];
@@ -33,39 +39,89 @@ class Validator {
         // Inserts key value to the beginning of params array
         array_unshift($args, $value);
         // Calls the validation function
-        echo call_user_func_array([$this, $validatorName], $args);
-      }else {
+        $msg = call_user_func_array([$this, $validatorName], $args);
+      } else {
         // If there is no additional parameter, call the function with key value
-        echo $this->$validator($value);
+        $msg = $this->$validator($value);
       }
-      // delete this line after figure out how to display error message
-      echo '<br>';
+      array_push($this->error[$key], $msg);
     }
   }
+  public function displayError($fieldName, $tagName = 'p') {
+    foreach ($this->error[$fieldName] as $error) {
+      echo "<$tagName>$error</$tagName>";
+    }
+  }
+  public function displayErrorAll($tagName = 'p') {
+    foreach ($this->error as $errorList) {
+      foreach ($errorList as $error) {
+        echo "<$tagName>$error</$tagName>";
+      }
+    }
+  }
+
+  public function getError($fieldName) {
+    return $this->error[$fieldName];
+  }
+
+  public function loadClass($className) {
+    require_once $className;
+  }
+
+  public function getKey($key) {
+    return $this->data[$key];
+  }
+
   public function isEmpty($value) {
     return empty($value) ? '' : 'not empty';
   }
+
   public function greaterThan($value, $number) {
     return $value > $number ? '' : "$value is not greater than $number";
   }
+
   public function between($value, $lowerBound, $upperBound) {
     return ($value > $lowerBound && $value < $upperBound) ? '' : "$value is not between $lowerBound and $upperBound";
   }
-  protected function regex($value, $pattern) {
-    return preg_match($pattern, $value);
+
+  public function regex($value, $patternArray) {
+    $pattern = $patternArray['pattern'];
+    $error = $patternArray['pattern'] || 'does not match';
+    return preg_match($pattern, $value) ? '' : $error;
   }
+
 
 }
 
-// Test
-$v = new Validator([1,2,3,99]);
-
-$v->validate(3, [
-  'isEmpty',
-  ['greaterThan', 100],
-  ['between', 0, 20]
+// Test data
+$v = new Validator([
+    'name' => 'asdfsdf',
+    'age' => '20',
+    'phone' => '123123',
+    'email' => 'aoidsf@213.com'
 ]);
 
-echo $v->phoneValidator->phoneNumber(1) . '<br>';
+// Validate one field with multiple rules
+$v->validate('age', [
+    'isEmpty',
+    ['greaterThan', 100],
+    ['between', 0, 20]
+]);
+$v->validate('name', [
+    'isEmpty',
+    ['between', 0, 20]
+]);
+
+// Errors
+$v->displayError('name');
+echo '<hr/>';
+$v->displayErrorAll();
+echo '<hr/>';
+
+// Call additional validator
 echo $v->addressValidator->street(3) . '<br>';
-echo $v->addressValidator->validate(3, ['street']) . '<br>';
+// Use getKey method to validate key value
+echo $v->phoneValidator->phoneNumber( '12345' ) . '<br>';
+echo $v->phoneValidator->phoneNumber( $v->getKey('phone') ) . '<br>';
+
+echo $v->addressValidator->validate('age', ['street']) . '<br>';
