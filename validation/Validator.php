@@ -1,10 +1,9 @@
 <?php
 
-spl_autoload_register( function ($name) {
+spl_autoload_register(function ($name) {
   require_once "$name.php";
 });
 
-// TODO: decide either use value or key as parameter of validation functions
 class Validator {
   protected $data;
   protected $error = [];
@@ -28,31 +27,36 @@ class Validator {
   // TODO: find out a way to display error message
   public function validate($key, $validatorArray) {
     $value = $this->data[$key];
-    $this->error[$key] = [];
     foreach ($validatorArray as $index => $validator) {
-
       if (is_array($validator)) {
-        // Takes first item in array as function name
-        // Items after as parameters
         $validatorName = $validator[0];
         $args = array_slice($validator, 1);
-        // Inserts key value to the beginning of params array
         array_unshift($args, $value);
-        // Calls the validation function
         $msg = call_user_func_array([$this, $validatorName], $args);
       } else {
-        // If there is no additional parameter, call the function with key value
         $msg = $this->$validator($value);
       }
-      array_push($this->error[$key], $msg);
+      if (!empty($msg)) {
+        if (!isset($this->error[$key])) {
+          $this->error[$key] = [];
+        }
+        array_push($this->error[$key], $msg);
+      }
+
     }
   }
+
   public function displayError($fieldName, $tagName = 'p') {
+    if (!isset($this->error[$fieldName])) { return; }
+
     foreach ($this->error[$fieldName] as $error) {
       echo "<$tagName>$error</$tagName>";
     }
   }
+
   public function displayErrorAll($tagName = 'p') {
+    if (!isset($this->error)) { return; }
+
     foreach ($this->error as $errorList) {
       foreach ($errorList as $error) {
         echo "<$tagName>$error</$tagName>";
@@ -60,20 +64,22 @@ class Validator {
     }
   }
 
-  public function getError($fieldName) {
-    return $this->error[$fieldName];
-  }
-
-  public function loadClass($className) {
-    require_once $className;
+  public function isValid($key = null) {
+    if (!$key) {
+      return empty($this->error);
+    }
+    if ($key) {
+      return !isset($this->error[$key]);
+    }
   }
 
   public function getKey($key) {
     return $this->data[$key];
   }
 
-  public function isEmpty($value) {
-    return empty($value) ? '' : 'not empty';
+  // Validations
+  public function notEmpty($value) {
+    return !empty($value) ? '' : 'is empty';
   }
 
   public function greaterThan($value, $number) {
@@ -93,6 +99,10 @@ class Validator {
 
 }
 
+//////////////////////////////////////////////
+// Examples
+//////////////////////////////////////////////
+
 // Test data
 $v = new Validator([
     'name' => 'asdfsdf',
@@ -102,26 +112,34 @@ $v = new Validator([
 ]);
 
 // Validate one field with multiple rules
-$v->validate('age', [
-    'isEmpty',
+$v->validate('name', [
+    'notEmpty',
     ['greaterThan', 100],
     ['between', 0, 20]
 ]);
-$v->validate('name', [
-    'isEmpty',
-    ['between', 0, 20]
+$v->validate('age', [
+    'notEmpty',
+    ['between', 0, 100]
 ]);
 
 // Errors
-$v->displayError('name');
 echo '<hr/>';
-$v->displayErrorAll();
+
+if ($v->isValid()) {
+  echo 'all valid';
+}else {
+  $v->displayError('age');
+  echo 'something is wrong...';
+  $v->displayErrorAll();
+}
+
 echo '<hr/>';
+
 
 // Call additional validator
 echo $v->addressValidator->street(3) . '<br>';
 // Use getKey method to validate key value
-echo $v->phoneValidator->phoneNumber( '12345' ) . '<br>';
-echo $v->phoneValidator->phoneNumber( $v->getKey('phone') ) . '<br>';
+echo $v->phoneValidator->phoneNumber('12345') . '<br>';
+echo $v->phoneValidator->phoneNumber($v->getKey('phone')) . '<br>';
 
 echo $v->addressValidator->validate('age', ['street']) . '<br>';
