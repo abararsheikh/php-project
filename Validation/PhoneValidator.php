@@ -1,4 +1,5 @@
 <?php
+namespace Project\Validation;
 
 class PhoneValidator extends Validator {
   public function phoneNumber($value) {

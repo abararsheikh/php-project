@@ -1,13 +1,12 @@
 <?php
 
-spl_autoload_register(function ($name) {
-  require_once "$name.php";
-});
+namespace Project\Validation;
 
+include_once '../autoloader.php';
 /**
  * Class Validator
  *
- * In order to use methods in classes from other files,
+ * In order to use methods in Classes from other files,
  * please add new line using the following syntax:
  * at method ClassName methodNameToBeUsedHere()
  *
@@ -22,11 +21,11 @@ class Validator {
     if (is_array($data) && !empty($data)) {
       $this->data = $data;
     } else {
-      throw new Exception('invalid input value');
+      throw new \Exception('invalid input value');
     }
   }
   public function __call($className, $arguments) {
-    $className = ucfirst($className) . 'Validator';
+    $className = __NAMESPACE__ . '\\' . ucfirst($className) . 'Validator';
     return new $className($this->data);
   }
 

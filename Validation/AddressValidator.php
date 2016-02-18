@@ -1,4 +1,5 @@
 <?php
+namespace Project\Validation;
 
 class AddressValidator extends Validator {
 

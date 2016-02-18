@@ -1,5 +1,7 @@
 <?php
 
+namespace Project\Classes;
+
 /**
  * Class Router
  * @Author: Yi Zhao
@@ -64,10 +66,10 @@ class Router {
 // Test
 $r = new Router();
 
-$r->add('/classes/Router.php', 'POST', 'testPost', function() {
+$r->add('/Classes/Router.php', 'POST', 'testPost', function() {
   echo 'post success';
 });
-$r->get('/classes/Router', function() {
+$r->get('/Classes/Router', function() {
   echo 'get!';
 });
 $r->get('/', function() {

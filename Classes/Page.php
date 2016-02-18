@@ -1,5 +1,7 @@
 <?php
 
+namespace Project\Classes;
+
 /**
  * Page class is responsible for dynamically generating a page.
  * The simplest way to use is:
@@ -9,7 +11,7 @@
  * It is also possible to pass in array of options.
  *
  *
- * @Author: Yi Zhao
+ * @Author Yi Zhao
  */
 
 class Page {
@@ -87,8 +89,8 @@ class Page {
 // test code
 $p = new Page([
   'title' => 'test',
-  'header' => 'classes/header.php',
-  'footer' => 'classes/footer.php'
+  'header' => 'Classes/header.php',
+  'footer' => 'Classes/footer.php'
 ]);
 
 $p->generate('validation/Validator');
