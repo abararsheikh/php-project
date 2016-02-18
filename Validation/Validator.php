@@ -96,6 +96,26 @@ class Validator {
     return preg_match($pattern, $value) ? '' : $error;
   }
 
+  /*
+   * Author Ran
+   * Length Validator
+   * equal Validator
+   */
+   public function length($value, $length){
+     if(!is_string($value)){
+         $value = strval($value);
+     }
+     return (strlen($value)==$length)? '' : "length is not equal to $length";
+   }
+
+   public function equal($value, $compareValue){
+     if(gettype($value)==gettype($compareValue)){
+       return ($value==$compareValue)? '':"$value is not equal to $compareValue";
+     }
+     else
+       return 'data type is not equal';
+
+   }
 
 }
 
@@ -122,13 +142,29 @@ $v->validate('age', [
     ['between', 0, 100]
 ]);
 
+
+//length validation
+//equal validation
+$v->validate('name',[
+    ['length',7]
+]);
+
+$v->validate('name',[
+    ['equal',true]
+]);
+
+
 // Call additional validator
 echo $v->address()->street(3) . '<br>';
 // Use getKey method to validate key value
 echo $v->phone()->phoneNumber('12345') . '<br>';
 echo $v->phone()->phoneNumber($v->getKey('phone')) . '<br>';
 
+
 echo 'street', $v->address()->validate('email', ['street']) . '<br>';
+
+//password validation
+echo $v->password()->password('wang1@'). '<br>';
 // Errors
 echo '<hr/>';
 
@@ -139,6 +175,9 @@ if ($v->isValid()) {
   echo 'something is wrong...';
   $v->displayErrorAll();
 }
+
+
+
 
 echo '<hr/>';
 
