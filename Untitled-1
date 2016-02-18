@@ -1,8 +1,0 @@
-@foreach (string url in Model.SocialMediaUrls){
-    <a href="@url" target="_blank">@url</a>
-}
-
-@{
-    ViewBag.Title="Shopping Cart";
-    String day = DateTime.Now.DayOfWeek.ToString();
-}
