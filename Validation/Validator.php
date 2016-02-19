@@ -52,14 +52,14 @@ class Validator {
   }
 
   public function displayError($fieldName, $tagName = 'p') {
-    if (!isset(self::$error[$fieldName])) { return; }
+    if (!isset(self::$error[$fieldName])) return;
 
     foreach (self::$error[$fieldName] as $error) {
       echo "<$tagName>$error</$tagName>";
     }
   }
   public function displayErrorAll($tagName = 'p') {
-    if (!isset(self::$error)) { return; }
+    if (!isset(self::$error)) return;
 
     foreach (self::$error as $errorList) {
       foreach ($errorList as $error) {
@@ -177,8 +177,9 @@ echo '<hr/>';
 if ($v->isValid()) {
   echo 'all valid';
 }else {
+  echo 'error on age field: ';
   $v->displayError('age');
-  echo 'something is wrong...';
+  echo 'All errors';
   $v->displayErrorAll();
 }
 echo '<hr/>';
