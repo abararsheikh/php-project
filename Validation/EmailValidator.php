@@ -1,18 +1,13 @@
 <?php
-require_once ' ';
+namespace Project\Validation;
 
 class EmailValidator extends Validator {
     public function EmailValidator($email) {
         if (preg_match( "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/",$email)) {
-            print ' ';  //print
+            return '';
         }else{
-            print 'wrong email address';
-            return false;
+            return 'wrong email address';
         }
-    }
-    public  function  display(){
-
-
     }
 }
 
