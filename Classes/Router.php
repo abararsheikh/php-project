@@ -8,9 +8,9 @@ namespace Project\Classes;
  * Current directory is the root directory.
  * It won't work if there is .php after the route
  * Example:
- *  $router = new Router()
- *  $router->get('/', $controller->action())
- *  $router->post('/path', function() { do something here... })
+ *  $authRouter = new Router()
+ *  $authRouter->get('/', $controller->action('actionName'))
+ *  $authRouter->post('/path', function() { do something here... })
  *
  * @Author: Yi Zhao
  * @method Router get($path, $callback)
@@ -60,11 +60,9 @@ class Router {
     }
     return false;
   }
+
   // Creates shortcuts for different methods.
-  // Base dir is current directory
-  // Do not add `.php` after file name
   private function quickAdd($path, $callback, $method) {
-//    if (preg_match('/\/\w+$/', $path)) $path .= '.php';
     $this->routes[] = [
         'path' => dirname($_SERVER['PHP_SELF']) . $path,
         'method' => $method,

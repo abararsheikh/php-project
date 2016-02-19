@@ -14,4 +14,5 @@ abstract class Controller {
       call_user_func([$this, $action]);
     };
   }
+
 }

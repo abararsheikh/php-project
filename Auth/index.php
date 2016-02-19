@@ -9,20 +9,19 @@ use Project\Classes\Router as Router;
 
 include '../autoloader.php';
 
-$router = new Router();
+$authRouter = new Router();
 $auth = new AuthController();
 
-$router->get('/', function() {
+$authRouter->get('/', function() {
   echo 'auth page';
 });
 
-$router->get('/login', $auth->action('loginPage'));
-$router->post('/login', $auth->action('processLogin'));
+$authRouter->get('/login', $auth->action('loginPage'));
+$authRouter->post('/login', $auth->action('processLogin'));
+$authRouter->get('/logout', $auth->action('logout'));
 
-$router->get('/logout', $auth->action('logout'));
+//$authRouter->dumpRoutes();
 
+$authRouter->start();
 
-$router->dumpRoutes();
-
-$router->start();
 

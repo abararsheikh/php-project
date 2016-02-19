@@ -58,6 +58,7 @@ class View {
 
   // Renders plain text
   public function json($variable) {
+    header('Content-Type: application/json');
     echo json_encode($variable);
   }
 
@@ -97,8 +98,8 @@ class View {
     !empty($this->header) || $this->header = $root . preg_filter($pattern, '/header.php', $fileName);
     !empty($this->footer) || $this->footer = $root . preg_filter($pattern, '/footer.php', $fileName);
     $this->content[] = $root . $fileName . '.php';
-    $this->js[] = '/js' . $name . '.js';
-    $this->css[] = '/css' . $name . '.css';
+    $this->js[] = '/js/' . $name . '.js';
+    $this->css[] = '/css/' . $name . '.css';
   }
 
 

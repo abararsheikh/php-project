@@ -117,14 +117,5 @@ class AuthModel {
     ];
   }
 
-
 }
-/*
-$auth = new AuthModel(DB::getDB());
-//echo 'new user: ', $auth->newUser('123', '123'), '<br>';
-//echo 'Auth: ', $auth->logIn('123', '123'), '<br>';
-echo 'cookie login: ', $auth->logInViaCookie(), '<br>';
-echo 'Logged in User: ', AuthModel::getUser(), '<br>';
-//$auth->logOut();
-echo 'logging out... <br>';
-echo 'Logged in User: ', AuthModel::getUser(), '<br>';*/
+
