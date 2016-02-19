@@ -5,7 +5,7 @@ namespace Project\Auth;
 use \Project\Classes\DB as DB;
 use \PDO;
 
-// TODO: cookie, config, register
+// TODO: config, register, validation
 /**
  * @Author Yi Zhao
  *
@@ -13,8 +13,8 @@ use \PDO;
 class AuthModel {
   private $db;
 
-  public function __construct(PDO $database) {
-    $this->db = $database;
+  public function __construct() {
+    $this->db = DB::getDB();
     session_start();
   }
 
@@ -119,9 +119,7 @@ class AuthModel {
 
 
 }
-
-include '../autoloader.php';
-
+/*
 $auth = new AuthModel(DB::getDB());
 //echo 'new user: ', $auth->newUser('123', '123'), '<br>';
 //echo 'Auth: ', $auth->logIn('123', '123'), '<br>';
@@ -129,4 +127,4 @@ echo 'cookie login: ', $auth->logInViaCookie(), '<br>';
 echo 'Logged in User: ', AuthModel::getUser(), '<br>';
 //$auth->logOut();
 echo 'logging out... <br>';
-echo 'Logged in User: ', AuthModel::getUser(), '<br>';
+echo 'Logged in User: ', AuthModel::getUser(), '<br>';*/

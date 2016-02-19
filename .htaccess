@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule Auth.+ Auth/index.php

@@ -4,6 +4,14 @@ namespace Project\Classes;
 
 /**
  * Class Router
+ *
+ * Current directory is the root directory.
+ * It won't work if there is .php after the route
+ * Example:
+ *  $router = new Router()
+ *  $router->get('/', $controller->action())
+ *  $router->post('/path', function() { do something here... })
+ *
  * @Author: Yi Zhao
  * @method Router get($path, $callback)
  * @method Router post($path, $callback)
@@ -24,11 +32,12 @@ class Router {
       'callback' => $callback,
     ];
   }
-  // need to test 404 part
+  // TODO: separate match and not match logic
   public function start() {
     $match = $this->match();
     if (!$match) {
       http_response_code(404);
+      echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
     }
   }
   // For test purpose
@@ -44,17 +53,20 @@ class Router {
     $requestMethod = $_SERVER['REQUEST_METHOD'];
     foreach ($this->routes as $route) {
       if($requestURL == $route['path'] && $requestMethod == $route['method']) {
-        $route['callback']();
+        $callback = $route['callback'];
+        if (is_callable($callback)) call_user_func($callback);
         return true;
       }
     }
     return false;
   }
   // Creates shortcuts for different methods.
+  // Base dir is current directory
+  // Do not add `.php` after file name
   private function quickAdd($path, $callback, $method) {
-    if (preg_match('/\/\w+$/', $path)) $path .= '.php';
+//    if (preg_match('/\/\w+$/', $path)) $path .= '.php';
     $this->routes[] = [
-        'path' => $path,
+        'path' => dirname($_SERVER['PHP_SELF']) . $path,
         'method' => $method,
         'callback' => $callback,
         'name' => null
@@ -63,17 +75,3 @@ class Router {
 
 }
 
-// Test
-$r = new Router();
-
-$r->add('/Classes/Router.php', 'POST', 'testPost', function() {
-  echo 'post success';
-});
-$r->get('/Classes/Router', function() {
-  echo 'get!';
-});
-$r->get('/', function() {
-  echo '/////';
-});
-$r->start();
-$r->dumpRoutes();
