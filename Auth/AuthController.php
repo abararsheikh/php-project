@@ -1,6 +1,7 @@
 <?php
 namespace Project\Auth;
 use Project\Classes as Classes;
+use Project\Validation\Validator;
 
 /**
  * @Author Yi Zhao
@@ -11,30 +12,33 @@ class AuthController extends Classes\Controller {
   private $model;
   public function __construct() {
     $this->model = new AuthModel();
-    $this->view = new Classes\View();
+    $this->view = new Classes\View([
+      'css' => '/css/bootstrap.min.css'
+    ]);
   }
 
   public function loginPage() {
     if ($this->model->logInViaCookie()) {
-      $this->view->text('login success as ' . AuthModel::getUser());
+      $this->view->text('logged in as ' . AuthModel::getUser());
     }else {
       $this->view->render('/Auth/login', 'Login Page');
     }
   }
-  // need validation
   public function processLogin() {
-    $data = $_POST;
-    $loginResult = $this->model->logIn($data['username'], $data['password']);
+    $output = [ 'success' => false, 'error' => [] ];
+    $loginResult = $this->model->logIn($_POST['username'], $_POST['password']);
     if($loginResult) {
-      $this->view->text("logged in successful as " . AuthModel::getUser());
+      $output['success'] = true;
     }else {
-      $this->view->text('login fail');
+      $output['error'][] = 'username or password is not correct';
     }
+    $this->view->json($output);
   }
-
   public function logout() {
     $this->model->logOut();
     $this->view->text('logout');
-    var_dump($_SESSION);
+  }
+  public function registerPage() {
+    $this->view->render('/Auth/register', 'Register');
   }
 }

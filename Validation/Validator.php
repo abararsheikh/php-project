@@ -50,7 +50,6 @@ class Validator {
       }
     }
   }
-
   public function displayError($fieldName, $tagName = 'p') {
     if (!isset(self::$error[$fieldName])) return;
 

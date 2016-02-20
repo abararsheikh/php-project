@@ -25,37 +25,53 @@ class View {
   private $css = [];
   private $js = [];
 
+  private $HTML = '
+    <html>
+      <head>
+       <title>%title%</title>
+       %css%
+      </head>
+      <body>
+        %content%
+        %js%
+      </body>
+    </html>
+  ';
+
   public function __construct(array $options = []) {
-    $this->setPage($options);
+    $this->set($options);
   }
 
-  public function setPage(array $options) {
+  public function set(array $options) {
     $this->title = isset($options['title']) ? $options['title'] : '';
     $this->header = isset($options['header']) ? $this->getRoot() . $options['header'] : '';
     $this->footer = isset($options['footer']) ? $this->getRoot() . $options['footer'] : '';
-    $this->content = isset($options['content']) ? $options['content'] : [];
-    $this->css = isset($options['css']) ? $options['css'] : [];
-    $this->js = isset($options['js']) ? $options['js'] : [];
+    isset($options['content']) ? $this->content[] = $options['content'] : [];
+    isset($options['css']) ? $this->css[] = $options['css'] : [];
+    isset($options['js']) ? $this->js[] = $options['js'] : [];
   }
 
   // Includes predefined contents to current page, also add css and js files.
   public function render($fileName = null, $title = null) {
     if ($fileName) $this->quickSet($fileName);
     if ($title) $this->title = $title;
-    echo "
-    <html>
-    <head>
-     <title>$this->title</title>" .
-        $this->addCSS() .
-        "</head>
-    <body>";
-    $this->addBody();
-    $this->addJS();
-    echo "
-    </body>
-    </html>";
+//    $page = "
+//    <html>
+//    <head>
+//     <title>$this->title</title>"
+//      . $this->addCSS() .
+//    "</head>
+//    <body>" .
+//    $this->addBody() .
+//    "</body>
+//    </html>";
+//
+//    echo $page;
+    echo str_replace(
+      ['%title%', '%css%', '%content%', '%js%'],
+      [$this->title, $this->addCSS(), $this->addBody(), $this->addJS()],
+      $this->HTML);
   }
-
   // Renders plain text
   public function json($variable) {
     header('Content-Type: application/json');
@@ -71,21 +87,27 @@ class View {
     return $_SERVER['DOCUMENT_ROOT'];
   }
   private function addCSS() {
+    $output = '';
     foreach ($this->css as $css) {
-      echo "<link href='$css' />";
+      $output .= "<link rel='stylesheet' href='$css' />";
     }
+    return $output;
   }
   private function addJS() {
+    $output = '';
     foreach ($this->js as $js) {
-      echo "<script src='$js'></script>";
+      $output .= "<script src='$js'></script>";
     }
+    return $output;
   }
   private function addBody() {
+    ob_start();
     include $this->header;
     foreach ($this->content as $content) {
       include $content;
     }
     include $this->footer;
+    return ob_get_clean();
   }
   // Provides an easier way to setup a page.
   // Assumes php, js, and css files have the same name.
