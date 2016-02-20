@@ -32,7 +32,9 @@ class View {
        %css%
       </head>
       <body>
+        %header%
         %content%
+        %footer%
         %js%
       </body>
     </html>
@@ -42,6 +44,7 @@ class View {
     $this->set($options);
   }
 
+  // Sets value for different components of the page.
   public function set(array $options) {
     $this->title = isset($options['title']) ? $options['title'] : '';
     $this->header = isset($options['header']) ? $this->getRoot() . $options['header'] : '';
@@ -51,27 +54,54 @@ class View {
     isset($options['js']) ? $this->js[] = $options['js'] : [];
   }
 
+  /**
+   * Replaces default html template with a new one.
+   * This is quite powerful because it allows custom template.
+   * Example 1:
+   *  $view = new View(['title' => 'my title'])
+   *  $view->setTemplate(' <h1>%title%</h1> ')
+   *  $view->render();
+   *  Now the page only has one title tag, other parts are ignored.
+   * Example 2:
+   *  $view->setTemplate('%content%')
+   *  $view->render();
+   *  It can be used when everything has already been included in another file
+   *
+   * @param string $template New html template string
+   */
+  public function setTemplate($template) {
+    $this->HTML = $template;
+  }
   // Includes predefined contents to current page, also add css and js files.
   public function render($fileName = null, $title = null) {
     if ($fileName) $this->quickSet($fileName);
     if ($title) $this->title = $title;
+    // timer
+    $start = microtime(true);
 
     echo str_replace(
-      ['%title%', '%css%', '%content%', '%js%'],
-      [$this->title, $this->addCSS(), $this->addBody(), $this->addJS()],
+      ['%title%', '%css%', '%header%', '%content%', '%footer%', '%js%'], [
+        $this->title,
+        $this->addCSS(),
+        $this->addContent($this->header),
+        $this->addContent($this->content),
+        $this->addContent($this->footer),
+        $this->addJS()],
       $this->HTML);
+    // timer end
+    $end = microtime(true);
+    $creationtime = ($end - $start);
+    printf("<!-- page created in %.5f seconds. -->", $creationtime);
+
   }
-  // Renders plain text
+  // Renders JSON
   public function json($variable) {
     header('Content-Type: application/json');
     echo json_encode($variable);
   }
 
-  public function text($text) {
-    echo $text;
-  }
-
   // Private functions
+
   private function getRoot() {
     return $_SERVER['DOCUMENT_ROOT'];
   }
@@ -89,13 +119,26 @@ class View {
     }
     return $output;
   }
-  private function addBody() {
+  private function addContent() {
+    $templates = func_get_args();
     ob_start();
-    include $this->header;
-    foreach ($this->content as $content) {
-      include $content;
+    $start = microtime(true);
+    printf("<!-- start timer -->");
+
+    foreach ($templates as $template) {
+      if (is_array($template)) {
+        foreach ($template as $item) {
+          include_once $item;
+        }
+      }else {
+        include_once $template;
+      }
     }
-    include $this->footer;
+
+    $end = microtime(true);
+    $creationtime = ($end - $start);
+    printf("<!-- created in %.5f seconds. -->", $creationtime);
+
     return ob_get_clean();
   }
   // Provides an easier way to setup a page.

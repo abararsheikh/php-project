@@ -1,12 +1,10 @@
 <?php
-/**
- * @Author Yi Zhao
- *
- */
-
 namespace Project\Classes;
 
-
+/**
+ * Class Controller
+ * @package Project\Classes
+ */
 abstract class Controller {
   // TODO: probably needs a better way to implement this
   public function action($action) {

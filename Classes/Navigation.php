@@ -21,4 +21,12 @@ class Navigation {
     }
   }
 
+  public function displayNav($tag) {
+    foreach ($this->items as $item) {
+      $link = $item['link'];
+      $name = $item['name'];
+      echo "<$tag><a href='$link'>$name</a></$tag>";
+    }
+  }
+
 }

@@ -35,8 +35,8 @@ class AuthController extends Classes\Controller {
     $this->view->json($output);
   }
   public function logout() {
-    $this->model->logOut();
-    $this->view->text('logout');
+    $this->view->json($this->resultArray(AuthModel::getUser(), 'You have not logged in yet'));
+
   }
   public function registerPage() {
     $this->view->render('/Auth/register', 'Register');
