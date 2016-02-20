@@ -27,7 +27,11 @@ class AuthModel {
     $newStmt->bindValue(':username', $username, PDO::PARAM_STR);
     $newStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
     $newStmt->bindValue(':email', $email, PDO::PARAM_STR);
-    return $newStmt->execute() ? true : $newStmt->errorInfo()[2];
+
+    $queryResult['success'] = $newStmt->execute() ? true : false;
+    $queryResult['error'] = $newStmt->errorInfo()[2];
+
+    return $queryResult;
 
   }
   public function logIn($username, $password) {
