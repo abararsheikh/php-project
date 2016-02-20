@@ -14,5 +14,16 @@ abstract class Controller {
       call_user_func([$this, $action]);
     };
   }
+  public function resultArray($result, $errors) {
+    $output = [ 'success' => false, 'error' => [] ];
+    if ($result) {
+      $output['success'] = true;
+    }else if (is_array($errors)) {
+      $output['error'] = array_reduce($errors, 'array_merge', []);
+    }else {
+      $output['error'][] = $errors;
+    }
+    return $output;
+  }
 
 }

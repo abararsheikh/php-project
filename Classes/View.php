@@ -55,18 +55,7 @@ class View {
   public function render($fileName = null, $title = null) {
     if ($fileName) $this->quickSet($fileName);
     if ($title) $this->title = $title;
-//    $page = "
-//    <html>
-//    <head>
-//     <title>$this->title</title>"
-//      . $this->addCSS() .
-//    "</head>
-//    <body>" .
-//    $this->addBody() .
-//    "</body>
-//    </html>";
-//
-//    echo $page;
+
     echo str_replace(
       ['%title%', '%css%', '%content%', '%js%'],
       [$this->title, $this->addCSS(), $this->addBody(), $this->addJS()],

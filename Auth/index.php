@@ -12,17 +12,18 @@ include '../autoloader.php';
 $authRouter = new Router();
 $auth = new AuthController();
 
-$authRouter->get('/', function() {
+$authRouter->get('/ as Home', function() {
   echo 'auth page';
 });
 
-$authRouter->get('/login', $auth->action('loginPage'));
+$authRouter->get('/login as Login', $auth->action('loginPage'));
 $authRouter->post('/login', $auth->action('processLogin'));
-$authRouter->get('/logout', $auth->action('logout'));
-$authRouter->get('/register', $auth->action('registerPage'));
+$authRouter->get('/logout as Logout', $auth->action('logout'));
+$authRouter->get('/register as Register', $auth->action('registerPage'));
+$authRouter->post('/register', $auth->action('registerUser'));
 
 //$authRouter->dumpRoutes();
 
 $authRouter->start();
 
-
+var_dump($authRouter->getRoutes('method', 'GET'));

@@ -41,4 +41,10 @@ class AuthController extends Classes\Controller {
   public function registerPage() {
     $this->view->render('/Auth/register', 'Register');
   }
+  // TODO: Add validation
+  public function registerUser() {
+//    $v = new Validator($_POST);
+    $result = $this->model->newUser($_POST['username'], $_POST['password'], $_POST['email']);
+    $this->view->json($this->resultArray($result, 'validation error messages here'));
+  }
 }

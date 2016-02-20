@@ -9,7 +9,7 @@ namespace Project\Classes;
  * It won't work if there is .php after the route
  * Example:
  *  $authRouter = new Router()
- *  $authRouter->get('/', $controller->action('actionName'))
+ *  $authRouter->get('/ as Home', $controller->action('actionName'))
  *  $authRouter->post('/path', function() { do something here... })
  *
  * @Author: Yi Zhao
@@ -31,6 +31,12 @@ class Router {
       'name' => $name,
       'callback' => $callback,
     ];
+  }
+  public function getRoutes($filterKey, $value) {
+    return array_reduce($this->routes, function($acc, $item) use($filterKey, $value) {
+      if ($item[$filterKey] == $value) $acc[] = $item;
+      return $acc;
+    }, []);
   }
   // TODO: separate match and not match logic
   public function start() {
@@ -62,12 +68,20 @@ class Router {
   }
 
   // Creates shortcuts for different methods.
-  private function quickAdd($path, $callback, $method) {
+  private function quickAdd($pathInfo, $callback, $method) {
+    // Try to grab link and name
+    if (strpos($pathInfo, ' as ')) {
+      list($path, $name) = explode(' as ', $pathInfo);
+    }else {
+      $path = $pathInfo;
+      $name = null;
+    }
+
     $this->routes[] = [
         'path' => dirname($_SERVER['PHP_SELF']) . $path,
         'method' => $method,
         'callback' => $callback,
-        'name' => null
+        'name' => $name
     ];
   }
 

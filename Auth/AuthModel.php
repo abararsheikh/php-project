@@ -19,14 +19,14 @@ class AuthModel {
   }
 
   // New user
-  public function newUser($username, $password, $roleId = 1) {
+  public function newUser($username, $password, $email) {
     $newStmt = $this->db->prepare('
-      INSERT INTO users(username, password, role_id)
-      VALUES (:username, :password, :roleId);'
+      INSERT INTO users(username, password, email)
+      VALUES (:username, :password, :email);'
     );
     $newStmt->bindValue(':username', $username, PDO::PARAM_STR);
     $newStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-    $newStmt->bindValue(':roleId', $roleId, PDO::PARAM_INT);
+    $newStmt->bindValue(':email', $email, PDO::PARAM_STR);
     return $newStmt->execute() ? true : $newStmt->errorInfo()[2];
 
   }
@@ -111,9 +111,10 @@ class AuthModel {
   }
   private function addUserToSession($user) {
     $_SESSION['user'] = [
-        'id' => $user['id'],
-        'username' => $user['username'],
-        'roleId' => $user['role_id']
+      'id' => $user['id'],
+      'username' => $user['username'],
+      'roleId' => $user['role_id'],
+      'email' => $user['email']
     ];
   }
 
