@@ -5,7 +5,7 @@ namespace Project\Auth;
 use \Project\Classes\DB as DB;
 use \PDO;
 
-// TODO: config, register, validation
+// TODO: config, real-time duplication check support
 /**
  * @Author Yi Zhao
  *

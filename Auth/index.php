@@ -13,24 +13,28 @@ include '../autoloader.php';
 $authRouter = new Router();
 $auth = new AuthController();
 $authNav = new Navigation();
+$nav = new Navigation();
 
 
+$nav->add('/login as Login', $auth->action('loginPage'));
+$nav->add('/ as Home', ['header.php', 'footer.php']);
+//
+//$authRouter->get('/ as Home', function() {
+//  echo 'auth page';
+//});
+//
+//$authRouter->get('/login as Login', $auth->action('loginPage'));
+//$authRouter->post('/login', $auth->action('processLogin'));
+//$authRouter->get('/logout as Logout', $auth->action('logout'));
+//$authRouter->get('/register as Register', $auth->action('registerPage'));
+//$authRouter->post('/register', $auth->action('registerUser'));
+//
+////$authRouter->dumpRoutes();
+//$authNav->register($authRouter->getRoutes('method', 'GET'));
+//$authNav->displayNav('li');
+//
+//$authRouter->start();
 
-
-$authRouter->get('/ as Home', function() {
-  echo 'auth page';
-});
-
-$authRouter->get('/login as Login', $auth->action('loginPage'));
-$authRouter->post('/login', $auth->action('processLogin'));
-$authRouter->get('/logout as Logout', $auth->action('logout'));
-$authRouter->get('/register as Register', $auth->action('registerPage'));
-$authRouter->post('/register', $auth->action('registerUser'));
-
-//$authRouter->dumpRoutes();
-$authNav->register($authRouter->getRoutes('method', 'GET'));
-$authNav->displayNav('li');
-
-$authRouter->start();
-
+$nav->start();
+$nav->dumpRoutes();
 

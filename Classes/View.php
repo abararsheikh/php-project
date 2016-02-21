@@ -83,9 +83,9 @@ class View {
       ['%title%', '%css%', '%header%', '%content%', '%footer%', '%js%'], [
         $this->title,
         $this->addCSS(),
-        $this->addContent($this->header),
-        $this->addContent($this->content),
-        $this->addContent($this->footer),
+        self::addContent($this->header),
+        self::addContent($this->content),
+        self::addContent($this->footer),
         $this->addJS()],
       $this->HTML);
     // timer end
@@ -119,7 +119,7 @@ class View {
     }
     return $output;
   }
-  private function addContent() {
+  public static function addContent() {
     $templates = func_get_args();
     ob_start();
     $start = microtime(true);

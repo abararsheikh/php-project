@@ -17,11 +17,11 @@ namespace Project\Classes;
  * @method Router post($path, $callback)
  */
 class Router {
-  private $routes = [];
+  protected $routes = [];
 
   public function __call($name, $arguments) {
     list($path, $callback) = $arguments;
-    $this->quickAdd($path, $callback, strtoupper($name));
+    $this->routes[] = $this->quickAdd($path, $callback, strtoupper($name));
   }
   // example: add('/', 'GET', 'Home', function() {})
   public function add($path, $method, $name, $callback) {
@@ -50,7 +50,7 @@ class Router {
   public function dumpRoutes() {
     var_dump($this->routes);
   }
-  private function match() {
+  protected function match() {
     if( $index = strpos($_SERVER['REQUEST_URI'], '?') ) {
       $requestURL = substr($_SERVER['REQUEST_URI'], 0, $index);
     }else {
@@ -68,7 +68,7 @@ class Router {
   }
 
   // Creates shortcuts for different methods.
-  private function quickAdd($pathInfo, $callback, $method) {
+  protected function quickAdd($pathInfo, $callback, $method) {
     // Try to grab link and name
     if (strpos($pathInfo, ' as ')) {
       list($path, $name) = explode(' as ', $pathInfo);
@@ -76,8 +76,7 @@ class Router {
       $path = $pathInfo;
       $name = null;
     }
-
-    $this->routes[] = [
+    return [
         'path' => dirname($_SERVER['PHP_SELF']) . $path,
         'method' => $method,
         'callback' => $callback,
