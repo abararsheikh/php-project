@@ -1,2 +1,5 @@
 RewriteEngine on
-RewriteRule Auth.+ Auth/index.php
+#Auth folder
+RewriteRule    ^Auth.+ Auth/index.php                    [NC,L]
+
+#RewriteRule    ^.*$ index.php

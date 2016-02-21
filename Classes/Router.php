@@ -68,7 +68,7 @@ class Router {
     }
     $requestMethod = $_SERVER['REQUEST_METHOD'];
     foreach ($this->routes as $route) {
-      if($requestURL == $route['path'] && $requestMethod == $route['method']) {
+      if(strtolower($requestURL) == strtolower($route['path']) && $requestMethod == $route['method']) {
         $callback = $route['callback'];
         if (is_callable($callback)) call_user_func($callback);
         return true;
