@@ -5,7 +5,7 @@ namespace Project\Classes;
 /**
  * Class Router
  *
- * Current directory is the root directory.
+ * Root is current directory.
  * It won't work if there is .php after the route
  * Example:
  *  $authRouter = new Router()
@@ -32,12 +32,6 @@ class Router {
       'callback' => $callback,
     ];
   }
-  public function getRoutes($filterKey, $value) {
-    return array_reduce($this->routes, function($acc, $item) use($filterKey, $value) {
-      if ($item[$filterKey] == $value) $acc[] = $item;
-      return $acc;
-    }, []);
-  }
   // TODO: separate match and not match logic
   public function start() {
     $match = $this->match();
@@ -50,7 +44,23 @@ class Router {
   public function dumpRoutes() {
     var_dump($this->routes);
   }
-  protected function match() {
+  // Creates shortcuts for different methods.
+  protected function quickAdd($pathInfo, Callable $callback, $method) {
+    // Try to grab link and name
+    if (strpos($pathInfo, ' as ')) {
+      list($path, $name) = explode(' as ', $pathInfo);
+    }else {
+      $path = $pathInfo;
+      $name = null;
+    }
+    return [
+        'path' => dirname($_SERVER['PHP_SELF']) . $path,
+        'method' => $method,
+        'callback' => $callback,
+        'name' => $name
+    ];
+  }
+  private function match() {
     if( $index = strpos($_SERVER['REQUEST_URI'], '?') ) {
       $requestURL = substr($_SERVER['REQUEST_URI'], 0, $index);
     }else {
@@ -65,23 +75,6 @@ class Router {
       }
     }
     return false;
-  }
-
-  // Creates shortcuts for different methods.
-  protected function quickAdd($pathInfo, $callback, $method) {
-    // Try to grab link and name
-    if (strpos($pathInfo, ' as ')) {
-      list($path, $name) = explode(' as ', $pathInfo);
-    }else {
-      $path = $pathInfo;
-      $name = null;
-    }
-    return [
-        'path' => dirname($_SERVER['PHP_SELF']) . $path,
-        'method' => $method,
-        'callback' => $callback,
-        'name' => $name
-    ];
   }
 
 }

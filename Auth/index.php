@@ -6,35 +6,24 @@
  */
 namespace Project\Auth;
 use Project\Classes\Navigation;
-use Project\Classes\Router;
 
 include '../autoloader.php';
 
-$authRouter = new Router();
 $auth = new AuthController();
-$authNav = new Navigation();
 $nav = new Navigation();
 
 
-$nav->add('/login as Login', $auth->action('loginPage'));
 $nav->add('/ as Home', ['header.php', 'footer.php']);
-//
-//$authRouter->get('/ as Home', function() {
-//  echo 'auth page';
-//});
-//
-//$authRouter->get('/login as Login', $auth->action('loginPage'));
-//$authRouter->post('/login', $auth->action('processLogin'));
-//$authRouter->get('/logout as Logout', $auth->action('logout'));
-//$authRouter->get('/register as Register', $auth->action('registerPage'));
-//$authRouter->post('/register', $auth->action('registerUser'));
-//
-////$authRouter->dumpRoutes();
-//$authNav->register($authRouter->getRoutes('method', 'GET'));
-//$authNav->displayNav('li');
-//
-//$authRouter->start();
+$nav->add('/login as Login', $auth->action('loginPage'));
+$nav->add('/register as Register', $auth->action('registerPage'));
 
-$nav->start();
-$nav->dumpRoutes();
+$nav->post('/login', $auth->action('processLogin'));
+$nav->post('/register', $auth->action('registerUser'));
 
+
+
+?>
+<h2>navigation</h2>
+<?php $nav->displayNav()?>
+
+<?php $nav->start(); ?>
