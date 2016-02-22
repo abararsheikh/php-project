@@ -33,8 +33,6 @@ const dir = {
 //gulp.task('build', ['html', 'ts', 'styles'], () => {
 //  return gulp.src(`${dir.src}/*.html`)
 //    .pipe($.useref())
-//    // TODO:0 fix angular injection when minified.
-//    // .pipe( $.if('*.js', $.uglify()) )
 //    .pipe($.if('*.css', $.minifyCss()))
 //    .pipe($.if('*.css', $.autoprefixer()))
 //    .pipe(gulp.dest(dir.dest));

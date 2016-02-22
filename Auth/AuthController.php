@@ -13,10 +13,14 @@ class AuthController extends Classes\Controller {
   public function __construct() {
     $this->model = new AuthModel();
     $this->view = new Classes\View([
-      'css' => '/css/bootstrap.min.css'
+      'js' => '/js/jquery.min.js'
+    ]);
+    $this->view->set([
+      'css' => '/css/bootstrap.min.css',
+      'js' => '/js/bootstrap.min.js'
     ]);
   }
-
+  // Login page GET
   public function loginPage() {
     if ($this->model->logInViaCookie()) {
       echo ('logged in as ' . AuthModel::getUser());
@@ -24,6 +28,7 @@ class AuthController extends Classes\Controller {
       $this->view->render('/Auth/login', 'Login Page');
     }
   }
+  // Login page POST
   public function processLogin() {
     $output = [ 'success' => false, 'error' => [] ];
     $loginResult = $this->model->logIn($_POST['username'], $_POST['password']);
@@ -34,13 +39,18 @@ class AuthController extends Classes\Controller {
     }
     $this->view->json($output);
   }
+
+  // Logout GET
   public function logout() {
     $this->view->json($this->resultArray(AuthModel::getUser(), 'You have not logged in yet'));
 
   }
+
+  // Register GET
   public function registerPage() {
     $this->view->render('/Auth/register', 'Register');
   }
+  // Register POST
   public function registerUser() {
     $v = new Validator($_POST);
     $v->validate('username', ['notEmpty']);

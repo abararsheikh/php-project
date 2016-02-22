@@ -17,6 +17,9 @@ namespace Project\Classes;
  * @method Router post($path, $callback)
  */
 class Router {
+  /**
+   * @var Route[]
+   */
   protected $routes = [];
   protected $baseDir = '';
 
@@ -29,22 +32,21 @@ class Router {
     list($path, $callback) = $arguments;
     $this->routes[] = $this->quickAdd($path, $callback, strtoupper($name));
   }
-  // example: add('/', 'GET', 'Home', function() {})
-  public function add($path, $method, $name, $callback) {
-    $this->routes[] = [
-      'method' => $method,
-      'path' => $path,
-      'name' => $name,
-      'callback' => $callback,
-    ];
-  }
+
   // TODO: separate match and not match logic
   public function start() {
-    $match = $this->match();
-    if (!$match) {
+    $hasMatch = false;
+    foreach ($this->routes as $route) {
+      if ($route->match()) {
+        $hasMatch = true;
+        break;
+      }
+    }
+    if (!$hasMatch) {
       http_response_code(404);
       echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
     }
+
   }
   // For test purpose
   public function dumpRoutes() {
@@ -59,28 +61,7 @@ class Router {
       $path = $pathInfo;
       $name = null;
     }
-    return [
-        'path' => $this->baseDir . $path,
-        'method' => $method,
-        'callback' => $callback,
-        'name' => $name
-    ];
-  }
-  private function match() {
-    if( $index = strpos($_SERVER['REQUEST_URI'], '?') ) {
-      $requestURL = substr($_SERVER['REQUEST_URI'], 0, $index);
-    }else {
-      $requestURL = $_SERVER['REQUEST_URI'];
-    }
-    $requestMethod = $_SERVER['REQUEST_METHOD'];
-    foreach ($this->routes as $route) {
-      if(strtolower($requestURL) == strtolower($route['path']) && $requestMethod == $route['method']) {
-        $callback = $route['callback'];
-        if (is_callable($callback)) call_user_func($callback);
-        return true;
-      }
-    }
-    return false;
+    return new Route($this->baseDir . $path, $name, $method, $callback);
   }
 
 }

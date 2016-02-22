@@ -49,9 +49,9 @@ class View {
     $this->title = isset($options['title']) ? $options['title'] : '';
     $this->header = isset($options['header']) ? $this->getRoot() . $options['header'] : '';
     $this->footer = isset($options['footer']) ? $this->getRoot() . $options['footer'] : '';
-    isset($options['content']) ? $this->content[] = $options['content'] : [];
-    isset($options['css']) ? $this->css[] = $options['css'] : [];
-    isset($options['js']) ? $this->js[] = $options['js'] : [];
+    if( isset($options['content']) ) $this->content[] = $options['content'];
+    if( isset($options['css']) ) $this->css[] = $options['css'];
+    if( isset($options['js']) ) $this->js[] = $options['js'];
   }
 
   /**
@@ -100,6 +100,31 @@ class View {
     echo json_encode($variable);
   }
 
+  // Static functions
+  public static function addContent() {
+    $templates = func_get_args();
+    ob_start();
+    // timer start
+    $start = microtime(true);
+    printf("<!-- start timer -->");
+
+    foreach ($templates as $template) {
+      if (is_array($template)) {
+        foreach ($template as $item) {
+          include_once $item;
+        }
+      }else {
+        include_once $template;
+      }
+    }
+    // timer end
+    $end = microtime(true);
+    $creationtime = ($end - $start);
+    printf("<!-- created in %.5f seconds. -->", $creationtime);
+
+    return ob_get_clean();
+  }
+
   // Private functions
 
   private function getRoot() {
@@ -118,28 +143,6 @@ class View {
       $output .= "<script src='$js'></script>";
     }
     return $output;
-  }
-  public static function addContent() {
-    $templates = func_get_args();
-    ob_start();
-    $start = microtime(true);
-    printf("<!-- start timer -->");
-
-    foreach ($templates as $template) {
-      if (is_array($template)) {
-        foreach ($template as $item) {
-          include_once $item;
-        }
-      }else {
-        include_once $template;
-      }
-    }
-
-    $end = microtime(true);
-    $creationtime = ($end - $start);
-    printf("<!-- created in %.5f seconds. -->", $creationtime);
-
-    return ob_get_clean();
   }
   // Provides an easier way to setup a page.
   // Assumes php, js, and css files have the same name.

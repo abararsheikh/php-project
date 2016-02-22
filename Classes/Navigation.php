@@ -17,10 +17,13 @@ namespace Project\Classes;
  */
 class Navigation extends Router {
   public $items = [];
+  private $name = '';
 
-  public function __construct($baseDir = null) {
+  public function __construct($name, $baseDir = null) {
     parent::__construct($baseDir);
+    $this->name = $name;
   }
+  public function getName(){ return $this->name; }
 
   // TODO: make register more efficient
   public function add($pathAsName, $pageOrAction, $andPost = false) {
@@ -39,16 +42,17 @@ class Navigation extends Router {
     }
   }
   private function registerMenu() {
-    $onlyGetMethod = function ($route) {
-      return $route['method'] == 'GET';
+    $onlyGetMethod = function (Route $route) {
+      return $route->getProp('method') == 'GET';
     };
-    $makeNavItem = function ($route) {
+    $makeNavItem = function (Route $route) {
       return [
-        'link' => $route['path'],
-        'name' => $route['name'],
+        'link' => $route->getProp('path'),
+        'name' => $route->getProp('name'),
       ];
     };
     $this->items = array_map($makeNavItem, array_filter($this->routes, $onlyGetMethod));
+    Navs::addNav($this);
   }
   private function render($content) {
     return function() use($content){
