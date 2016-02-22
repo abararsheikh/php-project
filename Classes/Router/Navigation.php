@@ -1,6 +1,8 @@
 <?php
 
-namespace Project\Classes;
+namespace Project\Classes\Router;
+use Project\Classes\View;
+
 /**
  * Class Navigation
  * It provides a simplified add method to do routing.

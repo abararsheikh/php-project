@@ -4,7 +4,7 @@
  *
  */
 
-namespace Project\Classes;
+namespace Project\Classes\Router;
 
 
 class Route {
@@ -40,6 +40,11 @@ class Route {
     }
     return false;
   }
+
+  /**
+   * @param $propName string
+   * @return mixed
+   */
   public function getProp($propName) {
     return $this->$propName;
   }

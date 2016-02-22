@@ -1,6 +1,6 @@
 <?php
 
-namespace Project\Classes;
+namespace Project\Classes\Router;
 
 /**
  * Class Navs

@@ -1,6 +1,6 @@
 <?php
 
-namespace Project\Classes;
+namespace Project\Classes\Router;
 
 /**
  * Class Router
@@ -32,6 +32,16 @@ class Router {
     list($path, $callback) = $arguments;
     $this->routes[] = $this->quickAdd($path, $callback, strtoupper($name));
   }
+  protected function quickAdd($pathInfo, Callable $callback, $method) {
+    // Try to grab link and name
+    if (strpos($pathInfo, ' as ')) {
+      list($path, $name) = explode(' as ', $pathInfo);
+    }else {
+      $path = $pathInfo;
+      $name = null;
+    }
+    return new Route($this->baseDir . $path, $name, $method, $callback);
+  }
 
   // TODO: separate match and not match logic
   public function start() {
@@ -46,22 +56,6 @@ class Router {
       http_response_code(404);
       echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
     }
-
-  }
-  // For test purpose
-  public function dumpRoutes() {
-    var_dump($this->routes);
-  }
-  // Creates shortcuts for different methods.
-  protected function quickAdd($pathInfo, Callable $callback, $method) {
-    // Try to grab link and name
-    if (strpos($pathInfo, ' as ')) {
-      list($path, $name) = explode(' as ', $pathInfo);
-    }else {
-      $path = $pathInfo;
-      $name = null;
-    }
-    return new Route($this->baseDir . $path, $name, $method, $callback);
   }
 
 }

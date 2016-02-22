@@ -4,7 +4,7 @@
  * Date: 16/02/16
  */
 
-$authNav = \Project\Classes\Navs::get('Auth');
+$authNav = \Project\Classes\Router\Navs::get('Auth');
 
 ?>
 
