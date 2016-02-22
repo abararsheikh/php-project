@@ -23,7 +23,7 @@ class Navigation extends Router {
   }
 
   // TODO: make register more efficient
-  public function add($pathAsName, $pageOrAction, $andPost = false, $baseDir = null) {
+  public function add($pathAsName, $pageOrAction, $andPost = false) {
     $pageOrAction = is_callable($pageOrAction) ? $pageOrAction : $this->render($pageOrAction);
     $this->routes[] = $this->quickAdd($pathAsName, $pageOrAction, 'GET');
     if ($andPost) {
