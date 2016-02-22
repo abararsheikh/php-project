@@ -72,6 +72,7 @@ class AuthModel {
   // Static functions
   // Returns user information, false if user is not logged in
   public static function getUser($key = 'username') {
+    if(!session_status() == PHP_SESSION_ACTIVE) session_start();
     return isset($_SESSION['user']) ? $_SESSION['user'][$key] : false;
   }
 
