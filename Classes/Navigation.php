@@ -18,8 +18,12 @@ namespace Project\Classes;
 class Navigation extends Router {
   public $items = [];
 
+  public function __construct($baseDir = null) {
+    parent::__construct($baseDir);
+  }
+
   // TODO: make register more efficient
-  public function add($pathAsName, $pageOrAction, $andPost = false) {
+  public function add($pathAsName, $pageOrAction, $andPost = false, $baseDir = null) {
     $pageOrAction = is_callable($pageOrAction) ? $pageOrAction : $this->render($pageOrAction);
     $this->routes[] = $this->quickAdd($pathAsName, $pageOrAction, 'GET');
     if ($andPost) {

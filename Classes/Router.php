@@ -18,6 +18,12 @@ namespace Project\Classes;
  */
 class Router {
   protected $routes = [];
+  protected $baseDir = '';
+
+  public function __construct($baseDir = null) {
+    // Sets default base
+    $this->baseDir = ($baseDir == null) ? dirname($_SERVER['PHP_SELF']) : $baseDir;
+  }
 
   public function __call($name, $arguments) {
     list($path, $callback) = $arguments;
@@ -54,7 +60,7 @@ class Router {
       $name = null;
     }
     return [
-        'path' => dirname($_SERVER['PHP_SELF']) . $path,
+        'path' => $this->baseDir . $path,
         'method' => $method,
         'callback' => $callback,
         'name' => $name
