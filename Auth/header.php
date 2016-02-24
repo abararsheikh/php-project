@@ -4,13 +4,13 @@
  * Date: 16/02/16
  */
 
-$authNav = \Project\Classes\Router\Navs::get('Auth');
 
 ?>
 
 <h1>header</h1>
+<h2>welcome <?php echo \Project\Auth\AuthModel::getUser()?></h2>
 <ul>
-  <?php $authNav->displayNav()?>
+
 </ul>
 
 

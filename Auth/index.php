@@ -5,25 +5,55 @@
  *
  */
 namespace Project\Auth;
-use Project\Classes\Router\Navigation;
+use Project\Classes\Router\Nav;
+use Project\Classes\View;
 
 include '../autoloader.php';
 
 $auth = new AuthController();
 
-$nav = new Navigation('Auth');
-$nav->add('/ as Home', ['header.php', 'footer.php']);
-$nav->add('/login as Login', $auth->action('loginPage'));
-$nav->add('/register as Register', $auth->action('registerPage'));
-$nav->add('/logout as Logout', $auth->action('logout'));
 
-$nav->post('/login', $auth->action('processLogin'));
-$nav->post('/register', $auth->action('registerUser'));
+Nav::group('/Auth as Auth', function() use($auth){
+  Nav::get('/ as Home', View::useContent('header.php', 'footer.php'));
+  Nav::get('/login as Login', $auth->action('loginPage'));
+//  Nav::get('/register as Register', $auth->action('registerPage'));
+//  Nav::get('/logout as Logout', $auth->action('logout'));
 
-$navTest = new Navigation('User navigation', '/User');
-$navTest->add('/ as User', ['header.php']);
+  Nav::group('/Test as Test', function() use($auth) {
+    Nav::get('/logout as Logout', $auth->action('logout'));
+//    Nav::get('/logout2 as Logout2', $auth->action('logout'));
+
+  });
+  Nav::group('/Testab as Testab', function() use($auth) {
+    Nav::get('/logout3 as Logout3', $auth->action('logout'));
+//    Nav::get('/logout2 as Logout2', $auth->action('logout'));
+  });
+
+  Nav::post('/login', $auth->action('processLogin'));
+//  Nav::post('/register', $auth->action('registerUser'));
+});
+
+Nav::group('/Test2 as Test', function() use($auth) {
+  Nav::get('/logout2 as Logout2', $auth->action('logout'));
+
+});
+
+//Nav::group('/Auth2 as Auth', function() use($auth) {
+//  Nav::get('/logout as Logout', $auth->action('logout'));
+//
+//});
+
+
+Nav::startRouting();
+//Nav::dumpRoutes();
+//var_dump(Nav::getGroup('Auth', '/auth'));
+
+//Nav::displayMenu('Test');
+var_dump(Nav::rearrange('Auth'));
+
+
 
 ?>
 
-<?php $nav->start(); ?>
+
 

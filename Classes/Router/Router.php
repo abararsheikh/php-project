@@ -1,53 +1,37 @@
 <?php
 
 namespace Project\Classes\Router;
+use Project\Classes\View;
 
 /**
  * Class Router
  *
- * Root is current directory.
- * It won't work if there is .php after the route
- * Example:
- *  $authRouter = new Router()
- *  $authRouter->get('/ as Home', $controller->action('actionName'))
- *  $authRouter->post('/path', function() { do something here... })
- *
  * @Author: Yi Zhao
- * @method Router get($path, $callback)
- * @method Router post($path, $callback)
+ * @method static void get($path, $callback)
+ * @method static void post($path, $callback)
  */
 class Router {
   /**
    * @var Route[]
    */
-  protected $routes = [];
-  protected $baseDir = '';
+  protected static $routes = [];
+  protected static $baseDir = '';
 
-  public function __construct($baseDir = null) {
-    // Sets default base
-    $this->baseDir = ($baseDir == null) ? dirname($_SERVER['PHP_SELF']) : $baseDir;
+  public static function __callStatic($name, $arguments) {
+    list($pathAsName, $callback) = $arguments;
+    self::add($pathAsName, $callback, $name);
   }
 
-  public function __call($name, $arguments) {
-    list($path, $callback) = $arguments;
-    $this->routes[] = $this->quickAdd($path, $callback, strtoupper($name));
-  }
-  protected function quickAdd($pathInfo, Callable $callback, $method) {
-    // Try to grab link and name
-    if (strpos($pathInfo, ' as ')) {
-      list($path, $name) = explode(' as ', $pathInfo);
-    }else {
-      $path = $pathInfo;
-      $name = null;
-    }
-    return new Route($this->baseDir . $path, $name, $method, $callback);
+  public static function base($baseDir, Callable $callback) {
+    self::$baseDir .= $baseDir;
+    $callback();
+    self::$baseDir = substr(self::$baseDir, 0, strpos(self::$baseDir, $baseDir));
   }
 
-  // TODO: separate match and not match logic
-  public function start() {
+  public static function startRouting($base = '/') {
     $hasMatch = false;
-    foreach ($this->routes as $route) {
-      if ($route->match()) {
+    foreach (self::$routes as $route) {
+      if (stristr($route->getProp('path'), $base ) && $route->match()) {
         $hasMatch = true;
         break;
       }
@@ -56,6 +40,16 @@ class Router {
       http_response_code(404);
       echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
     }
+  }
+  public static function dumpRoutes(){
+    var_dump(self::$routes);
+  }
+  protected static function add($pathAsName, $action, $method) {
+    list($path, $name) = self::separateName($pathAsName);
+    self::$routes[] = new Route(self::$baseDir . $path, $name, $method, $action);
+  }
+  protected static function separateName($pathAsName) {
+    return strpos($pathAsName, ' as ') ? explode(' as ', $pathAsName) : [$pathAsName, null];
   }
 
 }

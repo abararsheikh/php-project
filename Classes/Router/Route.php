@@ -34,7 +34,8 @@ class Route {
     }
     $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-    if(strtolower($requestURL) == strtolower($this->path) && $requestMethod == $this->method) {
+    if(strtolower($requestURL) == strtolower($this->path) &&
+        strtolower($requestMethod) == strtolower($this->method)) {
       call_user_func($this->callback);
       return true;
     }
