@@ -45,7 +45,7 @@ class Router {
   public static function dumpRoutes(){
     var_dump(self::$routes);
   }
-  protected static function add($pathAsName, $action, $method) {
+  protected static function add($pathAsName, $action, $method = 'GET') {
     list($path, $name) = Helper::separateName($pathAsName);
     return new Route(self::$baseDir . $path, $name, $method, $action);
   }

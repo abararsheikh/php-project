@@ -41,7 +41,6 @@ class Route {
       call_user_func($this->callback);
       return true;
     }
-
     return false;
   }
 
