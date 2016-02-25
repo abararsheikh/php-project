@@ -13,45 +13,27 @@ include '../autoloader.php';
 $auth = new AuthController();
 
 
-Nav::group('/Auth as Auth', function() use($auth){
-  Nav::get('/ as Home', View::useContent('header.php', 'footer.php'));
-  Nav::get('/login as Login', $auth->action('loginPage'));
-//  Nav::get('/register as Register', $auth->action('registerPage'));
-//  Nav::get('/logout as Logout', $auth->action('logout'));
+Nav::group('/Auth as Auth', [
+  ['/ as Home', View::useContent('header.php', 'footer.php'), 'GET'],
+//  ['/2 as Home2', View::useContent('header.php', 'footer.php'), 'GET'],
 
-  Nav::group('/Test as Test', function() use($auth) {
-    Nav::get('/logout as Logout', $auth->action('logout'));
-//    Nav::get('/logout2 as Logout2', $auth->action('logout'));
+  Nav::group('/Test2 as Test2', [
+    ['/logout111 as Logout', $auth->action('logout'), 'GET'],
+    ['/logout222 as Logout', $auth->action('logout'), 'GET'],
+  ]),
 
-  });
-  Nav::group('/Testab as Testab', function() use($auth) {
-    Nav::get('/logout3 as Logout3', $auth->action('logout'));
-//    Nav::get('/logout2 as Logout2', $auth->action('logout'));
-  });
+//  ['/home as home', $auth->action('logout'), 'GET'],
 
-  Nav::post('/login', $auth->action('processLogin'));
-//  Nav::post('/register', $auth->action('registerUser'));
-});
-
-Nav::group('/Test2 as Test', function() use($auth) {
-  Nav::get('/logout2 as Logout2', $auth->action('logout'));
-
-});
-
-//Nav::group('/Auth2 as Auth', function() use($auth) {
-//  Nav::get('/logout as Logout', $auth->action('logout'));
+], true);
 //
-//});
+//Nav::group('/Test3 as Teset3', [
+//    ['/logout222 as Logout', $auth->action('logout'), 'GET'],
+//], true);
+
+var_dump('group', Nav::$groups);
 
 
-Nav::startRouting();
-//Nav::dumpRoutes();
-//var_dump(Nav::getGroup('Auth', '/auth'));
-
-//Nav::displayMenu('Test');
-var_dump(Nav::rearrange('Auth'));
-
-
+//var_dump('group', Nav::setRoot(Nav::$groups['Auth'], ''));
 
 ?>
 

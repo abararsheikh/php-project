@@ -1,6 +1,7 @@
 <?php
 
 namespace Project\Classes\Router;
+use Project\Classes\Helper;
 use Project\Classes\View;
 
 /**
@@ -19,7 +20,7 @@ class Router {
 
   public static function __callStatic($name, $arguments) {
     list($pathAsName, $callback) = $arguments;
-    self::add($pathAsName, $callback, $name);
+    array_push(self::$routes, self::add($pathAsName, $callback, $name));
   }
 
   public static function base($baseDir, Callable $callback) {
@@ -45,12 +46,10 @@ class Router {
     var_dump(self::$routes);
   }
   protected static function add($pathAsName, $action, $method) {
-    list($path, $name) = self::separateName($pathAsName);
-    self::$routes[] = new Route(self::$baseDir . $path, $name, $method, $action);
+    list($path, $name) = Helper::separateName($pathAsName);
+    return new Route(self::$baseDir . $path, $name, $method, $action);
   }
-  protected static function separateName($pathAsName) {
-    return strpos($pathAsName, ' as ') ? explode(' as ', $pathAsName) : [$pathAsName, null];
-  }
+
 
 }
 
