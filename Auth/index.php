@@ -10,8 +10,6 @@ use Project\Classes\View;
 
 include '../autoloader.php';
 
-
-
 $auth = new AuthController();
 
 
@@ -26,10 +24,9 @@ Nav::group('/Auth as Auth', [
 
 ], true);
 
-Nav::startRouting();
+Nav::get('/Auth/ as Test', View::useContent('header.php', 'footer.php'));
 
-//var_dump(Nav::getGroup('Auth'))
-//var_dump(Nav::getMenu(Nav::getGroup('auth'))
+Nav::startRouting();
 
 
 ?>

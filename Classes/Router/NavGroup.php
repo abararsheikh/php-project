@@ -17,12 +17,13 @@ class NavGroup extends Router{
     return $this->setRoot($this->navGroup, '');
   }
 
+
   public static function group($pathAsName, array $routes) {
     list($path, $name) = Helper::separateName($pathAsName);
     $r['path'] = $path;
     $r['name'] = $name;
     $r['routes'] = array_map(function ($routeParams) use ($path) {
-      if (array_key_exists('routes', $routeParams)) return $routeParams;
+      if (is_array($routeParams) && array_key_exists('routes', $routeParams)) return $routeParams;
       return forward_static_call_array(['self', 'add'], $routeParams);
     }, $routes);
 

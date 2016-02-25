@@ -23,12 +23,6 @@ class Router {
     array_push(self::$routes, self::add($pathAsName, $callback, $name));
   }
 
-  public static function base($baseDir, Callable $callback) {
-    self::$baseDir .= $baseDir;
-    $callback();
-    self::$baseDir = substr(self::$baseDir, 0, strpos(self::$baseDir, $baseDir));
-  }
-
   public static function startRouting($base = '/') {
     $hasMatch = false;
     foreach (self::$routes as $route) {
@@ -42,9 +36,7 @@ class Router {
       echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
     }
   }
-  public static function dumpRoutes(){
-    var_dump(self::$routes);
-  }
+
   protected static function add($pathAsName, $action, $method = 'GET') {
     list($path, $name) = Helper::separateName($pathAsName);
     return new Route(self::$baseDir . $path, $name, $method, $action);

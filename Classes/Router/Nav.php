@@ -5,12 +5,23 @@ namespace Project\Classes\Router;
 
 /**
  * Class Nav
+ * When use Nav::get or Nav::post and target is the root directory, remember to add '/' after path;
+ *
+ *
  * @package Project\Classes\Router
  * @author Yi Zhao
  */
-class Nav {
+
+// TODO: simple group and complex group
+class Nav extends Router{
   public static $groups = [];
   private static $hasMatch = false;
+
+  public static function __callStatic($name, $arguments) {
+    list($pathAsName, $callback) = $arguments;
+    self::$groups[] = self::add($pathAsName, $callback, $name);
+//    self::group('', array( [$pathAsName, $callback, $name] ), true);
+  }
 
   // if it is the root level group, add it to groups, otherwise return the group.
   public static function group($pathAsName, array $routes, $end = false) {
@@ -32,7 +43,7 @@ class Nav {
           echo "</ul>";
         }
         if(array_key_exists('method', $item)) {
-          echo "<li><a href='" . $item['path'] . "'>" . $item['name'] . " </a></li>";
+          echo "<li><a href='" . $item['path'] . "'>" . $item['name'] . "</a></li>";
         }
       }
     };
@@ -61,6 +72,7 @@ class Nav {
   private static function findMatch($groups = null) {
     if($groups == null) $groups = self::$groups;
     foreach ($groups as $item) {
+
       if (is_object($item)) {
         if($item->match()){
           self::$hasMatch = true;

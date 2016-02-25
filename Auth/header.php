@@ -11,5 +11,5 @@ use Project\Classes\Router\Nav;
 <h1>header</h1>
 <h2>welcome <?php echo \Project\Auth\AuthModel::getUser()?></h2>
 
-<?php Nav::displayMenu('auth')?>
+<?php Nav::displayMenu('auth') ?>
 
