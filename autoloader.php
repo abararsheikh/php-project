@@ -1,4 +1,8 @@
 <?php
+# Xdebug settings
+ini_set('xdebug.var_display_max_depth', 50);
+ini_set('xdebug.var_display_max_children', 256);
+ini_set('xdebug.var_display_max_data', 1024);
 /**
  * PSR-4 Autoloader Example
  * @link https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
