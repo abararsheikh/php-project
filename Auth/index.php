@@ -28,6 +28,9 @@ Nav::group('/Auth as Auth', [
 
 Nav::startRouting();
 
+//var_dump(Nav::getGroup('Auth'))
+//var_dump(Nav::getMenu(Nav::getGroup('auth'))
+
 
 ?>
 
