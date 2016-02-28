@@ -1,86 +1,213 @@
 <?php
+/**
+ * @Author Yi Zhao
+ *
+ */
 
 namespace Project\Classes\Router;
 
 
+use Project\Classes\Helper;
+
 /**
  * Class Nav
- * When use Nav::get or Nav::post and target is the root directory, remember to add '/' after path;
+ *
+ * It combines routing and creating menu together,
+ * and it is possible to only display menus and do not use the router.
+ * There must be at least one Navigation group exist,
+ * so group method should be called before any other methods.
+ *
+ *
+ * Example:
+ *  Nav::group('/ as Home', function() {
+ *    Nav::get('news as News', function() {
+ *      // do something coming to this link
+ *    })
+ *    Nav::post('news as News', function() {
+ *      // do something coming to this link
+ *    })
+ *  })
  *
  *
  * @package Project\Classes\Router
- * @author Yi Zhao
+ * @method static void get($pathAsName, $callback)
+ * @method static void post($pathAsName, $callback)
  */
-
-// TODO: simple group and complex group
-class Nav extends Router{
-  public static $groups = [];
-  private static $hasMatch = false;
+class Nav {
+  private static $base;
+  private static $name;
+  private static $callbacks = [];
+  private static $routes = [];
+  private static $menu;
+  private static $hasMatch;
 
   public static function __callStatic($name, $arguments) {
     list($pathAsName, $callback) = $arguments;
-    self::$groups[] = self::add($pathAsName, $callback, $name);
-//    self::group('', array( [$pathAsName, $callback, $name] ), true);
+    self::$routes[] = self::add($pathAsName, $callback, $name);
   }
 
-  // if it is the root level group, add it to groups, otherwise return the group.
-  public static function group($pathAsName, array $routes, $end = false) {
-    $r = NavGroup::group($pathAsName, $routes);
-    return $end ? self::$groups[] = NavGroup::setRoot($r) : $r;
+  /**
+   * Groups whatever inside together, this method should first, then add routes or groups inside.
+   * @param string $baseAsName Base dir and name of this group, separated by 'as', for example, '/ as Home'
+   * @param callable $callback Should be either routes of groups.
+   */
+  public static function group($baseAsName, $callback) {
+    list($base, $name) = Helper::separateName($baseAsName);
+    self::$base[] = $base;
+    self::$name[] = $name;
+    self::$callbacks[] = $callback;
   }
 
-  public static function getMenu($menu) {
-    return self::filterMethod(self::getLinks($menu));
-  }
-  public static function displayMenu($menuName, $path = null) {
-    $menu = self::getMenu(self::getGroup($menuName, $path));
-
-    function display(array $menu) {
-      foreach ($menu as $item) {
-        if(array_key_exists('routes', $item)) {
-          echo "<ul>";
-          display($item['routes']);
-          echo "</ul>";
-        }
-        if(array_key_exists('method', $item)) {
-          echo "<li><a href='" . $item['path'] . "'>" . $item['name'] . "</a></li>";
-        }
-      }
-    };
-
-    display($menu);
-
-  }
-  // Only grabs top level group.
-  public static function getGroup($name, $path = null) {
-    return array_filter(self::$groups, function ($item) use($name, $path) {
-      if(is_array($item) && array_key_exists('routes', $item)) {
-        $result = strcasecmp($item['name'], $name) == 0;
-        return $path == null ? $result : ($result && strcasecmp($item['path'], $path) == 0);
-      }
-      return false;
-    });
-  }
-
-  public static function startRouting($groups = null) {
-    self::findMatch($groups);
+  /**
+   * Starts routing. Calls 404 method when there is no match.
+   */
+  public static function start() {
+    self::generateMenu();
+    self::matchRoute(self::$menu);
     if(!self::$hasMatch) self::show404();
   }
 
-  // Private functions
-
-  private static function findMatch($groups = null) {
-    if($groups == null) $groups = self::$groups;
-    foreach ($groups as $item) {
-
-      if (is_object($item)) {
-        if($item->match()){
-          self::$hasMatch = true;
-          break;
+  /**
+   * Display a group in unordered list
+   * @param string $menuName Name of the group, it only gets top level groups
+   */
+  public static function drawMenu($menuName) {
+    function draw($menu) {
+      echo "<ul>";
+      foreach ($menu as $item) {
+        if (array_key_exists('link', $item)) {
+          echo "<li><a href='" . $item['link'] . "'>" . $item['name'] . "</a></li>";
+        }else {
+          draw($item);
         }
       }
-      if (!self::$hasMatch && array_key_exists('routes', $item) ) {
-        self::findMatch($item['routes']);
+      echo "</ul>";
+    };
+    foreach (self::getLink() as $item) {
+      if($menuName == $item['name']) {
+        draw($item['menu']);
+        break;
+      }
+    }
+  }
+  ///////////////////////
+  //  Private functions
+  ///////////////////////
+  /**
+   * Calls itself recursively to match all the routes in the array passed in.
+   * @param array $menu
+   * @param string $base
+   */
+  private function matchRoute(array $menu, $base = '') {
+    foreach ($menu as $item) {
+      if(is_object($item) && $item->match($base)) {
+        self::$hasMatch = true;
+      }
+      if(is_array($item) && array_key_exists('menu', $item)){
+        self::matchRoute($item['menu'], $item['base']);
+      }
+    }
+  }
+
+  /**
+   * Generates a menu for each top level group and adds them to self::menu array.
+   * @throws \Exception
+   */
+  private function generateMenu() {
+    foreach (self::$callbacks as $index => $callback) {
+      self::$menu[$index] = [
+          'base' => self::$base[$index],
+          'name' => self::$name[$index],
+          'callback' => self::$callbacks[$index],
+      ];
+      self::getMenu(self::$menu[$index]);
+    }
+//    var_dump('menu', self::$menu);
+  }
+
+  /**
+   * Creates an array of groups and routes with only link and name,
+   * so they can be easily drawn on the page.
+   * @return array Menus with link and name for each group
+   */
+  private function getLink() {
+    if (empty(self::$menu)) self::generateMenu();
+
+    return array_map(function ($item) {
+      $item['menu'] = self::makeLink($item);
+      unset($item['base']);
+      return $item;
+    }, self::$menu);
+  }
+  /**
+   * Generate the link and name for a single group, with GET method only
+   * @param array $menu A group of routes
+   * @return array  Ordered menu
+   */
+  private function makeLink(array $menu) {
+    $baseDir = $menu['base'];
+    return array_reduce($menu['menu'], function($acc, $currRoute) use($baseDir) {
+      $r = [];
+      if(is_array($currRoute)) $r = self::makeLink($currRoute);
+      if(is_object($currRoute) && strcasecmp($currRoute->getProp('method'), 'get') == 0) {
+        $r['link'] = $baseDir .  $currRoute->getProp('path');
+        $r['name'] = $currRoute->getProp('name');
+      }
+      if(!empty($r)) $acc[] = $r;
+      return $acc;
+    }, []);
+  }
+  /**
+   * Adds routes to groups and order them in correct order.
+   * It starts with calling each callback in the callback array,
+   * because in the beginning, each callback should be a independent group.
+   * Then it compares new callback, name, and base array with the old ones,
+   * the newly appeared ones should be the subgroup of the item that current callback
+   * belongs to. It also moves all routes to the target array.
+   * @param array $target
+   * @throws \Exception
+   */
+  private function getMenu(array &$target) {
+    if (!array_key_exists('callback', $target)) return ;
+    // Clear routes
+    self::$routes = [];
+    // Save old value for comparison later.
+    $oldCallbacks = self::$callbacks;
+    $oldNames = self::$name;
+    $oldBase = self::$base;
+    // Exec callback.
+    $target['callback']();
+    // Unset callback property in array.
+    unset($target['callback']);
+    // Set menu items equal to newly generated routes.
+    $target['menu'] = self::$routes;
+    // Compare the difference in array to get value for any new groups.
+    $diffCallbacks = array_diff_key(self::$callbacks, $oldCallbacks);
+    $diffNames = array_diff_key(self::$name, $oldNames);
+    $diffBase = array_diff_key(self::$base, $oldBase);
+    // Something goes wrong if numbers do not match.
+    if (count($diffCallbacks) != count($diffNames)) throw new \Exception('array length not equal');
+    // For each new group, try to get menus, then add it to correct position.
+    foreach ($diffNames as $key => $name) {
+      $group = [
+        'base' => $diffBase[$key],
+        'name' => $diffNames[$key],
+        'callback' => $diffCallbacks[$key],
+      ];
+      // See if there is any menus for this group
+      self::getMenu($group);
+      // Find parent for this group
+      $parentIndex = self::findParent($target['menu'], $group['name']);
+      // Add group back.
+      $parentIndex ? array_splice($target['menu'], $parentIndex + 1, 0, [$group]) : $target['menu'][] = $group;
+    }
+  }
+
+  // Find the index of any routes which has the same name
+  private function findParent(array $possibleFather, $childName) {
+    foreach ($possibleFather as $index => $p) {
+      if (is_object($p) && $p->getProp('name') == $childName){
+        return $index;
       }
     }
   }
@@ -88,45 +215,9 @@ class Nav extends Router{
     http_response_code(404);
     echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
   }
-
-  private static function getLinks($group) {
-    return array_map(function ($item) {
-      if (is_object($item)) {
-        $r['name'] = $item->getProp('name');
-        $r['path'] = $item->getProp('path');
-        $r['method'] = $item->getProp('method');
-        return $r;
-      }
-      if (array_key_exists('routes', $item)) {
-        $item['routes'] = self::getLinks($item['routes']);
-        return $item;
-      }
-      return false;
-    }, $group);
-  }
-
-  /**
-   * Recursively find routes that match the condition.
-   * It is used to filter all GET method
-   *
-   * @param array $group  Array of route groups, filtered with getLinks method.
-   * @param string $key   Key of array items.
-   * @param string $value Value of the key.
-   * @return mixed        All items which matches to the condition
-   */
-  private static function filterMethod(array $group, $value = 'GET', $key = 'method') {
-    return array_reduce($group, function ($acc, $currItem) use ($key, $value) {
-      if (is_array($currItem) ) {
-        if(array_key_exists($key, $currItem)){
-          return strcasecmp($currItem[$key], $value) == 0 ? array_merge($acc, [$currItem]) : $acc;
-        }
-        if(array_key_exists('routes', $currItem)){
-          $currItem['routes'] = self::filterMethod($currItem['routes'], $value, $key);
-          $acc[] = $currItem;
-          return $acc;
-        }
-      }
-    }, []);
+  private function add($pathAsName, $action, $method = 'GET') {
+    list($path, $name) = Helper::separateName($pathAsName);
+    return new Route($path, $name, $method, $action);
   }
 
 }

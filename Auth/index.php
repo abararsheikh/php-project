@@ -11,23 +11,25 @@ use Project\Classes\View;
 include '../autoloader.php';
 
 $auth = new AuthController();
+Nav::group('/Auth as Auth', function () use($auth) {
+  Nav::get('/ as Home', View::useContent('header.php', 'footer.php'));
+  Nav::get('/login as Login', $auth->action('loginPage'));
+  Nav::get('/logout as Logout', $auth->action('logout'));
+  Nav::get('/register as Register', $auth->action('registerPage'));
+
+  Nav::group('/Auth/register as Register', function() {
+    Nav::get('/test as Test', function() {
+      echo 'register';
+    });
+  });
+
+  Nav::post('/login', $auth->action('processLogin'));
+  Nav::post('/register', $auth->action('registerUser'));
+});
 
 
-Nav::group('/Auth as Auth', [
-  ['/ as Home', View::useContent('header.php', 'footer.php')],
-  ['/login as Login', $auth->action('loginPage')],
-  ['/logout as Logout', $auth->action('logout')],
-  ['/register as Register', $auth->action('registerPage')],
 
-  ['/login', $auth->action('processLogin'), 'POST'],
-  ['/register', $auth->action('registerUser'), 'POST'],
-
-], true);
-
-Nav::get('/Auth/ as Test', View::useContent('header.php', 'footer.php'));
-
-Nav::startRouting();
-
+Nav::start();
 
 ?>
 

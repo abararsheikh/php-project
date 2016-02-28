@@ -27,7 +27,8 @@ class Route {
     $this->callback = $callback;
   }
 
-  public function match() {
+  public function match($base = '/') {
+//    var_dump('Route base--', $base);
     if ($index = strpos($_SERVER['REQUEST_URI'], '?')) {
       $requestURL = substr($_SERVER['REQUEST_URI'], 0, $index);
     } else {
@@ -35,7 +36,7 @@ class Route {
     }
     $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-    if (strtolower($requestURL) == strtolower($this->path) &&
+    if (strtolower($requestURL) == strtolower($base . $this->path) &&
         strtolower($requestMethod) == strtolower($this->method)
     ) {
       call_user_func($this->callback);

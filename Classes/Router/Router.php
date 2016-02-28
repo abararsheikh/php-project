@@ -2,45 +2,45 @@
 
 namespace Project\Classes\Router;
 use Project\Classes\Helper;
-use Project\Classes\View;
 
 /**
  * Class Router
  *
  * @Author: Yi Zhao
- * @method static void get($path, $callback)
- * @method static void post($path, $callback)
+ * @method void get($path, $callback)
+ * @method void post($path, $callback)
  */
 class Router {
   /**
    * @var Route[]
    */
-  protected static $routes = [];
-  protected static $baseDir = '';
+  private $routes = [];
+  private $baseDir = '';
 
-  public static function __callStatic($name, $arguments) {
+  public function __call($name, $arguments) {
     list($pathAsName, $callback) = $arguments;
-    array_push(self::$routes, self::add($pathAsName, $callback, $name));
+    array_push($this->routes, $this->add($pathAsName, $callback, $name));
   }
 
-  public static function startRouting($base = '/') {
-    $hasMatch = false;
-    foreach (self::$routes as $route) {
-      if (stristr($route->getProp('path'), $base ) && $route->match()) {
-        $hasMatch = true;
-        break;
+  public function startRouting($base = '') {
+    foreach ($this->routes as $route) {
+      // get_class($route) == __NAMESPACE__ . '\Route'
+      if ( is_object($route) && $route->match($base)) {
+        return true;
       }
     }
-    if (!$hasMatch) {
-      http_response_code(404);
-      echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
-    }
+    return false;
+  }
+  public function dumpRoutes() {
+    var_dump($this->routes);
   }
 
-  protected static function add($pathAsName, $action, $method = 'GET') {
+  protected function add($pathAsName, $action, $method = 'GET') {
     list($path, $name) = Helper::separateName($pathAsName);
-    return new Route(self::$baseDir . $path, $name, $method, $action);
+    return new Route($this->baseDir . $path, $name, $method, $action);
   }
+
+
 
 
 }
