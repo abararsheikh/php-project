@@ -14,9 +14,12 @@ use Project\Classes\Helper;
  *
  * It combines routing and creating menu together,
  * and it is possible to only display menus and do not use the router.
+ *
  * There must be at least one Navigation group exist,
  * so group method should be called before any other methods.
  *
+ * Every item's link inside a group is the relative path to that
+ * group's base dir.
  *
  * Example:
  *  Nav::group('/ as Home', function() {
@@ -28,18 +31,20 @@ use Project\Classes\Helper;
  *    })
  *  })
  *
+ *  Nav::start()
+ *
  *
  * @package Project\Classes\Router
  * @method static void get($pathAsName, $callback)
  * @method static void post($pathAsName, $callback)
  */
 class Nav {
-  private static $base;
-  private static $name;
+  private static $base = [];
+  private static $name = [];
   private static $callbacks = [];
   private static $routes = [];
-  private static $menu;
-  private static $hasMatch;
+  private static $menu = [];
+  private static $hasMatch = false;
 
   public static function __callStatic($name, $arguments) {
     list($pathAsName, $callback) = $arguments;
@@ -102,6 +107,7 @@ class Nav {
     foreach ($menu as $item) {
       if(is_object($item) && $item->match($base)) {
         self::$hasMatch = true;
+        break;
       }
       if(is_array($item) && array_key_exists('menu', $item)){
         self::matchRoute($item['menu'], $item['base']);
@@ -114,6 +120,7 @@ class Nav {
    * @throws \Exception
    */
   private function generateMenu() {
+    if(!empty(self::$menu)) return;
     foreach (self::$callbacks as $index => $callback) {
       self::$menu[$index] = [
           'base' => self::$base[$index],
@@ -199,7 +206,7 @@ class Nav {
       // Find parent for this group
       $parentIndex = self::findParent($target['menu'], $group['name']);
       // Add group back.
-      $parentIndex ? array_splice($target['menu'], $parentIndex + 1, 0, [$group]) : $target['menu'][] = $group;
+      isset($parentIndex) ? array_splice($target['menu'], $parentIndex + 1, 0, [$group]) : $target['menu'][] = $group;
     }
   }
 
