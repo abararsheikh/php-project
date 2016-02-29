@@ -15,10 +15,12 @@ Nav::group('/ as Homepage', function () {
 });
 
 Nav::start();
+
 $navTemplate = [
   '<ul class="nav navbar-nav">',
-  '<li><a href="%link%">%name%</a></li>',
-  '</ul>'
+  '<li class="%selected%"><a href="%link%">%name%</a></li>',
+  '</ul>',
+  'selected' => 'active',
 ];
 
 

@@ -92,7 +92,9 @@ class Nav {
       echo $template[0];
       foreach ($menu as $item) {
         if (array_key_exists('link', $item)) {
-          echo str_replace(['%link%', '%name%'], [$item['link'], $item['name']], $template[1]);
+          $selected = isset($template['selected']) ? $template['selected'] : '';
+          $selected = $_SERVER['REQUEST_URI'] == $item['link'] ? $selected : '';
+          echo str_replace(['%link%', '%name%', '%selected%'], [ $item['link'], $item['name'], $selected ], $template[1]);
         }else {
           draw($item);
         }
