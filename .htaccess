@@ -1,6 +1,6 @@
 RewriteEngine on
 #Auth folder
 RewriteRule    ^Auth.+ Auth/index.php                    [NC,L]
-RewriteRule    ^Classes\/Router.+ Classes/Router/example.php                    [NC,L]
 
-#RewriteRule    ^.*$ example.php
+#Home page
+#RewriteRule    ^.*$ index.php

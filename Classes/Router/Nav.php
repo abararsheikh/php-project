@@ -46,6 +46,10 @@ class Nav {
   private static $menu = [];
   private static $hasMatch = false;
 
+  public static function dumpMenu() {
+    var_dump(self::$menu);
+  }
+
   public static function __callStatic($name, $arguments) {
     list($pathAsName, $callback) = $arguments;
     self::$routes[] = self::add($pathAsName, $callback, $name);
@@ -75,25 +79,39 @@ class Nav {
   /**
    * Display a group in unordered list
    * @param string $menuName Name of the group, it only gets top level groups
+   * @param array $template Template array contains the opening and closing tag as first item, and li as the second
    */
-  public static function drawMenu($menuName) {
-    function draw($menu) {
-      echo "<ul>";
+  public static function drawMenu($menuName, array $template = null) {
+    function draw($menu, array $template = null) {
+      $defaultTemplate =  [
+        "<ul>", "<li><a href='%link%'>%name%</a></li>", "</ul>"
+      ];
+
+      if($template == null) $template = $defaultTemplate;
+
+      echo $template[0];
       foreach ($menu as $item) {
         if (array_key_exists('link', $item)) {
-          echo "<li><a href='" . $item['link'] . "'>" . $item['name'] . "</a></li>";
+          echo str_replace(['%link%', '%name%'], [$item['link'], $item['name']], $template[1]);
         }else {
           draw($item);
         }
       }
-      echo "</ul>";
+      echo $template[2];
     };
     foreach (self::getLink() as $item) {
       if($menuName == $item['name']) {
-        draw($item['menu']);
+        draw($item['menu'], $template);
         break;
       }
     }
+  }
+
+  // Redirect to another page.
+  public static function redirectTo($path) {
+    return function() use($path) {
+      header("Location: $path");
+    };
   }
   ///////////////////////
   //  Private functions
@@ -157,7 +175,9 @@ class Nav {
       $r = [];
       if(is_array($currRoute)) $r = self::makeLink($currRoute);
       if(is_object($currRoute) && strcasecmp($currRoute->getProp('method'), 'get') == 0) {
-        $r['link'] = $baseDir .  $currRoute->getProp('path');
+        // takeout extra slash
+        $path = str_replace('//', '/', $baseDir .  $currRoute->getProp('path'));
+        $r['link'] = $path;
         $r['name'] = $currRoute->getProp('name');
       }
       if(!empty($r)) $acc[] = $r;
