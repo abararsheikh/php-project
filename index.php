@@ -267,6 +267,25 @@ $navTemplate = [
     </div>
   </section>
 </main>
+
+<footer class="footer">
+  <div class="well container">
+    <div class="col-sm-4 text-center">
+      <?php
+      $footerNav = ['', '<p class="text-muted"><a href="%link%">%name%</a></p>', ''];
+      Nav::drawMenu('Homepage', $footerNav)
+      ?>
+    </div>
+    <div class="col-sm-offset-4 text-center">
+      <p><a href="#">contact us</a></p>
+      <p><a href="#">customer service</a></p>
+      <p><a href="#">about us</a></p>
+      <p><a href="#">contact us</a></p>
+    </div>
+
+
+  </div>
+</footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

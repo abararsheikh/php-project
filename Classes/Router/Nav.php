@@ -73,7 +73,7 @@ class Nav {
   public static function start() {
     self::generateMenu();
     self::matchRoute(self::$menu);
-    if(!self::$hasMatch) self::show404();
+    if (!self::$hasMatch) self::show404();
   }
 
   /**
@@ -82,28 +82,10 @@ class Nav {
    * @param array $template Template array contains the opening and closing tag as first item, and li as the second
    */
   public static function drawMenu($menuName, array $template = null) {
-    function draw($menu, array $template = null) {
-      $defaultTemplate =  [
-        "<ul>", "<li><a href='%link%'>%name%</a></li>", "</ul>"
-      ];
 
-      if($template == null) $template = $defaultTemplate;
-
-      echo $template[0];
-      foreach ($menu as $item) {
-        if (array_key_exists('link', $item)) {
-          $selected = isset($template['selected']) ? $template['selected'] : '';
-          $selected = $_SERVER['REQUEST_URI'] == $item['link'] ? $selected : '';
-          echo str_replace(['%link%', '%name%', '%selected%'], [ $item['link'], $item['name'], $selected ], $template[1]);
-        }else {
-          draw($item);
-        }
-      }
-      echo $template[2];
-    };
     foreach (self::getLink() as $item) {
-      if($menuName == $item['name']) {
-        draw($item['menu'], $template);
+      if ($menuName == $item['name']) {
+        self::draw($item['menu'], $template);
         break;
       }
     }
@@ -111,7 +93,7 @@ class Nav {
 
   // Redirect to another page.
   public static function redirectTo($path) {
-    return function() use($path) {
+    return function () use ($path) {
       header("Location: $path");
     };
   }
@@ -125,11 +107,11 @@ class Nav {
    */
   private function matchRoute(array $menu, $base = '') {
     foreach ($menu as $item) {
-      if(is_object($item) && $item->match($base)) {
+      if (is_object($item) && $item->match($base)) {
         self::$hasMatch = true;
         break;
       }
-      if(is_array($item) && array_key_exists('menu', $item)){
+      if (is_array($item) && array_key_exists('menu', $item)) {
         self::matchRoute($item['menu'], $item['base']);
       }
     }
@@ -140,7 +122,7 @@ class Nav {
    * @throws \Exception
    */
   private function generateMenu() {
-    if(!empty(self::$menu)) return;
+    if (!empty(self::$menu)) return;
     foreach (self::$callbacks as $index => $callback) {
       self::$menu[$index] = [
           'base' => self::$base[$index],
@@ -149,7 +131,7 @@ class Nav {
       ];
       self::getMenu(self::$menu[$index]);
     }
-//    var_dump('menu', self::$menu);
+    //    var_dump('menu', self::$menu);
   }
 
   /**
@@ -166,6 +148,7 @@ class Nav {
       return $item;
     }, self::$menu);
   }
+
   /**
    * Generate the link and name for a single group, with GET method only
    * @param array $menu A group of routes
@@ -173,19 +156,20 @@ class Nav {
    */
   private function makeLink(array $menu) {
     $baseDir = $menu['base'];
-    return array_reduce($menu['menu'], function($acc, $currRoute) use($baseDir) {
+    return array_reduce($menu['menu'], function ($acc, $currRoute) use ($baseDir) {
       $r = [];
-      if(is_array($currRoute)) $r = self::makeLink($currRoute);
-      if(is_object($currRoute) && strcasecmp($currRoute->getProp('method'), 'get') == 0) {
+      if (is_array($currRoute)) $r = self::makeLink($currRoute);
+      if (is_object($currRoute) && strcasecmp($currRoute->getProp('method'), 'get') == 0) {
         // takeout extra slash
-        $path = str_replace('//', '/', $baseDir .  $currRoute->getProp('path'));
+        $path = str_replace('//', '/', $baseDir . $currRoute->getProp('path'));
         $r['link'] = $path;
         $r['name'] = $currRoute->getProp('name');
       }
-      if(!empty($r)) $acc[] = $r;
+      if (!empty($r)) $acc[] = $r;
       return $acc;
     }, []);
   }
+
   /**
    * Adds routes to groups and order them in correct order.
    * It starts with calling each callback in the callback array,
@@ -197,7 +181,7 @@ class Nav {
    * @throws \Exception
    */
   private function getMenu(array &$target) {
-    if (!array_key_exists('callback', $target)) return ;
+    if (!array_key_exists('callback', $target)) return;
     // Clear routes
     self::$routes = [];
     // Save old value for comparison later.
@@ -219,9 +203,9 @@ class Nav {
     // For each new group, try to get menus, then add it to correct position.
     foreach ($diffNames as $key => $name) {
       $group = [
-        'base' => $diffBase[$key],
-        'name' => $diffNames[$key],
-        'callback' => $diffCallbacks[$key],
+          'base' => $diffBase[$key],
+          'name' => $diffNames[$key],
+          'callback' => $diffCallbacks[$key],
       ];
       // See if there is any menus for this group
       self::getMenu($group);
@@ -235,15 +219,37 @@ class Nav {
   // Find the index of any routes which has the same name
   private function findParent(array $possibleFather, $childName) {
     foreach ($possibleFather as $index => $p) {
-      if (is_object($p) && $p->getProp('name') == $childName){
+      if (is_object($p) && $p->getProp('name') == $childName) {
         return $index;
       }
     }
   }
-  private static function show404(){
+
+  private function draw($menu, array $template = null) {
+    $defaultTemplate = [
+        "<ul>", "<li><a href='%link%'>%name%</a></li>", "</ul>"
+    ];
+
+    if ($template == null) $template = $defaultTemplate;
+
+    echo $template[0];
+    foreach ($menu as $item) {
+      if (array_key_exists('link', $item)) {
+        $selected = isset($template['selected']) ? $template['selected'] : '';
+        $selected = $_SERVER['REQUEST_URI'] == $item['link'] ? $selected : '';
+        echo str_replace(['%link%', '%name%', '%selected%'], [$item['link'], $item['name'], $selected], $template[1]);
+      } else {
+        draw($item);
+      }
+    }
+    echo $template[2];
+  }
+
+  private static function show404() {
     http_response_code(404);
     echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
   }
+
   private function add($pathAsName, $action, $method = 'GET') {
     list($path, $name) = Helper::separateName($pathAsName);
     return new Route($path, $name, $method, $action);
