@@ -1,6 +1,5 @@
 <?php
 namespace Project\Classes;
-include 'DbConfig.php';
 /**
  * @Author Yi Zhao
  *
@@ -29,5 +28,3 @@ class DB {
     return $insert->execute() ? true : $insert->errorInfo()[2];
   }
 }
-
-

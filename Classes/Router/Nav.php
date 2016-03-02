@@ -5,9 +5,6 @@
  */
 
 namespace Project\Classes\Router;
-
-
-use Project\Classes\DB;
 use Project\Classes\Helper;
 
 /**
