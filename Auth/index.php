@@ -30,7 +30,6 @@ Nav::group('/Auth as Auth', function () use($auth) {
 
 
 Nav::start();
-
 ?>
 
 

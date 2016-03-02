@@ -45,7 +45,8 @@ class Nav {
   private static $hasMatch = false;
 
   public static function dumpMenu() {
-    var_dump(self::$menu);
+//    var_dump(self::$menu);
+    var_dump(self::getLink());
   }
 
   public static function __callStatic($name, $arguments) {
@@ -87,6 +88,10 @@ class Nav {
         break;
       }
     }
+  }
+
+  public static function menu($name) {
+
   }
 
   // Redirect to another page.
@@ -237,7 +242,7 @@ class Nav {
         $selected = $_SERVER['REQUEST_URI'] == $item['link'] ? $selected : '';
         echo str_replace(['%link%', '%name%', '%selected%'], [$item['link'], $item['name'], $selected], $template[1]);
       } else {
-        $this->draw($item);
+        self::draw($item);
       }
     }
     echo $template[2];
