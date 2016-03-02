@@ -7,6 +7,7 @@
 namespace Project\Classes\Router;
 
 
+use Project\Classes\DB;
 use Project\Classes\Helper;
 
 /**
@@ -239,7 +240,7 @@ class Nav {
         $selected = $_SERVER['REQUEST_URI'] == $item['link'] ? $selected : '';
         echo str_replace(['%link%', '%name%', '%selected%'], [$item['link'], $item['name'], $selected], $template[1]);
       } else {
-        draw($item);
+        $this->draw($item);
       }
     }
     echo $template[2];
