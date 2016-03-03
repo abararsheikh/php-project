@@ -26,15 +26,24 @@ class Route {
     $this->method = $method;
     $this->callback = $callback;
   }
-  public function match() {
-    if( $index = strpos($_SERVER['REQUEST_URI'], '?') ) {
+
+  public function match($base = '/') {
+//    var_dump('Route base--', $base);
+    if ($index = strpos($_SERVER['REQUEST_URI'], '?')) {
       $requestURL = substr($_SERVER['REQUEST_URI'], 0, $index);
-    }else {
+    } else {
       $requestURL = $_SERVER['REQUEST_URI'];
     }
     $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-    if(strtolower($requestURL) == strtolower($this->path) && $requestMethod == $this->method) {
+//    var_dump('request', $requestURL);
+//    var_dump('match', $base . $this->path);
+    $path = $base . $this->path;
+    // takeout extra slash
+    $path = str_replace('//', '/', $path);
+    if (strtolower($requestURL) == strtolower($path) &&
+        strtolower($requestMethod) == strtolower($this->method)
+    ) {
       call_user_func($this->callback);
       return true;
     }
@@ -47,6 +56,10 @@ class Route {
    */
   public function getProp($propName) {
     return $this->$propName;
+  }
+
+  public function setProp($propName, $value) {
+    $this->$propName = $value;
   }
 
 

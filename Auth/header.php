@@ -3,14 +3,12 @@
  * Author: Yi Zhao
  * Date: 16/02/16
  */
+use Project\Classes\Router\Nav;
 
-$authNav = \Project\Classes\Router\Navs::get('Auth');
 
 ?>
 
 <h1>header</h1>
-<ul>
-  <?php $authNav->displayNav()?>
-</ul>
+<h2>welcome <?php echo \Project\Auth\AuthModel::getUser()?></h2>
 
-
+<?php Nav::drawMenu('Auth')?>

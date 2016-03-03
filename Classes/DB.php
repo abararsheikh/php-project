@@ -1,6 +1,5 @@
 <?php
 namespace Project\Classes;
-
 /**
  * @Author Yi Zhao
  *
@@ -18,5 +17,14 @@ class DB {
     }
     return self::$_db;
   }
-}
 
+  public static function insert($tableName, array $values){
+    $columns = implode(',', array_keys($values));
+    $values = "'" . implode("','", $values) . "'";
+    $insert = self::getDB()->prepare("
+      INSERT INTO $tableName($columns)
+      VALUES ($values);
+    ");
+    return $insert->execute() ? true : $insert->errorInfo()[2];
+  }
+}

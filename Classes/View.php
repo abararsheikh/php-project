@@ -49,7 +49,8 @@ class View {
     $this->title = isset($options['title']) ? $options['title'] : '';
     $this->header = isset($options['header']) ? $this->getRoot() . $options['header'] : '';
     $this->footer = isset($options['footer']) ? $this->getRoot() . $options['footer'] : '';
-    if( isset($options['content']) ) $this->content[] = $options['content'];
+    isset($options['content']) ? $this->content[] = $options['content'] : [];
+    if( isset($options['content']) ) $this->content[] = $options['css'];
     if( isset($options['css']) ) $this->css[] = $options['css'];
     if( isset($options['js']) ) $this->js[] = $options['js'];
   }
@@ -123,6 +124,12 @@ class View {
     printf("<!-- created in %.5f seconds. -->", $creationtime);
 
     return ob_get_clean();
+  }
+  public static function useContent() {
+    $args = func_get_args();
+    return function() use($args) {
+      echo self::addContent($args);
+    };
   }
 
   // Private functions

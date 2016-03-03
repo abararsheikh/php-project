@@ -12,8 +12,8 @@ class AddressValidator extends Validator {
     'error' => 'not a province in Canada'
   ];
   const POSTAL_CODE = [
-      'pattern' => '/^([ABCEGHJKLMNPRSTVXY][0-9][A-Z] [0-9][A-Z][0-9])*$/',
-      'error' => 'not a valid Canadian'
+      'pattern' => '/^([A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9])$/',
+      'error' => 'not a valid postal code'
   ];
 
   public function street($value) {
