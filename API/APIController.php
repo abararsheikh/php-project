@@ -24,6 +24,14 @@ class APIController {
   public function cart() {
 
   }
+  // login
+  public function login() {
+
+  }
+  // logout
+  public function logout() {
+
+  }
 
 
 }
