@@ -85,7 +85,7 @@ class Validator {
 
   // Validations
   public function notEmpty($value) {
-    return !empty($value) ? '' : 'is empty';
+    return !empty($value) ? '' : 'can not be empty';
   }
 
   public function greaterThan($value, $number) {
