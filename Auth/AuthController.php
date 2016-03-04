@@ -1,5 +1,6 @@
 <?php
 namespace Project\Auth;
+
 use Project\Classes as Classes;
 use Project\Validation\Validator;
 
@@ -10,31 +11,51 @@ use Project\Validation\Validator;
 class AuthController extends Classes\Controller {
   private $view;
   private $model;
+
   public function __construct() {
     $this->model = new AuthModel();
     $this->view = new Classes\View([
-      'js' => '/js/jquery.min.js'
-    ]);
-    $this->view->set([
       'css' => '/css/bootstrap.min.css',
-      'js' => '/js/bootstrap.min.js'
+      'js' => [
+        '/js/jquery.min.js',
+        '/js/bootstrap.min.js',
+        '/jspm_packages/system.js',
+        '/js/config.js'
+      ]
     ]);
+    $this->view->setTemplate("
+      <html>
+      <head>
+        <title>%title%</title>
+        %css%
+        %js%
+        <script>System.import('Auth/loginApp/app.jsx!')</script>
+      </head>
+      <body>
+        %header%
+        %content%
+        %footer%
+      </body>
+      </html>
+    ");
   }
+
   // Login page GET
   public function loginPage() {
     if ($this->model->logInViaCookie()) {
-      echo ('logged in as ' . AuthModel::getUser());
-    }else {
+      echo('logged in as ' . AuthModel::getUser());
+    } else {
       $this->view->render('/Auth/login', 'Login Page');
     }
   }
+
   // Login page POST
   public function processLogin() {
-    $output = [ 'success' => false, 'error' => [] ];
+    $output = ['success' => false, 'error' => []];
     $loginResult = $this->model->logIn($_POST['username'], $_POST['password']);
-    if($loginResult) {
+    if ($loginResult) {
       $output['success'] = true;
-    }else {
+    } else {
       $output['error'][] = 'username or password is not correct';
     }
     $this->view->json($output);
@@ -50,23 +71,24 @@ class AuthController extends Classes\Controller {
   public function registerPage() {
     $this->view->render('/Auth/register', 'Register');
   }
+
   // Register POST
   public function registerUser() {
     $v = new Validator($_POST);
     $v->validate('username', ['notEmpty']);
     $v->password()->validate('password', [
-      'password',
-      ['equal', $v->getKey('repeatPassword')]
+        'password',
+        ['equal', $v->getKey('repeatPassword')]
     ]);
     $v->email()->validate('email', [
-      'notEmpty',
-      'EmailValidator'
+        'notEmpty',
+        'EmailValidator'
     ]);
-    if ($v->isValid()){
+    if ($v->isValid()) {
       $result = $this->model->newUser($_POST['username'], $_POST['password'], $_POST['email']);
-      $this->view->json($this->resultArray ($result['success'], $result['error'] ));
-    }else {
-      $this->view->json($this->resultArray (false, $v->getErrors() ));
+      $this->view->json($this->resultArray($result['success'], $result['error']));
+    } else {
+      $this->view->json($this->resultArray(false, $v->getErrors()));
     }
   }
 }

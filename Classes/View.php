@@ -46,13 +46,23 @@ class View {
 
   // Sets value for different components of the page.
   public function set(array $options) {
+
     $this->title = isset($options['title']) ? $options['title'] : '';
     $this->header = isset($options['header']) ? $this->getRoot() . $options['header'] : '';
     $this->footer = isset($options['footer']) ? $this->getRoot() . $options['footer'] : '';
     isset($options['content']) ? $this->content[] = $options['content'] : [];
-    if( isset($options['content']) ) $this->content[] = $options['css'];
-    if( isset($options['css']) ) $this->css[] = $options['css'];
-    if( isset($options['js']) ) $this->js[] = $options['js'];
+
+    if( isset($options['css']) ) {
+      $css = $options['css'];
+      if (is_string($css)) $css = [$css];
+      $this->css += $css;
+    }
+    if( isset($options['js']) ) {
+      $js = $options['js'];
+      $js = is_string($js) ? [$js] : $js;
+      $this->js += $js;
+    }
+
   }
 
   /**
@@ -162,8 +172,8 @@ class View {
     !empty($this->header) || $this->header = $root . preg_filter($pattern, '/header.php', $fileName);
     !empty($this->footer) || $this->footer = $root . preg_filter($pattern, '/footer.php', $fileName);
     $this->content[] = $root . $fileName . '.php';
-    $this->js[] = '/js/' . $name . '.js';
-    $this->css[] = '/css/' . $name . '.css';
+    if(empty($this->js)) $this->js[] = '/js/' . $name . '.js';
+    if(empty($this->css))$this->css[] = '/css/' . $name . '.css';
   }
 
 

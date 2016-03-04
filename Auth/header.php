@@ -7,7 +7,9 @@ use Project\Classes\Router\Nav;
 
 
 ?>
-
+<script>
+  System.import();
+</script>
 <h1>header</h1>
 <h2>welcome <?php echo \Project\Auth\AuthModel::getUser()?></h2>
 
