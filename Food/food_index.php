@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/css/bootstrap.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="jquery.min.js" ></script>
-    <script src="bootstrap.min.js" ></script>
-    <link rel="stylesheet" href="food-index.css" />
+    <script src="/Assets/js/jquery.min.js" ></script>
+    <script src="/Assets/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" href="/Assets/css/food-index.css" />
 </head>
 <main>
     <div class="container-fluid">

@@ -6,7 +6,7 @@
 
 ?>
 <div class="container">
-  <form action="register" method="post" class="form-horizontal">
+  <form action="" method="post" class="form-horizontal">
     <div class="form-group">
       <label for="username" class="col-sm-2 control-label">Username</label>
       <div class="col-sm-10">

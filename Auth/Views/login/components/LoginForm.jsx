@@ -2,7 +2,6 @@ import React from 'react';
 import Input from './Input.jsx!';
 export default class LoginForm extends React.Component {
 
-
   render() {
     return (
       <form method="post" action="" className="col-sm-8">
@@ -10,7 +9,6 @@ export default class LoginForm extends React.Component {
           name="username"
           value={this.props.user.username}
           onChange={this.props.onChange}
-          type="text"
           label="Username"
           placeholder="username here.."/>
 
