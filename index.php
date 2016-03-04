@@ -31,8 +31,8 @@ $navTemplate = [
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="Assets/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="Assets/css/style.css"/>
 
   <title>Homepage</title>
 </head>
@@ -73,7 +73,7 @@ $navTemplate = [
 
   <div class="row">
     <div class="slides">
-      <img alt="pic" src="image/slide.jpg"/>
+      <img alt="pic" src="Assets/image/slide.jpg"/>
     </div>
   </div>
 </section>
@@ -91,7 +91,7 @@ $navTemplate = [
 
         <div class="row film-gallery">
           <div class="film-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <img alt="film1" src="image/film1.jpg"/>
+            <img alt="film1" src="Assets/image/film1.jpg"/>
 
             <p class="film-title">FITOOR (ATMOS)(U)</p>
 
@@ -105,7 +105,7 @@ $navTemplate = [
           </div>
 
           <div class="film-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <img alt="film1" src="image/film1.jpg"/>
+            <img alt="film1" src="Assets/image/film1.jpg"/>
 
             <p class="film-title">FITOOR (ATMOS)(U)</p>
 
@@ -119,7 +119,7 @@ $navTemplate = [
           </div>
 
           <div class="film-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <img alt="film1" src="image/film1.jpg"/>
+            <img alt="film1" src="Assets/image/film1.jpg"/>
 
             <p class="film-title">FITOOR (ATMOS)(U)</p>
 
@@ -168,7 +168,7 @@ $navTemplate = [
             </div>
 
             <button type="button" class="btn btn-default btn-booking">Book Now
-              <img alt="arrow pic" class="btn-arrow" src="image/btn-arrow.png"/>
+              <img alt="arrow pic" class="btn-arrow" src="Assets/image/btn-arrow.png"/>
             </button>
           </form>
 
@@ -192,12 +192,12 @@ $navTemplate = [
     <div class="movie-list row">
 
       <div class="col-sm-3 col-xs-7">
-        <img alt="film1" src="image/kongfupanda.jpg"/>
+        <img alt="film1" src="Assets/image/kongfupanda.jpg"/>
       </div>
 
       <div class="col-sm-3 col-xs-5">
 
-        <h3><img src="image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
+        <h3><img src="Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
 
         <p>Top 1</p>
 
@@ -210,11 +210,11 @@ $navTemplate = [
 
 
       <div class="col-sm-3 col-xs-7">
-        <img alt="film1" src="image/starwar.jpg"/>
+        <img alt="film1" src="Assets/image/starwar.jpg"/>
       </div>
 
       <div class="col-sm-3 col-xs-5">
-        <h3><img src="image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
+        <h3><img src="Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
 
         <p>Top 2</p>
 
@@ -231,11 +231,11 @@ $navTemplate = [
     <div class="movie-list row">
 
       <div class="col-sm-3 col-xs-7">
-        <img alt="film1" src="image/stevejobs.jpg"/>
+        <img alt="film1" src="Assets/image/stevejobs.jpg"/>
       </div>
 
       <div class="col-sm-3 col-xs-5">
-        <h3><img src="image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
+        <h3><img src="Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
 
         <p>Top 3</p>
 
@@ -248,11 +248,11 @@ $navTemplate = [
 
 
       <div class="col-sm-3 col-xs-7">
-        <img alt="film1" src="image/TheRevenant.jpg"/>
+        <img alt="film1" src="Assets/image/TheRevenant.jpg"/>
       </div>
 
       <div class="col-sm-3 col-xs-5">
-        <h3><img src="image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
+        <h3><img src="Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
 
         <p>Top 4</p>
 
@@ -288,6 +288,6 @@ $navTemplate = [
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="Assets/js/bootstrap.min.js"></script>
 </body>
 </html>
