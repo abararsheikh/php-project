@@ -18,3 +18,16 @@ export default class Input extends React.Component {
   }
 }
 
+Input.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func.isRequired,
+  value: React.PropTypes.string.isRequired,
+  type: React.PropTypes.string,
+  placeHolder: React.PropTypes.string
+};
+Input.defaultProps ={
+  type: 'text',
+  placeHolder: ''
+};
+

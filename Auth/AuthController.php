@@ -15,13 +15,15 @@ class AuthController extends Classes\Controller {
   public function __construct() {
     $this->model = new AuthModel();
     $this->view = new Classes\View([
-      'css' => '/css/bootstrap.min.css',
+      'css' => '/Assets/css/bootstrap.min.css',
       'js' => [
-        '/js/jquery.min.js',
-        '/js/bootstrap.min.js',
+        '/Assets/js/jquery.min.js',
+        '/Assets/js/bootstrap.min.js',
         '/jspm_packages/system.js',
-        '/js/config.js'
-      ]
+        '/Assets/js/config.js'
+      ],
+      'header' => '/Auth/Views/header.php',
+      'footer' => '/Auth/Views/footer.php'
     ]);
     $this->view->setTemplate("
       <html>
@@ -29,7 +31,6 @@ class AuthController extends Classes\Controller {
         <title>%title%</title>
         %css%
         %js%
-        <script>System.import('Auth/loginApp/app.jsx!')</script>
       </head>
       <body>
         %header%
@@ -45,7 +46,7 @@ class AuthController extends Classes\Controller {
     if ($this->model->logInViaCookie()) {
       echo('logged in as ' . AuthModel::getUser());
     } else {
-      $this->view->render('/Auth/login', 'Login Page');
+      $this->view->render('/Auth/Views/login/login', 'Login Page');
     }
   }
 
@@ -69,7 +70,7 @@ class AuthController extends Classes\Controller {
 
   // Register GET
   public function registerPage() {
-    $this->view->render('/Auth/register', 'Register');
+    $this->view->render('/Auth/Views/register/register', 'Register');
   }
 
   // Register POST
