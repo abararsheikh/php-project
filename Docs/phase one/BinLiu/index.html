@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Career</title>
@@ -10,40 +10,46 @@
 	color: #FF0000;
 	font-weight: bold;
 }
+#mainContent{width: 300px; height:200px; padding:20px;} .nav{margin-bottom: 15px; text-decoration:none;} #nav li{display:inline; list-style:none; border:1px solid black; padding:3px 15px; #nav a {text-decoration: none;}
 -->
 </style>
+
+<script type="text/javascript" src="11-2-routing.js"></script>
 </head>
 
-<body><table width="98.1%" height="1101" border="0" align="center" bgcolor="#CCCCCC" matgin: 0 auto;>
+<body><table width="100%" border="0">
+  <tr>
+    <td width="10%" valign="top">
+	<table width="100%" border="0">
+      <tr id="nav">
+        <td height="64" align="center" valign="middle"><a href="feedback.html"><img src="img/pic1.jpg"></a></td>
+      </tr>
+      <tr>
+        <td height="68" align="center" valign="middle"><a href="?products"><img src="img/pic2.jpg"></a></td>
+      </tr>
+      <tr>
+        <td height="57" align="center" valign="middle"><a href="index.html"><img src="img/pic3.jpg"></a></td>
+      </tr>
+    </table>
+	</td>
+    <td width="80%" align="left" valign="top">
+	<div id="output">
+	<table width="98.1%" height="1101" border="0" align="center" bgcolor="#CCCCCC" matgin: 0 auto;>
   <tr>
     <td width="9.5%" rowspan="2" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">&nbsp;</p>
       <p>&nbsp;</p>
     <p>&nbsp;</p>      <p>&nbsp;</p></td>
     <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Career</p>
-      <p><strong>Seach job：
+      <p><strong>Seach Job：
         <input type="text" name="neirong"/>
-            <input name="submit" type="submit" value="submit job" />
+            <input name="submit" type="submit" value="Search" />
     </strong></p></td>
   </tr>
-  <tr >
+  <tr>
     <td width="85%" height="749" bgcolor="#CCCCCC"><table width="88%" border="0">
-      <tr style="cursor:pointer;"  onclick="www.google.com">
-          <a href="www.google.com"><td colspan="2" style="cursor:pointer;" onclick="www.google.com"><span class="STYLE1"  >Severs   :</span>(End of date：01-04-2016）</td></a>
-      </tr>
-      <tr>
-        <td width="12%">Number </td>
-        <td width="85%">5</td>
-      </tr>
-      <tr>
-        <td height="29">Requirement</td>
-        <td><p>Female，20-45</p></td>
-          
-      </tr>
-    </table>
-      <table width="99%" border="0">
-        <tr style="cursor:pointer;">
-            <a href="xiangxi.htm"><td colspan="2"><span class="STYLE1">Web developer</span>（Fulltime）</td></a>
-        </tr>
+      <tr style="cursor:pointer;"  onclick="jobinformation.html">
+          <td colspan="2"><a href="jobinformation.html"><span class="STYLE1">Web developer</span>（Fulltime）</a></td>
+       </tr>
         <tr>
           <td width="12%">Number</td>
           <td width="85%">4;</td>
@@ -58,7 +64,7 @@
       </table>
       <table width="99%" border="0">
        <tr style="cursor:pointer;">
-          <td colspan="2"><span class="STYLE1">Deliveryman</span>（Fulltime）</td>
+           <td colspan="2"><a href="jobinformation.html"><span class="STYLE1">Deliveryman</span>（Fulltime）</a></td>
         </tr>
         <tr>
           <td width="12%">Number</td>
@@ -73,7 +79,7 @@
       </table>
       <table width="100%" border="0">
         <tr style="cursor:pointer;">
-          <td colspan="2"><span class="STYLE1">Cashier</span>（Part time）</td>
+            <td colspan="2"><a href="jobinformation.html"><span class="STYLE1">Cashier</span>（Part time）</a></td>
         </tr>
         <tr>
           <td width="12%">Number</td>
@@ -87,7 +93,7 @@
       </table>
       <table width="99%" height="119" border="0">
         <tr style="cursor:pointer;">
-          <td colspan="2"><span class="STYLE1">Wen designer</span>（Full time）</td>
+            <td colspan="2"><a href="jobinformation.html"><span class="STYLE1">Wen designer</span>（Full time）</a></td>
         </tr>
         <tr>
           <td width="12%">Number</td>
@@ -106,8 +112,13 @@
     <p></p></td>
   </tr>
   
-  
 </table>
+
+</div>
+	</td>
+  </tr>
+</table>
+
 
 <p>&nbsp;</p>
 </body>
