@@ -19,6 +19,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
     "jsx": "npm:jspm-loader-jsx@0.0.7",
+    "keymirror": "npm:keymirror@0.1.1",
     "react": "npm:react@0.14.7",
     "react-dom": "npm:react-dom@0.14.7",
     "github:jspm/nodelibs-assert@0.1.0": {

@@ -155,5 +155,6 @@
   "npm:events@1.0.2": {},
   "npm:react-dom@0.14.7": {
     "react": "npm:react@^0.14.7"
-  }
+  },
+  "npm:keymirror@0.1.1": {}
 }

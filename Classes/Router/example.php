@@ -5,8 +5,6 @@ include "Nav.php";
 include '../Helper.php';
 include 'Route.php';
 
-// Set root here
-define('ROOT', '');
 
 // A function makes example cleaner.
 function display($word) {

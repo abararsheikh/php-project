@@ -20,7 +20,7 @@ class AuthController extends Classes\Controller {
         '/Assets/js/jquery.min.js',
         '/Assets/js/bootstrap.min.js',
         '/jspm_packages/system.js',
-        '/Assets/js/config.js'
+        '/config.js'
       ],
       'header' => '/Auth/Views/header.php',
       'footer' => '/Auth/Views/footer.php'
