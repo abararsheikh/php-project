@@ -1,0 +1,6 @@
+RewriteEngine on
+#Auth folder, don't match app folder
+RewriteRule    ^Auth(?!\/Views).+ Auth/index.php                    [NC,L]
+
+#Home page
+#RewriteRule    ^.*$ index.php
