@@ -20,22 +20,22 @@
         <div class="menu">
             <div class="row">
 
-            <div class="col-sm-2 col-md-2  image"><img src="food1.jpg" class="img-responsive img-rounded" width="225" height="180"/>
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food1.jpg" class="img-responsive img-rounded" width="225" height="180"/>
 
             </div>
-            <div class="col-sm-2 col-md-2  image"><img src="food2.jpg" class="img-responsive img-rounded" width="225" height="180"/>
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food2.jpg" class="img-responsive img-rounded" width="225" height="180"/>
 
             </div>
-            <div class="col-sm-2 col-md-2  image"><img src="food3.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food3.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
 
             </div>
-            <div class="col-sm-2 col-md-2  image"><img src="food4.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food4.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
 
             </div>
 
         </div>
         <div class="row">
-        <div class="col-sm-2 col-md-2  image"><img src="food4.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
+        <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food4.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
 </div>
         </div>
     </div>
