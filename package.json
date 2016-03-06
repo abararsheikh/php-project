@@ -18,6 +18,8 @@
   },
   "jspm": {
     "dependencies": {
+      "events": "github:jspm/nodelibs-events@^0.1.1",
+      "flux": "npm:flux@^2.1.1",
       "jsx": "npm:jspm-loader-jsx@^0.0.7",
       "keymirror": "npm:keymirror@^0.1.1",
       "react": "npm:react@^0.14.7",

@@ -1,16 +1,29 @@
 import React from 'react';
 import LoginForm from './LoginForm.jsx!';
-import LoginConstants from '../constants/LoginConstants';
-export default class LoginApp extends React.Component {
+import LoginStore from '../stores/LoginStore';
 
+function getAppState() {
+  return LoginStore.getAll();
+}
+
+
+export default class LoginApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: {
-        username: '',
-        password: ''
-      }
+      user: {username: '', password: ''}
     }
+  }
+
+  componentDidMount() {
+    LoginStore.addChangeListener(this._onChange);
+  }
+  componentWillUnmount() {
+    LoginStore.removeChangeListener(this._onChange);
+  }
+
+  _onChange() {
+    this.setState(getAppState());
   }
 
   setUserState = (event) => {
@@ -19,6 +32,7 @@ export default class LoginApp extends React.Component {
 
     this.state.user[field] = value;
     this.setState({user: this.state.user});
+
   };
 
   render() {
