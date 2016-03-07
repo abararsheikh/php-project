@@ -1,10 +1,10 @@
 import React from 'react';
-import Input from './Input.jsx!';
+import Input from '../Input.jsx!';
 export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <form method="post" action="" className="col-sm-8"
+      <form method="post" action="" className="form-horizontal"
             onSubmit={this.props.onSubmit}>
         <Input
           name="username"

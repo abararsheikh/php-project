@@ -46,7 +46,7 @@ class AuthController extends Classes\Controller {
     if ($this->model->logInViaCookie()) {
       echo('logged in as ' . AuthModel::getUser());
     } else {
-      $this->view->render('/Auth/Views/login/index', 'Login Page');
+      $this->view->render('/Auth/Views/index', 'Login Page');
     }
   }
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import LoginForm from './LoginForm.jsx!';
-import LoginStore from '../stores/LoginStore';
-import LoginActions from '../actions/LoginActions';
+import LoginStore from '../../stores/LoginStore';
+import LoginActions from '../../actions/LoginActions';
 
 function getLoginState() {
-  console.log(LoginStore.getLoginState());
   return LoginStore.getLoginState();
 }
 
@@ -25,10 +24,10 @@ export default class LoginApp extends React.Component {
   _onChange = () => {
     console.log('on change');
     this.setState({login: getLoginState()});
-    console.log(this.state);
+    console.log('login state', this.state);
   };
 
-  setUserState = (event) => {
+  handleInputChange = (event) => {
     let field = event.target.name;
     let value = event.target.value;
 
@@ -36,7 +35,7 @@ export default class LoginApp extends React.Component {
     this.setState({user: this.state.user});
   };
 
-  submitLogin = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     LoginActions.submitLogin(this.state.user.username, this.state.user.password);
   };
@@ -44,12 +43,12 @@ export default class LoginApp extends React.Component {
   render() {
     let loginError = this.state.login.error ? <p>{this.state.login.error[0]}</p> : '';
     return (
-      <div className="row">
+      <div className="container">
         <LoginForm
           user={this.state.user}
           errorMsg={loginError}
-          onChange={this.setUserState}
-          onSubmit={this.submitLogin}
+          onChange={this.handleInputChange}
+          onSubmit={this.handleSubmit}
         />
       </div>
     )
