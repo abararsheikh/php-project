@@ -1,7 +1,8 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import LoginConstants from '../constants/LoginConstants';
 
-var LoginActions = {
+
+export default {
   submitLogin: (username, password) => {
     AppDispatcher.dispatch({
       actionType: LoginConstants.LOGIN_LOGIN,
@@ -10,5 +11,3 @@ var LoginActions = {
     })
   }
 };
-
-export default LoginActions;

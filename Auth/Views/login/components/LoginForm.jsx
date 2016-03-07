@@ -4,7 +4,8 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <form method="post" action="" className="col-sm-8">
+      <form method="post" action="" className="col-sm-8"
+            onSubmit={this.props.onSubmit}>
         <Input
           name="username"
           value={this.props.user.username}
@@ -20,7 +21,9 @@ export default class LoginForm extends React.Component {
           label="Password"
           placeholder="Password here.."/>
 
-        <button type="submit" name="submit" className="btn btn-default">Login</button>
+        {this.props.errorMsg}
+
+        <button type="submit" className="btn btn-default">Login</button>
       </form>
     );
   }

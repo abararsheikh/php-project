@@ -4,45 +4,55 @@ import {EventEmitter} from 'events';
 
 const CHANGE_EVENT = 'change';
 
-var testMessage = 'testtest';
+let submitLogin = (username, password) => {
+  return $.ajax({
+    url: '/Auth/login',
+    method: 'POST',
+    data: {username, password}
+  });
+};
 
-//submitLogin
 class LoginStore extends EventEmitter {
+  _error = null;
+  _isLoggedIn = false;
+
   constructor() {
     super();
+    AppDispatcher.register(this._register);
   }
-
   emitChange() {
     this.emit(CHANGE_EVENT)
   }
-
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback)
   }
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback)
   }
-
-  getAll() {
-    console.log('get all');
-    return [1, 2, 3];
+  getLoginState() {
+    return {
+      error: this._error,
+      isLoggedIn: this._isLoggedIn
+    };
   }
 
+  _register = (action) => {
+    switch (action.actionType) {
+      case LoginConstants.LOGIN_LOGIN:
+        submitLogin(action.username, action.password)
+          .then(data => {
+            this._error = data.error;
+            this._isLoggedIn = data.success;
+            store.emitChange();
+          });
+        break;
+
+      default: return;
+    }
+
+  }
 }
 
 let store = new LoginStore();
-
-
-AppDispatcher.register((payload) => {
-  switch (payload.actionType) {
-    case LoginConstants.LOGIN_LOGIN:
-
-      break;
-
-    default: return;
-
-  }
-  store.emitChange();
-});
 
 export default store;

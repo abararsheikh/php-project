@@ -46,12 +46,13 @@ class AuthController extends Classes\Controller {
     if ($this->model->logInViaCookie()) {
       echo('logged in as ' . AuthModel::getUser());
     } else {
-      $this->view->render('/Auth/Views/login/login', 'Login Page');
+      $this->view->render('/Auth/Views/login/index', 'Login Page');
     }
   }
 
   // Login page POST
   public function processLogin() {
+
     $output = ['success' => false, 'error' => []];
     $loginResult = $this->model->logIn($_POST['username'], $_POST['password']);
     if ($loginResult) {
