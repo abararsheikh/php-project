@@ -17,6 +17,7 @@ export default class RegisterForm extends React.Component {
         <Input
             name="password"
             label="Password"
+            type="password"
             onChange={this.props.onChange}
             onBlur={this.props.validator.password}
         />
@@ -26,6 +27,7 @@ export default class RegisterForm extends React.Component {
         <Input
             name="repeatPassword"
             label="Repeat Password"
+            type="password"
             onChange={this.props.onChange}
             onBlur={this.props.validator.repeatPassword}
         />

@@ -11,6 +11,7 @@ use Project\Classes\View;
 
 include '../autoloader.php';
 
+
 $auth = new AuthController();
 Nav::group('/Auth as Auth', function () use($auth) {
   Nav::get('/ as Home', View::useContent('Views/header.php', 'Views/footer.php'));
@@ -29,6 +30,7 @@ Nav::group('/Auth as Auth', function () use($auth) {
 });
 
 Nav::start();
+
 ?>
 
 

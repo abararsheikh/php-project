@@ -5,6 +5,7 @@ import {EventEmitter} from 'events';
 const CHANGE_EVENT = 'change';
 
 let validateUsername = (username) => {
+  console.log('validate username');
   let valid = false;
   let error = [];
   if(username.length < 3) error.push('length must be greater than 3');
@@ -31,7 +32,7 @@ class RegisterStore extends EventEmitter {
   _register = (action) => {
     switch (action.actionType) {
       case RegisterConstants.VALIDATE_USERNAME:
-        validateUsername(actions.username);
+        validateUsername(action.username);
         this.emitChange();
         break;
     }
