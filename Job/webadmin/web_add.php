@@ -9,7 +9,7 @@ if($act=='add')
   if(mysql_query($sql))
   {
     echo  "<script language='javascript'>";
-    echo  "alert('提交成功');";
+    echo  "alert('Sumbit success');";
     echo  "location.href='Admin_Index_main.php'";
     echo "</script>";
   }
@@ -19,7 +19,7 @@ if($act=='add')
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>招聘信息添加</title>
+<title>Add Hire information</title>
 <link href="Css_Main.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
@@ -34,23 +34,23 @@ function  Check_stu()
 {
 
 	if (document.form1.zhiwei.value == "")
-	 {   alert("请输入职位");
+	 {   alert("Enter JOb title");
 		document.form1.zhiwei.focus();
 		return false;
 	 }
 	if (document.form1.qixian.value == "")
-	 {   alert("请输入时间");
+	 {   alert("Enter time");
 		document.form1.qixian.focus();
 		return false;
 	 }
 	 if (document.form1.renshu.value == "")
-	 {   alert("请输入招聘人数");
+	 {   alert("Enter numbet you want");
 		document.form1.renshu.focus();
 		return false;
 	 }
 	
 	 if (document.form1.yaoqiu.value == "")
-	 {   alert("请填写招聘要求");
+	 {   alert("Enter your reqiorement");
 		document.form1.yaoqiu.focus();
 		return false;
 	 }	 
@@ -65,22 +65,22 @@ function  Check_stu()
 <form name="form1" action="web_add.php?act=add" method="post" enctype="multipart/form-data">
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr class="title_top">
-    <td colspan="2"><div align="center">添加招聘信息信息</div></td>
+    <td colspan="2"><div align="center">Add Hire information</div></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>招聘职位：</strong></div></td>
+    <td width="20%"><div align="right"><strong>Job title：</strong></div></td>
     <td><input name="zhiwei" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>招聘期限：</strong></div></td>
+    <td width="20%"><div align="right"><strong>Limit time：</strong></div></td>
     <td><input name="qixian" type="text"  size="40"></td>
   </tr>
     <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>招聘人数：</strong></div></td>
+    <td width="20%"><div align="right"><strong>Hire number：</strong></div></td>
     <td><input name="renshu" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="40%"><div align="right"><strong>招聘要求：</strong></div></td>
+    <td width="40%"><div align="right"><strong>Hire requirement：</strong></div></td>
     <td><textarea name="yaoqiu" rows="5" cols="36"></textarea></td>
   </tr>
     
@@ -89,9 +89,9 @@ function  Check_stu()
   <tr>
     <td height="40">
       <div align="center"><span class="style1">
-        <input name="Submit" type="submit" id="Submit" value="添加" onClick="return Check_stu()">
+        <input name="Submit" type="submit" id="Submit" value="Add" onClick="return Check_stu()">
 &nbsp;
-        <input name="reset" type="reset" id="reset" value="取消">
+        <input name="reset" type="reset" id="reset" value="cancel">
     </span> </div></td>
   </tr>
 </table></form>
