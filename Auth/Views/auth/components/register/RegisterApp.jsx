@@ -6,54 +6,44 @@ import RegisterActions from '../../actions/RegisterActions';
 export default class RegisterApp extends React.Component {
   constructor() {
     super();
-    this.state = {
-      register: {
-        username: '',
-        password: '',
-        repeatPassword: '',
-        email: ''
-      },
-      isDirty: {
-        username: false,
-        password: false,
-        repeatPassword: false,
-        email: false
-      }
-    }
+    this.state = RegisterStore.getForm();
   }
-
+  componentDidMount() {
+    RegisterStore.addChangeListener(this._onChange);
+  }
+  componentWillUnmount() {
+    RegisterStore.removeChangeListener(this._onChange);
+  }
+  _onChange = () => {
+    console.log('on change');
+    this.setState(RegisterStore.getForm());
+  };
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
   };
 
   handleInputChange = (event) => {
-    let field = event.target.name;
-    this.state.register[field] = event.target.value;
-    this.state.isDirty[field] = true;
-    this.setState({
-      register: this.state.register,
-      isDirty: this.state.isDirty
-    });
+    let values = {
+      value: event.target.value,
+      isDirty: true
+    };
+    RegisterStore.updateField(event.target.name, values);
+    this.setState(RegisterStore.getForm());
   };
 
   validator = {
     username: (event) => {
-      if (!this.state.isDirty.username) return;
-      RegisterActions.validateUsername(this.state.register.username);
+      RegisterActions.validateUsername(this.state.username.value);
     },
     password: (event) => {
-      if (!this.state.isDirty.password) return;
-      console.log('password validator');
+      RegisterActions.validatePassword(this.state.password.value);
     },
     repeatPassword: (event) => {
-      if (!this.state.isDirty.repeatPassword) return;
-
-      console.log('repeat password');
+      RegisterActions.validateRepeatPassword(this.state.repeatPassword.value);
     },
     email: (event) => {
-      if (!this.state.isDirty.email) return;
-      console.log('email');
+      RegisterActions.validateEmail(this.state.email.value);
     }
   };
 
@@ -61,9 +51,8 @@ export default class RegisterApp extends React.Component {
     return (
         <div className="container">
           <RegisterForm
-              errors={this.state.errors}
               validator={this.validator}
-              register={this.state.register}
+              fields={this.state}
               onChange={this.handleInputChange}
               onSubmit={this.handleSubmit}
           />

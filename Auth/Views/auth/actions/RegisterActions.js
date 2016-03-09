@@ -5,7 +5,25 @@ export default {
   validateUsername : (username) => {
     AppDispatcher.dispatch({
       actionType: RegisterConstants.VALIDATE_USERNAME,
-      username: username
+      username
+    })
+  },
+  validatePassword: (password) => {
+    AppDispatcher.dispatch({
+      actionType: RegisterConstants.VALIDATE_PASSWORD,
+      password
+    })
+  },
+  validateRepeatPassword: (repeatPassword) => {
+    AppDispatcher.dispatch({
+      actionType: RegisterConstants.VALIDATE_REPEAT_PASSWORD,
+      repeatPassword
+    })
+  },
+  validateEmail: (email) => {
+    AppDispatcher.dispatch({
+      actionType: RegisterConstants.VALIDATE_EMAIL,
+      email
     })
   }
 }

@@ -3,8 +3,9 @@ import React from 'react';
 export default class Input extends React.Component {
 
   render() {
+    let errorClass = "form-group " + (this.props.error && 'has-error');
     return(
-      <div className="form-group">
+      <div className={errorClass}>
         <label htmlFor={this.props.name}
                className="col-sm-2 control-label">{this.props.label}</label>
         <div className="col-sm-10">
@@ -16,7 +17,7 @@ export default class Input extends React.Component {
                  value={this.props.value}
                  onBlur={this.props.onBlur}
                  onChange={this.props.onChange} />
-          <p>{this.props.error}</p>
+          <p style={{color: 'red'}}>{this.props.error}</p>
         </div>
       </div>
     );
@@ -33,6 +34,6 @@ Input.propTypes = {
   error: React.PropTypes.string
 };
 Input.defaultProps ={
-  type: 'text',
+  type: 'text'
 };
 
