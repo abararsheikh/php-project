@@ -2,6 +2,7 @@
 namespace Project\Auth;
 
 use Project\Classes as Classes;
+use Project\Classes\Helper;
 use Project\Validation\Validator;
 
 /**
@@ -54,7 +55,7 @@ class AuthController extends Classes\Controller {
   public function processLogin() {
 
     $output = ['success' => false, 'error' => []];
-    $loginResult = $this->model->logIn($_POST['username'], $_POST['password']);
+    $loginResult = $this->model->logIn(Helper::getParam('username'), Helper::getParam('password'));
     if ($loginResult) {
       $output['success'] = true;
     } else {
@@ -74,8 +75,8 @@ class AuthController extends Classes\Controller {
     $this->view->render('/Auth/Views/index', 'Register');
   }
   public function checkAvailability() {
-    $name = $_POST['name'];
-    $value = $_POST['value'];
+    $name = Helper::getParam('name');
+    $value = Helper::getParam('value');
     $this->view->json(['available' => $this->model->checkAvailability($name, $value)]);
   }
 
@@ -87,10 +88,11 @@ class AuthController extends Classes\Controller {
     $v->email()->validate('email', ['notEmpty', 'EmailValidator']);
 
     if ($v->isValid()) {
-      $result = $this->model->newUser($_POST['username'], $_POST['password'], $_POST['email']);
+      $result = $this->model->newUser(Helper::getParam('username'), Helper::getParam('password'), Helper::getParam('email'));
       $this->view->json($this->resultArray($result['success'], $result['error']));
     } else {
       $this->view->json($this->resultArray(false, $v->getErrors()));
     }
   }
+
 }
