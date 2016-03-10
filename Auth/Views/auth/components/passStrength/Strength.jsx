@@ -10,17 +10,17 @@ export default class Strength extends React.Component {
       if(pass.search(/[0-9]/g) !== -1) level ++;
       if(pass.length > 8) level ++;
     }
-
     return level;
   };
 
   render() {
     let level = this.calculateStrength(this.props.password);
-
     return (
-        <div className={this.props.className}>
-          <p>Password Strength Level: {level}</p>
-        </div>
+      <div className={this.props.className}>
+        {(
+          () => this.props.password ? <p>Password Strength Level: {level}</p> : ''
+        )()}
+      </div>
     )
   }
 }

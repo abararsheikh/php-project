@@ -45,7 +45,9 @@ export default class RegisterForm extends React.Component {
             onChange={this.props.onChange}
             onBlur={this.props.validator.email}
         />
-        <button type="submit" name="register" className="btn btn-success">Register</button>
+        <button
+            disabled={this.props.fields.allValid ? '' : 'disabled'}
+            type="submit" name="register" className="btn btn-success">Register</button>
       </form>
     )
   }

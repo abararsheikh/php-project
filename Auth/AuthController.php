@@ -71,21 +71,16 @@ class AuthController extends Classes\Controller {
 
   // Register GET
   public function registerPage() {
-    $this->view->render('/Auth/Views/register/register', 'Register');
+    $this->view->render('/Auth/Views/index', 'Register');
   }
 
   // Register POST
   public function registerUser() {
     $v = new Validator($_POST);
     $v->validate('username', ['notEmpty']);
-    $v->password()->validate('password', [
-        'password',
-        ['equal', $v->getKey('repeatPassword')]
-    ]);
-    $v->email()->validate('email', [
-        'notEmpty',
-        'EmailValidator'
-    ]);
+//    $v->password()->validate('password', ['password']);
+    $v->email()->validate('email', ['notEmpty', 'EmailValidator']);
+
     if ($v->isValid()) {
       $result = $this->model->newUser($_POST['username'], $_POST['password'], $_POST['email']);
       $this->view->json($this->resultArray($result['success'], $result['error']));

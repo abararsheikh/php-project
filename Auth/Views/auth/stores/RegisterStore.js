@@ -5,21 +5,41 @@ import {EventEmitter} from 'events';
 const CHANGE_EVENT = 'change';
 
 let validateUsername = (username) => {
-  if (username.length < 3) return 'length should be greater than 3';
+  if (!username.isDirty) return username;
+  username.error = (username.value.length < 3) ? 'length should be greater than 3' : '';
+  return username;
 };
 let validatePassword = (passowrd) => {
-  if (passowrd.length < 3) return 'length should be greater than 3';
+  if (!passowrd.isDirty) return passowrd;
+  passowrd.error = (passowrd.value.length < 3) ? 'length should be greater than 3' : '';
+  return passowrd;
 };
-let validateRepeatPassword = (pass1, pass2) => {
-  if (pass1 !== pass2) return 'two passwords do not match';
+let validateRepeatPassword = (password, compareValue) => {
+  password.error = (password.value !== compareValue) ? 'two passwords do not match' : '';
+  return password;
 };
 let validateEmail = (email) => {
+  if (!email.isDirty) return email;
   let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if(!regex.test(email)) return 'invalid email';
+  email.error = (!regex.test(email.value)) ? 'invalid email' : '';
+
+  return email;
+};
+let registerUser = (fields) => {
+  let userInfo = {
+    username: fields.username.value,
+    password: fields.password.value,
+    email: fields.email.value
+  };
+  return $.ajax({
+    method: 'POST',
+    url: '/Auth/register',
+    data: userInfo
+  });
 };
 
 function InputField() {
-  return { value: '', isDirty: false };
+  return { value: '', isDirty: false, error: '' };
 }
 
 class RegisterStore extends EventEmitter {
@@ -37,6 +57,13 @@ class RegisterStore extends EventEmitter {
 
   getForm() {
     return this.fields;
+  }
+  allValid() {
+    for (let key in this.fields) {
+      if(!this.fields[key].isDirty) return false;
+      if(this.fields[key].error.length !== 0) return false;
+    }
+    return true;
   }
   updateField = (fieldName, props) => {
     this.fields[fieldName].value = props.value;
@@ -57,29 +84,29 @@ class RegisterStore extends EventEmitter {
 
   _register = (action) => {
     switch (action.actionType) {
-      case RegisterConstants.UPDATE_FIELD:
-
       case RegisterConstants.VALIDATE_USERNAME:
-        this.fields.username.error = this.fields.username.isDirty ?
-            validateUsername(action.username) : '';
+        this.fields.username = validateUsername(action.username);
         this.emitChange();
         break;
 
       case RegisterConstants.VALIDATE_PASSWORD:
-        this.fields.password.error = this.fields.password.isDirty ?
-            validatePassword(action.password) : '';
+        this.fields.password = validatePassword(action.password);
         this.emitChange();
         break;
 
       case RegisterConstants.VALIDATE_REPEAT_PASSWORD:
-        this.fields.repeatPassword.error = this.fields.repeatPassword.isDirty ?
-            validateRepeatPassword(this.fields.password.value, action.repeatPassword) : '';
+        this.fields.repeatPassword = validateRepeatPassword(action.repeatPassword, action.compareValue);
         this.emitChange();
         break;
       case RegisterConstants.VALIDATE_EMAIL:
-        this.fields.email.error = this.fields.email.isDirty ?
-            validateEmail(action.email) : '';
+        this.fields.email = validateEmail(action.email);
         this.emitChange();
+        break;
+      case RegisterConstants.SUBMIT:
+        registerUser(action.fields).then((data) => {
+          console.log(data);
+          this.emitChange();
+        });
         break;
 
       default:

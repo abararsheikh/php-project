@@ -17,10 +17,12 @@ export default class RegisterApp extends React.Component {
   _onChange = () => {
     console.log('on change');
     this.setState(RegisterStore.getForm());
+    this.setState({allValid: RegisterStore.allValid()})
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    RegisterActions.registerUser(this.state);
   };
 
   handleInputChange = (event) => {
@@ -33,18 +35,10 @@ export default class RegisterApp extends React.Component {
   };
 
   validator = {
-    username: (event) => {
-      RegisterActions.validateUsername(this.state.username.value);
-    },
-    password: (event) => {
-      RegisterActions.validatePassword(this.state.password.value);
-    },
-    repeatPassword: (event) => {
-      RegisterActions.validateRepeatPassword(this.state.repeatPassword.value);
-    },
-    email: (event) => {
-      RegisterActions.validateEmail(this.state.email.value);
-    }
+    username: () => RegisterActions.validateUsername(this.state.username),
+    password: () => RegisterActions.validatePassword(this.state.password),
+    repeatPassword: () => RegisterActions.validateRepeatPassword(this.state.repeatPassword, this.state.password.value),
+    email: () => RegisterActions.validateEmail(this.state.email)
   };
 
   render() {

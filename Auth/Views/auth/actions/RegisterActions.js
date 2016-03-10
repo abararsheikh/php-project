@@ -14,16 +14,23 @@ export default {
       password
     })
   },
-  validateRepeatPassword: (repeatPassword) => {
+  validateRepeatPassword: (repeatPassword, compareValue) => {
     AppDispatcher.dispatch({
       actionType: RegisterConstants.VALIDATE_REPEAT_PASSWORD,
-      repeatPassword
+      repeatPassword,
+      compareValue
     })
   },
   validateEmail: (email) => {
     AppDispatcher.dispatch({
       actionType: RegisterConstants.VALIDATE_EMAIL,
       email
+    })
+  },
+  registerUser: (fields) => {
+    AppDispatcher.dispatch({
+      actionType: RegisterConstants.SUBMIT,
+      fields
     })
   }
 }
