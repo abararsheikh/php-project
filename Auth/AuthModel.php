@@ -68,6 +68,14 @@ class AuthModel {
     $_SESSION = [];
     session_destroy();
   }
+  public function checkAvailability($name, $value) {
+    $col = ['username'=>'username', 'password' => 'password'];
+    $sql = "SELECT * FROM users WHERE $col[$name]";
+    $stmt = $this->db->prepare($sql . ' = :colValue');
+    $stmt->bindParam(':colValue', $value, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch() ? false : true;
+  }
 
   // Static functions
   // Returns user information, false if user is not logged in

@@ -4,27 +4,6 @@ import {EventEmitter} from 'events';
 
 const CHANGE_EVENT = 'change';
 
-let validateUsername = (username) => {
-  if (!username.isDirty) return username;
-  username.error = (username.value.length < 3) ? 'length should be greater than 3' : '';
-  return username;
-};
-let validatePassword = (passowrd) => {
-  if (!passowrd.isDirty) return passowrd;
-  passowrd.error = (passowrd.value.length < 3) ? 'length should be greater than 3' : '';
-  return passowrd;
-};
-let validateRepeatPassword = (password, compareValue) => {
-  password.error = (password.value !== compareValue) ? 'two passwords do not match' : '';
-  return password;
-};
-let validateEmail = (email) => {
-  if (!email.isDirty) return email;
-  let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  email.error = (!regex.test(email.value)) ? 'invalid email' : '';
-
-  return email;
-};
 let registerUser = (fields) => {
   let userInfo = {
     username: fields.username.value,
@@ -38,12 +17,19 @@ let registerUser = (fields) => {
   });
 };
 
+let checkAvailability = (name, value) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/Auth/register/user',
+    data: {name, value}
+  })
+};
+
 function InputField() {
   return { value: '', isDirty: false, error: '' };
 }
 
 class RegisterStore extends EventEmitter {
-
   constructor() {
     super();
     this.fields = {
@@ -54,7 +40,17 @@ class RegisterStore extends EventEmitter {
     };
     AppDispatch.register(this._register);
   }
+  emitChange() {
+    this.emit(CHANGE_EVENT)
+  }
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback)
+  }
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback)
+  }
 
+  // Store methods
   getForm() {
     return this.fields;
   }
@@ -70,41 +66,23 @@ class RegisterStore extends EventEmitter {
     this.fields[fieldName].isDirty = props.isDirty;
   };
 
-  emitChange() {
-    this.emit(CHANGE_EVENT)
-  }
-
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback)
-  }
-
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback)
-  }
-
   _register = (action) => {
     switch (action.actionType) {
-      case RegisterConstants.VALIDATE_USERNAME:
-        this.fields.username = validateUsername(action.username);
-        this.emitChange();
-        break;
-
-      case RegisterConstants.VALIDATE_PASSWORD:
-        this.fields.password = validatePassword(action.password);
-        this.emitChange();
-        break;
-
-      case RegisterConstants.VALIDATE_REPEAT_PASSWORD:
-        this.fields.repeatPassword = validateRepeatPassword(action.repeatPassword, action.compareValue);
-        this.emitChange();
-        break;
-      case RegisterConstants.VALIDATE_EMAIL:
-        this.fields.email = validateEmail(action.email);
-        this.emitChange();
-        break;
       case RegisterConstants.SUBMIT:
         registerUser(action.fields).then((data) => {
-          console.log(data);
+          this.fields.submissionInfo = (data.error.length > 0) ? 'register fail' : 'success';
+          this.emitChange();
+        });
+        break;
+      case RegisterConstants.UPDATE_ERROR:
+        this.fields[action.name].error = action.error;
+        this.emitChange();
+        break;
+      case RegisterConstants.CHECK_AVAILABILITY:
+        checkAvailability(action.name, action.value).then( data => {
+          let name = action.name;
+          if (data.available) this.fields[name].error = '';
+          if (!data.available) this.fields[name].error = `${name} is already used`;
           this.emitChange();
         });
         break;

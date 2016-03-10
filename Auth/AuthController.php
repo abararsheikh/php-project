@@ -73,6 +73,11 @@ class AuthController extends Classes\Controller {
   public function registerPage() {
     $this->view->render('/Auth/Views/index', 'Register');
   }
+  public function checkAvailability() {
+    $name = $_POST['name'];
+    $value = $_POST['value'];
+    $this->view->json(['available' => $this->model->checkAvailability($name, $value)]);
+  }
 
   // Register POST
   public function registerUser() {

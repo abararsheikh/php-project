@@ -8,14 +8,16 @@ export default class RegisterApp extends React.Component {
     super();
     this.state = RegisterStore.getForm();
   }
+
   componentDidMount() {
     RegisterStore.addChangeListener(this._onChange);
   }
+
   componentWillUnmount() {
     RegisterStore.removeChangeListener(this._onChange);
   }
+
   _onChange = () => {
-    console.log('on change');
     this.setState(RegisterStore.getForm());
     this.setState({allValid: RegisterStore.allValid()})
   };
@@ -34,21 +36,14 @@ export default class RegisterApp extends React.Component {
     this.setState(RegisterStore.getForm());
   };
 
-  validator = {
-    username: () => RegisterActions.validateUsername(this.state.username),
-    password: () => RegisterActions.validatePassword(this.state.password),
-    repeatPassword: () => RegisterActions.validateRepeatPassword(this.state.repeatPassword, this.state.password.value),
-    email: () => RegisterActions.validateEmail(this.state.email)
-  };
-
   render() {
     return (
         <div className="container">
           <RegisterForm
-              validator={this.validator}
               fields={this.state}
               onChange={this.handleInputChange}
               onSubmit={this.handleSubmit}
+              onBlur={this.handleBlur}
           />
         </div>
     )

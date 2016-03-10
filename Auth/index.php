@@ -21,6 +21,7 @@ Nav::group('/Auth as Auth', function () use($auth) {
 
   Nav::post('/login', $auth->action('processLogin'));
   Nav::post('/register', $auth->action('registerUser'));
+  Nav::post('/register/user', $auth->action('checkAvailability'));
 });
 
 Nav::start();
