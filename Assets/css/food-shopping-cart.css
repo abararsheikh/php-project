@@ -1,94 +1,19 @@
-main{
-    background-color:white;
-}
-.foods{
-    margin-bottom: 20px;
-}
-.image{
-    padding:0;
-    margin:0 auto;
-margin-bottom:30px;
-}
-img{
-    margin:0 auto;
-    padding:0;
-
-}
 .menu{
-margin-top:30px;
-
 
 }
-.ctlist{
-
-
-margin-top: 30px;
+.menu-nav{
 
 }
-.catagory{
-    width: 100%;
-    font-size: large;
-    color:firebrick;
-    font-weight: 800;
-}
-.cfont{
-    color:firebrick;
-    text-decoration: none;
-    font-family: "Bookman Old Style";
-    padding:15px;
-}
-@media (min-width: 768px) {
-    .sidebar-nav .navbar .navbar-collapse {
-        padding: 0;
-        max-height: none;
-    }
-    .sidebar-nav .navbar ul {
-        float: none;
-    }
-    .sidebar-nav .navbar ul:not {
-        display: block;
-    }
-    .sidebar-nav .navbar li {
-        float: none;
-        display: block;
-    }
-    .sidebar-nav .navbar li a {
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-}
-.cart{
-    display: inline-block;
-
-}
-.order{
-    height: 45px;
-}
-.menu img:hover{
+#delete{
     cursor: pointer;
-
-    opacity:0.5;
 }
-#rate img:hover{
+.check{
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    padding:0;
+    border:solid 1px black;
     cursor: pointer;
-
-    opacity:0.5;
-}
-.image1{
-    background-color: black;
-    width:280px;
-    height:187px;
-    margin:0 auto;
-
-}
-div h3{
-    text-align: center;
-}
-.image2{
-    background-color: black;
-    width:220px;
-    height:147px;
-    margin:0 auto;
 }
 .search-form .form-group {
     float: right !important;
@@ -139,10 +64,4 @@ div h3{
     color: #3596e0;
     left: initial;
     font-size: 14px;
-}
-.line{
-    height:2px;
-    width:100%;
-    background-color: black;
-
 }
