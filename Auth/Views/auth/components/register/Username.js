@@ -1,6 +1,6 @@
 import React from 'react';
 import RegisterActions from '../../actions/RegisterActions';
-import Input from '../Input.jsx!';
+import Input from '../Input';
 
 export default class Username extends React.Component {
   validateUsername = (username) => {

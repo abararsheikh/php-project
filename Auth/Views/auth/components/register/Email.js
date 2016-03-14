@@ -1,6 +1,6 @@
 import React from 'react';
 import RegisterActions from '../../actions/RegisterActions';
-import Input from '../Input.jsx!';
+import Input from '../Input';
 
 export default class Email extends React.Component {
   validateEmail = (email) => {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Project\Auth;
+namespace Project\Auth\models;
 
-use \Project\Classes\DB as DB;
+use \Project\Classes\DB\DB as DB;
 use \PDO;
 
 // TODO: config
@@ -11,11 +11,13 @@ use \PDO;
  *
  */
 class AuthModel {
-  private $db;
+  protected $db;
 
   public function __construct() {
     $this->db = DB::getDB();
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
   }
 
   // New user
@@ -77,6 +79,19 @@ class AuthModel {
     return $stmt->fetch() ? false : true;
   }
 
+  // Generates a random password
+  // Source: https://gist.github.com/zyphlar/7217f566fc83a9633959
+  public function randomPassword($length) {
+    $bytes = openssl_random_pseudo_bytes($length + 1, $strong);
+    if (false !== $bytes && true === $strong) {
+      return substr(preg_replace("/[^a-zA-Z0-9]/", "", base64_encode($bytes)),0,$length);
+    }
+    else {
+      throw new \Exception("Unable to generate secure token from OpenSSL.");
+    }
+
+  }
+
   // Static functions
   // Returns user information, false if user is not logged in
   public static function getUser($key = 'username') {
@@ -84,6 +99,15 @@ class AuthModel {
     return isset($_SESSION['user']) ? $_SESSION['user'][$key] : false;
   }
 
+  // Protected
+  protected function addUserToSession($user) {
+    $_SESSION['user'] = [
+        'id' => $user['id'],
+        'username' => $user['username'],
+        'roleId' => $user['role_id'],
+        'email' => $user['email']
+    ];
+  }
 
   // Private functions
   private function updateCookie($userId) {
@@ -122,14 +146,8 @@ class AuthModel {
     }
     return false;
   }
-  private function addUserToSession($user) {
-    $_SESSION['user'] = [
-      'id' => $user['id'],
-      'username' => $user['username'],
-      'roleId' => $user['role_id'],
-      'email' => $user['email']
-    ];
-  }
+
+
 
 }
 

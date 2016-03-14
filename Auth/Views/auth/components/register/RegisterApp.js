@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterForm from './RegisterForm.jsx!';
+import RegisterForm from './RegisterForm';
 import RegisterStore from '../../stores/RegisterStore';
 import RegisterActions from '../../actions/RegisterActions';
 

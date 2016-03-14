@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginApp from './components/login/LoginApp.jsx!';
-import RegisterApp from './components/register/RegisterApp.jsx!';
+import LoginApp from './components/login/LoginApp';
+import RegisterApp from './components/register/RegisterApp';
 import {Router, Route, Link, browserHistory, IndexRedirect} from 'react-router';
 
 class App extends React.Component {

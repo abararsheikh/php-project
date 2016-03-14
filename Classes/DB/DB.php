@@ -1,5 +1,5 @@
 <?php
-namespace Project\Classes;
+namespace Project\Classes\DB;
 /**
  * @Author Yi Zhao
  *
@@ -26,5 +26,9 @@ class DB {
       VALUES ($values);
     ");
     return $insert->execute() ? true : $insert->errorInfo()[2];
+  }
+
+  public static function find() {
+
   }
 }

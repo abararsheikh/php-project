@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../Input.jsx!';
+import Input from '../Input';
 export default class LoginForm extends React.Component {
 
   render() {
@@ -24,7 +24,9 @@ export default class LoginForm extends React.Component {
         {this.props.errorMsg}
 
         <button type="submit" className="btn btn-default">Login</button>
+        <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=76410de7fda4780c4caa">sign in with github</a>
       </form>
+
     );
   }
 }

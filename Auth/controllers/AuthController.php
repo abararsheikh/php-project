@@ -1,21 +1,25 @@
 <?php
-namespace Project\Auth;
+namespace Project\Auth\controllers;
 
-use Project\Classes as Classes;
+use Project\Auth\models\AuthModel;
+use Project\Auth\models\GitHub;
+use Project\Classes\Config\OAuthInfo;
+use Project\Classes\Controller;
 use Project\Classes\Helper;
+use Project\Classes\View;
 use Project\Validation\Validator;
 
 /**
  * @Author Yi Zhao
  *
  */
-class AuthController extends Classes\Controller {
+class AuthController extends Controller {
   private $view;
   private $model;
 
   public function __construct() {
     $this->model = new AuthModel();
-    $this->view = new Classes\View([
+    $this->view = new View([
       'css' => '/Assets/css/bootstrap.min.css',
       'js' => [
         '/Assets/js/jquery.min.js',
@@ -74,6 +78,7 @@ class AuthController extends Classes\Controller {
   public function registerPage() {
     $this->view->render('/Auth/Views/index', 'Register');
   }
+  // Register/user POST
   public function checkAvailability() {
     $name = Helper::getParam('name');
     $value = Helper::getParam('value');

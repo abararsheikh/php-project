@@ -5,5 +5,5 @@
  */
 
 ?>
-<script>System.import('/Auth/Views/auth/app.jsx!')</script>
+<script>System.import('/Auth/Views/auth/app')</script>
 <div id="login"></div>

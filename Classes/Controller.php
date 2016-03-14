@@ -12,6 +12,12 @@ abstract class Controller {
       call_user_func([$this, $action]);
     };
   }
+
+  /**
+   * @param $result boolean
+   * @param $errors string
+   * @return array
+   */
   public function resultArray($result, $errors) {
     $output = [ 'success' => false, 'error' => [] ];
     if ($result) {

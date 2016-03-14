@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from './LoginForm.jsx!';
+import LoginForm from './LoginForm';
 import LoginStore from '../../stores/LoginStore';
 import LoginActions from '../../actions/LoginActions';
 

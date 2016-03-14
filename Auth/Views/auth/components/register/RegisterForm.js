@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../Input.jsx!';
-import Username from './Username.jsx!';
-import Password from './Password.jsx!';
-import Email from './Email.jsx!';
+import Input from '../Input';
+import Username from './Username';
+import Password from './Password';
+import Email from './Email';
 
 export default class RegisterForm extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '../Input.jsx!';
-import Strength from '../passStrength/Strength.jsx!';
+import Input from '../Input';
+import Strength from '../passStrength/Strength';
 import RegisterActions from '../../actions/RegisterActions';
 
 export default class Password extends React.Component {
