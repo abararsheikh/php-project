@@ -142,6 +142,10 @@ class View {
     };
   }
 
+  public static function previousPage() {
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+
   // Private functions
 
   private function getRoot() {

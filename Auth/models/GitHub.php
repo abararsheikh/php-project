@@ -17,8 +17,6 @@ class GitHub {
     $this->client_id = $options['client_id'];
     $this->client_secret = $options['client_secret'];
     $this->token_url = $options['tokenUrl'];
-
-    $this->connect();
   }
 
   public function getUser() {
@@ -30,7 +28,10 @@ class GitHub {
   }
 
   // need to handle errors
-  private function connect() {
+  public function connect() {
+    if (!isset($_GET['code'])) {
+      header('Location: https://github.com/login/oauth/authorize?scope=user:email&client_id=76410de7fda4780c4caa');
+    }
     $code = Helper::getParam('code', INPUT_GET);
     $data = array(
         'client_id' => $this->client_id,
@@ -38,11 +39,10 @@ class GitHub {
         'code' => $code,
     );
     $response = Request::post($this->token_url, $data, Request::HEADER_OAUTH);
-    if(!$response) return false;
+    if (!$response) return false;
     $this->access_token = json_decode($response, true)['access_token'];
     return true;
   }
-
 
 
 }

@@ -17,6 +17,7 @@ export default class LoginApp extends React.Component {
   }
   componentDidMount() {
     LoginStore.addChangeListener(this._onChange);
+    LoginActions.getLogin();
   }
   componentWillUnmount() {
     LoginStore.removeChangeListener(this._onChange);
@@ -29,9 +30,7 @@ export default class LoginApp extends React.Component {
 
   handleInputChange = (event) => {
     let field = event.target.name;
-    let value = event.target.value;
-
-    this.state.user[field] = value;
+    this.state.user[field] = event.target.value;
     this.setState({user: this.state.user});
   };
 
@@ -40,12 +39,17 @@ export default class LoginApp extends React.Component {
     LoginActions.submitLogin(this.state.user.username, this.state.user.password);
   };
 
+  githubLogin = (event) => {
+    event.preventDefault();
+    LoginActions.githubLogin();
+  };
+
   render() {
-    let loginError = this.state.login.error ? <p>{this.state.login.error[0]}</p> : '';
+    let loginError = this.state.login.error ? <p>{this.state.login.error}</p> : '';
     return (
       <div className="container">
         <LoginForm
-          user={this.state.user}
+          status={this.state}
           errorMsg={loginError}
           onChange={this.handleInputChange}
           onSubmit={this.handleSubmit}

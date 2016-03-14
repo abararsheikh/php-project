@@ -9,5 +9,10 @@ export default {
       username,
       password
     })
+  },
+  getLogin: () => {
+    AppDispatcher.dispatch({
+      actionType: LoginConstants.GET_LOGIN
+    })
   }
 };

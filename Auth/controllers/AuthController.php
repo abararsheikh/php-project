@@ -2,8 +2,6 @@
 namespace Project\Auth\controllers;
 
 use Project\Auth\models\AuthModel;
-use Project\Auth\models\GitHub;
-use Project\Classes\Config\OAuthInfo;
 use Project\Classes\Controller;
 use Project\Classes\Helper;
 use Project\Classes\View;
@@ -14,8 +12,6 @@ use Project\Validation\Validator;
  *
  */
 class AuthController extends Controller {
-  private $view;
-  private $model;
 
   public function __construct() {
     $this->model = new AuthModel();
@@ -74,7 +70,16 @@ class AuthController extends Controller {
     $this->model->logOut();
   }
 
+  public function getLogin() {
+    $username = AuthModel::getUser();
+    if ($username) $this->view->json(['success' => true, 'username' => $username]);
+    if (!$username) $this->view->json($this->resultArray(false, ''));
+  }
+
+
+  ////////////////////////////////////
   // Register GET
+  //////////////////////////////////
   public function registerPage() {
     $this->view->render('/Auth/Views/index', 'Register');
   }
@@ -99,5 +104,6 @@ class AuthController extends Controller {
       $this->view->json($this->resultArray(false, $v->getErrors()));
     }
   }
+
 
 }

@@ -18,6 +18,8 @@ Nav::group('/Auth as Auth', function () use($auth) {
   Nav::get('/login as Login', $auth->action('loginPage'));
   Nav::get('/logout as Logout', $auth->action('logout'));
 
+  Nav::get('/getLogin as Logout', $auth->action('getLogin'));
+
   Nav::post('/login', $auth->action('processLogin'));
   Nav::post('/register', $auth->action('registerUser'));
   Nav::post('/register/user', $auth->action('checkAvailability'));
@@ -26,7 +28,7 @@ Nav::group('/Auth as Auth', function () use($auth) {
 
 // Oauth
 Nav::group('/Auth as OAuth', function() use($oauth) {
-  Nav::get('/login/callback', $oauth->action('github'));
+  Nav::get('/login/github', $oauth->action('github'));
 });
 
 Nav::start();
