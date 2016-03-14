@@ -47,6 +47,7 @@ class LoginStore extends EventEmitter {
       case LoginConstants.LOGIN_LOGIN:
         submitLogin(action.username, action.password)
             .then(data => {
+              this._username = action.username;
               this._error = data.error[0];
               this._isLoggedIn = data.success;
               this.emitChange();
