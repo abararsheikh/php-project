@@ -42,6 +42,9 @@ class AuthController extends Controller {
     ");
   }
 
+  public function home() {
+    $this->view->render('/Auth/Views/index', 'auth');
+  }
   // Login page GET
   public function loginPage() {
     if ($this->model->logInViaCookie()) {
