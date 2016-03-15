@@ -39,8 +39,11 @@ export default class AuthApp extends React.Component {
   handleViewChange = (event) => {
     let name = event.target.name;
     AppActions.changeView(name);
-    //this.currentView = this._assignComponent(name);
-    if (name === this.state.view) this.showComponent = !this.showComponent;
+    if (name === this.state.view) {
+      this.showComponent = !this.showComponent;
+    } else {
+      this.showComponent = true;
+    }
   };
 
   _assignComponent = (name) => {
@@ -58,6 +61,7 @@ export default class AuthApp extends React.Component {
   render() {
     // Show logged in page
     if (this.state.loginStatus.isLoggedIn) {
+      $('#authModal').modal('hide');
       return <LoggedIn
           username={this.state.loginStatus.username}
           onLogout={AppActions.logout}
@@ -65,19 +69,39 @@ export default class AuthApp extends React.Component {
     }
     // Sets up view to display
     this.currentView = this._assignComponent(this.state.view);
-
     return (
         <div>
           <button name="login"
                   className="btn btn-default"
+                  data-toggle="modal" data-target="#authModal"
                   onClick={this.handleViewChange}>Login
           </button>
           <button name="register"
                   className="btn btn-default"
+                  data-toggle="modal" data-target="#authModal"
                   onClick={this.handleViewChange}>Register
           </button>
-          {this.showComponent && this.currentView}
+
+          <div className="modal fade" id="authModal" tabIndex="-1" role="dialog">
+            <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-content">
+
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className="modal-title" id="authModalLabel">{this.state.view}</h4>
+                </div>
+
+                <div className="modal-body">
+                  {this.currentView}
+                </div>
+
+                <div className="modal-footer" style={{border: 'none'}}></div>
+              </div>
+            </div>
+          </div>
+
         </div>
+
     )
   }
 }

@@ -8,6 +8,7 @@ export default class LoginApp extends React.Component {
       user: {username: '', password: ''}
     }
   }
+
   handleInputChange = (event) => {
     let field = event.target.name;
     this.state.user[field] = event.target.value;
@@ -20,14 +21,12 @@ export default class LoginApp extends React.Component {
 
   render() {
     return (
-        <div className="container">
-          <LoginForm
-              status={this.state}
-              errorMsg={this.props.error}
-              onChange={this.handleInputChange}
-              onSubmit={this.handleSubmit}
-          />
-        </div>
+        <LoginForm
+            status={this.state}
+            errorMsg={this.props.error}
+            onChange={this.handleInputChange}
+            onSubmit={this.handleSubmit}
+        />
     )
   }
 

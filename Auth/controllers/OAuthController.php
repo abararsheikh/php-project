@@ -18,9 +18,15 @@ class OAuthController extends Controller{
   public function github() {
     $gitHub = new GitHub(OAuthInfo::GITHUB);
 
-    if($gitHub->connect()) {
-      $this->model->logIn('github', $gitHub->getUser(), $gitHub->getEmail());
+    if(!isset($_REQUEST['code'])) {
+      $gitHub->connect();
     }
-    View::previousPage();
+
+    if($gitHub->getToken()) {
+      $this->model->logIn('github', $gitHub->getUser(), $gitHub->getEmail());
+//      View::previousPage();
+      header("Location: http://php.project");
+    }
+
   }
 }

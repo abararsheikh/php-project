@@ -27,11 +27,11 @@ class GitHub {
     return json_decode(Request::get("$this->apiUrl/emails", ['access_token' => $this->access_token]), true)[0]['email'];
   }
 
-  // need to handle errors
   public function connect() {
-    if (!isset($_GET['code'])) {
-      header('Location: https://github.com/login/oauth/authorize?scope=user:email&client_id=76410de7fda4780c4caa');
-    }
+    header("Location: https://github.com/login/oauth/authorize?scope=user:email&client_id=76410de7fda4780c4caa");
+  }
+  // need to handle errors
+  public function getToken() {
     $code = Helper::getParam('code', INPUT_GET);
     $data = array(
         'client_id' => $this->client_id,

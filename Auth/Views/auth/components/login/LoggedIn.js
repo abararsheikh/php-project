@@ -7,7 +7,7 @@ export default class LoggedIn extends React.Component {
         <div>
           <p>Logged in as {this.props.username}</p>
           <button
-              className="btn btn-warning"
+              className="btn btn-block"
               onClick={this.props.onLogout}>Logout</button>
         </div>
     )

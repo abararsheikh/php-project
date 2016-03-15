@@ -38,14 +38,12 @@ export default class RegisterApp extends React.Component {
 
   render() {
     return (
-        <div className="container">
-          <RegisterForm
-              fields={this.state}
-              onChange={this.handleInputChange}
-              onSubmit={this.handleSubmit}
-              onBlur={this.handleBlur}
-          />
-        </div>
+        <RegisterForm
+            fields={this.state}
+            onChange={this.handleInputChange}
+            onSubmit={this.handleSubmit}
+            onBlur={this.handleBlur}
+        />
     )
   }
 }

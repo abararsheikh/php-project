@@ -22,10 +22,12 @@ export default class LoginForm extends React.Component {
               label="Password"
               placeholder="Password here.."/>
           <p>{this.props.errorMsg}</p>
-          <button type="submit" className="btn btn-default">Login</button>
-          <a href="/Auth/login/github">
-            <button type="button" className="btn btn-default">sign in with github</button>
-          </a>
+          <div className="col-sm-4 col-sm-offset-4">
+            <button type="submit" className="btn btn-block">Login</button>
+            <a href="/Auth/login/github" className="btn btn-block btn-social btn-github">
+              <span className="fa fa-github"></span>sign in with github
+            </a>
+          </div>
         </form>
 
     );
