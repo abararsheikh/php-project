@@ -17,7 +17,6 @@ export default class LoginApp extends React.Component {
   }
   componentDidMount() {
     LoginStore.addChangeListener(this._onChange);
-    LoginActions.getLogin();
   }
   componentWillUnmount() {
     LoginStore.removeChangeListener(this._onChange);

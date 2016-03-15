@@ -7,5 +7,10 @@ export default {
       actionType: AppConstants.CHANGE_VIEW,
       viewName,
     })
+  },
+  getLogin: () => {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.GET_LOGIN
+    })
   }
 }

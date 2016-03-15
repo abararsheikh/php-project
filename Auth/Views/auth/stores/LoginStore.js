@@ -37,8 +37,7 @@ class LoginStore extends EventEmitter {
   getLoginState() {
     return {
       error: this._error,
-      isLoggedIn: this._isLoggedIn,
-      username: this._username
+      isLoggedIn: this._isLoggedIn
     };
   }
 
@@ -52,16 +51,6 @@ class LoginStore extends EventEmitter {
               this._isLoggedIn = data.success;
               this.emitChange();
             });
-        break;
-      case LoginConstants.GET_LOGIN:
-        $.get('/Auth/getLogin').then(data=> {
-          console.log(data);
-          if(data.success){
-            this._isLoggedIn = true;
-            this._username = data.username;
-          }
-          this.emitChange();
-        });
         break;
 
       default:

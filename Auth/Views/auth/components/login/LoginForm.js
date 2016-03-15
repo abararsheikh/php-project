@@ -5,9 +5,6 @@ import LoggedIn from './LoggedIn';
 
 export default class LoginForm extends React.Component {
   render() {
-    let loginStatus = this.props.status.login;
-    if (loginStatus.isLoggedIn) return <LoggedIn username={loginStatus.username}/>;
-
     return (
         <form method="post" action="" className="form-horizontal"
               onSubmit={this.props.onSubmit}>
