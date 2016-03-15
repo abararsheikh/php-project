@@ -25,6 +25,8 @@ export default class AuthApp extends React.Component {
 
   _onChange = () => {
     this.setState(this.getAppState());
+    console.log('auth change');
+
   };
 
   getAppState = () => {
@@ -37,30 +39,41 @@ export default class AuthApp extends React.Component {
   handleViewChange = (event) => {
     let name = event.target.name;
     AppActions.changeView(name);
-    this.currentView = this.assignComponent(name);
+    //this.currentView = this._assignComponent(name);
     if (name === this.state.view) this.showComponent = !this.showComponent;
   };
 
-  assignComponent = (name) => {
+  _assignComponent = (name) => {
     switch (name) {
       case 'login':
-        return <LoginApp />;
+        return <LoginApp
+            error={this.state.loginStatus.error}
+            onSubmit={AppActions.login}
+        />;
       case 'register':
         return <RegisterApp />;
     }
   };
 
   render() {
+    // Show logged in page
     if (this.state.loginStatus.isLoggedIn) {
-      return <LoggedIn username={this.state.loginStatus.username}/>;
+      return <LoggedIn
+          username={this.state.loginStatus.username}
+          onLogout={AppActions.logout}
+      />;
     }
+    // Sets up view to display
+    this.currentView = this._assignComponent(this.state.view);
 
     return (
         <div>
           <button name="login"
+                  className="btn btn-default"
                   onClick={this.handleViewChange}>Login
           </button>
           <button name="register"
+                  className="btn btn-default"
                   onClick={this.handleViewChange}>Register
           </button>
           {this.showComponent && this.currentView}

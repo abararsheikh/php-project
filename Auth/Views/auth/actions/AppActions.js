@@ -5,12 +5,25 @@ export default {
   changeView: (viewName) => {
     AppDispatcher.dispatch({
       actionType: AppConstants.CHANGE_VIEW,
-      viewName,
+      viewName
     })
   },
   getLogin: () => {
     AppDispatcher.dispatch({
       actionType: AppConstants.GET_LOGIN
     })
+  },
+  logout: () => {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.LOGOUT
+    })
+  },
+  login: (username, password) => {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.LOGIN,
+      username: username,
+      password: password
+    })
   }
+
 }

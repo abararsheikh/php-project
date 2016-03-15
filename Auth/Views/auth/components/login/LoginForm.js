@@ -1,5 +1,4 @@
 import React from 'react';
-import LoginActions from '../../actions/LoginActions';
 import Input from '../Input';
 import LoggedIn from './LoggedIn';
 
@@ -22,9 +21,7 @@ export default class LoginForm extends React.Component {
               type="password"
               label="Password"
               placeholder="Password here.."/>
-
-          {this.props.errorMsg}
-
+          <p>{this.props.errorMsg}</p>
           <button type="submit" className="btn btn-default">Login</button>
           <a href="/Auth/login/github">
             <button type="button" className="btn btn-default">sign in with github</button>

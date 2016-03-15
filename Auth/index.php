@@ -4,7 +4,6 @@ namespace Project\Auth;
 use Project\Auth\controllers\AuthController;
 use Project\Auth\controllers\OAuthController;
 use Project\Classes\Router\Nav;
-use Project\Classes\View;
 
 include '../autoloader.php';
 
