@@ -52,14 +52,15 @@ $navTemplate = [
       </button>
       <a class="navbar-brand" href="#">Cinema</a>
     </div>
-    <div id="login"></div>
 
+    <div id="login"></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <?php Nav::drawMenu('Homepage', $navTemplate); ?>
 
       <!--   search   -->
       <form class="navbar-form navbar-right" role="search">
+
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
