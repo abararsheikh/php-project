@@ -52,6 +52,7 @@ $navTemplate = [
       </button>
       <a class="navbar-brand" href="#">Cinema</a>
     </div>
+    <div id="login"></div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -289,5 +290,6 @@ $navTemplate = [
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="Assets/js/bootstrap.min.js"></script>
+<script src="Assets/js/authApp.js"></script>
 </body>
 </html>
