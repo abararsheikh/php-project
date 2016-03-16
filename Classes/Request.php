@@ -37,6 +37,7 @@ class Request {
     $options = [
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_USERAGENT => 'Mozilla/5.0'
     ];
     curl_setopt_array($ch, $options);

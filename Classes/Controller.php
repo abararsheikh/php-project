@@ -6,7 +6,10 @@ namespace Project\Classes;
  * @package Project\Classes
  */
 abstract class Controller {
+  protected $model;
+  protected $view;
   // TODO: probably needs a better way to implement this
+
   public function action($action) {
     return function() use($action) {
       call_user_func([$this, $action]);

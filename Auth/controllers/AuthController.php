@@ -2,8 +2,6 @@
 namespace Project\Auth\controllers;
 
 use Project\Auth\models\AuthModel;
-use Project\Auth\models\GitHub;
-use Project\Classes\Config\OAuthInfo;
 use Project\Classes\Controller;
 use Project\Classes\Helper;
 use Project\Classes\View;
@@ -14,18 +12,20 @@ use Project\Validation\Validator;
  *
  */
 class AuthController extends Controller {
-  private $view;
-  private $model;
 
   public function __construct() {
     $this->model = new AuthModel();
     $this->view = new View([
-      'css' => '/Assets/css/bootstrap.min.css',
+      'css' => [
+        '/Assets/css/bootstrap.min.css',
+        '/Assets/css/font-awesome.min.css',
+        '/Assets/css/bootstrap-social.css',
+      ],
       'js' => [
-        '/Assets/js/jquery.min.js',
-        '/Assets/js/bootstrap.min.js',
-        '/jspm_packages/system.js',
-        '/config.js'
+          '/Assets/js/jquery.min.js',
+          '/Assets/js/bootstrap.min.js',
+          '/jspm_packages/system.js',
+          '/config.js'
       ],
       'header' => '/Auth/Views/header.php',
       'footer' => '/Auth/Views/footer.php'
@@ -44,6 +44,10 @@ class AuthController extends Controller {
       </body>
       </html>
     ");
+  }
+
+  public function home() {
+    $this->view->render('/Auth/Views/index', 'auth');
   }
 
   // Login page GET
@@ -74,10 +78,20 @@ class AuthController extends Controller {
     $this->model->logOut();
   }
 
+  public function getLogin() {
+    $username = AuthModel::getUser();
+    if ($username) $this->view->json(['success' => true, 'username' => $username]);
+    if (!$username) $this->view->json($this->resultArray(false, ''));
+  }
+
+
+  ////////////////////////////////////
   // Register GET
+  //////////////////////////////////
   public function registerPage() {
     $this->view->render('/Auth/Views/index', 'Register');
   }
+
   // Register/user POST
   public function checkAvailability() {
     $name = Helper::getParam('name');
@@ -89,7 +103,7 @@ class AuthController extends Controller {
   public function registerUser() {
     $v = new Validator($_POST);
     $v->validate('username', ['notEmpty']);
-//    $v->password()->validate('password', ['password']);
+    //    $v->password()->validate('password', ['password']);
     $v->email()->validate('email', ['notEmpty', 'EmailValidator']);
 
     if ($v->isValid()) {
@@ -99,5 +113,6 @@ class AuthController extends Controller {
       $this->view->json($this->resultArray(false, $v->getErrors()));
     }
   }
+
 
 }

@@ -3,7 +3,7 @@ import React from 'react';
 export default class Input extends React.Component {
 
   render() {
-    let errorClass = "form-group " + (this.props.error && 'has-error');
+    let errorClass = "form-group" + (this.props.error && ' has-error');
     return(
       <div className={errorClass}>
         <label htmlFor={this.props.name}
