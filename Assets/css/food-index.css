@@ -1,17 +1,21 @@
 main{
     background-color:white;
+    margin:0;
+    padding:0;
 }
 .foods{
     margin-bottom: 20px;
 }
 .image{
     padding:0;
-    margin:0 auto;
+
 margin-bottom:30px;
+
 }
 img{
     margin:0 auto;
     padding:0;
+    display: block;
 
 }
 .menu{
@@ -65,22 +69,24 @@ margin-top: 30px;
     height: 45px;
 }
 .menu img:hover{
-    cursor: pointer;
+
 
     opacity:0.5;
 }
 #rate img:hover{
-    cursor: pointer;
+
 
     opacity:0.5;
 }
 .image1{
-    background-color: black;
-    width:280px;
-    height:187px;
-    margin:0 auto;
+
+
+
+    margin:auto;
 
 }
+
+
 div h3{
     text-align: center;
 }
@@ -145,4 +151,88 @@ div h3{
     width:100%;
     background-color: black;
 
+}
+.nav-pagination nav{
+    width: 100%;
+}
+.pagination{
+    margin:0 auto;
+}
+.plus{
+    position: absolute;
+    top:-10000px;
+
+   border-radius: 50%;
+    border:0;
+    background-color: salmon;
+
+}
+.plus span{
+    border-color: white;
+    margin: 0 auto;
+    text-align: center;
+}
+.plus:hover{
+    background-color:white;
+
+}
+.menu img:hover + .plus{
+    position: relative;
+    top:90%;
+    left:90%;
+}
+.plus:hover{
+    top:90%;
+    left:90%;
+}
+.food_title,.view{
+    position: absolute;
+    top:-10000px;
+
+}
+.food_title{
+    font-size: large;
+    font-weight: 800;
+    color:white;
+}
+.view{
+    background-color: transparent;
+    border-color: white;
+    color:white;
+}
+.image3{
+    width: 90%;
+    margin:auto;
+
+    background-color: black;
+}
+@media only screen and (max-width: 768px){
+    .image3{
+
+    }
+}
+
+.test1{
+width:200px;
+    height: 150px;
+    margin:0 auto;
+
+}
+.test1 img{
+    margin:auto;
+
+}
+.test{
+    margin-bottom: 30px;
+}
+.thumbnail{
+    padding: 0;
+    background-color: black;
+    margin-left: 0;
+    margin-right: 0;
+}
+.thumbnail img{
+    margin-right: 0;
+    margin-left: 0;
+    width:100%;
 }

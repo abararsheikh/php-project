@@ -8,6 +8,7 @@
     <script src="../Assets/js/jquery.min.js" ></script>
     <script src="../Assets/js/bootstrap.min.js" ></script>
     <link rel="stylesheet" type="text/css" href="../Assets/css/food-index.css" />
+    <script src="../Assets/js/food_index.js"></script>
 </head>
 <main>
     <div class="container-fluid">
@@ -110,62 +111,223 @@
                     </div>
                 </div>
             </div>
-         <div id="rate"><h3>Top Food</h3>
-             <div class=" image">
-                 <div class="image2 img-rounded">
-                     <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" width="220" height="150"/>
+         <div id="rate menu"><h3>Top Food</h3>
+
+             <div class="image test menu">
+                 <div class="test1 img-rounded" style="background-color: #0A0A0A;">
+                     <div style="width: 200px;height:150px; position: relative;">
+                     <img src="../Assets/image/food/food1.jpg" width="200" height="150" class="img-rounded" />
+                     <button type="button" class="btn btn-default plus btn-sm">
+                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                     </button>
+                     <p class="food_title">Good food</p>
+                     <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+</div>
                  </div>
              </div>
-             <div class=" image">
-                 <div class="image2 img-rounded">
-                     <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" width="220" height="150"/>
+             <div class="image test menu">
+                 <div class="test1 img-rounded" style="background-color: #0A0A0A;">
+                     <div style="width: 200px;height:150px; position: relative;">
+                         <img src="../Assets/image/food/food1.jpg" width="200" height="150" class="img-rounded" />
+                         <button type="button" class="btn btn-default plus btn-sm">
+                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                         </button>
+                         <p class="food_title">Good food</p>
+                         <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                     </div>
                  </div>
              </div>
-             <div class=" image">
-                 <div class="image2 img-rounded">
-                     <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" width="220" height="150"/>
+             <div class="image test menu">
+                 <div class="test1 img-rounded" style="background-color: #0A0A0A;">
+                     <div style="width: 200px;height:150px; position: relative;">
+                         <img src="../Assets/image/food/food1.jpg" width="200" height="150" class="img-rounded" />
+                         <button type="button" class="btn btn-default plus btn-sm">
+                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                         </button>
+                         <p class="food_title">Good food</p>
+                         <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                     </div>
+                 </div>
+             </div>
+             <div class="image test menu">
+                 <div class="test1 img-rounded" style="background-color: #0A0A0A;">
+                     <div style="width: 200px;height:150px; position: relative;">
+                         <img src="../Assets/image/food/food1.jpg" width="200" height="150" class="img-rounded" />
+                         <button type="button" class="btn btn-default plus btn-sm">
+                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                         </button>
+                         <p class="food_title">Good food</p>
+                         <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                     </div>
                  </div>
              </div>
              <div class="line"></div>
          </div>
 </div>
-        <div class="menu col-xs-12  col-sm-9 col-md-9 row">
+        <div class="menu col-xs-12  col-sm-9 col-md-9">
+
+<div class="row">
 
 
-            <div class="col-sm-6 col-md-4  image">
-                <div class="image1 img-rounded">
-                    <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" width="280" height="187"/>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div href="#" class="thumbnail">
+                        <img src="../Assets/image/food/food1.jpg" alt="..." class="">
+                        <button type="button" class="btn btn-default plus btn-sm">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                        <p class="food_title">Good food</p>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+
+                      </div>
+
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4  image">
-                <div class="image1 img-rounded">
-                <img src="../Assets/image/food/food2.jpg" class="img-responsive img-rounded" width="280" height="220"/>
-</div>
-            </div>
-            <div class="col-sm-6 col-md-4  image">
-                <div class="image1 img-rounded">
-                <img src="../Assets/image/food/food3.jpg"  class="img-responsive img-rounded" width="280" height="220"/>
-</div>
-            </div>
-            <div class="col-sm-6 col-md-4  image">
-                <div class="image1 img-rounded">
-                <img src="../Assets/image/food/food4.jpg"  class="img-responsive img-rounded" width="280" height="220"/>
-</div>
-            </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div href="#" class="thumbnail">
+            <img src="../Assets/image/food/food1.jpg" alt="..." class="">
+            <button type="button" class="btn btn-default plus btn-sm">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <p class="food_title">Good food</p>
+            <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div href="#" class="thumbnail">
+            <img src="../Assets/image/food/food1.jpg" alt="..." class="">
+            <button type="button" class="btn btn-default plus btn-sm">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <p class="food_title">Good food</p>
+            <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div href="#" class="thumbnail">
+            <img src="../Assets/image/food/food1.jpg" alt="..." class="">
+            <button type="button" class="btn btn-default plus btn-sm">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <p class="food_title">Good food</p>
+            <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+        <div href="#" class="thumbnail">
+            <img src="../Assets/image/food/food1.jpg" alt="..." class="">
+            <button type="button" class="btn btn-default plus btn-sm">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <p class="food_title">Good food</p>
+            <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+
+        </div>
+
+    </div>
 
 
+  </div>
 
-        <div class="col-sm-6 col-md-4  image">
-            <div class="image1 img-rounded">
-            <img src="../Assets/image/food/food4.jpg"  class="img-responsive img-rounded" width="280" height="220"/>
-            </div>
-            </div>
-                <div class="col-sm-6 col-md-4  image">
-                    <div class="image1 img-rounded">
-                    <img src="../Assets/image/food/food4.jpg"  class="img-responsive img-rounded" width="280" height="220"/>
-                </div>
+   </div>
+           <!-- <div class="col-md-4 col-sm-6  image1 image col-xs-8 ">
+                <div class="row">
+                    <div class="image3 img-rounded col-xs-12 col-xs-offset-2">
+                        <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+
+                        <button type="button" class="btn btn-default plus btn-sm">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                        <p class="food_title">Good food</p>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
                     </div>
+                </div>
             </div>
+            <div class="col-md-4 col-sm-6 row image1 image ">
+                <div class="image3 img-rounded">
+                    <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+
+                    <button type="button" class="btn btn-default plus btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <p class="food_title">Good food</p>
+                    <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 row image1 image ">
+                <div class="image3 img-rounded">
+                    <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+
+                    <button type="button" class="btn btn-default plus btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <p class="food_title">Good food</p>
+                    <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 row image1 image ">
+                <div class="image3 img-rounded">
+                    <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+
+                    <button type="button" class="btn btn-default plus btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <p class="food_title">Good food</p>
+                    <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 row image1 image ">
+                <div class="image3 img-rounded">
+                    <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+
+                    <button type="button" class="btn btn-default plus btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <p class="food_title">Good food</p>
+                    <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                </div>
+            </div>
+
+
+
+            </div>-->
+        <div class="row">
+            <nav class="col-md-offset-6 col-sm-offset-6 col-xs-offset-3">
+                <ul class="pagination">
+                    <li class="disabled">
+      <span>
+        <span aria-hidden="true">&laquo;</span>
+      </span>
+                    </li>
+                    <li class="active">
+                        <span>1 <span class="sr-only">(current)</span></span>
+                    </li>
+                    <li>
+                        <span>2 <span class="sr-only">(current)</span></span>
+                    </li>
+                    <li>
+                        <span>3 <span class="sr-only">(current)</span></span>
+                    </li>
+                    <li>
+                        <span>4 <span class="sr-only">(current)</span></span>
+                    </li>
+                    <li>
+                        <span>5 <span class="sr-only">(current)</span></span>
+                    </li>
+                    <li>
+                    <span>
+        <span aria-hidden="true">&raquo;</span>
+      </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 
     </div>

@@ -65,3 +65,17 @@
     left: initial;
     font-size: 14px;
 }
+.btn-default{
+    border-color: salmon;
+    font-weight: 800;
+    background-color: salmon;
+ color:white;
+}
+.btn-default:hover{
+    background-color: black;
+    color: white;
+}
+.navbar-text{
+    font-weight: 800;
+    font-size: large;
+}

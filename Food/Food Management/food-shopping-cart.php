@@ -1,17 +1,8 @@
 <?php
 
 ?>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="../Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../Assets/js/jquery.min.js" ></script>
-    <script src="../Assets/js/bootstrap.min.js" ></script>
-    <link rel="stylesheet" type="text/css" href="../Assets/css/food-shopping-cart.css" />
-    <script src="../Assets/js/food_shopping_cart.js"></script>
-</head>
+
+
 <main>
     <div class="container-fluid">
         <div class="page-header row">
@@ -28,17 +19,22 @@
             </div>
         <div class="row menu">
     <ul class="nav nav-tabs menu-nav col-md-12 col-sm-12 col-xs-12">
-        <li role="presentation" class="active"><a href="#">All Items</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
+        <li role="presentation" class="<?php if($page=="cart_list") echo "active";?>" onclick="Item()"><a href="index.php">All Items</a></li>
+        <li role="presentation"  class="<?php if($page=="instock") echo "active";?>" onclick="Instock()"><a href="?page=instock">Low stock</a></li>
+        <li role="presentation"  class="<?php if($page=="price") echo "active";?>" onclick="Price()"><a href="?page=price">Price reduction</a></li>
+        <div class="col-md-offset-8"><p class="navbar-text">Selected Food: $0.00</p>
+            <button type="button" class="btn btn-default navbar-btn">Settlement</button>
+        </div>
+
     </ul>
+
             </div>
-        <div class="table-responsive">
+        <div class="table-responsive" id="foods">
             <table class="table table-hover">
-                <thead><td><input type="checkbox" class="check"></td><td>Select all</td><td colspan="2">Food information</td><td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td></thead>
+                <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td><td colspan="2">Food information</td><td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td></thead>
                 <tr>
                   <td rowspan="4"><input type="checkbox" class="check"/> </td>
-                    <td rowspan="4"><a href="#"><img src="../Assets/image/food/food1.jpg" width="130" height="95"/></a></td><td rowspan="4">Good food</td><td rowspan="4">Catatory:</td>
+                    <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td><td rowspan="4">Good food</td><td rowspan="4">Catatory:</td>
                     <td rowspan="4">1.80</td>
 
 
@@ -51,7 +47,7 @@
                 <tr></tr>
                 <tr>
                     <td rowspan="4"><input type="checkbox" class="check"/> </td>
-                    <td rowspan="4"><a href="#"><img src="../Assets/image/food/food1.jpg" width="130" height="95" /></a></td><td rowspan="4">Good food</td><td rowspan="4">Catatory:</td>
+                    <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95" /></a></td><td rowspan="4">Good food</td><td rowspan="4">Catatory:</td>
                     <td rowspan="4">1.80</td>
 
 
@@ -61,6 +57,16 @@
                 </tr>
             </table>
         </div>
+        <div class="row">
+            <nav>
+                <ul class="pager">
+                    <li class="disabled"><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div></div>
     </div>
 </main>
-</html>
+
