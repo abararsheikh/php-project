@@ -17,4 +17,10 @@ abstract class Helper {
     return filter_input($method, $name, $filter);
   }
 
+  public static function startSession() {
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+  }
+
 }

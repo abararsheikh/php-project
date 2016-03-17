@@ -1,6 +1,9 @@
 {
   "name": "php-project",
   "version": "0.0.1",
+  "scripts": {
+    "bundle": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js"
+  },
   "devDependencies": {
     "babel-core": "^6.3.21",
     "babel-preset-es2015": "^6.3.13",

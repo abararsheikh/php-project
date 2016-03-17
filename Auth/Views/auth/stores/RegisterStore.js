@@ -18,6 +18,7 @@ let registerUser = (fields) => {
 };
 
 let checkAvailability = (name, value) => {
+  console.log(name, value);
   return $.ajax({
     method: 'POST',
     url: '/Auth/register/user',
