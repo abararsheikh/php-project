@@ -19,11 +19,13 @@ require_once"./libs/Session.php";
 //config file
 require_once"./config.php";
 
-
+require_once '../autoloader.php';
 //Use Router
+//session_start();
+//\Project\Auth\models\AuthModel::getUser();
+
+
 $app = new Router();
-
-
 //\Project\Auth\AuthModel::getUser()
 
 //DB INIT

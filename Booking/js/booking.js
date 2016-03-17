@@ -7,6 +7,7 @@ function init() {
     getRooms();
     getDate();
     getRuntime();
+    selectSeats();
 }
 
 function seatMap(){
@@ -31,7 +32,8 @@ function seatMap(){
                 var filmName = $("#film-title").text();
                 var CinemaName = $( ".cinemaNum option:selected" ).text();
                 var address = address[0];
-                createSeatMap(filmName, CinemaName, address,obj,Time,roomName);
+                createSeatMap(filmName, CinemaName, address,obj,Time,roomName)
+
             });
             var $seat = $("#seat");
 
@@ -59,10 +61,10 @@ function getRooms(){
     $(".cinemaNum").change(function(){
         var cinemaId = $(this).val();
         var filmId = $("#filmId").val();
-        var url = "./index.php?route=BookingController/chooseRoom/"+filmId+'/'+cinemaId;
+        var url = "/booking/index.php?route=BookingController/chooseRoom/"+filmId+'/'+cinemaId;
         console.log(url);
         $.get(url,function(data, status){
-           // console.log(data);
+            console.log(data);
            var obj = JSON.parse(data);
             createDropDownListRoom(obj);
 
@@ -171,7 +173,7 @@ function createSeatMap(filmName, CinemaName,address,obj,Time,roomName){
     for(var i=0; i<obj.length; i++){
         var reg = /\D*/;
 
-        //console.log(obj[i]);
+        console.log(obj[i]);
         var str = obj[i].Seat_Name;
         str = reg.exec(str);
         rows[i] =str[0];
@@ -181,15 +183,62 @@ function createSeatMap(filmName, CinemaName,address,obj,Time,roomName){
     $.each(rows, function(i, el){
         if($.inArray(el, row) === -1) row.push(el);
     });
-    console.log(row);
     var colNum =5;
-    createSeats(row,colNum,obj);
+    var seatsmap=createSeats(row,colNum,obj);
+    $("#seatsMap").html(seatsmap);
 }
 
 function createSeats(rows,colNum, obj){
+    var j=0;
+    var str="";
     for(var i=0; i<rows.length; i++){
-        
+        str+="<tr id="+"'"+rows[i]+"'"+">"+
+                "<td><em>"+rows[i]+"</em></td>"
+
+
+        for(var k=j; k<colNum; k++){
+            if(obj[k].available==='Y'){
+                str+="<td class="+"'"+"avalible"+"'"+">" +"<span class="+"'"+"seat"+"'"+">"
+                +"<input type="+"'"+"checkbox"+"'"+" id="+"'"+obj[k].Seat_Name+"'"+">"
+                +"<label for="+"'"+obj[k].Seat_Name+"'"+">"+"</label>"
+                +"</span>"
+                +"</td>";
+            }
+
+            if(obj[k].available==='N'){
+                str+="<td class="+"'"+"disable"+"'"+">" +"<span class="+"'"+"seat"+"'"+">"
+                    +"<input type="+"'"+"checkbox"+"'"+" id="+"'"+obj[k].Seat_Name+"'"+" disabled>"
+                    +"<label for="+"'"+obj[k].Seat_Name+"'"+">"+"</label>"
+                    +"</span>"
+                    +"</td>";
+            }
+        }
+        j=colNum;
+        colNum+=colNum;
+        str+="</tr>";
     }
+
+    return str;
+}
+
+function selectSeats(){
+    //var $selector = $(".seat").children("input[type=checkbox]");
+    //$selector.click();
+    $("#seatsMap").on("click","input:checkbox", function(){
+
+        $(this).parent().parent().toggleClass("current");
+        var idArr = $("#seatsMap").find('input[type="checkbox"]:checked').map(function(i, el) { return $(el).attr("id"); }).get();
+        var seatsNum=$("#seatsMap").find('input[type="checkbox"]:checked').length;
+
+        //console.log($("#seatsMap").find('input[type="checkbox"]:checked'));
+       var seatsID = idArr.join(" ");
+        console.log(seatsID);
+        var price=20;
+        var totalPrice = price*seatsNum;
+        $('#price').html(totalPrice);
+        $('#choosen_seats').html(seatsID);
+    });
+
 }
 init();
 

@@ -83,6 +83,10 @@ img{
     
 }
 
+#seat table tr td.current .seat label {
+    background: url('../image/seat-ic.png') no-repeat -16px 0px;
+
+}
 #seat table {
     margin:0 auto;
     

@@ -20,29 +20,29 @@
       <!--film name -->
        <div class="row">
           <div class="col-lg-12 title">
-           <h1>DEADPOOL (ATMOS) (A) <img class="concal" src="./Assets/image/seat-close.png"/></h1>
+           <h1>DEADPOOL (ATMOS) (A) <img class="concal" src="./image/seat-close.png"/></h1>
            
           </div> 
        </div>
        <!--film information-->
        <div class="row">
            <div class="col-lg-12">
-               <p id="OrderInfo">20 Feb 2016 14:00 | PVR Directors Cut, Vasant Kunj, Delhi</p>
+               <p id="OrderInfo"></p>
            </div>
            
        </div>
        
        <div class="row select-seats">
            <div class="col-sm-7">
-               <p>Please select your seats <span><img alt="arr pic" src="./Assets/image/screen-arr.png"/></span></p>
+               <p>Please select your seats <img alt="arr_pic" src="./image/screen-arr.png"/><span id="choosen_seats"></span></p>
            </div>
            
            <div class="col-sm-3">
-               <p>Total: $<span>1000</span></p>
+               <p>Total: $<span id="price"></span></p>
            </div>
            
            <div class="col-sm-2">
-               <button type="button" class="btn btn-default btn-booking">CHECKOUT<img alt="arr pic" src="./Assets/image/btn-arrow.png"/></button>
+               <button type="button" class="btn btn-default btn-booking">CHECKOUT<img alt="arr pic" src="./image/btn-arrow.png"/></button>
            </div>
        </div>
        <!--seats map-->
@@ -55,187 +55,12 @@
                       </tr>
                    </thead>
                    
-                   <tbody>
-                       <tr id="D">
-                          <td>
-                           <em>D</em>
-                          </td>
-                          
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D1" disabled="disabled">
-                                   <label for="D1"></label>
-                               </span>
-                           </td> 
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D2" disabled="disabled">
-                                   <label for="D2"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D3" disabled="disabled">
-                                   <label for="D3"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D4" disabled="disabled">
-                                   <label for="D4"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D5" disabled="disabled">
-                                   <label for="D5"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D6" disabled="disabled">
-                                   <label for="D6"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D7" disabled="disabled">
-                                   <label for="D7"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D8" disabled="disabled">
-                                   <label for="D8"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D9" disabled="disabled">
-                                   <label for="D9"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D10" disabled="disabled">
-                                   <label for="D10"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="disable">
-                               <span class="seat">
-                                  <input type="checkbox" id="D11" disabled="disabled">
-                                   <label for="D11"></label>
-                               </span>
-                           </td>
-                       </tr>
-                       
-                       <tr id="C">
-                          <td>
-                           <em>C</em>
-                          </td>
-                          
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C1" disabled="disabled">
-                                   <label for="C1"></label>
-                               </span>
-                           </td> 
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C2" disabled="disabled">
-                                   <label for="C2"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C3" disabled="disabled">
-                                   <label for="C3"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C4" disabled="disabled">
-                                   <label for="C4"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C5" disabled="disabled">
-                                   <label for="C5"></label>
-                               </span>
-                           </td>
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C6" disabled="disabled">
-                                   <label for="C6"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C7" disabled="disabled">
-                                   <label for="C7"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C8" disabled="disabled">
-                                   <label for="C8"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C9" disabled="disabled">
-                                   <label for="C9"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C10" disabled="disabled">
-                                   <label for="C10"></label>
-                               </span>
-                           </td>
-                           
-                           
-                           <td class="avalible">
-                               <span class="seat">
-                                  <input type="checkbox" id="C11" disabled="disabled">
-                                   <label for="C11"></label>
-                               </span>
-                           </td>
-                       </tr>
+                   <tbody id="seatsMap">
 
                    </tbody>
                   <tfoot>
                       <tr>
-                          <td colspan="12">SCREEN THIS WAY <span><img src="../Assets/image/screen-arr.png"/></span></td>
+                          <td colspan="12">SCREEN THIS WAY <span><img src="./image/screen-arr.png"/></span></td>
                       </tr>
                   </tfoot>
                </table>
