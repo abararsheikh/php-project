@@ -1,19 +1,7 @@
 
 <?php
-require('conn.php');
-if($_GET["act"]=="del"){
-  $sql="delete from zhaoadd where id=".$_GET["id"];
-    $result=$db->query($sql);
-	
-  if($result->execute() or die(error())){
-    echo  "<script language='javascript'>";
-    echo  "alert('Deleteed');";
-    echo  "location.href='addzhanshi.php';";
-    echo "</script>";
-  }
-}
 session_start();
-
+require('conn.php');
 
 
 
@@ -24,10 +12,10 @@ if($act=="search")
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select * from  zhaoadd order by id desc";
+  $sql="select * from  ceshi order by id desc";
 }
 $result=$db->query($sql)  or die("$sql");
-$amount=$result->rowCount($result);
+$amount=$result->rowCount();
 }
 if(isset($_GET["page"]))
 {
@@ -69,7 +57,7 @@ $PageCount=0;
 
 $Page_String="";
 if ($page==1){
-$Page_String.='First page|Previous|';
+$Page_String.='Next page|End page|';
 }
 else{
 
@@ -95,29 +83,42 @@ $num=$a
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Marger System</title>
 <link href="Css_Main.css" rel="stylesheet" type="text/css">
 
 </head>
-
+<script language="JavaScript">
+<!--
+function CheckAll(formall)
+  {
+  for (var i=0;i< formall.elements.length;i++)
+    {
+    var e = formall.elements[i];
+    if (e.name == 'delid')
+       e.checked = formall.chkall.checked;
+    }
+  }
+  
+  -->
+</script>
 <body>
 <table width="101%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr>
     <td class="title_dh"><div align="center">
-      <div align="center">Hire information</div>
+      <div align="center">Test result</div>
     </div></td>
   </tr>
+ 
 </table>
 
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr class="title_top">
-
-      <td width="20%"><div align="center">Hire Job</div></td>
-    <td width="20%"><div align="center">Limit time</div></td>
-	 <td width="20%"><div align="center">Hire number</div></td>
-	 <td width="20%"><div align="center">Requirement</div></td>
-	 <td width="20%"><div align="center">operate</div></td>
+    <td width="25%"><div align="center">Name</div></td>
+    <td width="25%"><div align="center">Question</div></td>
+	<td width="25%"><div align="center">Test2</div></td>
+	<td width="25%"><div align="center">Mark</div></td>
+   
   </tr>
 
 		  
@@ -131,11 +132,11 @@ if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  zhaoadd where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+  $sql="select * from  ceshi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  zhaoadd  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  ceshi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
 $result=$db->query($sql)  or die("$sql");
 
@@ -146,15 +147,12 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
 {
 ?> 
   <tr class="tdbg">
-    <td><div align="center"><?php echo $rs->zhiwei;?></div></td>
-     <td><div align="center"><?php echo $rs->qixian;?></div></td>
-	 <td><div align="center"><?php echo $rs->renshu;?></div></td>
-	  <td><div align="center"><?php echo $rs->yaoqiu;?></div></td>
-	   <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
- 
-	  
-
-	
+    <td>
+      <div align="center"><?php echo $rs->name;?></div></td>
+         <td><div align="center"><?php echo $rs->question1;?></div></td>
+	 <td><div align="center"><?php echo $rs->question2;?></div></td>
+	  <td><div align="center"><?php echo $rs->fenshu;?></div></td>
+	 	
 	</tr>
 <?php
  
@@ -166,7 +164,7 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="40">
-      <div align="center">		<label><?php echo $Page_String;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This<?php echo $page;?>Page&nbsp;&nbsp;All<?php echo $PageCount;?>page All<?php echo $amount;?>Message</label></div></td>
+      <div align="center">		<label><?php echo $Page_String;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This<?php echo $page;?>Page&nbsp;&nbsp;All<?php echo $PageCount;?>Page All<?php echo $amount;?>Message</label></div></td>
   </tr>
 </table>
 

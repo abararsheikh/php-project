@@ -6,8 +6,8 @@ if($act=='add')
 {
          
   $sql="insert into ceshi(wenti,answer1,answer2,answer3,answer4,rights,fenshu,name)values('".$_POST['wenti']."','".$_POST['answer1']."','".$_POST['answer2']."','".$_POST['answer3']."','".$_POST['answer4']."','".$_POST['rights']."','".$_POST['fenshu']."','".$_POST['name']."')";
-
-  if(mysql_query($sql) or die(mysql_error()))
+   $result=$db->query($sql);
+  if($result->execute() )
   {
 
     echo  "<script language='javascript'>";

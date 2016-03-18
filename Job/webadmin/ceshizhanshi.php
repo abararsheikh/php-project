@@ -2,6 +2,16 @@
 <?php
 session_start();
 require('conn.php');
+if($_GET["act"]=="del"){
+  $sql="delete from ceshi where id=".$_GET["id"];
+  $result=$db->query($sql);
+  if($result->execute() or die(error())){
+    echo  "<script language='javascript'>";
+    echo  "alert('Deleted');";
+    echo  "location.href='ceshizhanshi.php';";
+    echo "</script>";
+  }
+}
 
 
 
@@ -12,9 +22,9 @@ if($act=="search")
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select * from  xinxi order by id desc";
+  $sql="select * from  ceshi order by id desc";
 }
-$result=$db->query($sql)  or die("NoworkSQL：$sql");
+$result=$db->query($sql)  or die("cannorworkSQL：$sql");
 $amount=$result->rowCount();
 }
 if(isset($_GET["page"]))
@@ -106,38 +116,22 @@ function CheckAll(formall)
 <table width="101%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr>
     <td class="title_dh"><div align="center">
-      <div align="center">Hire infomation</div>
+      <div align="center">Information</div>
     </div></td>
   </tr>
-  <form action="?action=search" method="post" name="form">
-  <tr>
-    <td class="tdbg"><div align="left"><strong>Seach：</strong>      
-&nbsp;
-
-&nbsp;&nbsp;Keyword：
-<input name="keywords" type="text" id="Keyword" size="20" >
-&nbsp;&nbsp;
-<select name="type">
-<option value="tel">Phone</option>
-<option value="name">Name</option>
-</select>&nbsp;&nbsp;
-<input name="Submit" type="submit" id="Submit" value="Seach">
-    </div></td>
-  </tr></form>
 </table>
 
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr class="title_top">
-    <td width="5%"><div align="center">Name</div></td>
-    <td width="5%" align="center">Phone</td>
-    <td width="5%"><div align="center">Sex</div></td>
-	 <td width="5%"><div align="center">Marry</div></td>
-	 <td width="5%"><div align="center">Birthday</div></td>
-     <td width="5%"><div align="center">Date of gradute</div></td>
-    <td width="7%"><div align="center">Gradute school</div></td>
-    <td width="7%"><div align="center">Background</div></td>
-	 <td width="7%"><div align="center">Mark</div></td>
-	 <td width="14%"><div align="center">Detailed</div></td>
+    <td width="5%"><div align="center">Title</div></td>
+    <td width="6%" align="center">option1</td>
+    <td width="8%"><div align="center">option2</div></td>
+	 <td width="8%"><div align="center">option3</div></td>
+	 <td width="8%"><div align="center">option4</div></td>
+      <td width="8%"><div align="center">Anwser</div></td>
+    <td width="8%"><div align="center">Mark</div></td>
+	 <td width="8%"><div align="center">Name</div></td>
+	 <td width="8%"><div align="center">Operate</div></td>
 
   </tr>
 
@@ -152,13 +146,13 @@ if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  xinxi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+  $sql="select * from  ceshi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  xinxi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  ceshi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
-$result=$db->query($sql)  or die("NoworkSQL：$sql");
+$result=$db->query($sql)  or die("NOworkSQL：$sql");
 
 
 while($rs=$result->fetchObject())
@@ -168,17 +162,17 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
 ?> 
   <tr class="tdbg">
     <td>
-      <div align="center"><?php echo $rs->name;?></div></td>
-         <td><div align="center"><?php echo $rs->tel;?></div></td>
-	 <td><div align="center"><?php echo $rs->xingbie;?></div></td>
-	  <td><div align="center"><?php echo $rs->hunfou;?></div></td>
+      <div align="center"><?php echo $rs->wenti;?></div></td>
+         <td><div align="center"><?php echo $rs->answer1;?></div></td>
+	 <td><div align="center"><?php echo $rs->answer2;?></div></td>
+	  <td><div align="center"><?php echo $rs->answer3;?></div></td>
 	     <td>
-      <div align="center"><?php echo $rs->chusheng;?></div></td>
-         <td><div align="center"><?php echo $rs->biyetime;?></div></td>
-	 <td><div align="center"><?php echo $rs->biyeschool;?></div></td>
-      <td><div align="center"><?php echo $rs->xueli;?></div></td>
-	        <td><div align="center"><?php echo $rs->fenshu;?></div></td>
-      <td><div align="center"><?php echo $rs->xiandxi;?></div></td>
+      <div align="center"><?php echo $rs->answer4;?></div></td>
+         <td><div align="center"><?php echo $rs->fenshu;?></div></td>
+	 <td><div align="center"><?php echo $rs->rights;?></div></td>
+      <td><div align="center"><?php echo $rs->name;?></div></td>
+	        <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
+ 
 	  
 
 	
