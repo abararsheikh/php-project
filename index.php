@@ -5,7 +5,7 @@ use Project\Classes\View;
 include_once 'autoloader.php';
 
 Nav::group('/ as Homepage', function () {
-  Nav::get('/ as Home', function () { echo 'homepage'; });
+  Nav::get('/ as Home', function () { /*echo 'homepage';*/ });
   Nav::get('/cinemas as Cinemas', function () { echo 'cinemas'; });
   Nav::get('/movies as Movies', function () { echo 'movies'; });
   Nav::get('/booking as Booking', function () { echo 'booking'; });
@@ -53,12 +53,14 @@ $navTemplate = [
       <a class="navbar-brand" href="#">Cinema</a>
     </div>
 
+    <div id="login"></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <?php Nav::drawMenu('Homepage', $navTemplate); ?>
 
       <!--   search   -->
       <form class="navbar-form navbar-right" role="search">
+
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
@@ -289,5 +291,6 @@ $navTemplate = [
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="Assets/js/bootstrap.min.js"></script>
+<script src="Assets/js/authApp.js"></script>
 </body>
 </html>

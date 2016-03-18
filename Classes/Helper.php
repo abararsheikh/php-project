@@ -13,4 +13,8 @@ abstract class Helper {
     return strpos($pathAsName, ' as ') ? explode(' as ', $pathAsName) : [$pathAsName, null];
   }
 
+  public static function getParam($name, $method = INPUT_POST, $filter=FILTER_SANITIZE_ENCODED) {
+    return filter_input($method, $name, $filter);
+  }
+
 }

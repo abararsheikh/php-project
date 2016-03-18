@@ -11,7 +11,7 @@ $(document).ready(
               $(this).css("left","75%");
               $(this).next().next().css("position","absolute");
               $(this).next().next().css("top","40%");
-              $(this).next().next().css("left","43%");
+              $(this).next().next().css("left","35%");
           },function(){
 
 
@@ -21,15 +21,15 @@ $(document).ready(
           function(){
               $(this).prev().prev().css('opacity','0.5');
               $(this).css("position","absolute");
-              $(this).css("top","30%");
-              $(this).css("left","42%");
+              $(this).css("top","25%");
+              $(this).css("left","32%");
 
               $(this).prev().css("position","absolute");
               $(this).prev().css("top","70%");
               $(this).prev().css("left","75%");
               $(this).next().css("position", "absolute");
               $(this).next().css("top","40%");
-              $(this).next().css("left","43%");
+              $(this).next().css("left","35%");
           },function(){
 
 
@@ -43,7 +43,7 @@ $(document).ready(
               $(this).next().css("left","75%");
               $(this).next().next().next().css("position","absolute");
               $(this).next().next().next().css("top","40%");
-              $(this).next().next().next().css("left","43%");
+              $(this).next().next().next().css("left","35%");
 
           },function(){
               $(this).css('opacity','1');
@@ -56,8 +56,8 @@ $(document).ready(
       $(".menu img").hover(
           function(){
               $(this).next().next().css("position","absolute");
-           $(this).next().next().css("top","30%");
-              $(this).next().next().css("left","42%");
+           $(this).next().next().css("top","25%");
+              $(this).next().next().css("left","32%");
           },
           function(){
               $(this).next().next().css("position","absolute");
@@ -77,14 +77,14 @@ $(document).ready(
           function() {
               $(this).css("position", "absolute");
               $(this).css("top","40%");
-              $(this).css("left","43%");
+              $(this).css("left","35%");
               $(this).prev().prev().prev().css('opacity','0.5');
               $(this).prev().prev().css("position","absolute");
               $(this).prev().prev().css("top","70%");
               $(this).prev().prev().css("left","75%");
               $(this).prev().css("position","absolute");
-              $(this).prev().css("top","30%");
-              $(this).prev().css("left","42%");
+              $(this).prev().css("top","25%");
+              $(this).prev().css("left","32%");
 
           }
       );

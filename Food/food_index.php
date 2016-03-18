@@ -249,9 +249,13 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="col-md-4 col-sm-6 row image1 image ">
                 <div class="image3 img-rounded">
                     <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+=======
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food2.jpg" class="img-responsive img-rounded" width="225" height="180"/>
+>>>>>>> e7a7b0b3f405e0aeea750da7140b20a8a835b79e
 
                     <button type="button" class="btn btn-default plus btn-sm">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -260,9 +264,13 @@
                     <button type="button" class="btn btn-default btn-sm view">View Detail</button>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="col-md-4 col-sm-6 row image1 image ">
                 <div class="image3 img-rounded">
                     <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+=======
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food3.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
+>>>>>>> e7a7b0b3f405e0aeea750da7140b20a8a835b79e
 
                     <button type="button" class="btn btn-default plus btn-sm">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -271,9 +279,13 @@
                     <button type="button" class="btn btn-default btn-sm view">View Detail</button>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="col-md-4 col-sm-6 row image1 image ">
                 <div class="image3 img-rounded">
                     <img src="../Assets/image/food/food1.jpg" class="img-responsive img-rounded" />
+=======
+            <div class="col-sm-2 col-md-2  image"><img src="/Assets/image/food/food4.jpg"  class="img-responsive img-rounded" width="225" height="180"/>
+>>>>>>> e7a7b0b3f405e0aeea750da7140b20a8a835b79e
 
                     <button type="button" class="btn btn-default plus btn-sm">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -298,6 +310,7 @@
 
             </div>-->
         <div class="row">
+
             <nav class="col-md-offset-6 col-sm-offset-6 col-xs-offset-3">
                 <ul class="pagination">
                     <li class="disabled">
@@ -327,6 +340,7 @@
                     </li>
                 </ul>
             </nav>
+
         </div>
     </div>
 
