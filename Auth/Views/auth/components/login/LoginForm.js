@@ -23,7 +23,7 @@ export default class LoginForm extends React.Component {
               placeholder="Password here.."/>
           <p>{this.props.errorMsg}</p>
           <div className="col-sm-4 col-sm-offset-4">
-            <button type="submit" className="btn btn-block">Login</button>
+            <button type="submit" className="btn btn-block btn-default">Login</button>
             <a href="/Auth/login/github" className="btn btn-block btn-social btn-github">
               <span className="fa fa-github"></span>sign in with github
             </a>

@@ -6,7 +6,8 @@ if($act=='add')
 {
          
   $sql="insert into zhaoadd(qixian,renshu,yaoqiu,zhiwei)values('".$_POST['qixian']."','".$_POST['renshu']."','".$_POST['yaoqiu']."','".$_POST['zhiwei']."')";
-  if(mysql_query($sql))
+  $result=$db->query($sql);
+  if($result->execute())
   {
     echo  "<script language='javascript'>";
     echo  "alert('Sumbit success');";
@@ -68,19 +69,19 @@ function  Check_stu()
     <td colspan="2"><div align="center">Add Hire information</div></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Job titleï¼š</strong></div></td>
+    <td width="20%"><div align="right"><strong>Job titleï¼?/strong></div></td>
     <td><input name="zhiwei" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Limit timeï¼š</strong></div></td>
+    <td width="20%"><div align="right"><strong>Limit timeï¼?/strong></div></td>
     <td><input name="qixian" type="text"  size="40"></td>
   </tr>
     <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Hire numberï¼š</strong></div></td>
+    <td width="20%"><div align="right"><strong>Hire numberï¼?/strong></div></td>
     <td><input name="renshu" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="40%"><div align="right"><strong>Hire requirementï¼š</strong></div></td>
+    <td width="40%"><div align="right"><strong>Hire requirementï¼?/strong></div></td>
     <td><textarea name="yaoqiu" rows="5" cols="36"></textarea></td>
   </tr>
     

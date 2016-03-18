@@ -12,9 +12,9 @@ if($act=="search")
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select * from  xinxi order by id desc";
+  $sql="select * from  ceshi order by id desc";
 }
-$result=$db->query($sql)  or die("NoworkSQL：$sql");
+$result=$db->query($sql)  or die("$sql");
 $amount=$result->rowCount();
 }
 if(isset($_GET["page"]))
@@ -57,7 +57,7 @@ $PageCount=0;
 
 $Page_String="";
 if ($page==1){
-$Page_String.='First page|Previous|';
+$Page_String.='Next page|End page|';
 }
 else{
 
@@ -92,7 +92,7 @@ $num=$a
 <!--
 function CheckAll(formall)
   {
-  for (var i=0;i<formall.elements.length;i++)
+  for (var i=0;i< formall.elements.length;i++)
     {
     var e = formall.elements[i];
     if (e.name == 'delid')
@@ -106,39 +106,19 @@ function CheckAll(formall)
 <table width="101%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr>
     <td class="title_dh"><div align="center">
-      <div align="center">Hire infomation</div>
+      <div align="center">Test result</div>
     </div></td>
   </tr>
-  <form action="?action=search" method="post" name="form">
-  <tr>
-    <td class="tdbg"><div align="left"><strong>Seach：</strong>      
-&nbsp;
-
-&nbsp;&nbsp;Keyword：
-<input name="keywords" type="text" id="Keyword" size="20" >
-&nbsp;&nbsp;
-<select name="type">
-<option value="tel">Phone</option>
-<option value="name">Name</option>
-</select>&nbsp;&nbsp;
-<input name="Submit" type="submit" id="Submit" value="Seach">
-    </div></td>
-  </tr></form>
+ 
 </table>
 
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr class="title_top">
-    <td width="5%"><div align="center">Name</div></td>
-    <td width="5%" align="center">Phone</td>
-    <td width="5%"><div align="center">Sex</div></td>
-	 <td width="5%"><div align="center">Marry</div></td>
-	 <td width="5%"><div align="center">Birthday</div></td>
-     <td width="5%"><div align="center">Date of gradute</div></td>
-    <td width="7%"><div align="center">Gradute school</div></td>
-    <td width="7%"><div align="center">Background</div></td>
-	 <td width="7%"><div align="center">Mark</div></td>
-	 <td width="14%"><div align="center">Detailed</div></td>
-
+    <td width="25%"><div align="center">Name</div></td>
+    <td width="25%"><div align="center">Question</div></td>
+	<td width="25%"><div align="center">Test2</div></td>
+	<td width="25%"><div align="center">Mark</div></td>
+   
   </tr>
 
 		  
@@ -152,13 +132,13 @@ if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  xinxi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+  $sql="select * from  ceshi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  xinxi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  ceshi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
-$result=$db->query($sql)  or die("NoworkSQL：$sql");
+$result=$db->query($sql)  or die("$sql");
 
 
 while($rs=$result->fetchObject())
@@ -169,25 +149,16 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
   <tr class="tdbg">
     <td>
       <div align="center"><?php echo $rs->name;?></div></td>
-         <td><div align="center"><?php echo $rs->tel;?></div></td>
-	 <td><div align="center"><?php echo $rs->xingbie;?></div></td>
-	  <td><div align="center"><?php echo $rs->hunfou;?></div></td>
-	     <td>
-      <div align="center"><?php echo $rs->chusheng;?></div></td>
-         <td><div align="center"><?php echo $rs->biyetime;?></div></td>
-	 <td><div align="center"><?php echo $rs->biyeschool;?></div></td>
-      <td><div align="center"><?php echo $rs->xueli;?></div></td>
-	        <td><div align="center"><?php echo $rs->fenshu;?></div></td>
-      <td><div align="center"><?php echo $rs->xiandxi;?></div></td>
-	  
-
-	
+         <td><div align="center"><?php echo $rs->question1;?></div></td>
+	 <td><div align="center"><?php echo $rs->question2;?></div></td>
+	  <td><div align="center"><?php echo $rs->fenshu;?></div></td>
+	 	
 	</tr>
 <?php
  
  }}
 
- az
+
  ?>
 </table>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">

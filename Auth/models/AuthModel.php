@@ -4,6 +4,7 @@ namespace Project\Auth\models;
 
 use \Project\Classes\DB\DB as DB;
 use \PDO;
+use Project\Classes\Helper;
 
 // TODO: config
 /**
@@ -15,9 +16,7 @@ class AuthModel {
 
   public function __construct() {
     $this->db = DB::getDB();
-    if (session_status() == PHP_SESSION_NONE) {
-      session_start();
-    }
+    Helper::startSession();
   }
 
   // New user
@@ -71,7 +70,7 @@ class AuthModel {
     session_destroy();
   }
   public function checkAvailability($name, $value) {
-    $col = ['username'=>'username', 'password' => 'password'];
+    $col = ['username'=>'username', 'password' => 'password', 'email' => 'email'];
     $sql = "SELECT * FROM users WHERE $col[$name]";
     $stmt = $this->db->prepare($sql . ' = :colValue');
     $stmt->bindParam(':colValue', $value, PDO::PARAM_STR);
@@ -95,7 +94,7 @@ class AuthModel {
   // Static functions
   // Returns user information, false if user is not logged in
   public static function getUser($key = 'username') {
-    if(!session_status() == PHP_SESSION_ACTIVE) session_start();
+    Helper::startSession();
     return isset($_SESSION['user']) ? $_SESSION['user'][$key] : false;
   }
 
