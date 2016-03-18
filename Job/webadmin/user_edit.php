@@ -5,7 +5,8 @@ if($act=='edit')
 {
 
   $sql="update user set name='".$_POST['name']."',email='".$_POST['email']."',qq='".$_POST['qq']."',tel='".$_POST['tel']."' where id=".$_GET["id"];
-  if(mysql_query($sql))
+  $result=$db->query($sql);
+  if($result->execute())
   {
     echo  "<script language='javascript'>";
     echo  "alert('sumbit success');";
@@ -14,8 +15,8 @@ if($act=='edit')
   }
 }
 $sqls="select * from user where id=".$_GET['id'];
-$results=mysql_query($sqls);
-$rss=mysql_fetch_array($results);
+$results=$db->query($sqls);
+$rss=$results->fetch();
 ?>
 <html>
 <head>
@@ -42,7 +43,7 @@ function  Check_stu()
 	 {   alert("Enter your Phone");
 		document.form1.tel.focus();
 		return false;
-	 } 
+	 }
 }
 </script>
 <body>
@@ -56,7 +57,7 @@ function  Check_stu()
   <tr class="title_top">
     <td colspan="2"><div align="center">Modify information </div></td>
   </tr>
-  
+
 
   <tr class="tdbg">
     <td width="20%"><div align="right"><strong>Name*：</strong></div></td>
@@ -73,9 +74,9 @@ function  Check_stu()
    <tr class="tdbg">
     <td width="20%"><div align="right"><strong>Phone*：</strong></div></td>
     <td><input name="tel" type="text"  size="25" value="<?php echo $rss["tel"];?>"></td>
-  </tr>  
+  </tr>
 
-  
+
 </table>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>

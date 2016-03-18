@@ -1,16 +1,238 @@
 main{
-    background-color:black;
+    background-color:white;
+    margin:0;
+    padding:0;
+}
+.foods{
+    margin-bottom: 20px;
 }
 .image{
     padding:0;
-    margin:0;
+
+margin-bottom:30px;
+
+}
+img{
+    margin:0 auto;
+    padding:0;
+    display: block;
+
 }
 .menu{
-  float: left;
+margin-top:30px;
+
+
 }
 .ctlist{
- width: 30%;
-    height:20%;
 
-float: left;
+
+margin-top: 30px;
+
+}
+.catagory{
+    width: 100%;
+    font-size: large;
+    color:firebrick;
+    font-weight: 800;
+}
+.cfont{
+    color:firebrick;
+    text-decoration: none;
+    font-family: "Bookman Old Style";
+    padding:15px;
+}
+@media (min-width: 768px) {
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+    }
+    .sidebar-nav .navbar ul:not {
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}
+.cart{
+    display: inline-block;
+
+}
+.order{
+    height: 45px;
+}
+.menu img:hover{
+
+
+    opacity:0.5;
+}
+#rate img:hover{
+
+
+    opacity:0.5;
+}
+.image1{
+
+
+
+    margin:auto;
+
+}
+
+
+div h3{
+    text-align: center;
+}
+.image2{
+    background-color: black;
+    width:220px;
+    height:147px;
+    margin:0 auto;
+}
+.search-form .form-group {
+    float: right !important;
+    transition: all 0.35s, border-radius 0s;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+.search-form .form-group input.form-control {
+    padding-right: 20px;
+    border: 0 none;
+    background: transparent;
+    box-shadow: none;
+    display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+    display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+    /* Firefox 18- */
+    display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+    /* Firefox 19+ */
+    display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+    display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+    width: 100%;
+    border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+    position: absolute;
+    top: -1px;
+    right: -2px;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #3596e0;
+    left: initial;
+    font-size: 14px;
+}
+.line{
+    height:2px;
+    width:100%;
+    background-color: black;
+
+}
+.nav-pagination nav{
+    width: 100%;
+}
+.pagination{
+    margin:0 auto;
+}
+.plus{
+    position: absolute;
+    top:-10000px;
+
+   border-radius: 50%;
+    border:0;
+    background-color: salmon;
+
+}
+.plus span{
+    border-color: white;
+    margin: 0 auto;
+    text-align: center;
+}
+.plus:hover{
+    background-color:white;
+
+}
+.menu img:hover + .plus{
+    position: relative;
+    top:90%;
+    left:90%;
+}
+.plus:hover{
+    top:90%;
+    left:90%;
+}
+.food_title,.view{
+    position: absolute;
+    top:-10000px;
+
+}
+.food_title{
+    font-size: large;
+    font-weight: 800;
+    color:white;
+}
+.view{
+    background-color: transparent;
+    border-color: white;
+    color:white;
+}
+.image3{
+    width: 90%;
+    margin:auto;
+
+    background-color: black;
+}
+@media only screen and (max-width: 768px){
+    .image3{
+
+    }
+}
+
+.test1{
+width:200px;
+    height: 150px;
+    margin:0 auto;
+
+}
+.test1 img{
+    margin:auto;
+
+}
+.test{
+    margin-bottom: 30px;
+}
+.thumbnail{
+    padding: 0;
+    background-color: black;
+    margin-left: 0;
+    margin-right: 0;
+}
+.thumbnail img{
+    margin-right: 0;
+    margin-left: 0;
+    width:100%;
 }

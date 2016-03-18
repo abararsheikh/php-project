@@ -1,5 +1,5 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Career</title>
@@ -42,10 +42,10 @@
       <p class="STYLE1">&nbsp; </p>
       <p>&nbsp;</p>
     <p>&nbsp;</p>      <p>&nbsp;</p></td>
-    <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Career</p>
-      <p><strong>Seach：
+    <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Web develope</p>
+      <p><strong>Seach Job：
         <input type="text" name="neirong"/>
-            <input name="submit" type="submit" value="提交搜索" />
+            <input name="submit" type="submit" value="submit seach" />
     </strong></p></td>
   </tr>
   <tr>
@@ -59,16 +59,17 @@ require('conn.php');
 
 
 $PageSize=10;
-$act=$_GET["action"];
+$act=isset($_GET["action"])?$_GET["action"]:'';
+$sql="select count(*) from  zhaoadd order by id desc";
 if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select * from  zhaoadd order by id desc";
+  $sql="select count(*) from  zhaoadd order by id desc";
 }
-$result=mysql_query($sql)  or die("无法执行SQL：$sql");
-$amount=mysql_num_rows($result);
+$result=$db->query($sql)  or die("$sql");
+$amount=$result->rowCount ;
 }
 if(isset($_GET["page"]))
 {
@@ -110,25 +111,26 @@ $PageCount=0;
 
 $Page_String="";
 if ($page==1){
-$Page_String.='First page|Previous Page|';
+$Page_String.='First|Previous |';
 }
 else{
 
-$Page_String.='<a href=?page=1>First Page</a>|<a href=?page='.($page-1).'>Previous Page</a>|';
+$Page_String.='<a href=?page=1>第一页</a>|<a href=?page='.($page-1).'>Last page</a>|';
 
 }
 
 if(($page==$PageCount)||($PageCount==0)){
 
 
-$Page_String.='Next Page|Last Page|';
+$Page_String.='Next page|End page|';
 
 }
 else{
 
-$Page_String.='<a href=?page='.($page+1).'>Next Page</a>|<a href=?page='.$PageCount.'>Last Page</a>';
+$Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCount.'>End page</a>';
 
-}mount-($page-1)*$PageSize;
+}
+$mount-($page-1)*$PageSize;
 $num=$a
 
 
@@ -149,10 +151,10 @@ else
 {
    $sql="select * from  zhaoadd  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
-$result=mysql_query($sql)  or die("无法执行SQL：$sql");
+$result=$db->query($sql)  or die("$sql");
 
 
-while($rs=mysql_fetch_object($result))
+while($rs=$result->fetchObject())
 {
 
 
@@ -167,7 +169,7 @@ while($rs=mysql_fetch_object($result))
           <td width="738" align="left"><?php echo $rs->renshu;?>&nbsp;</td>
         </tr>
         <tr>
-          <td><p>Requirtment:</p></td>
+          <td><p>Requirement:</p></td>
           <td width="738" align="left"><?php echo $rs->yaoqiu;?>&nbsp;</td>
 	  
         </tr>
@@ -181,16 +183,14 @@ while($rs=mysql_fetch_object($result))
       </td>
   </tr>
   <tr>
-    <td height="139" font-size:"20" bgcolor="#CCCCCC"><div  id="output"><a href="xiangxi.php" class="STYLE2">点击申请加入>></a></div></td>
+    <td height="139" font-size:"20" bgcolor="#CCCCCC"><div  id="output"><a href="xiangxi.php" class="STYLE2">Apply right now>></a></div></td>
   </tr>
   
    
 </table>	
 <p>&nbsp;</p>
-    
 		  		</div>
 	</div>
 
 </body>
 </html>
-
