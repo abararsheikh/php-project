@@ -27,7 +27,7 @@ class FileOperation {
     }
 
     /*
-     * get file information and change it to object.
+     * get file information and change it to array.
      */
 
     public function parseInfo($file){

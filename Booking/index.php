@@ -10,6 +10,7 @@
 //Model
 require_once"./Model/TopRateModel.php";
 require_once"./Model/FilmBookingModel.php";
+require_once"./Model/ShoppingCart.php";
 //Libs
 require_once"./libs/Router.php";
 require_once"./libs/PDOOperation.php";
@@ -21,8 +22,8 @@ require_once"./config.php";
 
 require_once '../autoloader.php';
 //Use Router
-//session_start();
-//\Project\Auth\models\AuthModel::getUser();
+session_start();
+
 
 
 $app = new Router();

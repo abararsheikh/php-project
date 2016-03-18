@@ -90,6 +90,7 @@ class PDOOperation{
                     $this->statement = $this->pdo->prepare($query);
                         $this->bindParam($para);
                         $this->statement->execute();
+                        return true;
 
                 } catch (PDOException $e) {
                     $error_message = $e->getMessage();

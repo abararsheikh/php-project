@@ -24,6 +24,10 @@
            
           </div> 
        </div>
+         <form method="post" action=".">
+             <input type="hidden" name="route" value="DetailController/index"/>
+             <input id="bookingInfo" type="hidden" name="OrderInfo" value=""/>
+             <input id="seatsNums" type="hidden" name="seatsNums" value=""/>
        <!--film information-->
        <div class="row">
            <div class="col-lg-12">
@@ -42,7 +46,7 @@
            </div>
            
            <div class="col-sm-2">
-               <button type="button" class="btn btn-default btn-booking">CHECKOUT<img alt="arr pic" src="./image/btn-arrow.png"/></button>
+               <button type="submit" class="btn btn-default btn-booking">CHECKOUT<img alt="arr pic" src="./image/btn-arrow.png"/></button>
            </div>
        </div>
        <!--seats map-->
@@ -78,10 +82,9 @@
       </section>
       
       <section id="film-info" class="container">
-          <form method="post" action=".">
+
               <div class="row">
 
-                <input type="hidden" name="route" value="BookingController/chooseRoom/3/1"/>
                 <input id="filmId" type="hidden" name="filmId" value="<?php echo $filmId?>" />
 
 

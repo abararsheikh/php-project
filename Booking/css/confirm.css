@@ -137,3 +137,19 @@ img{
 .draggable{
     
 }
+
+#booking-detail .btn-booking{
+    background-color:#ff6666;
+    border-radius: 0;
+    color:#ffffff;
+    border: none;
+    font-size: 16px;
+    font-family: 'Archivo Narrow', sans-serif;
+    padding: 6px 12px;
+    text-transform: capitalize;
+    display: inline-block;
+    margin-bottom:20px;
+    margin-right:20px;
+
+}
+

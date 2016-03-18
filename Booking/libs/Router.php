@@ -12,7 +12,8 @@
 //            echo "This is Router";
             $this->routeArray=[
                 "HomePageController"=>["index","postToBooking"],
-                "BookingController"=>["index","chooseRoom","chooseDate","chooseTime","chooseSeats"]
+                "BookingController"=>["index","chooseRoom","chooseDate","chooseTime","chooseSeats"],
+                "DetailController"=>["index"]
             ];
             $this->route();
         }

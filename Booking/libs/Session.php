@@ -9,13 +9,12 @@ class Session
 {
     public $data = array();
 
-    public function __construct( $session_id='',$key = 'default')
+    public function __construct( $key = 'default')
     {
-        
-        session_start();
 
-        if ($session_id) {
-            session_id($session_id);
+        if(!session_id()) {
+
+            session_start();
         }
 
         if (!isset($_SESSION[$key])) {

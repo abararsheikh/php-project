@@ -103,6 +103,12 @@ class FilmBookingModel extends TopRateModel{
         return $Booking;
     }
 
+    function updateSeats($para, $query){
+        $db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
+
+        $result = $db->execute($query,$para);
+    }
+
 }
 
 ?>
