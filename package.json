@@ -2,7 +2,9 @@
   "name": "php-project",
   "version": "0.0.1",
   "scripts": {
-    "bundle": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js"
+    "bundle-auth": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js",
+    "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js"
+
   },
   "devDependencies": {
     "babel-core": "^6.3.21",

@@ -23,10 +23,12 @@ export default class RegisterForm extends React.Component {
               email={this.props.fields.email}
               onChange={this.props.onChange}
           />
-          <button
-              disabled={this.props.fields.allValid ? '' : 'disabled'}
-              type="submit" name="register" className="btn btn-success">Register
-          </button>
+          <div className="col-sm-4 col-sm-offset-4">
+            <button
+                disabled={this.props.fields.allValid ? '' : 'disabled'}
+                type="submit" name="register" className="btn btn-block btn-success">Register
+            </button>
+          </div>
           <p>{this.props.fields.submissionInfo}</p>
         </form>
     )
