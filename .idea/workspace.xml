@@ -2,494 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec62619e-873c-4c89-a286-c568fb06533d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/image/job/pic1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/image/job/pic2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/image/job/pic3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/TheRevenant.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/Tshirt01.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/Tshirt02.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/Tshirt03.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/Tshirt05.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/Tshirt06.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/Tshirt4.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/arrow-highlight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/btn-arrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/deadpool.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/food/food1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/food/food2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/food/food3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/food/food4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/ic_arrwnext.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/ic_arrwprev.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/kongfupanda.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/logo/logo6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/screen-arr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/seat-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/seat-ic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/slide.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/starwar.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/image/stevejobs.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/TeamBARLY.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/TheRevenant.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/HO00009182.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/StaticMapService.GetMapImage" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/book-ticketbanner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/btn-arrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/modal-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/screen-arr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/seat-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/sold.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/wednesday-offer.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/Tshirt01.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/Tshirt02.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/Tshirt03.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/Tshirt05.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/Tshirt06.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/Tshirt4.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/arrow-highlight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/book-ticketbanner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/btn-arrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/deadpool.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/food/food1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/food/food2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/food/food3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/food/food4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/kongfupanda.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/logo/logo6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/screen-arr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/seat-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/seat-ic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/slide.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/starwar.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/stevejobs.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/TheRevenant.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/arrow-highlight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/book-ticketbanner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/btn-arrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/deadpool.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/kongfupanda.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/screen-arr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/seat-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/seat-ic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/slide.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/starwar.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/HomePage/stevejobs.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/Tshirt/Tshirt01.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/Tshirt/Tshirt02.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/Tshirt/Tshirt03.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/Tshirt/Tshirt05.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/Tshirt/Tshirt06.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/Tshirt/Tshirt4.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/food/food1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/food/food2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/food/food3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/food/food4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/job/pic1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/job/pic2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/job/pic3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/image/logo/logo6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/img/pic1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/img/pic2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/img/pic3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/css/bootstrap-social.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/js/authApp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/js/job/11-2-routing.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/js/job/feedback.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/js/job/job.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/actions/AppActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/actions/RegisterActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/AuthApp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/Input.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/login/LoggedIn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/login/LoginApp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/login/LoginForm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/passStrength/Strength.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/register/Email.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/register/Password.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/register/RegisterApp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/register/RegisterForm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/register/Username.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/constants/AppConstants.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/constants/RegisterConstants.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/dispatcher/AppDispatcher.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/stores/AppStore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/stores/RegisterStore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/controllers/AuthController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/controllers/OAuthController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/models/AuthModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/models/GitHub.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/models/OAuthModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/Controller/BookingController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/Controller/HomePageController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/Model/FilmBookingModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/Model/TopRateModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/View/Booking.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/View/Comfirm.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/View/Error404.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/View/HomePage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/View/HomePage1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/View/HomePage1.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/booking.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/chooseSeat.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/confirm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/food-index.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/slick.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/files/film1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/files/film2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/files/film3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/files/film4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/files/film5.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/booking.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/draganddrop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/draganddrop1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/drop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/homepage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/js/slick.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/libs/FileOperation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/libs/PDOOperation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/libs/Router.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Booking/libs/Session.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/Config/OAuthInfo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/DB/DB.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/DB/DbConfig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Classes/Request.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Admin/admin.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/chooseSeat.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/confirm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/food-index.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/AuthenticationService.Authenticate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/QuotaService.RecordEvent" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/ViewportInfoService(1).GetViewportInfo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/ViewportInfoService.GetViewportInfo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/all.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/embed.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/engine.js+util.js+interface,_dwrService.js,qv==1.pagespeed.jc.J41ZKR_W16.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/moviesessions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/ping.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/seatlayout.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/xd_arbiter(1).html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/xd_arbiter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/draganddrop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/draganddrop1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/drop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/footer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/header.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/Controller.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/Helper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/Router/Nav.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/Router/Route.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/Router/Router.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/Router/example.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/View.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Job/feedback.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Job/feedback.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Job/job.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Job/jobinformation.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Job/jobpost.htm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/autoloader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docs/phase one/submission/php_project .sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/booking.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/chooseSeat.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/confirm.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/food-index.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/draganddrop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/draganddrop1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/drop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/job/11-2-routing.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/job/feedback.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/job/job.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/Assets/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/add_movie.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/add_movie_form.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/database.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/delete_movie.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/edit_movie.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/movieindex.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmAdmin/update_movie.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmViewer/database.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FilmAdmin CMS/FilmViewer/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/feedback.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/jobinformation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/test_add.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/user_admin.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/user_edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/web_add.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TopRateMovie/config.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/confirmdelete.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/contact.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/contact_process.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/dbconnect.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/delete.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/displaycontact.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/editform.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact _us_page/update.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/API/APIController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/API/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/StaticMapService.GetMapImage" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/all.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/embed.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/engine.js+util.js+interface,_dwrService.js,qv==1.pagespeed.jc.FAWqsJMLWw.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/food.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/ping.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/xd_arbiter(1).html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/xd_arbiter.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assets/js/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Docs/Php features.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Payment/Cart.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sql/contactus.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sql/moviefeature.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sql/rating.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sql/yi.sql" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.babelrc" afterPath="$PROJECT_DIR$/.babelrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin/admin.html" afterPath="$PROJECT_DIR$/Admin/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/css/food_product.css" afterPath="$PROJECT_DIR$/Assets/css/food_product.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/js/food_index.js" afterPath="$PROJECT_DIR$/Assets/js/food_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/footer.php" afterPath="$PROJECT_DIR$/Auth/Views/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/header.php" afterPath="$PROJECT_DIR$/Auth/Views/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/index.php" afterPath="$PROJECT_DIR$/Auth/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Controller.php" afterPath="$PROJECT_DIR$/Classes/Controller.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assets/js/authPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/appPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/AuthPage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/11-2-routing.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/conn.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/Admin_Index_Left.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/Css_Left.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/Css_Main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/New Text Document.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/addzhanshi.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/admin_add.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/ceshizhanshi.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/conn.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/index1.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/shiti_admin.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/webadmin/webadmin.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Job/xiangxi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assets/js/authApp.js" afterPath="$PROJECT_DIR$/Assets/js/authApp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/auth/app.js" afterPath="$PROJECT_DIR$/Auth/Views/auth/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/auth/components/login/LoginForm.js" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/login/LoginForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/auth/components/register/RegisterForm.js" afterPath="$PROJECT_DIR$/Auth/Views/auth/components/register/RegisterForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/auth/stores/RegisterStore.js" afterPath="$PROJECT_DIR$/Auth/Views/auth/stores/RegisterStore.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/Views/index.php" afterPath="$PROJECT_DIR$/Auth/Views/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Auth/models/AuthModel.php" afterPath="$PROJECT_DIR$/Auth/models/AuthModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/View/Booking.php" afterPath="$PROJECT_DIR$/Booking/View/Booking.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/View/HomePage1.php" afterPath="$PROJECT_DIR$/Booking/View/HomePage1.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/css/chooseSeat.css" afterPath="$PROJECT_DIR$/Booking/css/chooseSeat.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/files/film1.txt" afterPath="$PROJECT_DIR$/Booking/files/film1.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/files/film2.txt" afterPath="$PROJECT_DIR$/Booking/files/film2.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/files/film3.txt" afterPath="$PROJECT_DIR$/Booking/files/film3.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/files/film4.txt" afterPath="$PROJECT_DIR$/Booking/files/film4.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/index.php" afterPath="$PROJECT_DIR$/Booking/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Booking/js/booking.js" afterPath="$PROJECT_DIR$/Booking/js/booking.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Helper.php" afterPath="$PROJECT_DIR$/Classes/Helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/Router/example.php" afterPath="$PROJECT_DIR$/Classes/Router/example.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Classes/View.php" afterPath="$PROJECT_DIR$/Classes/View.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Food/Food Management/food_product.php" afterPath="$PROJECT_DIR$/Food/Food Management/food_product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Food/food_index.php" afterPath="$PROJECT_DIR$/Food/food_index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/autoloader.php" afterPath="$PROJECT_DIR$/autoloader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Job/webadmin/test_add.php" afterPath="$PROJECT_DIR$/Job/webadmin/test_add.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Job/webadmin/user_admin.php" afterPath="$PROJECT_DIR$/Job/webadmin/user_admin.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Job/webadmin/user_edit.php" afterPath="$PROJECT_DIR$/Job/webadmin/user_edit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Job/webadmin/web_add.php" afterPath="$PROJECT_DIR$/Job/webadmin/web_add.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/php_project.sql" afterPath="$PROJECT_DIR$/sql/php_project.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/css/booking.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/css/booking.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182.html" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/AuthenticationService.Authenticate" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/AuthenticationService.Authenticate" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/HO00009182.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/HO00009182.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/Offer1_1431606674281.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/Offer1_1431606674281.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/Offer_3_1431606701806.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/Offer_3_1431606701806.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/Offer_4_1431606712887.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/Offer_4_1431606712887.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/Offer_5_1431606737719.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/Offer_5_1431606737719.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/Offer_7_1431606779806.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/Offer_7_1431606779806.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/QuotaService.RecordEvent" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/QuotaService.RecordEvent" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/StaticMapService.GetMapImage" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/StaticMapService.GetMapImage" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/ViewportInfoService(1).GetViewportInfo" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/ViewportInfoService(1).GetViewportInfo" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/ViewportInfoService.GetViewportInfo" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/ViewportInfoService.GetViewportInfo" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/all.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/all.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/angular-bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/angular-bootstrap-datepicker.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/arr1-promo.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/arr1-promo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/arr2-promo.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/arr2-promo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/book-ticketbanner.jpg" afterPath="$PROJECT_DIR$/Booking/image/book-ticketbanner.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/bootstrap-datepicker.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/bootstrap.min.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/bootstrap.min.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/btn-arrow.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/btn-arrow.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/common(1).js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/common(1).js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/common.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/common.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/controls.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/controls.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/custom.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/custom.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/datepicker.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/datepicker.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/defaultphoto.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/defaultphoto.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/embed.html" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/embed.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/engine.js+util.js+interface,_dwrService.js,qv==1.pagespeed.jc.J41ZKR_W16.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/engine.js+util.js+interface,_dwrService.js,qv==1.pagespeed.jc.J41ZKR_W16.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/font-awesome.min.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/google4.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/google4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/ic_android.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/ic_android.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/ic_apple.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/ic_apple.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/init_embed.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/init_embed.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/jquery.aw-showcase.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/jquery.aw-showcase.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/jquery.masonry.min.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/jquery.masonry.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/jquery.min.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/jquery.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/jquery.nicescroll.min.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/jquery.nicescroll.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/kh" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/kh" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/kh(1)" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/kh(1)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/loading.gif" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/loading.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/login.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/login.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/logo-tab.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/logo-tab.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/logo.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/logo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/map.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/map.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/mapcnt6.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/mapcnt6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/modal-close.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/modal-close.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/moviesessions.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/moviesessions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/numeral.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/numeral.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/offer2_1431606687558.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/offer2_1431606687558.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/offer_11_1455271960627.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/offer_11_1455271960627.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/offer_12_1444975831293.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/offer_12_1444975831293.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/offer_6_1431606747292.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/offer_6_1431606747292.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/offer_9_1437374748044.jpg" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/offer_9_1437374748044.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/onion.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/onion.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/overlay.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/overlay.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/ping.html" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/ping.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/responsive.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/responsive.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/screen-arr.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/screen-arr.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/search_impl.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/search_impl.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/seat-close.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/seat-close.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/seatlayout.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/seatlayout.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/select.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/select.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/slick.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/slick.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/slick.min.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/slick.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/sold.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/sold.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/stats.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/stats.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/style.css" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/style.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/timeline.fe2df323b0284f547735e29f610f34bf.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/timeline.fe2df323b0284f547735e29f610f34bf.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/tmapctrl.png" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/tmapctrl.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/util.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/util.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/vt" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/vt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/vt(1)" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/vt(1)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/vt(2)" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/vt(2)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/vt(3)" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/vt(3)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/wednesday-offer.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/wednesday-offer.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/widgets.js" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/widgets.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/xd_arbiter(1).html" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/xd_arbiter(1).html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/Tshirt/HO00009182_files/xd_arbiter.html" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/xd_arbiter.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/Offer1_1431606674281.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/Offer1_1431606674281.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/Offer_3_1431606701806.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/Offer_3_1431606701806.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/Offer_4_1431606712887.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/Offer_4_1431606712887.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/Offer_5_1431606737719.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/Offer_5_1431606737719.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/Offer_7_1431606779806.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/Offer_7_1431606779806.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/angular-bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/angular-bootstrap-datepicker.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/arr1-promo.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/arr1-promo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/arr2-promo.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/arr2-promo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/book-ticketbanner.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/book-ticketbanner.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/bootstrap-datepicker.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/bootstrap.min.css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/bootstrap.min.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/common(1).js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/common(1).js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/common.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/common.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/controls.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/controls.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/custom.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/custom.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/datepicker.css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/datepicker.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/defaultphoto.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/defaultphoto.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/font-awesome.min.css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/google4.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/google4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/ic_android.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/ic_android.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/ic_apple.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/ic_apple.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/init_embed.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/init_embed.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/jquery.aw-showcase.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/jquery.aw-showcase.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/jquery.masonry.min.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/jquery.masonry.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/jquery.min.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/jquery.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/jquery.nicescroll.min.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/jquery.nicescroll.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/kh" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/kh" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/kh(1)" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/kh(1)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/loading.gif" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/loading.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/login.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/login.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/logo-tab.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/logo-tab.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/logo.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/logo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/map.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/map.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/mapcnt6.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/mapcnt6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/numeral.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/numeral.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/offer2_1431606687558.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/offer2_1431606687558.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/offer_11_1455271960627.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/offer_11_1455271960627.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/offer_12_1444975831293.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/offer_12_1444975831293.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/offer_6_1431606747292.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/offer_6_1431606747292.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/offer_9_1437374748044.jpg" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/offer_9_1437374748044.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/onion.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/onion.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/overlay.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/overlay.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/responsive.css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/responsive.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/search_impl.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/search_impl.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/slick.css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/slick.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/slick.min.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/slick.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/stats.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/stats.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/style.css" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/style.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/timeline.fe2df323b0284f547735e29f610f34bf.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/timeline.fe2df323b0284f547735e29f610f34bf.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/tmapctrl.png" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/tmapctrl.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/util.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/util.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/vt" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/vt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/vt(1)" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/vt(3)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/vt(2)" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/vt(1)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/vt(3)" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Assets/image/Tshirt/HO00009182_files/vt(2)" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/image/how-to-be-single_files/widgets.js" afterPath="$PROJECT_DIR$/Booking/image/Tshirt/HO00009182_files/widgets.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Assets/js/config.js" afterPath="$PROJECT_DIR$/Booking/js/config.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/AuthController.php" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/AuthController.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/AuthModel.php" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/AuthModel.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/Views/login/app.jsx" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/login/app.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/Views/login/components/Input.jsx" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/login/components/Input.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/Views/login/components/LoginApp.jsx" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/login/components/LoginApp.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/Views/login/components/LoginForm.jsx" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/login/components/LoginForm.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/Views/login/login.php" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/login/login.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Auth/Views/register/register.php" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Auth/Views/register/register.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Booking/Booking.html" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Booking/Booking.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Booking/ChooseSeat.html" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Booking/ChooseSeat.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Booking/Comfirm.html" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Booking/Comfirm.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Booking/HomePage.html" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Booking/HomePage.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Classes/DB.php" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/DB.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Classes/DbConfig.php" afterPath="$PROJECT_DIR$/Docs/phase one/submission/Classes/DbConfig.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Docs/phase one/phaseOne.docx" afterPath="$PROJECT_DIR$/Docs/phase one/submission/phaseOne.docx" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Job/index.php" afterPath="$PROJECT_DIR$/Job/index1.php" />
     </list>
     <ignored path="final_php_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -882,7 +434,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23298033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
