@@ -13,6 +13,9 @@ use Project\Validation\Validator;
  */
 class AuthController extends Controller {
 
+  protected $view;
+  protected $model;
+
   public function __construct() {
     $this->model = new AuthModel();
     $this->view = new View([
@@ -79,6 +82,7 @@ class AuthController extends Controller {
   }
 
   public function getLogin() {
+    $this->model->logInViaCookie();
     $username = AuthModel::getUser();
     if ($username) $this->view->json(['success' => true, 'username' => $username]);
     if (!$username) $this->view->json($this->resultArray(false, ''));
