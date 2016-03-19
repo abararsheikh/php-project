@@ -24,7 +24,9 @@
                <!-- Ticket Detail Parts-->
                 <div class="col-gl-8 col-md-8 col-sm-12 ticket-booking">
                  <h2>TICKET BOOKING DETAIL</h2>
+                    <?php $i=0;?>
                  <?php foreach ($cart->shoppingCart->data as $item):?>
+
 
                     <div class="row">
                      <div class="col-gl-5 col-md-5 col-sm-12 detail-row">
@@ -86,8 +88,9 @@
                         </div>
                     </div>
                      <div class="row">
-                         <a href="." class="btn btn-default btn-booking">Edit</a>
-                         <a href="." class="btn btn-default btn-booking">Delete</a>
+                         <a href="./index.php?route=DetailController/editItems/<?php echo $i?>" class="btn btn-default btn-booking">Edit</a>
+                         <button type="button" class="btn btn-default btn-booking delete" value="<?php echo $i?>">Delete</button>
+                         <?php $i++; ?>
                      </div>
                 <?php endforeach; ?>
 
@@ -103,28 +106,42 @@
                                 <th>Movie Ticket</th>
                             </tr>
                         </thead>
-                        
-                        <tbody>
+
+                        <tbody id="orderTable">
+                        <?php $i=0; $grandPrice="";?>
+                        <?php foreach($cart->shoppingCart->data as $item):?>
+                        <?php  $i++;?>
+                        <?php $grandPrice+= $item->TotalPrice;?>
+                            <tr>
+                                <td>Item Number:</td>
+                                <td><?php echo $i?></td>
+                            </tr>
                             <tr>
                                 <td>Ticket Cost(s)</td>
-                                <td>$1,000.00</td>
+                                <td>$<?php echo $item->Price?></td>
                             </tr>
                             
-                            <tr>
+                            <tr >
                                 <td>Service Tax</td>
-                                <td>$7.25</td>
+                                <td>$<?php echo $item->Tax?></td>
                             </tr>
                             
-                              <tr>
+                              <tr id="total">
                                 <td>Total</td>
-                                <td>$1,007.25</td>
+                                <td>$<?php echo $item->TotalPrice?></td>
                               </tr>
-                              
+                        <?php endforeach?>
                               <tr>
                                   <td>GRAND TOTAL</td>
-                                  <td>$1,007.25</td>
+                                  <td>$<?php echo $grandPrice?></td>
                               </tr>
-                              
+
+                                <tr>
+                                    <td colspan="2">
+                                        <a href="./index.php">ADD OTHER FILMS</a>
+                                    </td>
+                                </tr>
+
                               <tr>
                                   <td colspan="2">
                                       <a>PAY NOW</a>
@@ -136,9 +153,7 @@
                 </div>
             </div>
          </section>
-         
-         
-          
+
     </main> 
          
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -146,6 +161,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./js/bootstrap.min.js"></script>
   
-    <script src="./js/drop.js"></script>
+    <script src="./js/confirm.js"></script>
     </body>
 </html> 

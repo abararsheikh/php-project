@@ -35,6 +35,7 @@ class ShoppingCart{
     public function deleteItem($item_id){
         if(isset($this->shoppingCart->data[$item_id])){
                 unset($this->shoppingCart->data[$item_id]);
+            $this->shoppingCart->data = array_values($this->shoppingCart->data);
         }
     }
 
@@ -44,6 +45,9 @@ class ShoppingCart{
 
     public function showCart(){
         var_dump($this->shoppingCart->data);
+    }
+    public function getItemById($item_id){
+        return $this->shoppingCart->data[$item_id];
     }
 
 

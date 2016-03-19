@@ -13,7 +13,7 @@
             $this->routeArray=[
                 "HomePageController"=>["index","postToBooking"],
                 "BookingController"=>["index","chooseRoom","chooseDate","chooseTime","chooseSeats"],
-                "DetailController"=>["index"]
+                "DetailController"=>["index","deleteItems","editItems"]
             ];
             $this->route();
         }

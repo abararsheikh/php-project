@@ -28,6 +28,11 @@
              <input type="hidden" name="route" value="DetailController/index"/>
              <input id="bookingInfo" type="hidden" name="OrderInfo" value=""/>
              <input id="seatsNums" type="hidden" name="seatsNums" value=""/>
+
+             <input id="ticket-price" type="hidden" name="price" value=""/>
+             <div id="seatsJson" style="display:none"><?php if(isset($SeatsInfos)):?>
+                     <?php echo $SeatsInfos?>
+                 <?php endif ?></div>
        <!--film information-->
        <div class="row">
            <div class="col-lg-12">
@@ -78,24 +83,41 @@
     </section>
      <div class="shadow">
       <section id="film-banner" class="container-fluid click">
-            <h1 id="film-title"><?php echo $filmInfo[0]->Film_Name?></h1>
+            <h1 id="film-title">
+                <?php if(isset($filmInfo[0])):?>
+                <?php echo $filmInfo[0]->Film_Name?>
+                <?php endif?>
+
+                <?php if(isset($item)):?>
+                    <?php echo $item->Film_Name?>
+                <?php endif?>
+            </h1>
       </section>
       
       <section id="film-info" class="container">
 
               <div class="row">
-
+                <?php if(isset($filmId)):?>
                 <input id="filmId" type="hidden" name="filmId" value="<?php echo $filmId?>" />
+                <?php endif?>
 
-
+                  <?php if(isset($item)):?>
+                  <input id="filmId" type="hidden" name="filmId" value="<?php echo $item->FilmId?>" />
+                  <?php endif?>
 
                  <div class="col-sm-4">
                          <label for="film">Select Cinema:</label>
                          <select name="Cinema" class="cinemaNum">
                              <option value="defult" >select an option</option>
+                             <?php if(isset($CinemaInfos)):?>
                              <?php foreach($CinemaInfos as $CinemaInfo):?>
                              <option value="<?php echo $CinemaInfo->Cinema_ID?>"><?php echo $CinemaInfo->Cinema_Name?></option>
                              <?php endforeach; ?>
+                             <?php endif?>
+
+                             <?php if(isset($item)):?>
+                             <option value="<?php echo $item->Cinema_ID?>" selected><?php echo $item->Cinema?></option>
+                             <?php endif?>
                          </select>
                  </div>
               
@@ -103,6 +125,9 @@
                              <label for="film">Select Room:</label>
                          <select id="Rooms">
                              <option value="defult" >select an option</option>
+                             <?php if(isset($item)):?>
+                                 <option value="<?php echo $item->Cinema_ID?>" selected><?php echo $item->Room?></option>
+                             <?php endif?>
                          </select>
 
                  </div>
@@ -114,6 +139,9 @@
                            <label for="Date">Select &nbsp;&nbsp;Date:</label>
                             <select id="Date">
                                 <option value="defult" >select an option</option>
+                                <?php if(isset($item)):?>
+                                    <option value="<?php echo $item->Room_ID?>" selected><?php echo $item->showDate?></option>
+                                <?php endif?>
                             </select>
 
                     </div>
@@ -127,7 +155,17 @@
                         <label for="time">Show timings:</label>
 
                             <div class="btn-group" id="showTime">
+                                <?php if(isset($TimeInfos)):?>
+                                    <?php foreach($TimeInfos as $time):?>
+                                        <?php if($time->RunTime == $item->showTime):?>
+                                        <button id="selected" type="button" class="btn btn-time"><?php echo $time->RunTime?> </button>
+                                        <?php endif?>
 
+                                        <?php if($time->RunTime != $item->showTime):?>
+                                            <button type="button" class="btn btn-time"><?php echo $time->RunTime?> </button>
+                                        <?php endif?>
+                                    <?php endforeach; ?>
+                                <?php endif?>
                             </div>
 
                    </div>

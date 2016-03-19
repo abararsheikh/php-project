@@ -3,11 +3,13 @@
  */
 function init() {
     //get seats
+
     seatMap();
     getRooms();
     getDate();
     getRuntime();
     selectSeats();
+    updateSeats();
 }
 
 function seatMap(){
@@ -32,7 +34,7 @@ function seatMap(){
                 var filmName = $("#film-title").text();
                 var CinemaName = $( ".cinemaNum option:selected" ).text();
                 var address = address[0];
-                createSeatMap(filmName, CinemaName, address,obj,Time,roomName)
+                createSeatMap(filmName, CinemaName, address,obj,Time,roomName,showDate,showTime)
 
             });
             var $seat = $("#seat");
@@ -48,6 +50,8 @@ function seatMap(){
             var $seat = $("#seat");
             $seat.animate({top:"-1000px"}, "fast", function(){
                 $(".shadow").animate({opacity:"1"},"slow");
+                $("#choosen_seats").html('');
+                $("#price").html('');
             });
         }
     );
@@ -165,22 +169,38 @@ function createButtonListShowTime(obj){
 /*
     createSeatMap
  */
-function createSeatMap(filmName, CinemaName,address,obj,Time,roomName){
+function createSeatMap(filmName, CinemaName,address,obj,Time,roomName,showDate,showTime){
+
     var roomId = $("#Rooms").val();
     var orderInfo = Time +'| '+filmName+"| "+CinemaName+"| "+roomName+"| "+address.Cinema_Address;
-    var order = Time +'| '+filmName+"| "+CinemaName+"| "+roomName+"| "+address.Cinema_Address+"| "+roomId;
+    var order = Time +'| '+filmName+"| "+CinemaName+"| "+roomName+"| "+address.Cinema_Address+"| "+roomId+"| "+showDate+"| "+showTime;
+    console.log(order);
     $("#bookingInfo").val(order);
 
     $("#OrderInfo").html(orderInfo);
     //get rows
-    var rows=[];
-    for(var i=0; i<obj.length; i++){
-        var reg = /\D*/;
+    if($("#seatsJson").html()=='') {
+        var rows = [];
+        for (var i = 0; i < obj.length; i++) {
+            var reg = /\D*/;
 
-        console.log(obj[i]);
-        var str = obj[i].Seat_Name;
-        str = reg.exec(str);
-        rows[i] =str[0];
+            console.log(obj[i]);
+            var str = obj[i].Seat_Name;
+            str = reg.exec(str);
+            rows[i] = str[0];
+        }
+    }else {
+        obj = JSON.parse( $("#seatsJson").html());
+        console.log(obj);
+        var rows = [];
+        for (var i = 0; i < obj.length; i++) {
+            var reg = /\D*/;
+
+            console.log(obj[i]);
+            var str = obj[i].Seat_Name;
+            str = reg.exec(str);
+            rows[i] = str[0];
+        }
     }
     //console.log(rows);
     var row=[];
@@ -190,7 +210,7 @@ function createSeatMap(filmName, CinemaName,address,obj,Time,roomName){
     var colNum =5;
     var seatsmap=createSeats(row,colNum,obj);
     $("#seatsMap").html(seatsmap);
-    $('')
+
 }
 
 function createSeats(rows,colNum, obj){
@@ -243,8 +263,14 @@ function selectSeats(){
         $('#price').html(totalPrice);
         $('#choosen_seats').html(seatsID);
         $('#seatsNums').val(seatsID);
+        $('#ticket-price').val(totalPrice);
     });
 
 }
+
+function updateSeats(){
+    $("#selected").trigger('click');
+}
+
 init();
 
