@@ -28,10 +28,16 @@
              <input type="hidden" name="route" value="DetailController/index"/>
              <input id="bookingInfo" type="hidden" name="OrderInfo" value=""/>
              <input id="seatsNums" type="hidden" name="seatsNums" value=""/>
-
+             <input id="itemId" type="hidden" name="itemId" value="<?php if(isset($item_id)):?>
+                <?php echo $item_id?>
+                <?php endif ?>
+             "/>
              <input id="ticket-price" type="hidden" name="price" value=""/>
              <div id="seatsJson" style="display:none"><?php if(isset($SeatsInfos)):?>
                      <?php echo $SeatsInfos?>
+                 <?php endif ?></div>
+             <div id="seatsEdit" style="display:none"><?php if(isset($item)):?>
+                     <?php echo $item->Seats?>
                  <?php endif ?></div>
        <!--film information-->
        <div class="row">
@@ -84,7 +90,7 @@
      <div class="shadow">
       <section id="film-banner" class="container-fluid click">
             <h1 id="film-title">
-                <?php if(isset($filmInfo[0])):?>
+                <?php if(isset($filmInfo[0]) && !isset($item)):?>
                 <?php echo $filmInfo[0]->Film_Name?>
                 <?php endif?>
 

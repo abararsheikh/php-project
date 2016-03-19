@@ -17,7 +17,7 @@ function seatMap(){
 
         function(){
             console.log($("#Date"));
-            var showTime = $(this).text();
+            var showTime = $.trim($(this).text());
             var CinemaID =$(".cinemaNum").val();
             var roomId = $("#Rooms").val();
             var roomName = $( "#Rooms option:selected" ).text();
@@ -52,6 +52,7 @@ function seatMap(){
                 $(".shadow").animate({opacity:"1"},"slow");
                 $("#choosen_seats").html('');
                 $("#price").html('');
+                $("#seatsJson").html('');
             });
         }
     );
@@ -208,20 +209,25 @@ function createSeatMap(filmName, CinemaName,address,obj,Time,roomName,showDate,s
         if($.inArray(el, row) === -1) row.push(el);
     });
     var colNum =5;
-    var seatsmap=createSeats(row,colNum,obj);
-    $("#seatsMap").html(seatsmap);
+     createSeats(row,colNum,obj);
+
 
 }
 
 function createSeats(rows,colNum, obj){
     var j=0;
     var str="";
+    var seatsEdit = $('#seatsEdit').html();
+    seatsEdit = $.trim(seatsEdit);
     for(var i=0; i<rows.length; i++){
         str+="<tr id="+"'"+rows[i]+"'"+">"+
                 "<td><em>"+rows[i]+"</em></td>"
 
 
         for(var k=j; k<colNum; k++){
+            console.log(seatsEdit);
+            //console.log(obj[k].Seat_Name);
+            //console.log(seatsEdit.indexOf(obj[k].Seat_Name));
             if(obj[k].available==='Y'){
                 str+="<td class="+"'"+"avalible"+"'"+">" +"<span class="+"'"+"seat"+"'"+">"
                 +"<input type="+"'"+"checkbox"+"'"+" id="+"'"+obj[k].Seat_Name+"'"+">"
@@ -237,13 +243,14 @@ function createSeats(rows,colNum, obj){
                     +"</span>"
                     +"</td>";
             }
+
         }
         j=colNum;
         colNum+=colNum;
         str+="</tr>";
     }
 
-    return str;
+    $("#seatsMap").html(str);
 }
 
 function selectSeats(){

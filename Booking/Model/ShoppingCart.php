@@ -50,5 +50,9 @@ class ShoppingCart{
         return $this->shoppingCart->data[$item_id];
     }
 
+    public function updateCartByItemId($item_id, $item){
+        $this->shoppingCart->data[$item_id] = $item;
+    }
+
 
 }

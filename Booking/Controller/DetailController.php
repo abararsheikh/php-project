@@ -18,6 +18,9 @@ class DetailController{
            echo "you should log in first";
        }else{
            //var_dump(\Project\Auth\models\AuthModel::getUser());
+
+
+
            if(isset($_POST["OrderInfo"])&& isset($_POST["seatsNums"]) &&isset($_POST["filmId"])){
                $bookingInfo = explode("| ",$_POST["OrderInfo"]);
                $seats =explode(" ",$_POST["seatsNums"]);
@@ -49,7 +52,14 @@ class DetailController{
                $bookInfo->showDate = $bookingInfo[6];
                $bookInfo->showTime = $bookingInfo[7];
                $cart = new ShoppingCart();
-               $cart->addToCart($bookInfo);
+               $itemId = trim($_POST["itemId"]);
+               var_dump($itemId);
+               if($itemId!=""){
+                   echo"Item id not null";
+                   $cart-> updateCartByItemId($itemId,$bookInfo);
+               }else {
+                   $cart->addToCart($bookInfo);
+               }
                //$cart->showCart();
 
               $filmBooking = new FilmBookingModel();
@@ -96,6 +106,7 @@ class DetailController{
     public function editItems($item_id){
         $cart = new ShoppingCart();
         $filmBooking = new FilmBookingModel();
+        $cart->showCart();
         $item=$cart->getItemById($item_id);
         $seats =  explode(" ",$item->Seats);
         foreach($seats as $seat) {
@@ -106,7 +117,7 @@ class DetailController{
             $filmBooking->updateSeats($param, $sql);
         }
 
-        var_dump($item);
+        //var_dump($item);
 
         $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
                               FROM films JOIN running_films
