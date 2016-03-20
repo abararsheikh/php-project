@@ -36,9 +36,7 @@
              <div id="seatsJson" style="display:none"><?php if(isset($SeatsInfos)):?>
                      <?php echo $SeatsInfos?>
                  <?php endif ?></div>
-             <div id="seatsEdit" style="display:none"><?php if(isset($item)):?>
-                     <?php echo $item->Seats?>
-                 <?php endif ?></div>
+
        <!--film information-->
        <div class="row">
            <div class="col-lg-12">
@@ -49,7 +47,11 @@
        
        <div class="row select-seats">
            <div class="col-sm-7">
-               <p>Please select your seats <img alt="arr_pic" src="./image/screen-arr.png"/><span id="choosen_seats"></span></p>
+               <p>Please select your seats <img alt="arr_pic" src="./image/screen-arr.png"/><span id="choosen_seats">
+                       <?php if(isset($ErrorMessage)):?>
+                       <?php echo $ErrorMessage?>
+                       <?php endif?>
+                   </span></p>
            </div>
            
            <div class="col-sm-3">
