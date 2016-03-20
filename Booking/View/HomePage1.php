@@ -63,35 +63,47 @@
              <div class="col-lg-4 col-sm-4 col-md-4 ">
                    <div class="booking-form">
                     <h2>Book Tickets</h2>
-                     <form action="#" method="post" >
+                     <form action="./index.php" method="post" >
+                         <input type="hidden" name="route" value="HomePageController/toBookingPage"/>
+                         <input id="filmInfo" type="hidden" name="filmInfo" value="" />
                         <div class="form-space">
-                                 <select name="select-movie">
+                                 <select class="films" name="select-movie">
                                      <option value ="movie">Select Movie</option>
-                                     <option value ="film1">option1</option> 
-                                     <option value ="film2">option2</option>  
-                                     <option value ="film3">option3</option>    
+                                     <?php foreach ($filmInfo as $film):?>
+                                     <option value ="<?php echo $film->Film_Id?>"><?php echo $film->Film_Name?></option>
+                                     <?php endforeach;?>
                                  </select>  
                         </div>  
 
                         <div class="form-space">
-                             <select class="" name="select-Date">
-                                 <option value ="date">Select Date</option>
-                                 <option value ="date1">option1</option> 
-                                 <option value ="date2">option2</option>  
-                                 <option value ="data3">option3</option>    
+                             <select id="Cinemas" name="CinemaName">
+                                 <option value ="cinema">Select Cinema</option>
+
                              </select>
                          </div>
 
                          <div class="form-space">
-                             <select class="" name="select-Time">
-                             <option value ="time">Select Time</option>
-                             <option value ="time1">option1</option> 
-                             <option value ="time2">option2</option>  
-                             <option value ="time3">option3</option>    
+                             <select id="Rooms" name="Room">
+                             <option value ="room">Select Room</option>
+
                              </select>
                          </div>
 
-                         <button type="button" class="btn btn-default btn-booking">Book Now 
+                         <div class="form-space">
+                             <select id="Date" name="Date">
+                                 <option value ="date">Select Date</option>
+
+                             </select>
+                         </div>
+
+                         <div class="form-space">
+                             <select id="showTime" name="Time">
+                                 <option value ="time">Select Time</option>
+
+                             </select>
+                         </div>
+
+                             <button id="submitbooking" type="submit" class="btn btn-default btn-booking">Book Now
                              <img  alt="arrow pic" class="btn-arrow" src="./image/btn-arrow.png"/>
                          </button>
                      </form>
@@ -144,6 +156,7 @@
     <script src="./js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/slick.min.js"></script>
     <script type="text/javascript" src="./js/homepage.js"></script>
-        <script src="/Assets/js/authApp.js"></script>
+    <script type="text/javascript" src="./js/home.js"></script>
+    <script src="/Assets/js/authApp.js"></script>
     </body>
 </html> 

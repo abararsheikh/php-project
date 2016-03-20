@@ -64,11 +64,13 @@ class DetailController{
                            From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time AND Seat_Name=:Seat_Name";
                    $param = ["Room_ID" => $bookInfo->Room_ID, "Run_Time" => $bookInfo->Run_Time, "Seat_Name"=>$seat];
                    $seatInfo = $filmBooking->getBookingDetail($param,$sql);
-                   if($seatInfo[0]->available =='N'){
-                      // require_once"./View/Error404.php";
-                       self::seatsOccupied($bookInfo);
-                       exit();
-                   };
+                   if(!is_array($seatInfo)) {
+                       if ($seatInfo[0]->available == 'N') {
+                           // require_once"./View/Error404.php";
+                           self::seatsOccupied($bookInfo);
+                           exit();
+                       };
+                   }
                }
 
 

@@ -11,7 +11,7 @@
         public function __construct(){
 //            echo "This is Router";
             $this->routeArray=[
-                "HomePageController"=>["index","postToBooking"],
+                "HomePageController"=>["index","postToBooking","chooseCinema","chooseRoom","chooseDate","chooseTime","toBookingPage"],
                 "BookingController"=>["index","chooseRoom","chooseDate","chooseTime","chooseSeats"],
                 "DetailController"=>["index","deleteItems","editItems"]
             ];
