@@ -4,14 +4,13 @@ session_start();
 $act=$_GET['act']?$_GET['act']:'';
 if($act=='add')
 {
-         
+
   $sql="insert into zhaoadd(qixian,renshu,yaoqiu,zhiwei)values('".$_POST['qixian']."','".$_POST['renshu']."','".$_POST['yaoqiu']."','".$_POST['zhiwei']."')";
-  $result=$db->query($sql);
-  if($result->execute())
+  $result=$db->exec($sql);
+  if($result)
   {
     echo  "<script language='javascript'>";
-    echo  "alert('Sumbit success');";
-    echo  "location.href='Admin_Index_main.php'";
+    echo  "alert('Sumbit success')";
     echo "</script>";
   }
 }
@@ -19,17 +18,15 @@ if($act=='add')
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Add Hire information</title>
 <link href="Css_Main.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-.style2 {color: #FF0000}
 .style1 {color: #CCCCCC}
 -->
 </style>
 </head>
-<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script language="JavaScript">
 function  Check_stu()
 {
@@ -69,19 +66,19 @@ function  Check_stu()
     <td colspan="2"><div align="center">Add Hire information</div></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Job title锛?/strong></div></td>
+    <td width="20%"><div align="right"><strong>Job title/strong></div></td>
     <td><input name="zhiwei" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Limit time锛?/strong></div></td>
+    <td width="20%"><div align="right"><strong>Limit time/strong></div></td>
     <td><input name="qixian" type="text"  size="40"></td>
   </tr>
     <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Hire number锛?/strong></div></td>
+    <td width="20%"><div align="right"><strong>Hire number/strong></div></td>
     <td><input name="renshu" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="40%"><div align="right"><strong>Hire requirement锛?/strong></div></td>
+    <td width="40%"><div align="right"><strong>Hire requirement/strong></div></td>
     <td><textarea name="yaoqiu" rows="5" cols="36"></textarea></td>
   </tr>
     
@@ -90,10 +87,13 @@ function  Check_stu()
   <tr>
     <td height="40">
       <div align="center"><span class="style1">
-        <input name="Submit" type="submit" id="Submit" value="Add" onClick="return Check_stu()">
-&nbsp;
+        <input name="Submit" type="submit" id="Submit" value="Add" onClick="return Check_stu()">&nbsp;
         <input name="reset" type="reset" id="reset" value="cancel">
-    </span> </div></td>
+         <a href="addzhanshi.php" style="background-color: #0000fa">Go Back to Reult</a>
+
+    </span>
+      </div>
+    </td>
   </tr>
 </table></form>
 </body>
