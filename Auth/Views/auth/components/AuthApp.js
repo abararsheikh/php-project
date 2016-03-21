@@ -72,6 +72,7 @@ export default class AuthApp extends React.Component {
     return (
         <div>
           <button name="login"
+                  id="loginBtn"
                   className="btn btn-default"
                   data-toggle="modal" data-target="#authModal"
                   onClick={this.handleViewChange}>Login

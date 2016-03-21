@@ -1,6 +1,5 @@
 import React from 'react';
 import Input from '../Input';
-import LoggedIn from './LoggedIn';
 
 export default class LoginForm extends React.Component {
   render() {
