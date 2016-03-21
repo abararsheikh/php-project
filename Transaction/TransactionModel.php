@@ -2,7 +2,6 @@
 
 namespace Project\Transaction;
 
-
 use Project\Auth\models\AuthModel;
 use Project\Classes\DB\DB;
 
@@ -20,7 +19,16 @@ class TransactionModel {
   }
 
   public function add() {
-    $stmt = $this->db->prepare("INSERT INTO transactions VALUES ($this->userId, $this->item, $this->cost, false, time())");
+    $stmt = $this->db->prepare("
+      INSERT INTO transactions (user_id, items, cost, is_paid, time) 
+      VALUES (:user_id, :items, :cost, 0, :time);
+    ");
+    $stmt->bindValue(':user_id', $this->userId, \PDO::PARAM_STR);
+    $stmt->bindValue(':items', $this->item, \PDO::PARAM_STR);
+    $stmt->bindValue(':cost', $this->cost, \PDO::PARAM_STR);
+    $stmt->bindValue(':time', date("Y-m-d H:i:s"), \PDO::PARAM_INT);
+
+
     if($stmt->execute()) {
 
       return true;
@@ -30,3 +38,7 @@ class TransactionModel {
 
   }
 }
+
+include '../autoloader.php';
+$t = new TransactionModel(['test' => '121233', 'p2' => 234], 12);
+$t->add();
