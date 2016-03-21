@@ -283,7 +283,7 @@ function updateSeats(){
 
 function forceLogin(){
     //console.log($(".selected").find("button").first());
-    $(".selected").find("button").first().trigger('click');
+    login.show();
 }
 init();
 
