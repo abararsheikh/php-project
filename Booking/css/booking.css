@@ -121,5 +121,20 @@ select{
         padding: 0px;
         line-height: 30px;
 }
+.timer {
+    position: fixed;
+    right: 0;
+    font-family: 'roboto-regular';
+    font-size: 14px;
+    background: url(../image/timer-bg.png) no-repeat;
+    color: #fff;
+    top: 85%;
+    width: 122px;
+    height: 44px;
+    padding-top: 15px;
+    padding-left: 25px;
+    border-top-right-radius: 0px;
+    z-index: 99;
+    display: inline-block;
 
-
+}

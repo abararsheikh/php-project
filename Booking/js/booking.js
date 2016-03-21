@@ -10,6 +10,7 @@ function init() {
     getRuntime();
     selectSeats();
     updateSeats();
+    forceLogin();
 }
 
 function seatMap(){
@@ -279,5 +280,10 @@ function updateSeats(){
     $("#selected").trigger('click');
 }
 
+
+function forceLogin(){
+    //console.log($(".selected").find("button").first());
+    $(".selected").find("button").first().trigger('click');
+}
 init();
 

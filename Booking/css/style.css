@@ -203,3 +203,8 @@ select{
 	background-color:#ffcd9a;
 	padding:10px;
 }
+
+
+#error{
+    color:red;
+}

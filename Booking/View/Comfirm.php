@@ -144,7 +144,7 @@
 
                               <tr>
                                   <td colspan="2">
-                                      <a>PAY NOW</a>
+                                      <a href="./index.php?route=DetailController/gotoPayment">PAY NOW</a>
                                   </td>
                               </tr>
                         </tbody>
@@ -152,6 +152,7 @@
                     </table>
                 </div>
             </div>
+             <div class="timer timer-pay"></div>
          </section>
 
     </main> 

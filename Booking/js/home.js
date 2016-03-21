@@ -33,10 +33,10 @@ function submitBooking (){
 
 
 function createDropDownListCinema(obj){
-    var strCinema="<option value="+'"'+"defualt"+'"'+">"+"Select Cinema"+"</option>";
-    var strRoom="<option value="+'"'+"defualt"+'"'+">"+"Select Room"+"</option>";
-    var strDate="<option value="+'"'+"defualt"+'"'+">"+"Select Date"+"</option>";
-    var strTime="<option value="+'"'+"defualt"+'"'+">"+"Select Time"+"</option>";
+    var strCinema="<option value="+'"'+"default"+'"'+">"+"Select Cinema"+"</option>";
+    var strRoom="<option value="+'"'+"default"+'"'+">"+"Select Room"+"</option>";
+    var strDate="<option value="+'"'+"default"+'"'+">"+"Select Date"+"</option>";
+    var strTime="<option value="+'"'+"default"+'"'+">"+"Select Time"+"</option>";
 
      //console.log(obj);
     for(var i=0; i<obj.length; i++){
@@ -69,9 +69,9 @@ function getRooms(){
 }
 
 function createDropDownListRoom(obj){
-    var strRoom="<option value="+'"'+"defualt"+'"'+">"+"Select Room"+"</option>";
-    var strDate="<option value="+'"'+"defualt"+'"'+">"+"Select Date"+"</option>";
-    var strTime="<option value="+'"'+"defualt"+'"'+">"+"Select Time"+"</option>";
+    var strRoom="<option value="+'"'+"default"+'"'+">"+"Select Room"+"</option>";
+    var strDate="<option value="+'"'+"default"+'"'+">"+"Select Date"+"</option>";
+    var strTime="<option value="+'"'+"default"+'"'+">"+"Select Time"+"</option>";
     // console.log(obj);
     for(var i=0; i<obj.length; i++){
        //console.log(obj[i]);
@@ -124,7 +124,7 @@ function getRuntime(){
 }
 
 function createDropDownListShowTime(obj){
-    var str="<option value="+'"'+"defualt"+'"'+">"+"Select Time"+"</option>";
+    var str="<option value="+'"'+"default"+'"'+">"+"Select Time"+"</option>";
 
     //console.log(obj);
 
@@ -153,8 +153,8 @@ function filmInfo(){
 }
 
 function createDropDownListDate(obj){
-    var strDate="<option value="+'"'+"defualt"+'"'+">"+"Select Date"+"</option>";
-    var strTime="<option value="+'"'+"defualt"+'"'+">"+"Select Time"+"</option>";
+    var strDate="<option value="+'"'+"default"+'"'+">"+"Select Date"+"</option>";
+    var strTime="<option value="+'"'+"default"+'"'+">"+"Select Time"+"</option>";
     //console.log(obj);
     for(var i=0; i<obj.length; i++){
         //console.log(obj[i]);

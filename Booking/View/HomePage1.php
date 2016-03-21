@@ -67,8 +67,8 @@
                          <input type="hidden" name="route" value="HomePageController/toBookingPage"/>
                          <input id="filmInfo" type="hidden" name="filmInfo" value="" />
                         <div class="form-space">
-                                 <select class="films" name="select-movie">
-                                     <option value ="movie">Select Movie</option>
+                                 <select class="films" name="movie">
+                                     <option value ="default">Select Movie</option>
                                      <?php foreach ($filmInfo as $film):?>
                                      <option value ="<?php echo $film->Film_Id?>"><?php echo $film->Film_Name?></option>
                                      <?php endforeach;?>
@@ -76,29 +76,29 @@
                         </div>  
 
                         <div class="form-space">
-                             <select id="Cinemas" name="CinemaName">
-                                 <option value ="cinema">Select Cinema</option>
+                             <select id="Cinemas" name="Cinema">
+                                 <option value ="default">Select Cinema</option>
 
                              </select>
                          </div>
 
                          <div class="form-space">
                              <select id="Rooms" name="Room">
-                             <option value ="room">Select Room</option>
+                             <option value ="default">Select Room</option>
 
                              </select>
                          </div>
 
                          <div class="form-space">
                              <select id="Date" name="Date">
-                                 <option value ="date">Select Date</option>
+                                 <option value ="default">Select Date</option>
 
                              </select>
                          </div>
 
                          <div class="form-space">
                              <select id="showTime" name="Time">
-                                 <option value ="time">Select Time</option>
+                                 <option value ="default">Select Time</option>
 
                              </select>
                          </div>
@@ -107,7 +107,9 @@
                              <img  alt="arrow pic" class="btn-arrow" src="./image/btn-arrow.png"/>
                          </button>
                      </form>
-                 
+                    <?php if(isset($_GET["error"])):?>
+                    <div id="error"><?php echo $_GET["error"]?></div>
+                    <?php endif?>
                  </div> 
                  
                   <div class="about-us">

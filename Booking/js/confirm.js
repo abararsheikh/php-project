@@ -2,6 +2,29 @@
  * Created by ran on 3/18/2016.
  */
 function init(){
+    var endTime = new Date();
+    endTime.setMinutes(endTime.getMinutes() + 1);
+    console.log(endTime);
+    //getTimeRemaining(endTime);
+    var timeinterval = setInterval(function(){
+       var timer = getTimeRemaining(endTime);
+        console.log(timer);
+        $(".timer").html(timer.minutes+":"+timer.seconds+" Mins");
+        if(timer.total<10000){
+            $(".timer").html(timer.minutes+":0"+timer.seconds+" Mins");
+        }
+        if(timer.total<=0){
+
+            alert("Session Expired");
+            var url="./index.php?route=DetailController/sessionExpired";
+            console.log(url);
+            $.get(url, function(data, status){
+
+                window.location.replace("./index.php");
+            })
+            clearInterval(timeinterval);
+        }
+    },1000);
     deleteItem();
 }
 
@@ -84,5 +107,24 @@ console.log(obj);
     $(".ticket-booking").html(strDetail);
     $("#orderTable").html(strSummary);
 }
+
+
+//////////////////////////////
+
+function getTimeRemaining(endTime){
+    var d =new Date();
+    var t = Date.parse(endTime) - Date.parse(d);
+    var seconds = Math.floor( (t/1000) % 60 );
+    var minutes = Math.floor( (t/1000/60) % 60 );
+
+    return {
+        'total': t,
+        'minutes': minutes,
+        'seconds': seconds
+    };
+}
+
+
+
 
 init();

@@ -16,6 +16,7 @@ require_once"./libs/Router.php";
 require_once"./libs/PDOOperation.php";
 require_once"./libs/FileOperation.php";
 require_once"./libs/Session.php";
+require_once"./libs/Validation.php";
 
 //config file
 require_once"./config.php";

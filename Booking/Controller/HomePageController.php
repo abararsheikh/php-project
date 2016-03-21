@@ -122,23 +122,27 @@ class HomePageController {
 
     public function toBookingPage(){
         //echo "this is toBookingPage";
+        $validation =new Validation();
+        //var_dump($_POST);
+        $error=$validation->emptyValidation($_POST);
+        if($error===true) {
+            $filmInfo = explode('| ', $_POST['filmInfo']);
+            //var_dump($filmInfo);
 
-        $filmInfo = explode('| ',$_POST['filmInfo']);
-        //var_dump($filmInfo);
-        $item = new stdClass();
-        $item->Film_Name =$filmInfo[0];
-        $item->FilmId =$_POST['select-movie'];
-        $item->Cinema_ID =$_POST['CinemaName'];
-        $item->Cinema =$filmInfo[1];
-        $item->Room_ID = $_POST['Room'];
-        $item->Room = $filmInfo[2];
-        $item->showDate =$filmInfo[3];
-        $item->showTime = $filmInfo[4];
-        $item->Run_Time =$filmInfo[5];
-        //$item->Room_ID = $_POST['']
-       // var_dump($item);
-        $filmBooking = new FilmBookingModel();
-        $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
+            $item = new stdClass();
+            $item->Film_Name = $filmInfo[0];
+            $item->FilmId = $_POST['movie'];
+            $item->Cinema_ID = $_POST['Cinema'];
+            $item->Cinema = $filmInfo[1];
+            $item->Room_ID = $_POST['Room'];
+            $item->Room = $filmInfo[2];
+            $item->showDate = $filmInfo[3];
+            $item->showTime = $filmInfo[4];
+            $item->Run_Time = $filmInfo[5];
+            //$item->Room_ID = $_POST['']
+            // var_dump($item);
+            $filmBooking = new FilmBookingModel();
+            $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
                               FROM films JOIN running_films
                                           ON films.Film_Id = running_films.Film_Id
                                          JOIN rooms
@@ -148,17 +152,21 @@ class HomePageController {
                                          WHERE running_films.Film_Id=:Film_Id AND cinemas.Cinema_ID=:Cinema_ID
                                           AND rooms.Room_ID=:Room_Id
                                          ORDER BY DATE_FORMAT(Run_Time, '%H:%i')";
-        $TimeInfos = $filmBooking->getBookingDetail($para=["Film_Id"=>$item->FilmId, "Cinema_ID"=>$item->Cinema_ID,"Room_Id"=>$item->Room_ID],$sql);
+            $TimeInfos = $filmBooking->getBookingDetail($para = ["Film_Id" => $item->FilmId, "Cinema_ID" => $item->Cinema_ID, "Room_Id" => $item->Room_ID], $sql);
 
-        $sql = "SELECT Seat_Name, available
+            $sql = "SELECT Seat_Name, available
                 From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
 
-        $SeatsInfos = $filmBooking->getBookingDetail($para=["Room_ID"=>$item->Room_ID, "Run_Time"=>$item->Run_Time],$sql);
+            $SeatsInfos = $filmBooking->getBookingDetail($para = ["Room_ID" => $item->Room_ID, "Run_Time" => $item->Run_Time], $sql);
 
-        $filmInfo = $filmBooking->getFilmById($item->FilmId);
-        $SeatsInfos= json_encode($SeatsInfos);
-        //var_dump($TimeInfos);
-        require_once "./View/Booking.php";
+            $filmInfo = $filmBooking->getFilmById($item->FilmId);
+            $SeatsInfos = json_encode($SeatsInfos);
+            //var_dump($TimeInfos);
+            require_once "./View/Booking.php";
+        }else{
+            echo "In else";
+            header("Location: ./index.php?route=HomePageController/index&error=$error");
+        }
     }
 
 
