@@ -4,7 +4,6 @@ namespace Project\Classes\DB;
  * @Author Yi Zhao
  *
  */
-
 class DB {
   private static $_db;
   public static function getDB() {

@@ -5,7 +5,7 @@ $password = '';
 
 try{
     $db = new PDO($dsn,$username,$password);
-    echo "connected" ." <br/>";
+    //echo "connected" ." <br/>";
 }
 catch(PDOException $e)
 {
