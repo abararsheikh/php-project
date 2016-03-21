@@ -1,6 +1,7 @@
 <?php
 
 use Project\Classes\DB\DB;
+include '../../autoloader.php';
 $db = DB::getDB();
 
 //require_once "database.php";

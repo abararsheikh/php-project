@@ -1,16 +1,14 @@
-
 <?php
 require('conn.php');
-if($_GET["act"]=="del"){
-  $sql="delete from zhaoadd where id=".$_GET["id"];
-    $result=$db->query($sql);
-	
-  if($result->execute() or die(error())){
-    echo  "<script language='javascript'>";
-    echo  "alert('Deleteed');";
-    echo  "location.href='addzhanshi.php';";
-    echo "</script>";
-  }
+    if($_GET["act"]=="del"){
+         $sql="delete from zhaoadd where id=".$_GET["id"];
+         $result=$db->query($sql);
+    if($result->execute() or die(error())){
+        echo  "<script language='javascript'>";
+        echo  "alert('Deleteed');";
+        echo  "location.href='addzhanshi.php';";
+        echo "</script>";
+    }
 }
 session_start();
 
@@ -21,76 +19,24 @@ $PageSize=10;
 $act=$_GET["action"];
 if($act=="search")
 {
-   $type=$_POST["type"];
-   $keywords=$_POST["keywords"];
-   if($_SESSION['id']!=="" ){
-  $sql="select * from  zhaoadd order by id desc";
-}
-$result=$db->query($sql)  or die("$sql");
-$amount=$result->rowCount($result);
+    $type=$_POST["type"];
+    $keywords=$_POST["keywords"];
+    if($_SESSION['id']!=="" ){
+        $sql="select * from  zhaoadd order by id desc";
+    }
+    $result=$db->query($sql)  or die("$sql");
+    $amount=$result->rowCount($result);
 }
 if(isset($_GET["page"]))
 {
-$page=(int)$_GET["page"];
+    $page=(int)$_GET["page"];
 }
 else
 {
 
-$page=1;
+    $page=1;
 
 }
-if($amount){
-
-if ($amount<$PageSize){
-
-$PageCount=1;
-}
-if($amount%$PageSize){
-
-$PageCount= $amount/$PageSize+1;
-
-$PageCount=intval($PageCount);
-}
-else
-{
-$PageCount=$amount/$PageSize;
-}
-}
-
-else{
-
-$PageCount=0;
-}
-
-
-
-
-//翻页连接
-
-$Page_String="";
-if ($page==1){
-$Page_String.='First page|Previous|';
-}
-else{
-
-$Page_String.='<a href=?page=1>First page</a>|<a href=?page='.($page-1).'>Previous</a>|';
-
-}
-
-if(($page==$PageCount)||($PageCount==0)){
-
-
-$Page_String.='Next page|End page|';
-
-}
-else{
-
-$Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCount.'>End page</a>';
-
-}mount-($page-1)*$PageSize;
-$num=$a
-
-
 ?>
 
 <html>
@@ -104,73 +50,88 @@ $num=$a
 <body>
 <table width="101%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr>
-    <td class="title_dh"><div align="center">
+    <td class="title_dh">
+        <div align="center">
       <div align="center">Hire information</div>
-    </div></td>
+        </div>
+    </td>
   </tr>
 </table>
 
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr class="title_top">
 
-      <td width="20%"><div align="center">Hire Job</div></td>
-    <td width="20%"><div align="center">Limit time</div></td>
-	 <td width="20%"><div align="center">Hire number</div></td>
-	 <td width="20%"><div align="center">Requirement</div></td>
-	 <td width="20%"><div align="center">operate</div></td>
+         <td width="20%"><div align="center">Hire Job</div></td>
+         <td width="20%"><div align="center">Limit time</div></td>
+	     <td width="20%"><div align="center">Hire number</div></td>
+	     <td width="20%"><div align="center">Requirement</div></td>
+	     <td width="20%"><div align="center">operate</div></td>
   </tr>
 
 		  
-<?php 
+<?php
 
 
- $upLimit   =   ($page-1)*$PageSize;   
-  $lowLimit   =  $PageSize; 
-  $act=$_GET["action"];
-if($act=="search")
+  $upLimit  = ($page-1)*$PageSize;
+  $lowLimit =  $PageSize;
+  if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  zhaoadd where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+   $sql="select * from  zhaoadd where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
    $sql="select * from  zhaoadd  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
-$result=$db->query($sql)  or die("$sql");
+   $result=$db->query($sql)  or die("$sql");
 
 
 while($rs=$result->fetchObject())
 {
 if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
 {
-?> 
+?>
+
   <tr class="tdbg">
-    <td><div align="center"><?php echo $rs->zhiwei;?></div></td>
-     <td><div align="center"><?php echo $rs->qixian;?></div></td>
-	 <td><div align="center"><?php echo $rs->renshu;?></div></td>
-	  <td><div align="center"><?php echo $rs->yaoqiu;?></div></td>
-	   <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
- 
-	  
+        <td><div align="center"><?php echo $rs->zhiwei;?></div></td>
+        <td><div align="center"><?php echo $rs->qixian;?></div></td>
+	    <td><div align="center"><?php echo $rs->renshu;?></div></td>
+        <td><div align="center"><?php echo $rs->yaoqiu;?></div></td>
+	    <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
+        <td><form action="edit.php" method="post"
+                id="edit.php">
+              <input type="hidden" name="id"
+                     value="<?php echo $id; ?>" />
 
-	
-	</tr>
-<?php
- 
- }}
+              <input type="submit" value="Update" />
+          </form></td>
+</tr>
 
 
- ?>
+    <?php
+}
+}
+
+    ?>
 </table>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td height="40">
-      <div align="center">		<label><?php echo $Page_String;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This<?php echo $page;?>Page&nbsp;&nbsp;All<?php echo $PageCount;?>page All<?php echo $amount;?>Message</label></div></td>
+         <td height="40">
+      <div align="center">
+              <label><?php echo $Page_String;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              First<?php echo $page;?>Page&nbsp;&nbsp;All
+              <?php echo $PageCount;?>page All<?php echo $amount;?>Message</label>
+             <a style="background-color: #1e425d" href="web_add.php" ">ADD JOB>></a>
+      </div>
+         </td>
   </tr>
 </table>
 
+<tr>
+    <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="index.php" ">Go Back to Home Page>></a></div></td>
 
+</tr>
 
 </body>
 </html>

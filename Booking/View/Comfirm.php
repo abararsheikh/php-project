@@ -1,3 +1,5 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php'?>
+
 <!Doctype HTML>
 <html>
     <head>
@@ -144,6 +146,7 @@
 
                               <tr>
                                   <td colspan="2">
+                                    <?php echo \Project\Payment\Payment::stripeButton(20) ?>
                                       <a href="./index.php?route=DetailController/gotoPayment">PAY NOW</a>
                                   </td>
                               </tr>

@@ -11,14 +11,28 @@ class TransactionModel {
   private $cost = 0;
   private $db;
 
-  public function __construct($item, $cost) {
-    $this->userId = AuthModel::getUser('id');
-    $this->item = json_encode($item);
-    $this->cost = $cost;
+  public function __construct() {
     $this->db = DB::getDB();
+    $this->userId = AuthModel::getUser('id');
   }
 
-  public function add() {
+  public function init() {
+    $movieCart = [
+      'cost' => 25.3,
+      'items' => [
+        'Name' => 'Star Wars'
+      ]
+    ];
+
+    if (!empty($movieCart)) {
+      $this->item = json_encode($movieCart['items']);
+      $this->cost = $movieCart['cost'];
+    }
+
+
+  }
+
+  public function save() {
     $stmt = $this->db->prepare("
       INSERT INTO transactions (user_id, items, cost, is_paid, time) 
       VALUES (:user_id, :items, :cost, 0, :time);
@@ -27,7 +41,6 @@ class TransactionModel {
     $stmt->bindValue(':items', $this->item, \PDO::PARAM_STR);
     $stmt->bindValue(':cost', $this->cost, \PDO::PARAM_STR);
     $stmt->bindValue(':time', date("Y-m-d H:i:s"), \PDO::PARAM_INT);
-
 
     if($stmt->execute()) {
 
@@ -38,7 +51,3 @@ class TransactionModel {
 
   }
 }
-
-include '../autoloader.php';
-$t = new TransactionModel(['test' => '121233', 'p2' => 234], 12);
-$t->add();
