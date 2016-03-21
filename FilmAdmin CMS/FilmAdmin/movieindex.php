@@ -1,5 +1,8 @@
 <?php
-require_once ('database.php');
+
+use Project\Classes\DB\DB;
+$db = DB::getDB();
+//require_once ('database.php');
 
 //get all the movies
 
@@ -44,7 +47,7 @@ $allMovies = $statement1->fetchAll();
                           id="add_movie_form">
                         <input type="submit" value = "Add Movie" class="btn btn-default btn-booking" />
                     </form>
-
+                    <br>
                     <?php foreach($allMovies as $displayMovie) : ?>
                         <div class="film-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
@@ -54,7 +57,9 @@ $allMovies = $statement1->fetchAll();
                                 Stars:
                                 <span><?php echo $displayMovie['cast']?></span><br>
                                 Director:
-                                <span><?php echo $displayMovie['director']?></span>
+                                <span><?php echo $displayMovie['director']?></span><br/>
+                                Release Date :
+                                <span><?php echo $displayMovie['releaseDate']?></span>
                             </p>
 
                             <form action="delete_movie.php" method="post">
@@ -62,7 +67,7 @@ $allMovies = $statement1->fetchAll();
                                        value="<?php echo $displayMovie['film_id']; ?>" />
                                 <input type="submit" value ="Delete" class="btn btn-default btn-booking"/>
                             </form>
-
+                            <br>
                             <form action = "edit_movie.php" method="post">
                                 <input type="hidden" name="film_id"
                                        value="<?php echo $displayMovie['film_id']; ?>" />

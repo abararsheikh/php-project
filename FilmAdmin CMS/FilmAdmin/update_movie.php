@@ -1,13 +1,16 @@
 <?php
+
+use Project\Classes\DB\DB;
+$db = DB::getDB();
 // Get the value from the form
-require_once('database.php');
+//require_once('database.php');
 
 $film_id = $_POST['film_id'];
 $title = $_POST['title'];
 $releaseDate = $_POST['releaseDate'];
 $director = $_POST['director'];
 $cast = $_POST['cast'];
-//$img = $_POST['img'];
+//$img = $_POST['img1'];
 
 // ====Get the Image
 $file_get = $_FILES['img1']['name'];

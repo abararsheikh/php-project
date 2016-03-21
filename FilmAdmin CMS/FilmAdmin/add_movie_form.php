@@ -9,7 +9,7 @@
     <br />
 
     <label>Release Date :</label>
-    <input type="input" name="releaseDate"/>
+    <input type="input" name="releaseDate"/> <span style="color:red">Date Formate : YYYY-MM-DD</span>
     <br />
 
     <label>Director :</label>

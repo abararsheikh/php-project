@@ -1,12 +1,16 @@
 <?php
 
-require_once "database.php";
+use Project\Classes\DB\DB;
+$db = DB::getDB();
+
+//require_once "database.php";
 // Get the product data
 $film_id = $_POST['film_id'];
 
 $sql = "SELECT * FROM moviefeature WHERE film_id = '$film_id'";
 $result = $db->query($sql);
 $editMovies = $result->fetch();
+
 ?>
 
 <form action="update_movie.php" method="post" enctype="multipart/form-data">
@@ -16,7 +20,7 @@ $editMovies = $result->fetch();
     <br />
 
     <label>Release Date :</label>
-    <input type="input" name="releaseDate" value="<?php echo $editMovies['releaseDate']; ?>"/>
+    <input type="input" name="releaseDate" value="<?php echo $editMovies['releaseDate']; ?>"/> <span style="color:red">Date Formate : YYYY-MM-DD</span>
     <br />
 
     <label>Director :</label>
@@ -28,9 +32,9 @@ $editMovies = $result->fetch();
 
 
     <br />
-    <img src = "<?php echo $editMovies['img']; ?>" />
+    <img src = "<?php echo $editMovies['img']; ?>" /><br/><p>
     <label>Image :</label>
-    <input type="file" name="img1"  />
+    <input type="file" name="img1" id = "image" />
     <p>
 
 <!--

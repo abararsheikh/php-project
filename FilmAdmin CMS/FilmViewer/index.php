@@ -1,5 +1,8 @@
 <?php
-require_once ('database.php');
+
+use Project\Classes\DB\DB;
+$db = DB::getDB();
+//require_once ('database.php');
 
 //get all the movies
 
@@ -59,10 +62,12 @@ $allMovies = $statement1->fetchAll();
                              <img alt="film1" src="<?php echo $displayMovie['img'] ?>"/>
                              <p class="film-title"><?php echo $displayMovie['title'] ?>(U)</p>
                              <p class="film-detail">
-Stars:
+Cast :
                                  <span><?php echo $displayMovie['cast']?></span><br>
-Director:
-                                 <span><?php echo $displayMovie['director']?></span>
+Director :
+                                 <span><?php echo $displayMovie['director']?></span><br>
+Release Date :
+                                 <span><?php echo $displayMovie['releaseDate']?></span>
                              </p>
                              <button type="button" class="btn btn-default btn-booking">Book Now</button>
                          </div>

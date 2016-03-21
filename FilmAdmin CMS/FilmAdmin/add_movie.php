@@ -1,6 +1,9 @@
 <?php
 //connect to database
-require_once('database.php');
+use Project\Classes\DB\DB;
+$db = DB::getDB();
+
+//require_once('database.php');
 // Get the value from the form
 $film_id = $_POST['film_id'];
 $title = $_POST['title'];
@@ -26,8 +29,8 @@ move_uploaded_file($temp, $file_to_saved);
  // Image part ends here
 
 // Validate inputs
-if (empty($title) || empty($releaseDate) || empty($cast) || empty($director) ) {
-    $error = "Invalid Movie data. Check all fields and try again.";
+if (empty($title) || empty($releaseDate) || empty($cast) || empty($director) || empty($file_get) ) {
+    $error = "Invalid Movie data. Check and fill all fields and then try again.";
     echo $error;
 } else {
     // If valid, Add the movie to the database
