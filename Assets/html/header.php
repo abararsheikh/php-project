@@ -55,9 +55,8 @@ $navTemplate = [
       <?php Nav::drawMenu('Homepage', $navTemplate); ?>
 
       <!--   login   -->
-      <form class="navbar-form navbar-right" role="login">
-          <div id="login"></div>
-      </form>
+      <div id="login" class="navbar-right navbar-btn"></div>
+
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
