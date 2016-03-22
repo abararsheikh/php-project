@@ -23,4 +23,8 @@ abstract class Helper {
     }
   }
 
+  public static function includeAutoLoader() {
+    include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
+  }
+
 }
