@@ -8,7 +8,7 @@ Nav::group('/ as Homepage', function () {
   Nav::get('/ as Home', function () { /*echo 'homepage';*/ });
   Nav::get('/cinemas as Cinemas', function () { echo 'cinemas'; });
   Nav::get('/movies as Movies', function () { echo 'movies'; });
-  Nav::get('/booking as Booking', function () { echo 'booking'; });
+  Nav::get('/Booking as Booking', function () { echo 'booking'; });
   Nav::get('/career as Career', function () { echo 'career'; });
 
 });

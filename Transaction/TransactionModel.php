@@ -38,7 +38,3 @@ class TransactionModel {
 
   }
 }
-
-include '../autoloader.php';
-$t = new TransactionModel(['test' => '121233', 'p2' => 234], 12);
-$t->add();
