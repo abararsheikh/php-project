@@ -4,8 +4,10 @@ RewriteEngine on
 CheckSpelling On
 CheckCaseOnly On
 
-#Auth folder, don't match app folder
+# Auth folder, don't match app folder
 RewriteRule    ^Auth(?!\/Views).+ Auth/index.php                    [NC,L]
+# Payment page
+RewriteRule    ^Payment.* Payment/index.php                    [NC,L]
 
 #Home page
 #RewriteRule    ^.*$ index.php
