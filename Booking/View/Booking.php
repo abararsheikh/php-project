@@ -1,3 +1,5 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php' ?>
+
 <!Doctype HTML>
 <html>
     <head>
@@ -216,6 +218,9 @@
              
              <div class="col-lg-9 col-sm-9 col-md-9 col-xs-6 col-line">
                  <h3><?php echo $filmInfo[0]->Film_Name?></h3>
+               <?php
+                new \Project\JsApps\MovieTrailer\MovieTrailer($filmInfo[0]->Film_Name)
+               ?>
                  <div class="row movdet">
                      <div class="col-lg-4 col-sm-4 col-md-4">
                          Release Date
@@ -272,6 +277,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./js/bootstrap.min.js"></script>
+    <script src="/Assets/js/trailerApp.js"></script>
     <script src="/Assets/js/authApp.js"></script>
     <script src="./js/booking.js"></script>
 

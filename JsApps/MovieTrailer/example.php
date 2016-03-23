@@ -7,7 +7,7 @@
 <body>
   <?php
   include "../../autoloader.php";
-  $movieName = 'dog';
+  $movieName = 'kung fu panda';
   new \Project\JsApps\MovieTrailer\MovieTrailer($movieName)
   ?>
 
