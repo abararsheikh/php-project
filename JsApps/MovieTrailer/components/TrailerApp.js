@@ -12,7 +12,7 @@ export default class TrailerApp extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    $.get(`${URL}&q=${event.target.movieName.value}+trailer`).then(data => {
+    $.get(`${URL}&q=${event.target.movieName.value}`).then(data => {
       let id = data.items[0].id.videoId;
       this.setState({videoId: id, showPlayer: true});
     })
