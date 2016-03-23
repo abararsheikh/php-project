@@ -27,8 +27,8 @@ $navTemplate = [
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="Assets/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="Assets/css/style.css"/>
+  <link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/Assets/css/style.css"/>
 
   <title>Homepage</title>
 </head>
@@ -49,19 +49,14 @@ $navTemplate = [
       <a class="navbar-brand" href="#">Cinema</a>
     </div>
 
-    <div id="login"></div>
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <?php Nav::drawMenu('Homepage', $navTemplate); ?>
 
-      <!--   search   -->
-      <form class="navbar-form navbar-right" role="search">
+      <!--   login   -->
+      <div id="login" class="navbar-right navbar-btn"></div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

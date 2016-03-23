@@ -21,8 +21,6 @@ class AuthController extends Controller {
     $this->view = new View([
       'css' => [
         '/Assets/css/bootstrap.min.css',
-        '/Assets/css/font-awesome.min.css',
-        '/Assets/css/bootstrap-social.css',
       ],
       'js' => [
           '/Assets/js/jquery.min.js',
