@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "bundle-auth": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js",
-    "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js"
+    "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js",
+    "bundle-trailer": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MovieTrailer/app.js Assets/js/trailerApp.js"
   },
   "devDependencies": {
     "babel-core": "^6.3.21",
@@ -23,6 +24,7 @@
   },
   "jspm": {
     "dependencies": {
+      "YouTube": "npm:react-youtube@^5.1.0",
       "css": "github:systemjs/plugin-css@^0.1.20",
       "events": "github:jspm/nodelibs-events@^0.1.1",
       "flux": "npm:flux@^2.1.1",
@@ -41,6 +43,7 @@
   },
   "dependencies": {
     "bootstrap-social": "^4.11.0",
-    "font-awesome": "^4.5.0"
+    "font-awesome": "^4.5.0",
+    "react-youtube": "^5.1.0"
   }
 }

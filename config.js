@@ -16,6 +16,7 @@ System.config({
   },
 
   map: {
+    "YouTube": "npm:react-youtube@5.1.0",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "clean-css": "npm:clean-css@3.4.10",
@@ -88,6 +89,9 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "npm:babel-runtime@5.8.35": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:bluebird@3.3.4": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:browserify-zlib@0.1.4": {
@@ -203,6 +207,10 @@ System.config({
       "node-fetch": "npm:node-fetch@1.3.3",
       "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
     },
+    "npm:lodash@4.6.1": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:loose-envify@1.1.0": {
       "js-tokens": "npm:js-tokens@1.0.2",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -256,6 +264,11 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "warning": "npm:warning@2.1.0"
     },
+    "npm:react-youtube@5.1.0": {
+      "lodash": "npm:lodash@4.6.1",
+      "react": "npm:react@0.14.7",
+      "youtube-player": "npm:youtube-player@3.0.4"
+    },
     "npm:react@0.14.7": {
       "fbjs": "npm:fbjs@0.6.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -280,6 +293,9 @@ System.config({
       "process-nextick-args": "npm:process-nextick-args@1.0.6",
       "string_decoder": "npm:string_decoder@0.10.31",
       "util-deprecate": "npm:util-deprecate@1.0.2"
+    },
+    "npm:sister@3.0.0": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:source-map@0.4.4": {
       "amdefine": "npm:amdefine@1.0.0",
@@ -312,6 +328,13 @@ System.config({
     "npm:warning@2.1.0": {
       "loose-envify": "npm:loose-envify@1.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:youtube-player@3.0.4": {
+      "bluebird": "npm:bluebird@3.3.4",
+      "load-script": "npm:load-script@1.0.0",
+      "lodash": "npm:lodash@4.6.1",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "sister": "npm:sister@3.0.0"
     }
   }
 });
