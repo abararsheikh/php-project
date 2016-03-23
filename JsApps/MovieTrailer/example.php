@@ -5,8 +5,11 @@
   <title>TrailerApp example</title>
 </head>
 <body>
-  <div id="trailerApp"></div>
-
+  <?php
+  include "../../autoloader.php";
+  $movieName = 'dog';
+  new \Project\JsApps\MovieTrailer\MovieTrailer($movieName)
+  ?>
 
 
   <!-- need jQuery -->

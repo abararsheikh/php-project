@@ -24,7 +24,7 @@ export default class TrailerApp extends React.Component {
           <form action="" name="trailerSearchForm"
             onSubmit={this.handleSubmit}>
             <input type="text" name="movieName"/>
-            <button type="submit">search</button>
+            <button type="submit" name="submit">search</button>
           </form>
           {(() => {
             if(this.state.showPlayer) {
