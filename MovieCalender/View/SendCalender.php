@@ -16,7 +16,7 @@
 <section id="slider" class="container-fluid">
     <h2 class="hidden">slide show</h2>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 no-padding">
             <img alt="pic" src="../../Booking/image/slide.jpg" class="img-responsive image-center"/>
         </div>
     </div>

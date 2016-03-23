@@ -11,7 +11,8 @@ namespace Project\MovieCalender\libs;
         public function __construct(){
 //            echo "This is Router";
             $this->routeArray=[
-                "CustomerCalender"=>["index"]
+                "MovieCalender"=>["index"],
+                "CustomerCalender"=>["index","showEnglishMovies"]
             ];
             $this->route();
         }
@@ -21,7 +22,7 @@ namespace Project\MovieCalender\libs;
             if($this->route === NULL){
                 $this->route = filter_input(INPUT_GET,'route');
                 if($this->route === NULL){
-                    $this->route="CustomerCalender/index";
+                    $this->route="MovieCalender/index";
                 }
             }
             $this->parseRoute();
@@ -32,7 +33,7 @@ namespace Project\MovieCalender\libs;
         private function parseRoute(){
 
             $this->route = explode("/",$this->route);
-            print_r($this->route);
+            //print_r($this->route);
             $controller = $this->route[0];
             $action = $this->route[1];
             $param=array_slice($this->route,2);
@@ -52,7 +53,8 @@ namespace Project\MovieCalender\libs;
 
             $check =false;
             foreach($this->routeArray as $controller=>$actions){
-
+                    //var_dump($controller);
+                    //var_dump($controllerName);
                 if($controller==$controllerName){
 
                     if(is_array($actions)){

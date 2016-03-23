@@ -16,7 +16,7 @@
 <section id="slider" class="container-fluid">
     <h2 class="hidden">slide show</h2>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 no-padding">
             <img alt="pic" src="../../Booking/image/slide.jpg" class="img-responsive image-center"/>
         </div>
     </div>
@@ -39,51 +39,44 @@
                 <p>Now you can block your calendar with release dates of upcoming movies and that too according to your language preference!</p>
             </div>
         </div>
-        <div class="bg-calender-form">
         <div class="row bg-calender-form">
+            <form method="post" action=".">
+                <input type="hidden" name="route" value="CustomerCalender/index"/>
+                <div class="col-lg-4 col-md-4 col-sm-4 ">
 
-            <div class="col-lg-4 col-md-4 col-sm-4 ">
-
-                <p class="select-step">STEP-1</p>
-
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 ">
-                <p class="select-step">STEP-2</p>
-
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 ">
-                <p class="none-step">STEP-3</p>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <p>Please select your preferred movie languages and we will create your personalized movie calendar.</p>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                        <ul class="list-unstyled">
-                            <li><button class="btn btn-default btn-calender">ALL MOVIES</button></li>
-                            <li><button class="btn btn-default btn-calender">ENGLISH</button></li>
-                            <li><button class="btn btn-default btn-calender">CHINESE</button></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-9 col-md-9 col-sm-9">
-                        <div class="movieName nicescroll-cursors"></div>
+                    <p class="select-step">STEP-1</p>
+                    <div class="form-group">
+                        <input type="text" name="name" value="" placeholder="Name" class="form-control"/>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-12">
-                <a class="moviedem-submit">Continue to next step<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></a>
+                <div class="col-lg-4 col-md-4 col-sm-4 ">
+                    <p class="none-step">STEP-2</p>
+                    <div class="form-group">
+                        <input type="text" name="phone" value="" placeholder="Mobile Number" class="form-control"/>
+                    </div>
+                </div>
 
-            </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 ">
+                   <p class="none-step">STEP-3</p>
+                    <div class="form-group">
+                        <input type="text" name="email" value="" placeholder="Email Address" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <button type="submit" class="moviedem-submit">Continue to next step<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></button>
+                    <?php if(isset($error)):?>
+                        <div class="row">
+                            <div class="col-lg-12 error"><?php echo $error?></div>
+                        </div>
+                    <?php endif?>
+                </div>
+            </form>
         </div>
 
     </div>
-    </div>
+
 </main>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

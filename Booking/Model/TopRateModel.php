@@ -22,7 +22,7 @@ class TopRateModel {
 
     public function getFilmInfo(){
        $db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
-        $result = $db->query("SELECT DISTINCT(running_films.Film_Id),`Film_Time`,`Film_Name`,`Film_Director`,`Film_Actor`,`Film_Intro`,`Film_pic`,`Film_length`,`Price_Full`,running_films.Avaliable, `film_description`FROM `films`JOIN running_films ON films.Film_Id = running_films.Film_Id");
+        $result = $db->query("SELECT DISTINCT(running_films.Film_Id),`Film_Time`,`Film_Name`,`Film_Director`,`Film_Actor`,`Film_pic`,`Film_length`,`Price_Full`,running_films.Avaliable, `film_description`FROM `films`JOIN running_films ON films.Film_Id = running_films.Film_Id");
         $fileName = $this->getFilmsName($result);
         $fo =new FileOperation();
 

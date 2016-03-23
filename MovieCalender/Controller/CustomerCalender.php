@@ -9,6 +9,12 @@
 namespace Project\MovieCalender\Controller;
 
 
+
+
+
+use Project\MovieCalender\libs\Validation;
+use Project\MovieCalender\Model\CalenderModel;
+
 class CustomerCalender
 {
     public function __construct()
@@ -18,7 +24,47 @@ class CustomerCalender
 
     public function index(){
         echo "This is index";
+        $error="";
+        $name =filter_input(INPUT_POST,"name");
+        $phone =filter_input(INPUT_POST,"phone");
+        $email =filter_input(INPUT_POST,"email");
+
+
+
+//        var_dump($name);
+//        var_dump($phone);
+//        var_dump($email);
+
+        $validation = new Validation();
+        if($validation->isEmpty($name) || $validation->isEmpty($phone) || $validation->isEmpty($email)){
+            $error ="all the fields should not be empty";
+            require_once "./View/MovieCalender.php";
+        }else if($validation->phoneNumber($phone)!=""){
+                $error= $validation->phoneNumber($phone);
+                require_once "./View/MovieCalender.php";
+        }else if($validation->EmailValidator($email)!=""){
+            $error =$validation->EmailValidator($email);
+            require_once "./View/MovieCalender.php";
+        }else{
+            $calenderInfo = new CalenderModel();
+            $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Time FROM `films` JOIN running_films ON films.Film_Id = running_films.Film_Id";
+            $calender = $calenderInfo->getCalenderDetail($sql);
+            //var_dump($calender);
+            require_once "./View/CustomerCalender.php";
+        }
+
     }
+
+    public function showEnglishMovies(){
+        $calenderInfo = new CalenderModel();
+        $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Time FROM `films`
+                                                                                                      JOIN running_films
+                                                                                                      ON films.Film_Id = running_films.Film_Id
+                                                                                                      WHERE `LANGUAGE` = 'ENGLISH'";
+        $calender = $calenderInfo->getCalenderDetail($sql);
+        echo json_encode($calender);
+    }
+
     public function gotoSendCalender(){
         echo "This is gotoSendCalender in CustomerCalender";
     }

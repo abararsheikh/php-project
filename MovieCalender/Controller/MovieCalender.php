@@ -9,6 +9,7 @@
 namespace Project\MovieCalender\Controller;
 
 
+
 class MovieCalender
 {
     public function __construct()
@@ -17,6 +18,11 @@ class MovieCalender
     }
 
     public function index(){
+        //echo "This is MovieCalender Controller index action";
+        require_once "./View/MovieCalender.php";
+    }
+
+    public function gotoCustomerCalender(){
 
     }
 }

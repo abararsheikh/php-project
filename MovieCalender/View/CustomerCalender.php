@@ -39,26 +39,52 @@
                 <p>Now you can block your calendar with release dates of upcoming movies and that too according to your language preference!</p>
             </div>
         </div>
+        <div class="bg-calender-form">
         <div class="row bg-calender-form">
+
             <div class="col-lg-4 col-md-4 col-sm-4 ">
 
                 <p class="select-step">STEP-1</p>
-                <div class="form-group">
-                    <input type="text" name="name" value="" placeholder="Name" class="form-control"/>
-                </div>
+
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4 ">
-                <p class="none-step">STEP-2</p>
-                <div class="form-group">
-                    <input type="text" name="name" value="" placeholder="Mobile Number" class="form-control"/>
-                </div>
+                <p class="select-step">STEP-2</p>
+
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4 ">
-               <p class="none-step">STEP-3</p>
-                <div class="form-group">
-                    <input type="text" name="name" value="" placeholder="Email Address" class="form-control"/>
+                <p class="none-step">STEP-3</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <p>Please select your preferred movie languages and we will create your personalized movie calendar.</p>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <ul class="list-unstyled">
+                            <li><button id="allMovies" class="btn btn-default btn-calender">ALL MOVIES</button></li>
+                            <li><button id="EnglishMovies" class="btn btn-default btn-calender">ENGLISH</button></li>
+                            <li><button id="ChineseMovies" class="btn btn-default btn-calender">CHINESE</button></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-9 col-md-9 col-sm-9">
+                        <div class="movieName nicescroll-cursors">
+                            <ul id="filmList" class="list-unstyled">
+                                <?php foreach($calender as $filmCalender):?>
+                                <li class="movieList">
+
+                                    <input type="checkbox" name="runningfilmId[]" class="film-list" value="<?php echo $filmCalender->Film_Id?>" checked/>
+                                    <label for="runningfilmId[]" class="checked"><?php echo $filmCalender->Film_Name?></label>
+                                    <small>[<?php echo $filmCalender->Run_Time?>]</small>
+
+                                </li>
+                                <?php endforeach?>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -69,13 +95,13 @@
         </div>
 
     </div>
-
+    </div>
 </main>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../../Booking/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../Booking/js/slick.min.js"></script>
-<script type="text/javascript" src="../../Booking/js/homepage.js"></script>
+<script type="text/javascript" src="../../Booking/js/customerCalender.js"></script>
 </body>
 </html> 
