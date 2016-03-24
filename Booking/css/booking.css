@@ -138,3 +138,16 @@ select{
     display: inline-block;
 
 }
+
+#film-info .available{
+    color:#44d30c;
+}
+
+#film-info .filling{
+    color: #ffb11b;
+
+}
+
+#film-info .sold-out{
+    color: #eb1616;
+}

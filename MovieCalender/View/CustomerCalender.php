@@ -78,7 +78,8 @@
 
                                     <input type="checkbox" name="runningfilmId[]" class="film-list" value="<?php echo $filmCalender->Film_Id?>" checked/>
                                     <label for="runningfilmId[]" class="checked"><?php echo $filmCalender->Film_Name?></label>
-                                    <small>[<?php echo $filmCalender->Run_Time?>]</small>
+                                    <small>[<?php echo $filmCalender->Run_Date?>]</small>
+                                    <span class="time-float"><?php echo $filmCalender->Run_Time?></span>
 
                                 </li>
                                 <?php endforeach?>

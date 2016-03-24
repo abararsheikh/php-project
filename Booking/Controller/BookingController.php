@@ -73,7 +73,7 @@ class BookingController{
 
         $getFilmInfo = new FilmBookingModel();
 
-        $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
+        $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime',Run_Time
                               FROM films JOIN running_films
                                           ON films.Film_Id = running_films.Film_Id
                                          JOIN rooms
@@ -84,11 +84,21 @@ class BookingController{
                                           AND rooms.Room_ID=:Room_Id
                                          ORDER BY DATE_FORMAT(Run_Time, '%H:%i')";
         $RoomInfos = $getFilmInfo->getBookingDetail($para=["Film_Id"=>$filmId, "Cinema_ID"=>$cinemaId,"Room_Id"=>$roomId],$sql);
-        echo json_encode($RoomInfos);
+
+        //add loading rate
+        $BookInfo=[];
+        foreach ($RoomInfos as $runTime){
+
+            $value = self::seatsLoadingRate($runTime->Room_ID,$runTime->Run_Time);
+            $runTime->seatsRate =$value;
+            $BookInfo[] = $runTime;
+        }
+        echo json_encode($BookInfo);
     }
 
     public function chooseSeats($roomId, $showTime, $cinemaId){
         //echo "Room ID:$roomId AND Show Time:$showTime";
+
         $getFilmInfo = new FilmBookingModel();
 
         $sql = "SELECT Seat_Name, available
@@ -101,6 +111,36 @@ class BookingController{
         $cinemaAddress = $getFilmInfo->getBookingDetail($para=["Cinema_ID"=>$cinemaId],$sql);
         $RoomInfos[]=$cinemaAddress;
         echo json_encode($RoomInfos);
+    }
+
+    static function seatsLoadingRate($roomId, $showTime){
+        //var_dump($roomId);
+       //var_dump($showTime);
+        $seatsOccupied=0;
+        $getFilmInfo = new FilmBookingModel();
+
+        $sql = "SELECT Seat_Name, available
+                From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
+
+        $RoomInfos = $getFilmInfo->getBookingDetail($para=["Room_ID"=>$roomId, "Run_Time"=>$showTime],$sql);
+        //var_dump($RoomInfos);
+        foreach($RoomInfos as $seat){
+
+            if($seat->available=="N"){
+                $seatsOccupied++;
+
+            }
+        }
+       // echo $seatsOccupied;
+        if($seatsOccupied >6 && $seatsOccupied!=10){
+            return "filling";
+        }
+        if($seatsOccupied==10){
+            return "sold-out";
+        } else{
+            return "available";
+        }
+
     }
 
 

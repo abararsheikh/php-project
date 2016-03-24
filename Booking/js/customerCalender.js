@@ -5,6 +5,9 @@
 function init(){
     chooseCalender();
     findEnglishMovie();
+    findChineseMovie();
+    findAllMovie();
+
 }
 
 function chooseCalender(){
@@ -13,13 +16,34 @@ function chooseCalender(){
         $(this).prev().prop("checked", !$(this).prev().prop("checked"));
     });
 }
+function findChineseMovie(){
+    $("#ChineseMovies").click(function(){
+        url="../MovieCalender/index.php?route=CustomerCalender/showChineseMovies";
+        $.get(url,function(data,status){
+            data = JSON.parse(data);
+            console.log(data);
+            createList(data);
+        })
+    });
+}
+
+function findAllMovie(){
+    $("#allMovies").click(function(){
+        url="../MovieCalender/index.php?route=CustomerCalender/showAllMovies";
+        $.get(url,function(data,status){
+            data = JSON.parse(data);
+            console.log(data);
+            createList(data);
+        })
+    })
+}
 
 function findEnglishMovie(){
     $("#EnglishMovies").click(function(){
-        //alert();
         url="../MovieCalender/index.php?route=CustomerCalender/showEnglishMovies";
         $.get(url, function(data,status){
                 data = JSON.parse(data);
+                console.log(data);
                 createList(data);
         })
     });

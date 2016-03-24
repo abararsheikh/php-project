@@ -110,7 +110,6 @@ font-family: 'Archivo Narrow', sans-serif;
     /*position: absolute;
     top: -10px;
     left: -10px;*/
-    cursor:pointer;
 }
 
 .checked{
@@ -124,11 +123,17 @@ font-family: 'Archivo Narrow', sans-serif;
     font-size: 16px;
     font-weight: normal;
     padding-left: 25px;
+     cursor:pointer;
 }
 
  .unchecked{
      background: url(../image/mp_unchk.png) no-repeat 0 5px;
  }
+
+.time-float{
+    float:right;
+    padding-right:1%;
+}
 
 small{
     color:#999;

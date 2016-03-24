@@ -11,6 +11,6 @@ require_once"../libs/Session.php";
     <head></head>
     <body>
         <a href="./index.php?route=HomePageController/index">click</a>
-        <a href="../index.php?route=DetailController/editItems/0">film Click</a>
+        <a href="../index.php?route=BookingController/chooseTime/3/1/1">film Click</a>
     </body>
 </html>

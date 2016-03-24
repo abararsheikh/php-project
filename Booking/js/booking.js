@@ -161,7 +161,8 @@ function createButtonListShowTime(obj){
     //console.log(obj);
     for(var i=0; i<obj.length; i++){
         console.log(obj[i]);
-        strButton+="<button type="+'"'+"button"+'"'+" class="+'"'+'btn'+' btn-time'+'"'+ ">"+obj[i].RunTime+"</button>";
+            strButton += "<button type=" + '"' + "button" + '"' + " class=" + '"' + 'btn' + ' btn-time ' +obj[i].seatsRate+'"' + ">" + obj[i].RunTime + "</button>";
+
     }
    // console.log(strButton);
     $("#showTime").html(strButton);
@@ -266,7 +267,7 @@ function selectSeats(){
         //console.log($("#seatsMap").find('input[type="checkbox"]:checked'));
        var seatsID = idArr.join(" ");
         console.log(seatsID);
-        var price=20;
+        var price=$("#ticket-price").val();
         var totalPrice = price*seatsNum;
         $('#price').html(totalPrice);
         $('#choosen_seats').html(seatsID);
@@ -283,7 +284,10 @@ function updateSeats(){
 
 function forceLogin(){
     //console.log($(".selected").find("button").first());
-    login.show();
+    console.log($("#login").hasClass(".selected"));
+    if($("#login").hasClass("selected")) {
+        login.show();
+    }
 }
 init();
 

@@ -114,7 +114,7 @@ class HomePageController {
 
         $CinemaInfos = $getFilmInfo->getBookingInfo($filmId,$sql);
 
-
+       // var_dump($filmInfo);
 
         require_once "./View/Booking.php";
 

@@ -39,7 +39,7 @@
                 <?php echo $item_id?>
                 <?php endif ?>
              "/>
-             <input id="ticket-price" type="hidden" name="price" value=""/>
+             <input id="ticket-price" type="hidden" name="price" value="<?php echo $filmInfo[0]->Price_Full?>"/>
              <div id="seatsJson" style="display:none"><?php if(isset($SeatsInfos)):?>
                      <?php echo $SeatsInfos?>
                  <?php endif ?></div>
