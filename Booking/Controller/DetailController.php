@@ -243,8 +243,57 @@ class DetailController{
     }
 
     public function gotoPayment(){
-        echo "goto payment";
-        var_dump($_SESSION['cart']);
+       // echo "goto payment";
+        $totalPrice=0;
+        $orderTime=date("Y-m-d H:i:s");
+        $userid =$_SESSION['user']['id'];
+        //var_dump($_SESSION);
+        $cart=new ShoppingCart();
+        $items=$cart->shoppingCart->data;
+        foreach($items as $item){
+            $totalPrice = $item->TotalPrice+$totalPrice;
+        }
+
+        $order = new OrderModel();
+        $sql ="INSERT INTO `orders` VALUES (NULL, :OrderDate, :UserId, :TotalPrice)";
+        $param=["OrderDate"=>$orderTime,
+                "UserId"=>$userid,
+                "TotalPrice"=>$totalPrice
+                ];
+        $order->modifyOrder($param,$sql);
+
+        $sql="SELECT order_id FROM orders
+              WHERE Order_DATE=:Order_DATE AND Customer_Id=:Customer_Id
+                                           AND Total_Price=:Total_Price";
+        $param=["Order_DATE"=>$orderTime,
+            "Customer_Id"=>$userid,
+            "Total_Price"=>$totalPrice
+        ];
+        $orderId = $order->getOrderDetail($param,$sql);
+        var_dump($orderId);
+        foreach($items as $item){
+            $item->Film_Name=trim($item->Film_Name);
+            self::createReservations($orderId[0]->order_id,$item);
+        }
+
+        $cart->emptyCart();
+
     }
+
+   static function createReservations($orderId,$item){
+       $order = new OrderModel();
+       $sql ="INSERT INTO `reservations` VALUES (NULL, :Running_films, :Cinema_Name, :Cinema_Address
+                                          ,:Run_Time,:Room_Name,:Room_id,:Seats_Numbers,:Order_Id,:Price)";
+       $param=["Running_films"=>$item->Film_Name,
+                "Cinema_Name"=>$item->Cinema,
+                "Cinema_Address"=>$item->Cinema_Address,
+                "Run_Time"=>$item->Run_Time,
+                "Room_Name"=>$item->Room,
+                "Room_id"=>$item->Room_ID,
+                "Seats_Numbers"=>$item->Seats,
+                "Order_Id"=>$orderId,
+                "Price"=>$item->Price];
+       $order->modifyOrder($param,$sql);
+   }
 }
 

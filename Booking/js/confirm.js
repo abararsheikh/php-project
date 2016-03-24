@@ -2,6 +2,7 @@
  * Created by ran on 3/18/2016.
  */
 function init(){
+    paymentButton();
     var endTime = new Date();
     endTime.setMinutes(endTime.getMinutes() + 1);
     console.log(endTime);
@@ -46,6 +47,7 @@ function deleteItem(){
 
 function createBills(obj){
 console.log(obj);
+    var grandPrice=0;
     var strDetail="<h2>TICKET BOOKING DETAIL</h2>";
     var strSummary="";
     for(var i=0;i<obj.length; i++){
@@ -96,16 +98,19 @@ console.log(obj);
 
         //Item Total:
         strSummary+="<tr id="+"'"+"total"+"'"+"><td>Total:</td>"+"<td>"+obj[i].TotalPrice+"</td>"+"</tr>";
-
+        grandPrice+=obj[i].TotalPrice;
         console.log(strDetail);
     }
     //Add film button
+
+
+        strSummary+="<tr><td>GRAND TOTAL</td><td>$"+grandPrice+"</td><tr/>";
         strSummary+="<tr><td colspan='2'><a href='./index.php'>ADD OTHER FILMS</a></td></tr>";
     //Add pay button
-    strSummary+="<tr><td colspan='2'><a href='./index.php'>PAY NOW</a></td></tr>";
+    //strSummary+="<tr><td colspan='2'><a href='./index.php'>PAY NOW</a></td></tr>";
 
     $(".ticket-booking").html(strDetail);
-    $("#orderTable").html(strSummary);
+    $(".booking-table").html(strSummary);
 }
 
 
@@ -124,6 +129,9 @@ function getTimeRemaining(endTime){
     };
 }
 
+function paymentButton(){
+    $(".stripe-button-el").addClass("btn-payment");
+}
 
 
 

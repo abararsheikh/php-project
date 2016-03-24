@@ -11,6 +11,7 @@
 require_once"./Model/TopRateModel.php";
 require_once"./Model/FilmBookingModel.php";
 require_once"./Model/ShoppingCart.php";
+require_once"./Model/orderModel.php";
 //Libs
 require_once"./libs/Router.php";
 require_once"./libs/PDOOperation.php";

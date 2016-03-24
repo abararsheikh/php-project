@@ -114,6 +114,7 @@
                         <?php foreach($cart->shoppingCart->data as $item):?>
                         <?php  $i++;?>
                         <?php $grandPrice+= $item->TotalPrice;?>
+
                             <tr>
                                 <td>Item Number:</td>
                                 <td><?php echo $i?></td>
@@ -132,6 +133,7 @@
                                 <td>Total</td>
                                 <td>$<?php echo $item->TotalPrice?></td>
                               </tr>
+
                         <?php endforeach?>
                               <tr>
                                   <td>GRAND TOTAL</td>
@@ -144,15 +146,16 @@
                                     </td>
                                 </tr>
 
-                              <tr>
-                                  <td colspan="2">
-                                    <?php echo \Project\Payment\Payment::stripeButton(20) ?>
-                                      <a href="./index.php?route=DetailController/gotoPayment">PAY NOW</a>
-                                  </td>
-                              </tr>
                         </tbody>
+
                         
                     </table>
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <?php echo \Project\Payment\Payment::stripeButton($grandPrice) ?>
+
+                        </div>
+                    </div>
                 </div>
             </div>
              <div class="timer timer-pay"></div>

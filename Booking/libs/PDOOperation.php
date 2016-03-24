@@ -26,7 +26,7 @@ class PDOOperation{
     private function bindParam($paras){
 
         foreach ($paras as $key=>$value){
-
+            //echo"$key=>$value<br/>";
             $this->statement->bindValue(":$key", $value);
         }
     }

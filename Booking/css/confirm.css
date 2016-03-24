@@ -174,3 +174,18 @@ img{
     padding-left: 40px;
     padding-top: 13px;
 }
+
+.btn-payment{
+    font-size: 20px;
+    border: none;
+    border-radius: 0px;
+    font-weight: bold;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    width: 100%;
+    display: inline-block;
+    line-height: 22px;
+    text-align: center;
+    background-color: #ff6666;
+    color: #ffffff;
+}
