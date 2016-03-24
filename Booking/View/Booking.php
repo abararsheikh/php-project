@@ -1,4 +1,3 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php' ?>
 
 <!Doctype HTML>
 <html>
@@ -141,7 +140,7 @@
                          <select id="Rooms">
                              <option value="defult" >select an option</option>
                              <?php if(isset($item)):?>
-                                 <option value="<?php echo $item->Cinema_ID?>" selected><?php echo $item->Room?></option>
+                                 <option value="<?php echo $item->Room_ID?>" selected><?php echo $item->Room?></option>
                              <?php endif?>
                          </select>
 
@@ -154,7 +153,7 @@
                            <label for="Date">Select &nbsp;&nbsp;Date:</label>
                             <select id="Date">
                                 <option value="defult" >select an option</option>
-                                <?php if(isset($item)):?>
+                                <?php if(isset($item)): ?>
                                     <option value="<?php echo $item->Room_ID?>" selected><?php echo $item->showDate?></option>
                                 <?php endif?>
                             </select>

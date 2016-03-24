@@ -47,7 +47,11 @@ class ShoppingCart{
         var_dump($this->shoppingCart->data);
     }
     public function getItemById($item_id){
-        return $this->shoppingCart->data[$item_id];
+        if(isset($this->shoppingCart->data[$item_id])) {
+            return $this->shoppingCart->data[$item_id];
+        }else{
+            return false;
+        }
     }
 
     public function updateCartByItemId($item_id, $item){

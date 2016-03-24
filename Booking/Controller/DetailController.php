@@ -97,7 +97,8 @@ class DetailController{
                }else {
                    $cart->addToCart($bookInfo);
                }
-
+                //var_dump($bookInfo);
+               $cart->showCart();
                foreach($seats as $seat) {
 
                    $sql = "UPDATE seats
@@ -136,11 +137,17 @@ class DetailController{
        echo json_encode($cart->shoppingCart->data);
     }
 
-    public function editItems($item_id){
+    public function editItems($item_id=null){
+
         $cart = new ShoppingCart();
         $filmBooking = new FilmBookingModel();
         //$cart->showCart();
-        $item=$cart->getItemById($item_id);
+        if($cart->getItemById($item_id)!=false) {
+            $item = $cart->getItemById($item_id);
+        }else{
+            header("Location: ./index.php");
+        }
+       // var_dump($item);
         $seats =  explode(" ",$item->Seats);
         foreach($seats as $seat) {
             $sql = "UPDATE seats
@@ -152,7 +159,7 @@ class DetailController{
 
         //var_dump($item);
 
-        $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
+        $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime',Run_Time
                               FROM films JOIN running_films
                                           ON films.Film_Id = running_films.Film_Id
                                          JOIN rooms
@@ -160,9 +167,9 @@ class DetailController{
                                          JOIN cinemas
                                          ON cinemas.Cinema_ID = rooms.Cinema_ID
                                          WHERE running_films.Film_Id=:Film_Id AND cinemas.Cinema_ID=:Cinema_ID
-                                          AND rooms.Room_ID=:Room_Id
+                                          AND rooms.Room_ID=:Room_Id AND DATE_FORMAT(Run_Time, '%Y-%m-%d') =:Run_Time
                                          ORDER BY DATE_FORMAT(Run_Time, '%H:%i')";
-        $TimeInfos = $filmBooking->getBookingDetail($para=["Film_Id"=>$item->FilmId, "Cinema_ID"=>$item->Cinema_ID,"Room_Id"=>$item->Room_ID],$sql);
+        $TimeInfos = $filmBooking->getBookingDetail($para=["Film_Id"=>$item->FilmId, "Cinema_ID"=>$item->Cinema_ID,"Room_Id"=>$item->Room_ID,"Run_Time"=>$item->showDate],$sql);
 
         $sql = "SELECT Seat_Name, available
                 From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
@@ -171,7 +178,8 @@ class DetailController{
 
         $filmInfo = $filmBooking->getFilmById($item->FilmId);
         $SeatsInfos= json_encode($SeatsInfos);
-        //var_dump($TimeInfos);
+       // var_dump($TimeInfos);
+       // var_dump($SeatsInfos);
         require_once "./View/Booking.php";
     }
 

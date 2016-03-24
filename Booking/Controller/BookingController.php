@@ -69,7 +69,7 @@ class BookingController{
     }
 
 
-    public function chooseTime($filmId, $cinemaId, $roomId){
+    public function chooseTime($filmId, $cinemaId, $roomId, $runtime){
 
         $getFilmInfo = new FilmBookingModel();
 
@@ -81,9 +81,9 @@ class BookingController{
                                          JOIN cinemas
                                          ON cinemas.Cinema_ID = rooms.Cinema_ID
                                          WHERE running_films.Film_Id=:Film_Id AND cinemas.Cinema_ID=:Cinema_ID
-                                          AND rooms.Room_ID=:Room_Id
+                                          AND rooms.Room_ID=:Room_Id AND DATE_FORMAT(Run_Time, '%Y-%m-%d') =:Run_Time
                                          ORDER BY DATE_FORMAT(Run_Time, '%H:%i')";
-        $RoomInfos = $getFilmInfo->getBookingDetail($para=["Film_Id"=>$filmId, "Cinema_ID"=>$cinemaId,"Room_Id"=>$roomId],$sql);
+        $RoomInfos = $getFilmInfo->getBookingDetail($para=["Film_Id"=>$filmId, "Cinema_ID"=>$cinemaId,"Room_Id"=>$roomId,"Run_Time"=>$runtime],$sql);
 
         //add loading rate
         $BookInfo=[];
@@ -94,6 +94,7 @@ class BookingController{
             $BookInfo[] = $runTime;
         }
         echo json_encode($BookInfo);
+        //echo json_encode($RoomInfos);
     }
 
     public function chooseSeats($roomId, $showTime, $cinemaId){
@@ -104,13 +105,13 @@ class BookingController{
         $sql = "SELECT Seat_Name, available
                 From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
 
-        $RoomInfos = $getFilmInfo->getBookingDetail($para=["Room_ID"=>$roomId, "Run_Time"=>$showTime],$sql);
+        $SeatsInfos = $getFilmInfo->getBookingDetail($para=["Room_ID"=>$roomId, "Run_Time"=>$showTime],$sql);
 
         $sql = "SELECT Cinema_Address
                 From cinemas WHERE Cinema_ID=:Cinema_ID";
         $cinemaAddress = $getFilmInfo->getBookingDetail($para=["Cinema_ID"=>$cinemaId],$sql);
-        $RoomInfos[]=$cinemaAddress;
-        echo json_encode($RoomInfos);
+        $SeatsInfos[]=$cinemaAddress;
+        echo json_encode($SeatsInfos);
     }
 
     static function seatsLoadingRate($roomId, $showTime){

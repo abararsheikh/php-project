@@ -17,7 +17,7 @@ function seatMap(){
     $(document).on("click", ".btn-time",
 
         function(){
-            console.log($("#Date"));
+           // console.log($("#Date"));
             var showTime = $.trim($(this).text());
             var CinemaID =$(".cinemaNum").val();
             var roomId = $("#Rooms").val();
@@ -30,7 +30,7 @@ function seatMap(){
 
                 var obj = JSON.parse(data);
                 var address = obj.pop();
-
+                console.log(obj);
                 console.log(address);
                 var filmName = $("#film-title").text();
                 var CinemaName = $( ".cinemaNum option:selected" ).text();
@@ -107,8 +107,8 @@ function getRuntime(){
         var cinemaId = $(".cinemaNum").val();
         var roomId = $(this).val();
         var filmId = $("#filmId").val();
-
-        var url = "./index.php?route=BookingController/chooseTime/"+filmId+'/'+cinemaId+'/'+roomId;
+        var runDate = $("#Date option:selected").text();
+        var url = "./index.php?route=BookingController/chooseTime/"+filmId+'/'+cinemaId+'/'+roomId+'/'+runDate;
         console.log(url);
         $.get(url,function(data, status){
              console.log(data);

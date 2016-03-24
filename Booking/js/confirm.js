@@ -4,14 +4,14 @@
 function init(){
     paymentButton();
     var endTime = new Date();
-    endTime.setMinutes(endTime.getMinutes() + 1);
+    endTime.setMinutes(endTime.getMinutes() + 6);
     console.log(endTime);
     //getTimeRemaining(endTime);
     var timeinterval = setInterval(function(){
        var timer = getTimeRemaining(endTime);
         console.log(timer);
         $(".timer").html(timer.minutes+":"+timer.seconds+" Mins");
-        if(timer.total<10000){
+        if(timer.seconds<10){
             $(".timer").html(timer.minutes+":0"+timer.seconds+" Mins");
         }
         if(timer.total<=0){
