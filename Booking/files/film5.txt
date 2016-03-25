@@ -1,8 +1,5 @@
 While exploring the uncharted wilderness in 1823, legendary frontiersman Hugh Glass (Leonardo DiCaprio) sustains injuries from a brutal bear attack. When his hunting team leaves him for dead, Glass must utilize his survival skills to find a way back home to his beloved family. Grief-stricken and fueled by vengeance, Glass treks through the wintry terrain to track down John Fitzgerald (Tom Hardy), the former confidant who betrayed and abandoned him.
 
-<<<<<<< HEAD
-[movie-hit]:149
-=======
-[movie-hit]:140
 
->>>>>>> 51ba154293b7eba101b739a4f503506421ce0cba
+[movie-hit]:149
+
