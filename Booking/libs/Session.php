@@ -36,4 +36,8 @@ class Session
     {
         return session_destroy();
     }
+
+    public function emptySession(){
+         $this->data=[];
+    }
 }

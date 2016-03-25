@@ -272,7 +272,7 @@ function selectSeats(){
         $('#price').html(totalPrice);
         $('#choosen_seats').html(seatsID);
         $('#seatsNums').val(seatsID);
-        $('#ticket-price').val(totalPrice);
+        $('#total-price').val(totalPrice);
     });
 
 }

@@ -15,6 +15,19 @@ class HomePageController {
     public function index(){
 //        echo "This is Home Controller Index";
 //        echo":value ";
+
+// Need to test
+        $editItem =new Session('editItem');
+
+        //var_dump($_SESSION);
+        if(!empty($editItem->data)){
+         $itemId = $editItem->data[0];
+         $shoppingCart = new ShoppingCart();
+            $shoppingCart->deleteItem($itemId);
+            $editItem->emptySession();
+            echo "edit item has been delete";
+        }
+
         $getfilmInfo = new TopRateModel();
         $filmInfo = $getfilmInfo->getFilmInfo();
         $filmRate = $getfilmInfo->topRate();
@@ -96,8 +109,20 @@ class HomePageController {
     public function postToBooking($filmId){
 
         //get film
+        if(empty($filmId)){
+            header("Location: ./index.php");
+        }
 
         $getFilmInfo = new FilmBookingModel();
+        $sql = "SELECT *
+                      FROM films JOIN running_films
+                                          ON films.Film_Id=running_films.Film_Id
+                                          WHERE films.Film_Id=:Film_Id";
+        $param = ['Film_Id'=>$filmId];
+        $film=$getFilmInfo->getBookingDetail($param,$sql);
+        if(empty($film)){
+            header("Location: ./index.php");
+        }
         $changeRate = new TopRateModel();
 
         $filmInfo = $getFilmInfo->getFilmById($filmId);

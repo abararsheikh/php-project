@@ -13,7 +13,8 @@ class DetailController{
     }
 
     public function index(){
-
+        $editItemSession = new Session('editItem');
+        $editItemSession->emptySession();
        if( !\Project\Auth\models\AuthModel::getUser()){
           // echo "you should log in first";
            if(isset($_POST["filmId"])){
@@ -26,24 +27,16 @@ class DetailController{
 
        }else{
            //var_dump(\Project\Auth\models\AuthModel::getUser());
-
-
+           $filmBooking = new FilmBookingModel();
+           $cart = new ShoppingCart();
 
            if(!empty($_POST["OrderInfo"]) && !empty($_POST["filmId"])){
               // if(isset($_POST["OrderInfo"])&& isset($_POST["seatsNums"]) &&isset($_POST["filmId"])){
 
                $bookingInfo = explode("| ",$_POST["OrderInfo"]);
                $seats =explode(" ",$_POST["seatsNums"]);
-//               $bookInfo = [];
-//               $bookInfo["Run_Time"]= $bookingInfo[0];
-//               $bookInfo["Film_Name"] =$bookingInfo[1];
-//               $bookInfo["Cinema"] =$bookingInfo[2];
-//               $bookInfo["Room"] = $bookingInfo[3];
-//               $bookInfo["Cinema_Address"] = $bookingInfo[4];
-//               $bookInfo["Room_ID"] = $bookingInfo[5];
-//               $bookInfo["Seats"] = $_POST["seatsNums"];
-//               var_dump($bookInfo);
-                $price = $_POST["price"];
+
+                $price = $_POST["totalPrice"];
                 $tax = 0.13;
                 $totalPrice = (1+$tax)*$price;
                $bookInfo = new stdClass();
@@ -61,44 +54,57 @@ class DetailController{
                $bookInfo->Cinema_ID = $_POST["Cinema"];
                $bookInfo->showDate = $bookingInfo[6];
                $bookInfo->showTime = $bookingInfo[7];
-               $cart = new ShoppingCart();
                $itemId = trim($_POST["itemId"]);
+
 
                //$cart->showCart();
 
-              $filmBooking = new FilmBookingModel();
+
                if(!empty($_POST["seatsNums"])) {
                    //check database first
-                   //echo "hello";
                    foreach ($seats as $seat) {
                        $sql = "SELECT Seat_Name, available
                            From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time AND Seat_Name=:Seat_Name";
                        $param = ["Room_ID" => $bookInfo->Room_ID, "Run_Time" => $bookInfo->Run_Time, "Seat_Name" => $seat];
                        $seatInfo = $filmBooking->getBookingDetail($param, $sql);
-                       //var_dump($seatInfo);
+
 
                        if (is_array($seatInfo)) {
                            if ($seatInfo[0]->available == 'N') {
                                // require_once"./View/Error404.php";
-                               self::seatsOccupied($bookInfo);
+                               self::seatsOccupied($bookInfo,$itemId);
                                exit();
                            };
                        }
                    }
                }else{
-                    self::seatsEmpty($bookInfo);
+                    self::seatsEmpty($bookInfo,$itemId);
                     exit();
                }
 
 
                if($itemId!=""){
-                   echo"Item id not null";
+                   //echo"Item id not null";
                    $cart-> updateCartByItemId($itemId,$bookInfo);
                }else {
                    $cart->addToCart($bookInfo);
                }
+
+               /*
+                * Calculate Total Price
+                *
+                */
+
+                $grandPrice=0;
+               foreach ($cart->shoppingCart->data as $item){
+                   $grandPrice+=$item->TotalPrice;
+               }
+               $totalPrice =new Session('grandPrice');
+               $totalPrice->emptySession();
+               $totalPrice->data[] =$grandPrice;
+
                 //var_dump($bookInfo);
-               $cart->showCart();
+               //$cart->showCart();
                foreach($seats as $seat) {
 
                    $sql = "UPDATE seats
@@ -120,6 +126,7 @@ class DetailController{
 
     public function deleteItems($item_id){
         //echo $item_id;
+        $grandPrice=0;
         $cart = new ShoppingCart();
         $filmBooking = new FilmBookingModel();
         $item=$cart->getItemById($item_id);
@@ -132,22 +139,31 @@ class DetailController{
             $filmBooking->updateSeats($param, $sql);
         }
         $cart->deleteItem($item_id);
+        ///////////////////////////////////
 
-
+        foreach ($cart->shoppingCart->data as $item){
+            $grandPrice+=$item->TotalPrice;
+        }
+        $totalPrice =new Session('grandPrice');
+        $totalPrice->emptySession();
+        $totalPrice->data[] =$grandPrice;
        echo json_encode($cart->shoppingCart->data);
     }
 
     public function editItems($item_id=null){
-
+        $editItemSession = new Session('editItem');
+        $editItemSession->data[] = $item_id;
+        //var_dump($_SESSION);
         $cart = new ShoppingCart();
         $filmBooking = new FilmBookingModel();
         //$cart->showCart();
         if($cart->getItemById($item_id)!=false) {
             $item = $cart->getItemById($item_id);
         }else{
+
             header("Location: ./index.php");
         }
-       // var_dump($item);
+
         $seats =  explode(" ",$item->Seats);
         foreach($seats as $seat) {
             $sql = "UPDATE seats
@@ -157,7 +173,7 @@ class DetailController{
             $filmBooking->updateSeats($param, $sql);
         }
 
-        //var_dump($item);
+
 
         $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime',Run_Time
                               FROM films JOIN running_films
@@ -178,12 +194,11 @@ class DetailController{
 
         $filmInfo = $filmBooking->getFilmById($item->FilmId);
         $SeatsInfos= json_encode($SeatsInfos);
-       // var_dump($TimeInfos);
-       // var_dump($SeatsInfos);
+
         require_once "./View/Booking.php";
     }
 
-    static function seatsOccupied($item){
+    static function seatsOccupied($item,$item_Id){
         $ErrorMessage = "<b style='color:red'>Some Seats have already been ordered !!!</b>";
         $filmBooking = new FilmBookingModel();
         $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
@@ -208,7 +223,7 @@ class DetailController{
     }
 
 
-    static function seatsEmpty($item){
+    static function seatsEmpty($item,$item_id){
         $ErrorMessage = "<b style='color:red'>At least one sit should be selected</b>";
         $filmBooking = new FilmBookingModel();
         $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
@@ -236,6 +251,7 @@ class DetailController{
         //echo"Hello World";
         $filmBooking = new FilmBookingModel();
         $cart = new ShoppingCart();
+        $totalPrice =new Session('grandPrice');
         foreach ($cart->shoppingCart->data as $item) {
             $seats = explode(" ", $item->Seats);
             foreach ($seats as $seat) {
@@ -247,6 +263,7 @@ class DetailController{
             }
         }
         $cart->emptyCart();
+        $totalPrice->emptySession();
         header("Location: ./index.php");
     }
 

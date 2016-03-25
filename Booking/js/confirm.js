@@ -84,8 +84,9 @@ console.log(obj);
         //console.log(str);
 
         //Buttons
-        strDetail+="<div class="+"'"+"row"+"'"+">"+"<a href="+"'"+"index.php?route=DetailController/editItems/"+i+"'"+" class="+"'"+"btn btn-default btn-booking"+"'"+">Edit"+"</a>"
-        +"<button type="+"'"+"button"+"'"+" class="+"'"+"btn btn-default btn-booking delete"+"'"+" value="+"'"+i+"'"+">"+"Delete"+"</button></div>";
+        strDetail+="<div class="+"'"+"row"+"'"+">"+"<form method='post' action='./index.php'>"+"<input type='hidden' name='route' value="+"'"+"DetailController/editItems/"+i+"'"+">"
+            +"<button type="+"'"+"submit"+"'"+" class="+"'"+"btn btn-default btn-booking"+"'"+">Edit"+"</button>"
+        +"<button type="+"'"+"button"+"'"+" class="+"'"+"btn btn-default btn-booking delete"+"'"+" value="+"'"+i+"'"+">"+"Delete"+"</button></form></div>";
 
         //Item Id:
         strSummary+="<tr><td>Item Number:</td>"+"<td>"+id+"</td>"+"</tr>";

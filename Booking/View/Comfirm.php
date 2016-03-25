@@ -90,9 +90,12 @@
                         </div>
                     </div>
                      <div class="row">
-                         <a href="./index.php?route=DetailController/editItems/<?php echo $i?>" class="btn btn-default btn-booking">Edit</a>
+                         <form method="post" action="./index.php">
+                             <input type="hidden" name="route" value="DetailController/editItems/<?php echo $i?>"/>
+                         <button type="submit" class="btn btn-default btn-booking">Edit</button>
                          <button type="button" class="btn btn-default btn-booking delete" value="<?php echo $i?>">Delete</button>
                          <?php $i++; ?>
+                         </form>
                      </div>
                 <?php endforeach; ?>
 
@@ -152,7 +155,7 @@
                     </table>
                     <div class="row">
                         <div class="col-lg-12">
-                        <?php echo \Project\Payment\Payment::stripeButton($grandPrice) ?>
+                        <?php echo \Project\Payment\Payment::stripeButton($_SESSION['grandPrice'][0]) ?>
 
                         </div>
                     </div>

@@ -58,6 +58,10 @@ class ShoppingCart{
         $this->shoppingCart->data[$item_id] = $item;
     }
 
+    public function isEmpty(){
+        return empty($this->shoppingCart->data)==true? true: false;
+    }
+
 
 
 

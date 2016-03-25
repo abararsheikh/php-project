@@ -26,7 +26,7 @@
       <!--film name -->
        <div class="row">
           <div class="col-lg-12 title">
-           <h1>DEADPOOL (ATMOS) (A) <img class="concal" src="./image/seat-close.png"/></h1>
+           <h1><?php echo $filmInfo[0]->Film_Name?> <img class="concal" src="./image/seat-close.png"/></h1>
            
           </div> 
        </div>
@@ -39,6 +39,7 @@
                 <?php endif ?>
              "/>
              <input id="ticket-price" type="hidden" name="price" value="<?php echo $filmInfo[0]->Price_Full?>"/>
+             <input id="total-price" type="hidden" name="totalPrice" value=""/>
              <div id="seatsJson" style="display:none"><?php if(isset($SeatsInfos)):?>
                      <?php echo $SeatsInfos?>
                  <?php endif ?></div>
