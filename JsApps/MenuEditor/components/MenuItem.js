@@ -22,7 +22,6 @@ const itemTarget = {
     const sourceIndex = findItem(['id', sourceItem.id]).index;
     const targetIndex = findItem(['id', targetItem.id]).index;
 
-    if (targetItem === sourceItem) return;
     // Determine rectangle on screen
     const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
     // Get vertical middle
@@ -32,6 +31,22 @@ const itemTarget = {
     // Get pixels to the top
     const hoverClientY = clientOffset.y - hoverBoundingRect.top;
 
+    const xRange = hoverBoundingRect.width * .1;
+    const movedX = monitor.getDifferenceFromInitialOffset().x;
+
+
+    if (movedX > xRange) {
+      console.log('right');
+    }
+    if (-movedX > xRange) {
+      props.moveItem('left', sourceItem, targetItem);
+      // props.moved=false;
+      console.log('left');
+      return;
+    }
+
+    if (targetItem === sourceItem) return;
+
     // Dragging downwards
     if (sourceIndex < targetIndex && hoverClientY < hoverMiddleY) {
       props.moveItem('down', sourceItem, targetItem);
@@ -40,7 +55,7 @@ const itemTarget = {
     if (sourceIndex > targetIndex && hoverClientY > hoverMiddleY) {
       props.moveItem('up', sourceItem, targetItem);
     }
-    console.log(monitor.getItem());
+    // console.log(monitor.getItem());
   }
 };
 
@@ -48,16 +63,14 @@ const itemTarget = {
   connectDropTarget: connect.dropTarget()
 }))
 @DragSource('menuItem', itemSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
+  connectDragSource: connect.dragSource()
 }))
 export default class MenuItem extends React.Component {
 
   render() {
-    const {name, id, isDragging, connectDragSource, connectDropTarget} = this.props;
-    const opacity = isDragging ? 0 : 1;
+    const {name, id, connectDragSource, connectDropTarget} = this.props;
     return connectDragSource(connectDropTarget(
-        <p style={{border: '1px solid black', opacity: opacity}}>{id}: {name}</p>
+        <p style={{border: '1px solid black', padding: '1em'}}>{id}: {name}</p>
     ))
   }
 }
