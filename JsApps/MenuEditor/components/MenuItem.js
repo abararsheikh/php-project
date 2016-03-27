@@ -36,13 +36,10 @@ const itemTarget = {
 
 
     if (movedX > xRange) {
-      console.log('right');
+      props.moveItem('right', sourceItem, targetItem);
     }
     if (-movedX > xRange) {
       props.moveItem('left', sourceItem, targetItem);
-      // props.moved=false;
-      console.log('left');
-      return;
     }
 
     if (targetItem === sourceItem) return;
