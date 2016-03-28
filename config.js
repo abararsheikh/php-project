@@ -24,6 +24,8 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "events": "github:jspm/nodelibs-events@0.1.1",
     "flux": "npm:flux@2.1.1",
+    "jquery": "npm:jquery@2.2.2",
+    "jquery-ui": "github:components/jqueryui@1.11.4",
     "keymirror": "npm:keymirror@0.1.1",
     "lodash": "npm:lodash@4.6.1",
     "react": "npm:react@0.14.7",
@@ -31,6 +33,9 @@ System.config({
     "react-dnd-html5-backend": "npm:react-dnd-html5-backend@2.1.2",
     "react-dom": "npm:react-dom@0.14.7",
     "react-router": "npm:react-router@2.0.0",
+    "github:components/jqueryui@1.11.4": {
+      "jquery": "npm:jquery@2.2.2"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
