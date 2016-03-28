@@ -26,12 +26,16 @@ export default class EditorContainer extends React.Component {
     this.setState(MenuStore.getMenu());
   };
 
-
   drawMenu = (menuItems, baseIndex = '0') => {
     return (
         <ul key={baseIndex}>
           {menuItems.map((item, index) => {
-            if ($.isArray(item)) return this.drawMenu(item, index);
+            // don't draw array - submenu
+            if($.isArray(item)) return;
+            // Set submenu
+            let subMenu = '';
+            const nextItem = menuItems[index + 1];
+            if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index);
             return (
                 <li key={baseIndex + index.toString()}>
                   <MenuItem  {...item}/>
@@ -39,7 +43,7 @@ export default class EditorContainer extends React.Component {
                     margin: '1em',
                     minHeight: '15px',
                     border: '1px dashed grey'
-                  }}></ul>
+                  }}>{subMenu}</ul>
                 </li>
             );
           })}

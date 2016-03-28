@@ -1,16 +1,9 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import EventEmitter from 'events';
 import MenuConstants from '../constants/MenuConstants';
-import _ from 'lodash';
 
 const CHANGE_EVENT = 'change';
-Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
-  if (!indexArray) return;
-  return indexArray.reduce((acc, currentIndex, i) => {
-    if (i !== indexArray.length - 1) return acc[currentIndex];
-    return acc.splice(currentIndex, deleteCount, ...replacement);
-  }, this)
-};
+
 
 class MenuStore extends EventEmitter {
   _menu;
