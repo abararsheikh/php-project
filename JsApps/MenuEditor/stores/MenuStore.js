@@ -34,8 +34,11 @@ class MenuStore extends EventEmitter {
   _register = (action) => {
     switch (action.actionType) {
       case MenuConstants.GET_MENU:
-        this._menu = action.menu;
+        this._menu = JSON.parse(action.menu[0].menu)[0].menu;
+        this._menu[5] = [{name: 'test'}];
+        console.log(this._menu);
         this.emitChange();
+
     }
   }
 }

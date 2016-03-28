@@ -16,12 +16,14 @@ export default class EditorContainer extends React.Component {
 
   componentDidMount() {
     MenuStore.addChangeListener(this._onChange);
-    MenuActions.getMenu();
+
     // jquery ui sortable
-    $('#sortableMenu ul').sortable({
-      connectWith: '#sortableMenu ul',
+    $('ul.sortable').sortable({
+      connectWith: 'ul.sortable',
       placeholder: 'dndPlaceholder'
     }).disableSelection();
+
+    MenuActions.getMenu();
 
   }
 
@@ -35,35 +37,32 @@ export default class EditorContainer extends React.Component {
   };
 
   drawMenu = (menuItems, baseIndex = '0') => {
-    return (
-        <ul key={baseIndex}>
-          {menuItems.map((item, index) => {
-            // don't draw array - submenu
-            if ($.isArray(item)) return;
-            // Set submenu
-            let subMenu = '';
-            const nextItem = menuItems[index + 1];
-            if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index);
-            return (
-                <li key={baseIndex + index.toString()}>
-                  <MenuItem  {...item}/>
-                  <ul style={{
-                    margin: '1em',
-                    minHeight: '15px',
-                    border: '1px dashed grey'
-                  }}>{subMenu}</ul>
-                </li>
-            );
-          })}
-        </ul>
-    );
+    return menuItems.map((item, index) => {
+      // don't draw array - submenu
+      if ($.isArray(item)) return;
+      // unique react id
+      const nextItem = menuItems[index + 1];
+      // Set submenu
+      let subMenu;
+      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index);
+      return (
+          <li key={baseIndex + index.toString()}>
+            <MenuItem  {...item}/>
+            <ul className="sortable"
+                style={{ minHeight: '20px', border: '1px dashed grey', margin: '0 0 0 1em', padding: '0'}}>{subMenu}</ul>
+          </li>
+      );
+    })
   };
 
   render() {
+
     const menuItems = this.state.menu;
     return (
         <div ref="sortable" id="sortableMenu">
-          {this.drawMenu(menuItems)}
+          <ul className="sortable">
+            {this.drawMenu(menuItems)}
+          </ul>
         </div>
     );
   }

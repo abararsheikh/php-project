@@ -3,15 +3,16 @@ import MenuConstants from '../constants/MenuConstants';
 import * as Api from '../api';
 
 export default {
-  moveUp: (menu) => {
-    AppDispatcher.dispatch({
-      actionType: MenuConstants.SAVE,
-      menu
+  saveMenu: (menu) => {
+    Api.saveMenu(menu).then( res => {
+      AppDispatcher.dispatch({
+        actionType: MenuConstants.SAVE,
+        response: res
+      })
     })
   },
   getMenu: () => {
     Api.getMenu().then( data => {
-      console.log(data);
       AppDispatcher.dispatch({
         actionType: MenuConstants.GET_MENU,
         menu: data
