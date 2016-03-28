@@ -1,29 +1,21 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import MenuConstants from '../constants/MenuConstants';
+import * as Api from '../api';
 
 export default {
-  moveUp(sourceItem, targetItem, sourceArray) {
+  moveUp: (menu) => {
     AppDispatcher.dispatch({
-      actionType: MenuConstants.MOVE_UP,
-      sourceItem, targetItem, sourceArray
+      actionType: MenuConstants.SAVE,
+      menu
     })
   },
-  moveDown(sourceItem, targetItem, sourceArray) {
-    AppDispatcher.dispatch({
-      actionType: MenuConstants.MOVE_DOWN,
-      sourceItem, targetItem, sourceArray
-    })
-  },
-  moveLeft(sourceItem, targetItem, sourceArray) {
-    AppDispatcher.dispatch({
-      actionType: MenuConstants.MOVE_LEFT,
-      sourceItem, targetItem, sourceArray
-    })
-  },
-  moveRight(sourceItem, targetItem, sourceArray) {
-    AppDispatcher.dispatch({
-      actionType: MenuConstants.MOVE_RIGHT,
-      sourceItem, targetItem, sourceArray
-    })
+  getMenu: () => {
+    Api.getMenu().then( data => {
+      console.log(data);
+      AppDispatcher.dispatch({
+        actionType: MenuConstants.GET_MENU,
+        menu: data
+      })
+    });
   }
 }

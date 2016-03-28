@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 import MenuStore from '../stores/MenuStore';
+import MenuActions from '../actions/MenuActions';
 import $ from 'jquery';
 import 'jquery-ui';
 
@@ -9,21 +10,28 @@ export default class EditorContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: MenuStore.getMenu()
+      menu: []
     };
   }
+
   componentDidMount() {
     MenuStore.addChangeListener(this._onChange);
+    MenuActions.getMenu();
+    // jquery ui sortable
     $('#sortableMenu ul').sortable({
       connectWith: '#sortableMenu ul',
       placeholder: 'dndPlaceholder'
     }).disableSelection();
+
   }
+
   componentWillUnmount() {
     MenuStore.removeChangeListener(this._onChange);
   }
+
   _onChange = () => {
-    this.setState(MenuStore.getMenu());
+    this.setState({menu: MenuStore.getMenu()});
+    console.log('change');
   };
 
   drawMenu = (menuItems, baseIndex = '0') => {
@@ -31,7 +39,7 @@ export default class EditorContainer extends React.Component {
         <ul key={baseIndex}>
           {menuItems.map((item, index) => {
             // don't draw array - submenu
-            if($.isArray(item)) return;
+            if ($.isArray(item)) return;
             // Set submenu
             let subMenu = '';
             const nextItem = menuItems[index + 1];

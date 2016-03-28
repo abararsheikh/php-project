@@ -10,19 +10,6 @@ class MenuStore extends EventEmitter {
 
   constructor() {
     super();
-    this._menu = [
-      {id: 1, name: 'home', link: '/home'},
-      {id: 2, name: 'news', link: '/news'},
-      [
-        {id: 3, name: 'sub1', link: '/sub1'},
-        [
-          {id: 6, name: 'sub2', link: '/sub1'}
-        ],
-        {id: 4, name: 'sub1', link: '/sub2'}
-      ],
-      {id: 5, name: 'blog', link: '/blog'}
-    ];
-
     AppDispatcher.register(this._register);
   }
 
@@ -46,21 +33,9 @@ class MenuStore extends EventEmitter {
 
   _register = (action) => {
     switch (action.actionType) {
-      case MenuConstants.MOVE_UP:
-        this._menu = this._moveUp(action.sourceItem, action.targetItem, action.sourceArray);
+      case MenuConstants.GET_MENU:
+        this._menu = action.menu;
         this.emitChange();
-        break;
-      case MenuConstants.MOVE_DOWN:
-        this._menu = this._moveDown(action.sourceItem, action.targetItem, action.sourceArray);
-        this.emitChange();
-        break;
-      case MenuConstants.MOVE_LEFT:
-        break;
-      case MenuConstants.MOVE_RIGHT:
-        this._menu = this._moveRight(action.sourceItem, action.targetItem, action.sourceArray);
-        this.emitChange();
-        break;
-
     }
   }
 }

@@ -8,6 +8,8 @@ RewriteEngine on
 RewriteRule    ^Auth(?!\/Views).+ Auth/index.php                    [NC,L]
 # Payment page
 RewriteRule    ^Payment.* Payment/index.php                    [NC,L]
+# Api
+RewriteRule    ^api.* Api/index.php                    [NC,L]
 
 #Home page
 #RewriteRule    ^.*$ index.php
