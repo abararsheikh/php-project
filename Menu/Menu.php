@@ -23,7 +23,8 @@ class Menu {
     foreach ($menus as $menu) {
       $stmt->bindParam(':name', htmlspecialchars($menu['name']), \PDO::PARAM_STR);
       $stmt->bindParam(':menu', htmlspecialchars($menu['menu']), \PDO::PARAM_STR);
-      $stmt->execute();
+      if ($stmt->execute()) return false;
     }
+    return true;
   }
 }

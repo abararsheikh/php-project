@@ -16,7 +16,7 @@ class PaymentController extends Controller{
     $this->model = new Payment();
   }
 
-  // GET: /payment/stripe
+  // POST: /payment/stripe
   public function Stripe() {
     $token = Helper::getParam('stripeToken');
     if ($this->model->stripe($token)) {

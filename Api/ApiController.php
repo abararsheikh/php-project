@@ -3,6 +3,7 @@
 namespace Project\Api;
 
 use Project\Classes\Controller;
+use Project\Classes\Helper;
 use Project\Classes\View;
 use Project\Menu\Menu;
 
@@ -19,6 +20,8 @@ class ApiController extends Controller{
   }
 
   public function SaveMenu() {
-    
+    $menu = Helper::getParam('menu');
+    $result = Menu::saveMenu(json_decode($menu, true));
+    $this->view->json($this->resultArray($result, null));
   }
 }

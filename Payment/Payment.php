@@ -30,10 +30,11 @@ class Payment {
   public static function stripeButton($amount) {
     $publishable_key = PaymentKeys::STRIPE['publishable_key'];
     $actionPath = PaymentKeys::STRIPE['actionPath'];
-    $_SESSION['paymentAmount'] = $amount *= 100;
+    $amount = $amount * 100;
+    $_SESSION['paymentAmount'] = $amount;
 
     return "
-    <form action=$actionPath method='post'>
+    <form action=$actionPath method='post' id='paymentForm'>
       <script src='https://checkout.stripe.com/checkout.js' class='stripe-button'
             data-key=$publishable_key
             data-name='PHP Cinema'
