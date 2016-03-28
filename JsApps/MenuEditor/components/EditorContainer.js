@@ -16,15 +16,15 @@ export default class EditorContainer extends React.Component {
 
   componentDidMount() {
     MenuStore.addChangeListener(this._onChange);
+    MenuActions.getMenu();
+  }
 
+  componentDidUpdate() {
     // jquery ui sortable
-    $('ul.sortable').sortable({
-      connectWith: 'ul.sortable',
+    $('.sortable').sortable({
+      connectWith: '.sortable',
       placeholder: 'dndPlaceholder'
     }).disableSelection();
-
-    MenuActions.getMenu();
-
   }
 
   componentWillUnmount() {
