@@ -18,32 +18,31 @@ class Payment {
     ));
     $charge = \Stripe\Charge::create(array(
         'customer' => $customer->id,
-        'amount' => $_SESSION['paymentAmount'],
+        'amount' => $_SESSION['grandPrice'][0] * 100,
         'currency' => 'cad'
     ));
-    unset($_SESSION['paymentAmount']);
+    unset($_SESSION['grandPrice']);
 
     // TODO: need handle payment errors
     return true;
   }
 
-  public static function stripeButton($amount) {
+  public static function stripeButton() {
     $publishable_key = PaymentKeys::STRIPE['publishable_key'];
     $actionPath = PaymentKeys::STRIPE['actionPath'];
-    $amount = $amount * 100;
-    $_SESSION['paymentAmount'] = $amount;
 
     return "
-    <form action=$actionPath method='post' id='paymentForm'>
-      <script src='https://checkout.stripe.com/checkout.js' class='stripe-button'
-            data-key=$publishable_key
-            data-name='PHP Cinema'
-            data-label='Pay with Stripe'
-            data-description='add description later...'
-            data-amount=$amount
-            data-currency='cad'
-            data-locale='auto'>
-      </script>
-    </form>";
+    <div id='stripe'>
+      <form action=$actionPath method='post' id='paymentForm'>
+          <script src='https://checkout.stripe.com/checkout.js' class='stripe-button'
+                data-key=$publishable_key
+                data-name='PHP Cinema'
+                data-label='Pay with Stripe'
+                data-description='add description later...'
+                data-currency='cad'
+                data-locale='auto'>
+          </script>
+        </form>
+        </div>";
   }
 }

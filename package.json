@@ -4,7 +4,8 @@
   "scripts": {
     "bundle-auth": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js",
     "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js",
-    "bundle-trailer": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MovieTrailer/app.js Assets/js/trailerApp.js"
+    "bundle-trailer": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MovieTrailer/app.js Assets/js/trailerApp.js",
+    "bundle-stripe": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/PaymentButton/stripe.js Assets/js/stripeButton.js"
   },
   "devDependencies": {
     "babel-core": "^6.3.21",
