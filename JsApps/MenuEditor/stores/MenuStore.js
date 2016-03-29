@@ -6,7 +6,10 @@ const CHANGE_EVENT = 'change';
 
 
 class MenuStore extends EventEmitter {
-  _menu;
+  _state = {
+    menu: [],
+    num: 0
+  };
 
   constructor() {
     super();
@@ -25,8 +28,8 @@ class MenuStore extends EventEmitter {
     this.removeListener(CHANGE_EVENT, callback)
   }
 
-  getMenu() {
-    return this._menu;
+  getState() {
+    return this._state;
   }
 
   ///////////
@@ -34,11 +37,22 @@ class MenuStore extends EventEmitter {
   _register = (action) => {
     switch (action.actionType) {
       case MenuConstants.GET_MENU:
-        this._menu = JSON.parse(action.menu[0].menu)[0].menu;
-        this._menu[5] = [{name: 'test'}];
-        console.log(this._menu);
+        this._state.menu = action.menu.map(m => ({name: m.name, menu: JSON.parse(m.menu)}));
+        console.log(this._state.menu);
         this.emitChange();
-
+        break;
+      case MenuConstants.SAVE:
+        console.log(action.response);
+        this.emitChange();
+        break;
+      case MenuConstants.UPDATE:
+        this._state.menu = action.menu;
+        this.emitChange();
+        break;
+      case MenuConstants.SWITCH:
+        this._state.num = action.menuNum;
+        this.emitChange();
+        break;
     }
   }
 }

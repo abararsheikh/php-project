@@ -20,8 +20,8 @@ class ApiController extends Controller{
   }
 
   public function SaveMenu() {
-    $menu = Helper::getParam('menu');
-    $result = Menu::saveMenu(json_decode($menu, true));
+//    $menu = Helper::getParam('menu');
+    $result = Menu::saveMenu($_POST['menu']);
     $this->view->json($this->resultArray($result, null));
   }
 }

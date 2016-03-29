@@ -18,5 +18,17 @@ export default {
         menu: data
       })
     });
+  },
+  update: (menu) => {
+    AppDispatcher.dispatch({
+      actionType: MenuConstants.UPDATE,
+      menu
+    })
+  },
+  switchMenu: (menuNum) => {
+    AppDispatcher.dispatch({
+      actionType: MenuConstants.SWITCH,
+      menuNum
+    })
   }
 }
