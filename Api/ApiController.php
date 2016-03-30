@@ -21,7 +21,9 @@ class ApiController extends Controller{
 
   public function SaveMenu() {
 //    $menu = Helper::getParam('menu');
+//    var_dump(json_encode($_POST['menu']));
     $result = Menu::saveMenu($_POST['menu']);
+
     $this->view->json($this->resultArray($result, null));
   }
 }

@@ -33,6 +33,7 @@ System.config({
     "react-dnd-html5-backend": "npm:react-dnd-html5-backend@2.1.2",
     "react-dom": "npm:react-dom@0.14.7",
     "react-router": "npm:react-router@2.0.0",
+    "toastr": "npm:toastr@2.1.2",
     "github:components/jqueryui@1.11.4": {
       "jquery": "npm:jquery@2.2.2"
     },
@@ -342,6 +343,9 @@ System.config({
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:toastr@2.1.2": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:ua-parser-js@0.7.10": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"

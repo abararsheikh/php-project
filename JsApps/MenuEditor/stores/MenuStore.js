@@ -1,6 +1,8 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import EventEmitter from 'events';
 import MenuConstants from '../constants/MenuConstants';
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css!';
 
 const CHANGE_EVENT = 'change';
 
@@ -8,7 +10,8 @@ const CHANGE_EVENT = 'change';
 class MenuStore extends EventEmitter {
   _state = {
     menu: [],
-    num: 0
+    num: 0,
+    toastr: false
   };
 
   constructor() {
@@ -42,8 +45,13 @@ class MenuStore extends EventEmitter {
         this.emitChange();
         break;
       case MenuConstants.SAVE:
-        console.log(action.response);
+        if (action.response.success) {
+          this._state.toastr = () => toastr.success('Menu Saved');
+        } else {
+          this._state.toastr = () => toastr.error('Failed to save');
+        }
         this.emitChange();
+        this._state.toastr = false;
         break;
       case MenuConstants.UPDATE:
         this._state.menu = action.menu;

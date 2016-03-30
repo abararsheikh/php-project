@@ -19,11 +19,12 @@ class Menu {
     return $menuList;
   }
   public static function saveMenu(array $menus) {
-    $stmt = DB::getDB()->prepare('INSERT INTO menus VALUES (:name, :menu)');
+    $stmt = DB::getDB()->prepare('INSERT INTO menus VALUES (:name, :menu)
+      ON DUPLICATE KEY UPDATE name = :name, menu = :menu');
     foreach ($menus as $menu) {
-      $stmt->bindParam(':name', htmlspecialchars($menu['name']), \PDO::PARAM_STR);
-      $stmt->bindParam(':menu', htmlspecialchars($menu['menu']), \PDO::PARAM_STR);
-      if ($stmt->execute()) return false;
+      $stmt->bindParam(':name', $menu['name'], \PDO::PARAM_STR);
+      $stmt->bindParam(':menu', json_encode($menu['menu']), \PDO::PARAM_STR);
+      if (!$stmt->execute()) return false;
     }
     return true;
   }
