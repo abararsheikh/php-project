@@ -1,11 +1,19 @@
 import React from 'react';
 import update from 'react/lib/update';
 import MenuItem from './MenuItem';
+import NewMenuItem from './NewMenuItem';
 import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
 import $ from 'jquery';
 import 'jquery-ui';
 
+Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
+  if (!indexArray) return;
+  return indexArray.reduce((acc, currentIndex, i) => {
+    if (i !== indexArray.length - 1) return acc[currentIndex];
+    return acc.splice(currentIndex, deleteCount, ...replacement);
+  }, this)
+};
 
 export default class EditorContainer extends React.Component {
   constructor(props) {
@@ -16,6 +24,7 @@ export default class EditorContainer extends React.Component {
   componentDidMount() {
     MenuStore.addChangeListener(this._onChange);
     MenuActions.getMenu();
+
   }
 
   componentDidUpdate() {
@@ -23,6 +32,7 @@ export default class EditorContainer extends React.Component {
     $('ul.sortable').sortable({
       connectWith: 'ul.sortable',
       update: this.handleDrop,
+      receive: this.handleDrop,
       placeholder: 'dndPlaceholder'
     }).disableSelection();
 
@@ -58,32 +68,37 @@ export default class EditorContainer extends React.Component {
       return acc[item];
     }, currentMenu.menu);
     item[type] = event.target.value;
-    this.setState(update(this.state.menu, {
+    this.setState({menu: update(this.state.menu, {
       $apply: (menuState) => {
         menuState[this.state.num] = currentMenu;
         return menuState;
       }
-    }))
+    })})
   };
 
-
-  handleDrop = (event, ui) => {
+  handleDrop = () => {
+    console.log('handle drop');
+    // get current menu
     const menu = this._getMenuItemValue($('#sortableMenu > ul'));
-    const newMenuState = update(this.state.menu, {
-      $apply: (menuState) => {
-        menuState[this.state.num].menu = menu;
-        return menuState;
-      }
-    });
+    // get items in new menu section
+    const newMenuItems = this._getMenuItemValue($('#newMenu'));
     // Disable jquery dnd, and let React handle DOM update
     $('ul.sortable').sortable('cancel');
-    MenuActions.update(newMenuState);
+    // update
+    MenuActions.update(menu, newMenuItems);
   };
 
   handleMenuChange = (event) => {
     // need to save menu
     const menuNum = event.target.getAttribute('name');
     MenuActions.switchMenu(menuNum);
+  };
+
+  handleDeleteItem = (event) => {
+    const id = event.target.parentNode.getAttribute('data-id');
+    let menuTree = [].concat(this.state.menu[this.state.num].menu);
+    menuTree.deepSplice(id.split(''), 1);
+    MenuActions.update(menuTree)
   };
 
   /*****************
@@ -102,7 +117,11 @@ export default class EditorContainer extends React.Component {
       return (
           <li key={id} data-id={id}>
             <MenuItem  {...item} onChange={this.handleInputChange}/>
-            <ul className="sortable" style={{ minHeight: '20px', margin: '0 0 0 1em', padding: '0'}}>{subMenu}</ul>
+            <button onClick={this.handleDeleteItem}>delete</button>
+            <ul className="sortable"
+                style={{ minHeight: '20px', margin: '0 0 0 1em', padding: '0'}}>
+              {subMenu}
+            </ul>
           </li>
       );
     })
@@ -114,12 +133,15 @@ export default class EditorContainer extends React.Component {
     const currentMenu = this.state.num;
     return (
         <div>
+          <NewMenuItem newItems={this.state.newItems} onChange={this.handleInputChange}/>
           <ul>{this.state.menu.map((m, i) => (
               <li key={i} name={i} onClick={this.handleMenuChange}>{m.name}</li>
           ))}
           </ul>
           <h1>{menuItems[currentMenu].name}</h1>
+
           <div ref="sortable" id="sortableMenu">
+
             <ul className="sortable">
               {this.drawMenu(this.state.menu[this.state.num].menu)}
             </ul>
