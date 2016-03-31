@@ -78,6 +78,7 @@ class MenuStore extends EventEmitter {
         break;
       case MenuConstants.DELETE_MENU:
         this._state.menu.splice(action.index, 1);
+          this._state.num = 0;
         this.emitChange();
         break;
     }

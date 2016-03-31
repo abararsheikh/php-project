@@ -91,9 +91,9 @@ export default class EditorContainer extends React.Component {
 
   handleDeleteItem = (event) => {
     // get data-id on li element
-    const id = event.target.parentNode.parentNode.getAttribute('data-id');
+    const id = $(event.target).closest('li').data('id');
     let menuTree = [].concat(this.state.menu[this.state.num].menu);
-    menuTree.deepSplice(id.split(''), 1);
+    menuTree.deepSplice(id.toString().split(''), 1);
     MenuActions.update(menuTree)
   };
 
@@ -127,11 +127,13 @@ export default class EditorContainer extends React.Component {
 
     return (
         <div>
-          <NewMenuItem newItems={this.state.newItems} />
           <MenuTab menu={this.state.menu} current={this.state.num} />
 
           <div ref="sortable" id="sortableMenu">
+            <NewMenuItem newItems={this.state.newItems} />
+
             <ul className="sortable" style={{minHeight: '200px', border: '1px solid pink'}}>
+              {/*console.log(this.state.menu, this.state.num)*/}
               {this.drawMenu(this.state.menu[this.state.num].menu)}
             </ul>
             <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
