@@ -25,6 +25,12 @@ export default {
       menu, newMenuItems
     })
   },
+  deleteMenu: (index) => {
+    AppDispatcher.dispatch({
+      actionType: MenuConstants.DELETE_MENU,
+      index
+    })
+  },
   switchMenu: (menuNum) => {
     AppDispatcher.dispatch({
       actionType: MenuConstants.SWITCH,

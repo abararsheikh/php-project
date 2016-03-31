@@ -19,6 +19,8 @@ class Menu {
     return $menuList;
   }
   public static function saveMenu(array $menus) {
+    // truncate, very bad
+    DB::getDB()->exec('TRUNCATE menus');
     $stmt = DB::getDB()->prepare('INSERT INTO menus VALUES (:name, :menu)
       ON DUPLICATE KEY UPDATE name = :name, menu = :menu');
     foreach ($menus as $menu) {

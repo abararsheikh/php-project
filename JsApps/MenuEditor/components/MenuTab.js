@@ -14,6 +14,9 @@ export default class MenuTab extends React.Component {
   handleCreateMenu = (event) => {
     MenuActions.createNewMenu();
   };
+  handleDelete = (index) => (event) => {
+    MenuActions.deleteMenu(index);
+  };
   handleMenuNameChange = (index) => (event) => {
     MenuActions.updateName(event.target.value, index);
   };
@@ -29,7 +32,9 @@ export default class MenuTab extends React.Component {
                   href="#home"
                   data-index={index}
                   onClick={this.handleMenuChange}>
-                <input type="text" value={item.name} onChange={this.handleMenuNameChange(index)}/></a>
+                <input type="text" value={item.name} onChange={this.handleMenuNameChange(index)}/>
+                <span style={{color:'red', cursor: 'pointer'}} onClick={this.handleDelete(index)}>&#10005;</span>
+              </a>
             </li>
           })}
           <li role="presentation">

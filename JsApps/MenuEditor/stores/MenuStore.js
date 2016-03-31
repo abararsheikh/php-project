@@ -76,6 +76,10 @@ class MenuStore extends EventEmitter {
         this._state.menu.push({menu:[], name:'new'});
         this.emitChange();
         break;
+      case MenuConstants.DELETE_MENU:
+        this._state.menu.splice(action.index, 1);
+        this.emitChange();
+        break;
     }
   }
 }
