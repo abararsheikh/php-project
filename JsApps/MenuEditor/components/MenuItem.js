@@ -4,10 +4,27 @@ export default class MenuItem extends React.Component {
 
   render() {
     return (
-        <p style={{border: '1px solid black', padding: '1em', margin: '0'}}>
-          <input type="text" name='name' value={this.props.name} onChange={this.props.onChange}/>:
-          <input type="text" name='link' value={this.props.link} onChange={this.props.onChange}/>
-        </p>
+        <div className="panel panel-default" style={{marginBottom: '0px'}}>
+          <div className="panel-body">
+            <div className="row">
+              <div className="col-xs-5">
+                <input type="text" name='name'
+                       className="form-control" placeholder="name"
+                       value={this.props.name} onChange={this.props.onChange}/>
+              </div>
+
+              <div className="col-xs-5">
+                <input type="text" name='link'
+                       className="form-control" placeholder="link"
+                       value={this.props.link} onChange={this.props.onChange}/>
+              </div>
+
+              <div className="col-xs-2">
+                <button className="btn btn-danger" onClick={this.props.onDelete}>Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
     );
   }
 }

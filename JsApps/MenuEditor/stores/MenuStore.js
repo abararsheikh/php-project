@@ -12,7 +12,7 @@ class MenuStore extends EventEmitter {
     menu: [],
     num: 0,
     toastr: false,
-    newItems: [{name: 'test', link: '/test'}]
+    newItems: []
   };
 
   constructor() {
@@ -46,6 +46,7 @@ class MenuStore extends EventEmitter {
         this.emitChange();
         break;
       case MenuConstants.SAVE:
+        console.log('save response', action.response);
         if (action.response.success) {
           this._state.toastr = () => toastr.success('Menu Saved');
         } else {
@@ -55,8 +56,12 @@ class MenuStore extends EventEmitter {
         this._state.toastr = false;
         break;
       case MenuConstants.UPDATE:
-        this._state.menu[this._state.num].menu = action.menu;
-        if (action.newMenuItems !== null) this._state.newItems = action.newMenuItems;
+        if (action.menu) this._state.menu[this._state.num].menu = action.menu;
+        if (action.newMenuItems) this._state.newItems = action.newMenuItems;
+        this.emitChange();
+        break;
+      case MenuConstants.UPDATE_NAME:
+        this._state.menu[action.num].name = action.name;
         this.emitChange();
         break;
       case MenuConstants.SWITCH:
@@ -67,8 +72,8 @@ class MenuStore extends EventEmitter {
         this._state.newItems.push({name: '', link: ''});
         this.emitChange();
         break;
-      case MenuConstants.DELETE_ITEM:
-
+      case MenuConstants.CREATE_MENU:
+        this._state.menu.push({menu:[], name:'new'});
         this.emitChange();
         break;
     }

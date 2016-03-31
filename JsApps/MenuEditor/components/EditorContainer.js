@@ -1,5 +1,6 @@
 import React from 'react';
 import update from 'react/lib/update';
+import MenuTab from './MenuTab';
 import MenuItem from './MenuItem';
 import NewMenuItem from './NewMenuItem';
 import MenuStore from '../stores/MenuStore';
@@ -32,7 +33,6 @@ export default class EditorContainer extends React.Component {
     $('ul.sortable').sortable({
       connectWith: 'ul.sortable',
       update: this.handleDrop,
-      receive: this.handleDrop,
       placeholder: 'dndPlaceholder'
     }).disableSelection();
 
@@ -63,21 +63,22 @@ export default class EditorContainer extends React.Component {
   handleInputChange = (event) => {
     const currentMenu = this.state.menu[this.state.num];
     const type = event.target.getAttribute('name');
-    const id = event.target.parentNode.parentNode.getAttribute('data-id');
-    const item = id.split('').reduce((acc, item) => {
+    const id = $(event.target).closest('li').data('id');
+    const item = id.toString().split('').reduce((acc, item) => {
       return acc[item];
     }, currentMenu.menu);
     item[type] = event.target.value;
-    this.setState({menu: update(this.state.menu, {
-      $apply: (menuState) => {
-        menuState[this.state.num] = currentMenu;
-        return menuState;
-      }
-    })})
+    this.setState({
+      menu: update(this.state.menu, {
+        $apply: (menuState) => {
+          menuState[this.state.num] = currentMenu;
+          return menuState;
+        }
+      })
+    })
   };
 
   handleDrop = () => {
-    console.log('handle drop');
     // get current menu
     const menu = this._getMenuItemValue($('#sortableMenu > ul'));
     // get items in new menu section
@@ -88,14 +89,9 @@ export default class EditorContainer extends React.Component {
     MenuActions.update(menu, newMenuItems);
   };
 
-  handleMenuChange = (event) => {
-    // need to save menu
-    const menuNum = event.target.getAttribute('name');
-    MenuActions.switchMenu(menuNum);
-  };
-
   handleDeleteItem = (event) => {
-    const id = event.target.parentNode.getAttribute('data-id');
+    // get data-id on li element
+    const id = event.target.parentNode.parentNode.getAttribute('data-id');
     let menuTree = [].concat(this.state.menu[this.state.num].menu);
     menuTree.deepSplice(id.split(''), 1);
     MenuActions.update(menuTree)
@@ -116,8 +112,7 @@ export default class EditorContainer extends React.Component {
       if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, baseIndex + 1);
       return (
           <li key={id} data-id={id}>
-            <MenuItem  {...item} onChange={this.handleInputChange}/>
-            <button onClick={this.handleDeleteItem}>delete</button>
+            <MenuItem  {...item} onChange={this.handleInputChange} onDelete={this.handleDeleteItem}/>
             <ul className="sortable"
                 style={{ minHeight: '20px', margin: '0 0 0 1em', padding: '0'}}>
               {subMenu}
@@ -129,23 +124,17 @@ export default class EditorContainer extends React.Component {
 
   render() {
     if (this.state.menu.length === 0) return (<div>loading...</div>);
-    const menuItems = this.state.menu;
-    const currentMenu = this.state.num;
+
     return (
         <div>
-          <NewMenuItem newItems={this.state.newItems} onChange={this.handleInputChange}/>
-          <ul>{this.state.menu.map((m, i) => (
-              <li key={i} name={i} onClick={this.handleMenuChange}>{m.name}</li>
-          ))}
-          </ul>
-          <h1>{menuItems[currentMenu].name}</h1>
+          <NewMenuItem newItems={this.state.newItems} />
+          <MenuTab menu={this.state.menu} current={this.state.num} />
 
           <div ref="sortable" id="sortableMenu">
-
-            <ul className="sortable">
+            <ul className="sortable" style={{minHeight: '200px', border: '1px solid pink'}}>
               {this.drawMenu(this.state.menu[this.state.num].menu)}
             </ul>
-            <button onClick={this.saveMenu}>Save</button>
+            <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
           </div>
         </div>
     );
@@ -160,8 +149,9 @@ export default class EditorContainer extends React.Component {
         name: $(item).find('input[name="name"]').first().val(),
         link: $(item).find('input[name="link"]').first().val()
       });
-      if ($(item).children().find('ul').toArray().length > 0) {
-        acc.push(this._getMenuItemValue($(item).children('ul')));
+      if ($(item).children().find('input').toArray().length > 0) {
+        const subItems = this._getMenuItemValue($(item).children('ul'));
+        if(subItems && subItems.length > 0) acc.push(subItems);
       }
       return acc;
     }, [])

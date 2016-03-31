@@ -4,7 +4,6 @@ export function getMenu() {
 }
 
 export function saveMenu(menu) {
-  // const data = {menu: {name: 'test', menu: menu}};
   console.log('saving menu', menu);
   return $.post('/api/menu', {menu});
 }

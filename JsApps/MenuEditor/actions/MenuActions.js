@@ -4,10 +4,10 @@ import * as Api from '../api';
 
 export default {
   saveMenu: (menu) => {
-    Api.saveMenu(menu).then( res => {
+    Api.saveMenu(menu).then( response => {
       AppDispatcher.dispatch({
         actionType: MenuConstants.SAVE,
-        response: res
+        response
       })
     })
   },
@@ -36,10 +36,15 @@ export default {
       actionType: MenuConstants.CREATE_ITEM
     })
   },
-  deleteMenuItem: (item) => {
+  createNewMenu: () => {
     AppDispatcher.dispatch({
-      actionType: MenuConstants.DELETE_ITEM,
-      item
+      actionType: MenuConstants.CREATE_MENU
+    })
+  },
+  updateName: (name, num) => {
+    AppDispatcher.dispatch({
+      actionType: MenuConstants.UPDATE_NAME,
+      name, num
     })
   }
 }
