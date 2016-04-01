@@ -90,7 +90,8 @@ class Nav {
     }
   }
 
-  public static function menu($name) {
+  public static function menu() {
+    return self::getLink();
 
   }
 

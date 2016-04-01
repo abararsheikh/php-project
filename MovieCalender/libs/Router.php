@@ -12,7 +12,7 @@ namespace Project\MovieCalender\libs;
 //            echo "This is Router";
             $this->routeArray=[
                 "MovieCalender"=>["index"],
-                "CustomerCalender"=>["index","showEnglishMovies"]
+                "CustomerCalender"=>["index","showEnglishMovies","showChineseMovies","showAllMovies"]
             ];
             $this->route();
         }

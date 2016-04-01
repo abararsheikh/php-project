@@ -2,6 +2,7 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import {EventEmitter} from 'events';
 import AppConstant from '../constants/AppConstants';
 
+
 const CHANGE_EVENT = 'change';
 
 

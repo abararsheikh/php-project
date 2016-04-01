@@ -24,10 +24,19 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "events": "github:jspm/nodelibs-events@0.1.1",
     "flux": "npm:flux@2.1.1",
+    "jquery": "npm:jquery@2.2.2",
+    "jquery-ui": "github:components/jqueryui@1.11.4",
     "keymirror": "npm:keymirror@0.1.1",
+    "lodash": "npm:lodash@4.6.1",
     "react": "npm:react@0.14.7",
+    "react-dnd": "npm:react-dnd@2.1.3",
+    "react-dnd-html5-backend": "npm:react-dnd-html5-backend@2.1.2",
     "react-dom": "npm:react-dom@0.14.7",
     "react-router": "npm:react-router@2.0.0",
+    "toastr": "npm:toastr@2.1.2",
+    "github:components/jqueryui@1.11.4": {
+      "jquery": "npm:jquery@2.2.2"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -139,6 +148,12 @@ System.config({
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:dnd-core@2.0.1": {
+      "asap": "npm:asap@2.0.3",
+      "invariant": "npm:invariant@2.2.1",
+      "lodash": "npm:lodash@4.6.1",
+      "redux": "npm:redux@3.3.1"
     },
     "npm:domain-browser@1.1.7": {
       "events": "github:jspm/nodelibs-events@0.1.1"
@@ -253,6 +268,20 @@ System.config({
     "npm:query-string@3.0.1": {
       "strict-uri-encode": "npm:strict-uri-encode@1.1.0"
     },
+    "npm:react-dnd-html5-backend@2.1.2": {
+      "lodash": "npm:lodash@4.6.1",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "react-dnd": "npm:react-dnd@2.1.3"
+    },
+    "npm:react-dnd@2.1.3": {
+      "disposables": "npm:disposables@1.0.1",
+      "dnd-core": "npm:dnd-core@2.0.1",
+      "invariant": "npm:invariant@2.2.1",
+      "lodash": "npm:lodash@4.6.1",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "react": "npm:react@0.14.7"
+    },
     "npm:react-dom@0.14.7": {
       "react": "npm:react@0.14.7"
     },
@@ -294,6 +323,12 @@ System.config({
       "string_decoder": "npm:string_decoder@0.10.31",
       "util-deprecate": "npm:util-deprecate@1.0.2"
     },
+    "npm:redux@3.3.1": {
+      "lodash": "npm:lodash@4.6.1",
+      "lodash-es": "npm:lodash-es@4.6.1",
+      "loose-envify": "npm:loose-envify@1.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:sister@3.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
@@ -308,6 +343,9 @@ System.config({
     },
     "npm:string_decoder@0.10.31": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:toastr@2.1.2": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:ua-parser-js@0.7.10": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"

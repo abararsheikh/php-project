@@ -31,5 +31,7 @@ Nav::group('/Classes/Router as Router Example', function () {
 });
 
 Nav::start();
+var_dump(json_encode(Nav::menu()));
 Nav::drawMenu('Router Example');
+
 

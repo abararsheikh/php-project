@@ -47,7 +47,7 @@ class CustomerCalender
             require_once "./View/MovieCalender.php";
         }else{
             $calenderInfo = new CalenderModel();
-            $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Time FROM `films` JOIN running_films ON films.Film_Id = running_films.Film_Id";
+            $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p') AS Run_Time  FROM `films` JOIN running_films ON films.Film_Id = running_films.Film_Id";
             $calender = $calenderInfo->getCalenderDetail($sql);
             //var_dump($calender);
             require_once "./View/CustomerCalender.php";
@@ -57,10 +57,30 @@ class CustomerCalender
 
     public function showEnglishMovies(){
         $calenderInfo = new CalenderModel();
-        $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Time FROM `films`
+        $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p')  AS Run_Time FROM `films`
                                                                                                       JOIN running_films
                                                                                                       ON films.Film_Id = running_films.Film_Id
                                                                                                       WHERE `LANGUAGE` = 'ENGLISH'";
+        $calender = $calenderInfo->getCalenderDetail($sql);
+        echo json_encode($calender);
+    }
+
+    public function showChineseMovies()
+    {
+        $calenderInfo = new CalenderModel();
+        $sql = "SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p')  AS Run_Time FROM `films`
+                                                                                                      JOIN running_films
+                                                                                                      ON films.Film_Id = running_films.Film_Id
+                                                                                                      WHERE `LANGUAGE` = 'CHINESE'";
+        $calender = $calenderInfo->getCalenderDetail($sql);
+        echo json_encode($calender);
+    }
+
+    public function showAllMovies(){
+        $calenderInfo = new CalenderModel();
+        $sql = "SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p')  AS Run_Time FROM `films`
+                                                                                                      JOIN running_films
+                                                                                                      ON films.Film_Id = running_films.Film_Id";
         $calender = $calenderInfo->getCalenderDetail($sql);
         echo json_encode($calender);
     }
