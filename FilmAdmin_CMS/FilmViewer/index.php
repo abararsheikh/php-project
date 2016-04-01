@@ -28,8 +28,8 @@ $allMovies = $statement1->fetchAll();
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/Assets/css/style.css"/>
+        <link rel="stylesheet" href="../../Assets/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../../Assets/css/style.css"/>
 
         <title>Homepage</title>
     </head>
@@ -40,7 +40,7 @@ $allMovies = $statement1->fetchAll();
            <h2 class=hidden>slide show</h2>
            <div class="row">
             <div class="slides">
-                <img alt="pic" src="/Assets/image/HomePage/slide.jpg"/>
+                <img alt="pic" src="../../Assets/image/HomePage/slide.jpg"/>
             </div>
             </div>
         </section>

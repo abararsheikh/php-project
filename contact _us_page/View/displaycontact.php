@@ -1,18 +1,12 @@
 <body style="background-color:#CEF6D8;">
 <?php
-//connect to database :
 use Project\Classes\DB\DB;
-include '../autoloader.php';
-$db = DB::getDB();
-//include 'dbconnect.php';
+include '../../autoloader.php';
+//$db = DB::getDB();
+require_once '../Model/Contactus.php';
 
-//once connected execute below query.
-
-$sql = "SELECT * FROM contactus ORDER BY first_name ASC";
-$statement1 = $db->prepare($sql);
-$statement1->execute();
-$selectResult= $statement1->fetchAll();
-//$result = mysqli_query($db_connection,$sql) or die(mysqli_error($db_connection));
+$contactList = new Contactus();
+$selectResult = $contactList->displayContacts();
 
 ?>
 <!Doctype HTML>
@@ -21,13 +15,13 @@ $selectResult= $statement1->fetchAll();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../Assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../Assets/css/style.css"/>
+    <link rel="stylesheet" href="../../Assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../Assets/css/style.css"/>
 
     <title>List of contacts</title>
 </head>
 
-<?php include '../Assets/html/header.php'?>
+<?php include '../../Assets/html/header.php'?>
 <div class="container">
 <body>
 <h2>List of contacts</h2>

@@ -26,11 +26,12 @@
     <input type="input" name="img" />
 -->
     <label>Image :</label>
+    <input type="hidden" name="MAX_FILE_SIZE" value="<?=$max_file_size;?>">
     <input type="file" name="img1" />
     <p>
     <br/>
 
     <label>&nbsp;</label>
-    <input type="submit" value="Add Movie" />
+    <input type="submit" value="Add Movie" name="submit" />
     <br />
 </form>
