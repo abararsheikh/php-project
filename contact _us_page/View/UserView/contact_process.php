@@ -36,9 +36,9 @@ $headers = '$Email';
 
 mail($to,$from, $subject, $body, $is_body_html);
 
-$storeUservalue = new Contactus();
+//$storeUservalue = new Contactus();
 
-$storeUservalue ->contactProcess();
+//$storeUservalue ->contactProcess();
 
 //After submitting form redirect user to main page
 

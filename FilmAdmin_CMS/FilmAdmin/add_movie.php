@@ -104,7 +104,7 @@ unlink($file_to_saved);   // Remove the Original  file from the image folder and
 // ======== Start Image Thumbnail(Crop) Function//===== ------
 
 $target_file = "../../Assets/image/HomePage/"."resized_".$file_get;
-$thumbnail = "../../Assets/image/HomePage/"."thumb_".$file_get;
+$thumbnail = "/Assets/image/HomePage/"."thumb_".$file_get;
 $wthumb = 400;
 $hthumb = 595;
 

@@ -242,14 +242,11 @@ class Contactus
         }
         else
         {
-            if(filter_var($email,FILTER_VALIDATE_EMAIL))
-            {
-                $error .= "<p style='color:#7dba1a'>Valid email </p><br />";
-            }
-            else
+            if(!filter_var($email,FILTER_VALIDATE_EMAIL))
             {
                 $error .= "Invalid email <br />";
             }
+
         }
         return $error;
     }

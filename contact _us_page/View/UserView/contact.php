@@ -26,13 +26,19 @@ if(isset($_POST['submit']))
     $error .= $validate->validEmail($Email);
 
 // ====Validation end
+
+
+//After submitting form redirect user to main page
+if(empty($error))
+{
+    $success = "Your message has been submitted successfully.";
+    //header("Location:contact.php?msg=success");
+
     $storeUservalue = new Contactus();
 
     $storeUservalue ->contactProcess();
+}
 
-//After submitting form redirect user to main page
-
-    header("Location:contact.php?msg=success");
 }
 
 ?>
@@ -42,8 +48,8 @@ if(isset($_POST['submit']))
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../../Assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../../Assets/css/style.css"/>
+    <link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/Assets/css/style.css"/>
     <title>Contact US</title>
 </head>
 
@@ -53,14 +59,14 @@ if(isset($_POST['submit']))
 <div class="row">
     <div class="col-md-12">
         <div class="well well-sm">
-            <form action="#" method="post" name ="contactus" class="form-horizontal">
+            <form action="" method="post" name ="contactus" class="form-horizontal">
                 <fieldset>
                     <legend class="text-center header" style="color: #36A0FF;font-size: 27px;padding: 10px;">Contact Us</legend>
 
                     <fieldset class="form-group">
                         <span class="col-md-1 col-md-offset-2 text-center"></span>
                         <div class="col-md-8" >
-                            <span><?php  echo $error; ?></span>
+                            <span><?php if(isset($error)) echo $error; ?></span>
                         <label  for ="fname" style ="color:#895fa9;font-size:20px;">First name:</label>
                          <input type="text" name="first_name"  value="" placeholder="FirstName" class="form-control">
                         </div>
@@ -98,9 +104,9 @@ if(isset($_POST['submit']))
                     </fieldset>
                     <div class="col-md-12 text-center">
                     <?php
-                    if($msg =='success')
+                    if(isset($success))
                     {
-                        echo "<h3 style='color: green;'>Your message has been submitted successfully.</h3>";
+                        echo $success;
 
                     }
 
