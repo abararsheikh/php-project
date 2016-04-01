@@ -17,14 +17,19 @@ export default class MenuDisplay extends React.Component {
     });
   }
 
+  drawMenu = (menu) => {
+    return menu.map( (item, index) => {
+      if ($.isArray(item)) return <ul key={index}>{this.drawMenu(item)}</ul>;
+      return (
+          <li key={index}><a href={`http://${location.hostname}/${item.link}`}>{item.name}</a></li>
+      )
+    })
+  };
+
   render() {
     return (
         <ul>
-          {this.state.menu.map((item, index) => {
-            return (
-                <li key={index}><a href={`http://${location.hostname}/${item.link}`}>{item.name}</a></li>
-            )
-          })}
+          {this.drawMenu(this.state.menu)}
         </ul>
     )
   }
