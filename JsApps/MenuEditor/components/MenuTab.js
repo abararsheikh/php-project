@@ -38,6 +38,9 @@ export default class MenuTab extends React.Component {
   render() {
     return (
         <ul className="list-group">
+          <li role="presentation">
+            <button className="btn btn-success" onClick={this.handleCreateMenu}>New Menu</button>
+          </li>
           {this.props.menu.map((item, index) => {
             return (
                 <MenuTabItem
@@ -54,9 +57,7 @@ export default class MenuTab extends React.Component {
                 />
             )
           })}
-          <li role="presentation">
-            <button className="btn btn-success" onClick={this.handleCreateMenu}>New Menu</button>
-          </li>
+          
         </ul>
     )
   }

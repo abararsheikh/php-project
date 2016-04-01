@@ -2,9 +2,9 @@ import React from 'react';
 import update from 'react/lib/update';
 import MenuTab from './MenuTab';
 import MenuItem from './MenuItem';
-import NewMenuItem from './NewMenuItem';
 import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
+import '../css/menu.css!';
 import $ from 'jquery';
 import 'jquery-ui';
 
@@ -97,6 +97,9 @@ export default class EditorContainer extends React.Component {
     MenuActions.update(menuTree)
   };
 
+  handleNewItem = () => {
+    MenuActions.createMenuItem();
+  };
   /*****************
    * Display
    *****************/
@@ -127,10 +130,10 @@ export default class EditorContainer extends React.Component {
 
     return (
         <div>
-          <MenuTab menu={this.state.menu} current={this.state.num} />
+          <MenuTab menu={this.state.menu} current={this.state.num}/>
 
           <div ref="sortable" id="sortableMenu">
-            <NewMenuItem newItems={this.state.newItems} />
+            <button className="btn btn-success" onClick={this.handleNewItem}>New Item</button>
 
             <ul className="sortable" style={{minHeight: '200px', border: '1px solid pink'}}>
               {/*console.log(this.state.menu, this.state.num)*/}
@@ -153,7 +156,7 @@ export default class EditorContainer extends React.Component {
       });
       if ($(item).children().find('input').toArray().length > 0) {
         const subItems = this._getMenuItemValue($(item).children('ul'));
-        if(subItems && subItems.length > 0) acc.push(subItems);
+        if (subItems && subItems.length > 0) acc.push(subItems);
       }
       return acc;
     }, [])

@@ -69,7 +69,7 @@ class MenuStore extends EventEmitter {
         this.emitChange();
         break;
       case MenuConstants.CREATE_ITEM:
-        this._state.newItems.push({name: '', link: ''});
+        this._state.menu[this._state.num].menu.unshift({name: '', link: ''});
         this.emitChange();
         break;
       case MenuConstants.CREATE_MENU:
