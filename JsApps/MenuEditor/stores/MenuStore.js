@@ -11,8 +11,7 @@ class MenuStore extends EventEmitter {
   _state = {
     menu: [],
     num: 0,
-    toastr: false,
-    newItems: []
+    toastr: false
   };
 
   constructor() {
@@ -42,7 +41,6 @@ class MenuStore extends EventEmitter {
     switch (action.actionType) {
       case MenuConstants.GET_MENU:
         this._state.menu = action.menu.map(m => ({name: m.name, menu: JSON.parse(m.menu)}));
-        console.log(this._state.menu);
         this.emitChange();
         break;
       case MenuConstants.SAVE:
@@ -54,6 +52,7 @@ class MenuStore extends EventEmitter {
         }
         this.emitChange();
         this._state.toastr = false;
+        this.emitChange();
         break;
       case MenuConstants.UPDATE:
         if (action.menu) this._state.menu[this._state.num].menu = action.menu;

@@ -25,7 +25,6 @@ export default class EditorContainer extends React.Component {
   componentDidMount() {
     MenuStore.addChangeListener(this._onChange);
     MenuActions.getMenu();
-
   }
 
   componentDidUpdate() {

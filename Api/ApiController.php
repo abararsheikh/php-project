@@ -16,7 +16,17 @@ class ApiController extends Controller{
   }
 
   public function Menu() {
-    $this->view->json(Menu::getMenuAll());
+    $menus = Menu::getMenuAll();
+    $menuName = Helper::getParam('name', INPUT_GET);
+    if (isset($menuName)) {
+      foreach ($menus as $menu) {
+        if ( $menu['name'] == $menuName ) $this->view->json($menu['menu']);
+        return ;
+      }
+      $this->view->json($this->resultArray(false, 'no such menu'));
+    }else {
+      $this->view->json($menus);
+    }
   }
 
   public function SaveMenu() {
