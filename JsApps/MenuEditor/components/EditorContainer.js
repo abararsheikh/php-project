@@ -4,6 +4,7 @@ import MenuTab from './MenuTab';
 import MenuItem from './MenuItem';
 import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
+import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
 import '../css/menu.css!';
 import $ from 'jquery';
 import 'jquery-ui';
@@ -141,6 +142,8 @@ export default class EditorContainer extends React.Component {
             </ul>
             <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
           </div>
+
+          <MenuDisplay menu={this.state.menu[this.state.num].menu} />
         </div>
     );
   }

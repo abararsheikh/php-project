@@ -3,20 +3,8 @@ import '../style.css!';
 
 export default class MenuDisplay extends React.Component {
   static propTypes = {
-    menuName: React.PropTypes.string.isRequired
+    menu: React.PropTypes.array.isRequired
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {menu: [], menuName: props.menuName};
-  }
-
-  componentDidMount() {
-    $.getJSON('/api/menu', {name: this.state.menuName}, data => {
-      console.log(JSON.parse(data));
-      this.setState({menu: JSON.parse(data)});
-    });
-  }
 
   drawMenu = (menu) => {
     return menu.map((item, index) => {
@@ -35,7 +23,7 @@ export default class MenuDisplay extends React.Component {
     return (
         <div className="navigation">
           <ul>
-            {this.drawMenu(this.state.menu)}
+            {this.drawMenu(this.props.menu)}
           </ul>
         </div>
     )
