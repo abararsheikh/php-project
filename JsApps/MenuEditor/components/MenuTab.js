@@ -37,28 +37,27 @@ export default class MenuTab extends React.Component {
 
   render() {
     return (
-        <ul className="list-group">
-          <li role="presentation">
-            <button className="btn btn-success" onClick={this.handleCreateMenu}>New Menu</button>
-          </li>
-          {this.props.menu.map((item, index) => {
-            return (
-                <MenuTabItem
-                    key={index}
-                    name={item.name}
-                    index={index}
-                    disabled={this.state.disabled !== index ? 'disabled' : ''}
-                    onBlur={this.handleQuitEdit}
-                    onClick={this.handleMenuChange}
-                    onDelete={this.handleDelete(index)}
-                    onDoubleClick={this.handleEdit(index)}
-                    onMenuChange={this.handleMenuChange(index)}
-                    onNameChange={this.handleMenuNameChange(index)}
-                />
-            )
-          })}
-          
-        </ul>
+        <div>
+          <button className="btn btn-success" onClick={this.handleCreateMenu}>New Menu</button>
+          <ul className="list-group">
+            {this.props.menu.map((item, index) => {
+              return (
+                  <MenuTabItem
+                      key={index}
+                      name={item.name}
+                      index={index}
+                      disabled={this.state.disabled !== index ? 'disabled' : ''}
+                      onBlur={this.handleQuitEdit}
+                      onClick={this.handleMenuChange}
+                      onDelete={this.handleDelete(index)}
+                      onDoubleClick={this.handleEdit(index)}
+                      onMenuChange={this.handleMenuChange(index)}
+                      onNameChange={this.handleMenuNameChange(index)}
+                  />
+              )
+            })}
+          </ul>
+        </div>
     )
   }
 }

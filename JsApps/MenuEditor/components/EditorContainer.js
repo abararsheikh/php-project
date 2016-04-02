@@ -130,20 +130,24 @@ export default class EditorContainer extends React.Component {
     if (this.state.menu.length === 0) return (<div>loading...</div>);
 
     return (
-        <div>
-          <MenuTab menu={this.state.menu} current={this.state.num}/>
-
-          <div ref="sortable" id="sortableMenu">
-            <button className="btn btn-success" onClick={this.handleNewItem}>New Item</button>
-
-            <ul className="sortable" style={{minHeight: '200px', border: '1px solid pink'}}>
-              {/*console.log(this.state.menu, this.state.num)*/}
-              {this.drawMenu(this.state.menu[this.state.num].menu)}
-            </ul>
-            <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
+        <div className="container-fluid">
+          <div className="jumbotron" style={{background: 'white'}}>
+            <h1>Menu Editor</h1>
+            <MenuDisplay menu={this.state.menu[this.state.num].menu}/>
           </div>
+          <div className="row">
+            <aside className="col-sm-3">
+              <MenuTab menu={this.state.menu} current={this.state.num}/>
+            </aside>
+            <div ref="sortable" id="sortableMenu" className="col-sm-9">
+              <button className="btn btn-success " onClick={this.handleNewItem}>New Item</button>
+              <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
 
-          <MenuDisplay menu={this.state.menu[this.state.num].menu} />
+              <ul className="sortable" style={{padding: '2em 0', border: '1px solid pink'}}>
+                {this.drawMenu(this.state.menu[this.state.num].menu)}
+              </ul>
+            </div>
+          </div>
         </div>
     );
   }
