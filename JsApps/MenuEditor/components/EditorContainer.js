@@ -11,7 +11,8 @@ import 'jquery-ui';
 Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
   if (!indexArray) return;
   return indexArray.reduce((acc, currentIndex, i) => {
-    if (i !== indexArray.length - 1) return acc[currentIndex];
+    console.log(currentIndex);
+    if (i < indexArray.length - 1) return acc[currentIndex];
     return acc.splice(currentIndex, deleteCount, ...replacement);
   }, this)
 };
@@ -105,18 +106,18 @@ export default class EditorContainer extends React.Component {
   drawMenu = (menuItems, baseIndex = '') => {
     return menuItems.map((item, index) => {
       // don't draw array - submenu
-      if ($.isArray(item)) return;
       // unique react id
       const id = baseIndex + index.toString();
       const nextItem = menuItems[index + 1];
       // Set submenu
       let subMenu;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, baseIndex + 1);
+      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index + 1);
+      if ($.isArray(item)) return;
       return (
           <li key={id} data-id={id}>
             <MenuItem  {...item} onChange={this.handleInputChange} onDelete={this.handleDeleteItem}/>
             <ul className="sortable"
-                style={{ minHeight: '20px', margin: '0 0 0 1em', padding: '0'}}>
+                style={{ minHeight: '20px', margin: '0 0 0 2em', padding: '0'}}>
               {subMenu}
             </ul>
           </li>
