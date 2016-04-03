@@ -1,5 +1,6 @@
 import React from 'react';
 import update from 'react/lib/update';
+import CollapseButton from './CollapseButton';
 import MenuTab from './MenuTab';
 import MenuItem from './MenuItem';
 import MenuStore from '../stores/MenuStore';
@@ -101,6 +102,8 @@ export default class EditorContainer extends React.Component {
   handleNewItem = () => {
     MenuActions.createMenuItem();
   };
+
+
   /*****************
    * Display
    *****************/
@@ -111,14 +114,18 @@ export default class EditorContainer extends React.Component {
       const id = baseIndex + index.toString();
       const nextItem = menuItems[index + 1];
       // Set submenu
-      let subMenu;
+      let subMenu, collapseButton;
       if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, index + 1);
       if ($.isArray(item)) return;
+      if (subMenu) collapseButton = <CollapseButton />;
       return (
           <li key={id} data-id={id}>
-            <MenuItem  {...item} onChange={this.handleInputChange} onDelete={this.handleDeleteItem}/>
+            <MenuItem  {...item}
+                collapseButton={collapseButton}
+                onChange={this.handleInputChange}
+                onDelete={this.handleDeleteItem}/>
             <ul className="sortable"
-                style={{ minHeight: '20px', margin: '0 0 0 2em', padding: '0'}}>
+                style={{ minHeight: '10px', margin: '0 0 0 2em', padding: '0.5em'}}>
               {subMenu}
             </ul>
           </li>
