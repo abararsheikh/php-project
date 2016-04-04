@@ -50,7 +50,6 @@ export default class MenuList extends React.Component {
   };
 
   drawMenu = (menuItems, baseIndex = '') => {
-
     return menuItems.map((item, index) => {
       let style={ minHeight: '10px', margin: '0 0 0 2em', padding: '0.5em'};
 
