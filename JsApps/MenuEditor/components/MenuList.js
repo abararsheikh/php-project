@@ -34,9 +34,10 @@ export default class MenuList extends React.Component {
       }));
     } else {
       const newArray = this.state.collapsedItems
-          .filter( item => item.name !== parentItem.name && item.link !== parentItem.link);
+          .filter( item => !(item.name === parentItem.name && item.link === parentItem.link));
       this.setState({collapsedItems: newArray})
     }
+
   };
 
   handleInputChange = (id, prop) => (value) => {
@@ -61,6 +62,7 @@ export default class MenuList extends React.Component {
       let subMenu, collapseButton;
       if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, +id + 1);
       if ($.isArray(item)) return;
+      // If there is submenu, add collapse button
       if (subMenu) {
         const isCollapsed = _.find(this.state.collapsedItems, item) ? true : false;
         collapseButton = <CollapseButton
@@ -85,8 +87,7 @@ export default class MenuList extends React.Component {
                 collapseButton={collapseButton}
                 onChange={this.props.onChange}
                 onDelete={this.props.onDelete}/>
-            <ul className="sortable"
-                style={style}>
+            <ul className="sortable" style={style}>
               {subMenu}
             </ul>
           </li>
