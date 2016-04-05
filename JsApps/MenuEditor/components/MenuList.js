@@ -41,8 +41,9 @@ export default class MenuList extends React.Component {
   };
 
   handleInputChange = (id, prop) => (value) => {
-    let menu = [].concat(this.props.menu);
-    let menuItem = id.toString().split('').reduce((acc, item) => {
+      let menu = [].concat(this.props.menu);
+      console.log(id);
+    let menuItem = id.toString().split(',').reduce((acc, item) => {
       return acc[item];
     }, menu);
     menuItem[prop] = value;
@@ -55,11 +56,11 @@ export default class MenuList extends React.Component {
 
       // don't draw array - submenu
       // unique react id
-      const id = baseIndex + index.toString();
+      const id = baseIndex + index;
       const nextItem = menuItems[index + 1];
       // Set submenu
       let subMenu, collapseButton;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, +id + 1);
+      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, baseIndex + (index  + 1) + ',');
       if ($.isArray(item)) return;
       // If there is submenu, add collapse button
       if (subMenu) {
