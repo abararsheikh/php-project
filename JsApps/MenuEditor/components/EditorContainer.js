@@ -1,9 +1,10 @@
 import React from 'react';
 import update from 'react/lib/update';
+import MenuList from './MenuList';
 import MenuTab from './MenuTab';
-import MenuItem from './MenuItem';
 import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
+import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
 import '../css/menu.css!';
 import $ from 'jquery';
 import 'jquery-ui';
@@ -11,14 +12,15 @@ import 'jquery-ui';
 Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
   if (!indexArray) return;
   return indexArray.reduce((acc, currentIndex, i) => {
-    if (i !== indexArray.length - 1) return acc[currentIndex];
+    console.log(currentIndex);
+    if (i < indexArray.length - 1) return acc[currentIndex];
     return acc.splice(currentIndex, deleteCount, ...replacement);
   }, this)
 };
 
 export default class EditorContainer extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = MenuStore.getState();
   }
 
@@ -55,26 +57,8 @@ export default class EditorContainer extends React.Component {
   /*****************
    * Methods
    *****************/
-  saveMenu = (event) => {
+  saveMenu = () => {
     MenuActions.saveMenu(this.state.menu);
-  };
-
-  handleInputChange = (event) => {
-    const currentMenu = this.state.menu[this.state.num];
-    const type = event.target.getAttribute('name');
-    const id = $(event.target).closest('li').data('id');
-    const item = id.toString().split('').reduce((acc, item) => {
-      return acc[item];
-    }, currentMenu.menu);
-    item[type] = event.target.value;
-    this.setState({
-      menu: update(this.state.menu, {
-        $apply: (menuState) => {
-          menuState[this.state.num] = currentMenu;
-          return menuState;
-        }
-      })
-    })
   };
 
   handleDrop = () => {
@@ -99,46 +83,42 @@ export default class EditorContainer extends React.Component {
   handleNewItem = () => {
     MenuActions.createMenuItem();
   };
+
+  handleMenuUpdate = (menu) => {
+    this.state.menu[this.state.num].menu = menu;
+    this.setState(update(this.state.menu[this.state.num].menu, {
+      $set: menu
+    }))
+  };
+
+
   /*****************
    * Display
    *****************/
-  drawMenu = (menuItems, baseIndex = '') => {
-    return menuItems.map((item, index) => {
-      // don't draw array - submenu
-      if ($.isArray(item)) return;
-      // unique react id
-      const id = baseIndex + index.toString();
-      const nextItem = menuItems[index + 1];
-      // Set submenu
-      let subMenu;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, baseIndex + 1);
-      return (
-          <li key={id} data-id={id}>
-            <MenuItem  {...item} onChange={this.handleInputChange} onDelete={this.handleDeleteItem}/>
-            <ul className="sortable"
-                style={{ minHeight: '20px', margin: '0 0 0 1em', padding: '0'}}>
-              {subMenu}
-            </ul>
-          </li>
-      );
-    })
-  };
 
   render() {
     if (this.state.menu.length === 0) return (<div>loading...</div>);
 
     return (
-        <div>
-          <MenuTab menu={this.state.menu} current={this.state.num}/>
+        <div className="container-fluid">
+          <div className="jumbotron" style={{background: 'white'}}>
+            <h1>Menu Editor</h1>
+            <MenuDisplay menu={this.state.menu[this.state.num].menu}/>
+          </div>
+          <div className="row">
+            <aside className="col-sm-3">
+              <MenuTab menu={this.state.menu} current={this.state.num}/>
+            </aside>
+            <div ref="sortable" id="sortableMenu" className="col-sm-9">
+              <button className="btn btn-success " onClick={this.handleNewItem}>New Item</button>
+              <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
 
-          <div ref="sortable" id="sortableMenu">
-            <button className="btn btn-success" onClick={this.handleNewItem}>New Item</button>
-
-            <ul className="sortable" style={{minHeight: '200px', border: '1px solid pink'}}>
-              {/*console.log(this.state.menu, this.state.num)*/}
-              {this.drawMenu(this.state.menu[this.state.num].menu)}
-            </ul>
-            <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
+              <MenuList
+                  menu={this.state.menu[this.state.num].menu}
+                  onChange={this.handleMenuUpdate}
+                  onDelete={this.handleDeleteItem}
+              />
+            </div>
           </div>
         </div>
     );

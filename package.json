@@ -5,7 +5,8 @@
     "bundle-auth": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/app.js Assets/js/authApp.js",
     "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js",
     "bundle-trailer": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MovieTrailer/app.js Assets/js/trailerApp.js",
-    "bundle-stripe": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/PaymentButton/stripe.js Assets/js/stripeButton.js"
+    "bundle-menuEditor": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MenuEditor/app.js Assets/js/MenuEditor.js",
+    "bundle-menuDisplay": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MenuDisplay/app.js Assets/js/MenuDisplay.js"
   },
   "devDependencies": {
     "babel-core": "^6.3.21",
@@ -45,7 +46,8 @@
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "clean-css": "npm:clean-css@^3.4.10",
-      "core-js": "npm:core-js@^1.1.4"
+      "core-js": "npm:core-js@^1.1.4",
+      "systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.5.6"
     }
   },
   "dependencies": {
