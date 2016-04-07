@@ -1,0 +1,209 @@
+
+<main>
+    <div class="container-fluid">
+        <div class="page-header row">
+          <h1 class="col-md-4">Food Shopping Cart</h1>
+            <div class="col-md-offset-3 col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
+            <div class="col-md-3">
+                <form action="" class="search-form ">
+                <div class="form-group has-feedback">
+                    <label for="search" class="sr-only">Search</label>
+                    <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </form>
+                </div>
+            </div>
+        <div class="row menu">
+    <ul class="nav nav-tabs menu-nav col-md-12 col-sm-12 col-xs-12">
+        <li role="presentation" class="<?php if($page=="cart_list") echo "active";?>" onclick="Item()"><a href="index.php">All Items</a></li>
+        <li role="presentation"  class="<?php if($page=="instock") echo "active";?>" onclick="Instock()"><a href="?page=instock">Low stock</a></li>
+        <li role="presentation"  class="<?php if($page=="price") echo "active";?>" onclick="Price()"><a href="?page=price">Price reduction</a></li>
+        <div class="col-md-offset-8"><p class="navbar-text">Selected Food: $<span>0.00</span></p>
+            <button type="button" class="btn btn-default navbar-btn">Settlement</button>
+        </div>
+
+    </ul>
+
+            </div>
+        <div class="table-responsive" id="foods">
+            <table class="table table-hover">
+                <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td><td colspan="4">Food information</td><td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td></thead>
+               <?php foreach($cart as $item){?>
+                <tr>
+                  <td rowspan="4"><input type="checkbox" class="check"/> </td>
+                    <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
+                    <td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><?php echo $item->Food_Name;?></a></td>
+                    <td rowspan="4">Catatory: <?php echo $item->Food_Catagory;?></td>
+                    <td rowspan="4">Cinema:<select> <?php
+                        foreach($cinemas as $c)
+                        { if($item->Cinema_Name==$c["Cinema_Name"]){
+
+                        ?>
+                            <option value="<?php echo $item->Cinema_Name;?>" selected><?php echo $item->Cinema_Name;?></option>
+
+                        <?php
+                        }else{
+                            ?>
+                            <option value="<?php echo $c["Cinema_Name"];?>"><?php echo $c["Cinema_Name"];?></option>
+                            <?php
+                        }
+
+                        }
+                        ?></select></td>
+                    <td rowspan="4" width="150">Size:
+                        <select>
+                            <option class="small" <?php if($item->Size==1){
+                                echo "selected";
+                            }?>>Small</option>
+                            <option class="middle" <?php if($item->Size==2){
+                                echo "selected";
+                                }?>>Middle</option>
+                            <option class="large" <?php if($item->Size==3){
+                                echo "selected";
+                                }?>>Large</option>
+                        </select>
+                    </td>
+                    <td rowspan="4" width="150">
+                        <input type="hidden" value="<?php echo $item->Food_Price; ?>"/>
+                        <input type="hidden" value="<?php echo $item->Discount_price;?>"/>
+                        Original: $<?php if($item->Food_Price!==$item->Discount_price){?><span style="text-decoration:line-through;">
+                            <?php if($item->Size==1){ echo $item->Food_Price;}else if($item->Size==2){
+                                echo $item->Food_Price*1.5;
+                            }else if($item->Size==3){
+                                echo $item->Food_Price*2;
+                            }?></span>
+                    <?php }else
+                    {?><span><?php if($item->Size==1){ echo $item->Food_Price;}else if($item->Size==2){
+                        echo $item->Food_Price*1.5;
+                    }else if($item->Size==3){
+                        echo $item->Food_Price*2;
+                    }?></span><?php }?>
+                    <div>Current: $<span><?php if($item->Size==1){ echo $item->Discount_price;}else if($item->Size==2){
+                                echo $item->Discount_price*1.5;
+                            }else if($item->Size==3){
+                                echo $item->Discount_price*2;
+                            }?></span></div>
+
+                    </td>
+
+                    <td rowspan="4" width="150">
+                       <div class="snip"><input type="button" value="-" class="m"/><input type="text" size="1" maxlength="3" class="enter" value="<?php echo $item->Quantity;?>"/><input type="button" value="+" class="p"/>
+                           <input type="hidden" value="<?php echo $item->Food_Instock;?>"/></div>
+                    </td>
+                    <td rowspan="4" class="amount">$<span><?php if($item->Size==1){ echo $item->Discount_price*$item->Quantity;}
+                            else if($item->Size==2){echo $item->Discount_price*$item->Quantity*1.5;}
+                            else if($item->Size==3){echo $item->Discount_price*$item->Quantity*2;}?></span></td>
+                    <td rowspan="4">
+                        <input type="hidden" value="<?php echo $item->Id;?>" name="id"/>
+                        <a href="" name="delete">Delete</a>
+                    </td>
+                </tr>
+<tr></tr>
+                <tr></tr>
+                <tr></tr>
+               <?php }?>
+            </table>
+        </div>
+        <div class="row">
+            <nav>
+                <ul class="pager">
+                    <li class="disabled"><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div style="margin: 30px auto;" class="row">
+
+
+        <ul class="nav nav-pills ">
+            <li role="presentation" class="active"><a href="#">Guess you like</a></li>
+            <li role="presentation"><a href="#">Viewed recently</a></li>
+
+        </ul>
+
+        </div>
+        <div class="row" style="margin-bottom: 30px;">
+        <div class="col-md-1 col-xs-2">
+            <button type="button " class="btn" aria-label="Left Align">
+            <span class="glyphicon glyphicon-menu-left">
+
+            </span>
+            </button>
+            </div>
+            <div class="col-md-1 col-xs-2 col-xs-offset-8 col-md-offset-10">
+                <button type="button" class="btn" aria-label="Right Align">
+            <span  class="glyphicon glyphicon-menu-right">
+
+            </span>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-xs-10 col-sm-4 col-md-2">
+                <div href="#" class="thumbnail">
+                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <div class="caption">
+                    <h3 class="food_title">Good food</h3>
+                    <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+</div>
+                </div>
+
+            </div>
+            <div class="col-xs-10 col-sm-4 col-md-2">
+                <div href="#" class="thumbnail">
+                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <div class="caption">
+                        <h3 class="food_title">Good food</h3>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-10 col-sm-4 col-md-2">
+                <div href="#" class="thumbnail">
+                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <div class="caption">
+                        <h3 class="food_title">Good food</h3>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-10 col-sm-4 col-md-2">
+                <div href="#" class="thumbnail">
+                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <div class="caption">
+                        <h3 class="food_title">Good food</h3>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-10 col-sm-4 col-md-2">
+                <div href="#" class="thumbnail">
+                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <div class="caption">
+                        <h3 class="food_title">Good food</h3>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-10 col-sm-4 col-md-2">
+                <div href="#" class="thumbnail">
+                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <div class="caption">
+                        <h3 class="food_title">Good food</h3>
+                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+</main>
+
