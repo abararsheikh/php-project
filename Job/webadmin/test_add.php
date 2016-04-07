@@ -4,10 +4,10 @@ session_start();
 $act=$_GET['act']?$_GET['act']:'';
 if($act=='add')
 {
-         
+
   $sql="insert into ceshi(wenti,answer1,answer2,answer3,answer4,rights,fenshu,name)values('".$_POST['wenti']."','".$_POST['answer1']."','".$_POST['answer2']."','".$_POST['answer3']."','".$_POST['answer4']."','".$_POST['rights']."','".$_POST['fenshu']."','".$_POST['name']."')";
-   $result=$db->query($sql);
-  if($result->execute() )
+   $result=$db->exec($sql);
+  if($result)
   {
 
     echo  "<script language='javascript'>";
@@ -32,27 +32,47 @@ if($act=='add')
 function  Check_stu()
 {
 
-	if (document.form1.zhiwei.value == "")
+	if (document.form1.wenti.value == "")
 	 {   alert("Enter job");
-		document.form1.zhiwei.focus();
+		document.form1.wenti.focus();
 		return false;
 	 }
-	if (document.form1.qixian.value == "")
+	if (document.form1.answer1.value == "")
 	 {   alert("Enter time");
-		document.form1.qixian.focus();
+		document.form1.answer1.focus();
 		return false;
 	 }
-	 if (document.form1.renshu.value == "")
+	 if (document.form1.answer2.value == "")
 	 {   alert("Enter nunmber");
-		document.form1.renshu.focus();
+		document.form1.answer2.focus();
 		return false;
 	 }
 	
-	 if (document.form1.yaoqiu.value == "")
+	 if (document.form1.answer3.value == "")
 	 {   alert("Enter Hire Requirement");
-		document.form1.yaoqiu.focus();
+		document.form1.answer3.focus();
 		return false;
-	 }	 
+	 }
+    if (document.form1.answer4.value == "")
+    {   alert("Enter Hire Requirement");
+        document.form1.answer4.focus();
+        return false;
+    }
+    if (document.form1.fenshu.value == "")
+    {   alert("Enter Hire Requirement");
+        document.form1.fenshu.focus();
+        return false;
+    }
+    if (document.form1.rights.value == "")
+    {   alert("Enter Hire Requirement");
+        document.form1.rights.focus();
+        return false;
+    }
+    if (document.form1.name.value == "")
+    {   alert("Enter Hire Requirement");
+        document.form1.name.focus();
+        return false;
+    }
 }
 </script>
 <body>

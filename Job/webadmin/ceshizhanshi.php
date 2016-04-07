@@ -25,7 +25,7 @@ if($act=="search")
   $sql="select * from  ceshi order by id desc";
 }
 $result=$db->query($sql)  or die("cannorworkSQL：$sql");
-$amount=$result->rowCount();
+$amount=$result->rowCount($result);
 }
 if(isset($_GET["page"]))
 {
@@ -181,7 +181,7 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
  
  }}
 
- az
+
  ?>
 </table>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
