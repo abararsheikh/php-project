@@ -2,18 +2,10 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-//$db = DB::getDB();
 require_once '../Model/Contactus.php';
-
 $sel_record = $_POST['sel_record'];
-
 $editValues = new Contactus();
 $editResult = $editValues->editForm($sel_record);
-
-//if(!$editResult)
-//{
-//    print "Something has gone wrong ! Try again !!!!";
-//}
 
 ?>
 <!Doctype HTML>

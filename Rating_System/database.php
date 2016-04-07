@@ -1,30 +1,57 @@
 
 <?php
+class Database{
 
-$rating_tableName  = 'ratings';
-$rating_unitwidth  = 15;
-$rating_dbname  = 'php_project';
-$units=5;
+    private static $dsn = 'mysql:host=localhost;dbname=php_project';
+    private static $username = 'root';
+    private static $password = '';
+    //reference to db connection
+    private static $db;
 
-$dsn = 'mysql:host=localhost;dbname=php_project';
-$username = 'root';
-$password = '';
+    private function __construct() {}
+    //return reference to pdo object
+    public static function getDB () {
 
-try{
-    $db = new PDO($dsn,$username,$password);
-    // disable emulated prepared statment
-    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (!isset(self::$db)) {
+            try {
+                self::$db = new PDO(self::$dsn,
+                    self::$username,
+                    self::$password);
+                // disable emulated prepared statment
+                self::$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                $error_message = $e->getMessage();
+                echo $error_message;
+                exit();
+            }
+        }
+        return self::$db;
+    }
+    public function getTableName()
+    {
+        $rating_tableName  = 'ratings';
 
-    //echo "connected" ." <br/>";
+        return $rating_tableName;
+    }
+    public function  getUnitWidth()
+    {
+        return $rating_unitwidth  = 15;
+    }
+    public function DbName()
+    {
+        return $rating_dbname  = 'php_project';
+    }
+    public function unit()
+    {
+        return $units=5;
+    }
 }
-catch(PDOException $e)
-{
-    $error_message = $e->getMessage();
 
-    echo $error_message;
 
-}
 
-?>
+
+
+
+
 

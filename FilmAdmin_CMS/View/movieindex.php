@@ -3,22 +3,9 @@
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
 $db = DB::getDB();
-//require_once ('database.php');
-
-//get all the movies
-
-$queryAllMovies = 'SELECT * FROM moviefeature';
-$statement1 = $db->prepare($queryAllMovies);
-$statement1->execute();
-//$movies = $statement1->fetch();
-
-$allMovies = $statement1->fetchAll();
-
-//$cast = $movies['cast'];
-//$director = $movies['director'];
-//$language = $movies['language'];
-//$title = $movies['title'];
-
+require_once '../Model/Filmadmin.php';
+$displayAllMovies = new Filmadmin();
+$allMovies = $displayAllMovies->displayMovie();
 
 ?>
 
@@ -63,7 +50,7 @@ $allMovies = $statement1->fetchAll();
                                 <span><?php echo $displayMovie['releaseDate']?></span>
                             </p>
 
-                            <form action="delete_movie.php" method="post">
+                            <form action="../controller/delete_movie.php" method="post">
                                 <input type="hidden" name="film_id"
                                        value="<?php echo $displayMovie['film_id']; ?>" />
                                 <input type="submit" value ="Delete" class="btn btn-default btn-booking"/>

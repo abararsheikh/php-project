@@ -1,11 +1,10 @@
 <?php
-//connect to database
+
 use Project\Classes\DB\DB;
+//connect to database :
 include '../../autoloader.php';
 $db = DB::getDB();
 
-
-//require_once('database.php');
 // Get the value from the form
 $film_id = $_POST['film_id'];
 $title = $_POST['title'];
@@ -81,7 +80,7 @@ if($moveResult != true)
     unlink($temp); // Remove the uploaded file from the PHP temp folder
     exit();
 }
- //======= Image part ends here
+//======= Image part ends here
 
 //unlink($temp);  // Remove the uploaded file from the PHP temp folder
 
@@ -91,7 +90,7 @@ include('imageResize.php');
 $file_to_saved = "../../Assets/image/HomePage/".$file_get;
 $resized_file ="../../Assets/image/HomePage/"."resized_".$file_get;
 $wmax = 400;
-$hmax = 450;
+$hmax = 750;
 
 img_resize($file_to_saved, $resized_file, $wmax, $hmax, $fileExt);
 
@@ -113,31 +112,3 @@ img_thumb($target_file, $thumbnail, $wthumb, $hthumb, $fileExt);
 unlink($resized_file);
 
 //====End of Image Thumbnail(Crop) Function ==============
-
-
-// ==Display Above image type and where it getting save for testing purposes==============
-
-//echo "The file named <strong>$file_get</strong> uploaded successfuly.<br /><br />";
-//echo "It is <strong>$fileSize</strong> bytes in size.<br /><br />";
-//echo "It is an <strong>$file_type</strong> type of file.<br /><br />";
-//echo "The file extension is <strong>$fileExt</strong><br /><br />";
-//echo "The Error Message output for this upload is: $fileErrorMsg";
-//echo "$thumbnail";
-//==============================================================================================
-
-// Validate inputs
-if (empty($title) || empty($releaseDate) || empty($cast) || empty($director)) {
-    $error = "Invalid Movie data. Please Check and fill all fields and then try again.";
-    echo "<span style='color:red;font-size:24px;'>";
-    echo $error;
-    echo "</span>";
-} else {
-    // If valid, Add the movie to the database
-
-    $query = "INSERT INTO moviefeature (title ,releaseDate,director,cast,img) VALUES ('$title','$releaseDate','$director','$cast','$thumbnail')";
-    $db->exec($query);
-
-    // Display the Movie List page
-   header('location: movieindex.php');
-}
-

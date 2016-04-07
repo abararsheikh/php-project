@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rating System</title>
-    <script src="jquery.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="rating.css" />
-    <script type="text/javascript" src="rating.js"></script>
-</head>
-<body>
-
+<?php
+?>
 <div class="product">
     Rate : Movie
-    <div id="rating_1" class="ratings">
+    <div id="rating_<?php echo $displayMovie['film_id']; ?>" class="ratings">
         <div class="star_1 ratings_stars"></div>
         <div class="star_2 ratings_stars"></div>
         <div class="star_3 ratings_stars"></div>
@@ -21,6 +12,3 @@
 
     </div>
 </div>
-
-</body>
-</html>

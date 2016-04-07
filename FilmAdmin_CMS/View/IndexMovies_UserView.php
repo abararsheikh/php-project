@@ -1,25 +1,13 @@
 <?php
-
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-$db = DB::getDB();
-//require_once ('database.php');
-
-//get all the movies
-
-$queryAllMovies = 'SELECT * FROM moviefeature';
-$statement1 = $db->prepare($queryAllMovies);
-$statement1->execute();
-//$movies = $statement1->fetch();
-
-$allMovies = $statement1->fetchAll();
-
-//$cast = $movies['cast'];
-//$director = $movies['director'];
-//$language = $movies['language'];
-//$title = $movies['title'];
-
-
+require_once '../Model/Filmadmin.php';
+//include '../../Rating_System/rate.php';
+//include '../../Rating_System/database.php';
+//include '../../Rating_System/rating.php';
+//$db = DB::getDB();
+$indexMovies = new Filmadmin();
+$allMovies = $indexMovies->movieIndex();
 ?>
 
 <!Doctype HTML>
@@ -30,7 +18,10 @@ $allMovies = $statement1->fetchAll();
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="/Assets/css/style.css"/>
+        <link rel="stylesheet" href="/Assets/css/movie_index.css"/>
+        <!--Rating CSS and JQuery File-->
 
+        <link rel="stylesheet" href="/Rating_System/rating.css" />
         <title>Homepage</title>
     </head>
 
@@ -71,6 +62,27 @@ Release Date :
                                  <span><?php echo $displayMovie['releaseDate']?></span>
                              </p>
                              <button type="button" class="btn btn-default btn-booking">Book Now</button>
+
+                             <!--Include Movie Rating HTML Part here -->
+                             <div id= "<?php echo $displayMovie['film_id']; ?>">
+                             <?php include '../../Rating_System/Rating_Html.php';?>
+                                </div>
+                             <!--
+                             <div class="product">
+                                 Rate : Movie
+                                 <div id="rating_1" class="ratings">
+                                     <div class="star_1 ratings_stars"></div>
+                                     <div class="star_2 ratings_stars"></div>
+                                     <div class="star_3 ratings_stars"></div>
+                                     <div class="star_4 ratings_stars"></div>
+                                     <div class="star_5 ratings_stars"></div>
+                                     <div class="total_votes">vote data</div>
+
+                                 </div>
+                             </div>
+                             -->
+                             <!--End of Include Movie Rating HTML Part  -->
+
                          </div>
                         <?php endforeach; ?>
                     </div>
@@ -190,10 +202,17 @@ Release Date :
          </section>
   -->
 
+
+
          </main>
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/Assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Rating_System/rating.js"></script>
+   <!-- <script type="text/javascript" src="/Rating_System/jquery.js"></script>-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
     </body>
 </html>

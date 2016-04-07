@@ -1,10 +1,13 @@
 <?php
-require_once '/Model/Ratings.php';
-include 'database.php';
-$db = Database::getDB();
-$ids=array(1,2,3,4,5);  //define  quantity of movies in array and it's display rating system for that
-//$ids =array();
-
+include("database.php");
+//$ids=array(1,2);  //define  quantity of movies in array and it's display rating system for that
+$query = "SELECT moviefeature.film_id FROM ratings INNER JOIN moviefeature ON ratings.film_id = moviefeature.film_id ";
+$queryPre = $db ->prepare($query);
+$fIds = $queryPre->execute();
+$fIds = $queryPre->fetch(PDO::FETCH_ASSOC);
+$ids =array();
+$ids[] = $fIds['film_id'];
+var_dump($ids);
 ?>
 
 <html>
@@ -22,8 +25,12 @@ for($i=0;$i<count($ids);$i++)
 {
     //$rating_tableName = 'ratings';
     $id=$ids[$i];
-    $disVotes_user=new Ratings();
-    $row  = $disVotes_user->displayRating_user($id);
+    $query = "SELECT total_votes, total_value FROM ratings WHERE rating_id = $id";
+    $queryPre = $db ->prepare($query);
+    $result = $queryPre->execute();
+    //  $result = $queryPre->fetch();
+    $row = $queryPre->fetch(PDO::FETCH_ASSOC);
+
     if(!$row)
     {
         echo "<span style='color: red;'> Error! No record found in database!! </span>";
@@ -43,6 +50,7 @@ for($i=0;$i<count($ids);$i++)
     $rat = $tv/$v;      // var_dump(@number_format($rat));  convert array to value using number_formate and display to user
 
     $j =$i+1;
+
     $id = $ids[$i];
     echo'<div class="product">
            Rate Item '.$j.'

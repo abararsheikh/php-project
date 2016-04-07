@@ -1,33 +1,49 @@
 <body style="background-color:#CEF6D8;">
 <?php
-
+require_once 'Mail.php';
 use Project\Classes\DB\DB;
 include '../../../autoloader.php';
 //$db = DB::getDB();
 require_once '../../Model/Contactus.php';
-$msg ='';
-if( isset( $_REQUEST['msg'])) {
 
-    $msg = $_REQUEST['msg'];
-
-}
 if(isset($_POST['submit']))
 {
     $first_name = htmlspecialchars($_POST['first_name']);
     $last_name = htmlspecialchars($_POST['last_name']);
     $Email = htmlspecialchars($_POST['Email']);
     $Message =htmlspecialchars($_POST['Message']);
-//===validate the input
+    $Message = trim($Message);
+//===validate the input=========
 
     $validate = new Contactus();
     $error = $validate->validFname($first_name);
 
     $error .= $validate->validLastname($last_name);
     $error .= $validate->validEmail($Email);
+    $error .= $validate->validMessagebox($Message);
 
-// ====Validation end
+// ====Validation End here=====
+
+ //==================Email FUnction================
+    $sendEmail = new Contactus();
+
+    //$to = 'abrar@abrarsheikh.com';
+    $to = 'er.abrar@gmail.com';
+    $subject ='This come from movie server';
+    $is_body_html = true;
+
+    $body = "From".$first_name . $last_name . $Message;
+
+    $from ="From my server";
 
 
+    $headers = '$Email';
+//mail($to,$from, $subject, $body, $headers,$is_body_html = false);
+
+  // echo $sendEmail->mail($to,$from, $subject, $body, $is_body_html);
+
+
+ //==================End Email FUnction================
 //After submitting form redirect user to main page
 if(empty($error))
 {
@@ -68,7 +84,7 @@ if(empty($error))
                         <div class="col-md-8" >
                             <span><?php if(isset($error)) echo $error; ?></span>
                         <label  for ="fname" style ="color:#895fa9;font-size:20px;">First name:</label>
-                         <input type="text" name="first_name"  value="" placeholder="FirstName" class="form-control">
+                         <input type="text" name="first_name"  value="<?php if(isset($_POST['first_name'])) echo $first_name; ?>" placeholder="FirstName" class="form-control">
                         </div>
                     </fieldset>
 
@@ -76,7 +92,7 @@ if(empty($error))
                         <span class="col-md-1 col-md-offset-2 text-center"></i></span>
                         <div class="col-md-8" >
                             <label  for ="lname" style ="color:#895fa9;font-size:20px;">Last name:</label>
-                            <input type="text" name="last_name"  value="" placeholder="LastName" class="form-control">
+                            <input type="text" name="last_name"  value="<?php if(isset($_POST['last_name'])) echo $last_name; ?>" placeholder="LastName" class="form-control">
                         </div>
                     </fieldset>
 
@@ -84,7 +100,7 @@ if(empty($error))
                         <span class="col-md-1 col-md-offset-2 text-center"></i></span>
                         <div class="col-md-8" >
                             <label  for ="email" style ="color:#895fa9;font-size:20px;">Email:</label>
-                            <input type="email" name="Email"  value="" placeholder="Email" class="form-control">
+                            <input type="email" name="Email"  value="<?php if(isset($_POST['Email'])) echo $Email; ?>" placeholder="Email" class="form-control">
                         </div>
                     </fieldset>
 
@@ -92,7 +108,9 @@ if(empty($error))
                         <span class="col-md-1 col-md-offset-2 text-center"></i></span>
                         <div class="col-md-8">
                             <label  for ="message" style ="color:#895fa9;font-size:20px;">Message:</label>
-                            <textarea class="form-control" id="message" name="Message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea>
+                            <textarea class="form-control" id="message" name="Message"  placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7">
+                                <?php if(isset($_POST['Message'])) echo $Message; ?>
+                            </textarea>
                         </div>
                     </fieldset>
 
@@ -106,7 +124,7 @@ if(empty($error))
                     <?php
                     if(isset($success))
                     {
-                        echo $success;
+                        echo "<h3 style='color: green;'>".$success."</h3>";
 
                     }
 
@@ -115,8 +133,6 @@ if(empty($error))
                 </fieldset>
 
             </form>
-
-
         </div>
     </div>
 </div>

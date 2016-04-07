@@ -1,8 +1,6 @@
 <?php
-require_once '/Model/Ratings.php';
-include 'database.php';
-$db = Database::getDB();
-$ids=array(1,2,3,4,5);  //define  quantity of movies in array and it's display rating system for that
+include("database.php");
+$ids=array(1,2,3,4,5,6,7,8,9,10);  //define  quantity of movies in array and it's display rating system for that
 //$ids =array();
 
 ?>
@@ -11,9 +9,9 @@ $ids=array(1,2,3,4,5);  //define  quantity of movies in array and it's display r
 <head>
     <meta charset="UTF-8">
     <title>Rate Movie</title>
-    <script src="jquery.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="rating.css" />
-    <script type="text/javascript" src="rating.js"></script>
+    <script src="/Rating_System/lib/jquery.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/Rating_System/lib/rating.css" />
+    <script type="text/javascript" src="/Rating_System/lib/rating.js"></script>
 </head>
 <body>
 

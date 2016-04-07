@@ -1,14 +1,10 @@
 <?php
 // disable the catch from the client browser
 header("Cache-Control: no-cache");
-include 'database.php';
-include '../autoloader.php';
-$db = Database::getDB();
-$units = Database::unit();
+include '../../autoloader.php';
+require_once '../Model/Ratings.php';
+//include('database.php');
 
-require_once '/Model/Ratings.php';
-$a=\Project\Auth\models\AuthModel::getUser('id');
-var_dump($a);
 //getting id of movie-1,2,3 which one is click that id from the rating.js page
 $id_sent = preg_replace("/[^0-9]/","",$_REQUEST['id']);
 
@@ -20,12 +16,6 @@ $ip =$_SERVER['REMOTE_ADDR'] ;
 
 $getIP = new Ratings();
 $getIP ->getRating_IP($id_sent);
-
-// kill the script
-if ($vote_sent > $units)
-{
-    die("Sorry, vote appears to be invalid.");
-}
 
 $disAll = new Ratings();
 $numbers = $disAll->displayValues($id_sent);
@@ -53,12 +43,13 @@ if(!isset($_COOKIE['rating_'.$id_sent])) //concatenating rating_ with whichever 
 {
     $usedIp=new Ratings();
     $voted = $usedIp->usedIP($ip,$id_sent);
+
 }
 else
 {
     $voted=1;
 }
-//var_dump($id_sent);
+
 if(!$voted) {     //if the user hasn't yet voted, then vote normally...
 
     if (($vote_sent >= 1 && $vote_sent <= $units))  // keep votes within range, make sure IP matches
@@ -68,9 +59,9 @@ if(!$voted) {     //if the user hasn't yet voted, then vote normally...
         $result = $updateRate->updateRating($added,$sum,$insertIP,$id_sent);
 
         if($result)
-       {
-            setcookie("rating_".$id_sent,1, time()+ 2592000,'/');
-       }
+        {
+            setcookie("rating_".$id_sent,1, time()+ 2592000);
+        }
     }
 } //end for the "if(!$voted)"
 

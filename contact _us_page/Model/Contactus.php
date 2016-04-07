@@ -157,7 +157,7 @@ class Contactus
         $smtp['port'] = 465;
         $smtp['auth'] = true;
         $smtp['username'] = 'er.abrar@gmail.com';
-        $smtp['password'] = 'Abrar@786';
+        $smtp['password'] = '';
 
         $mailer = Mail::factory('smtp', $smtp);
 
@@ -184,7 +184,7 @@ class Contactus
     }
 
     /**
-     * ===============Validate Form============
+     * =============== Validate Form ============
      */
     /**
      * Validate Firstname
@@ -194,7 +194,7 @@ class Contactus
         $error ="";
         if(empty($Fname))
         {
-            $error.="<p style ='color:red;'>Please enter firstname</p>";
+            $error.="<p style ='color:red;'>Please enter firstname !</p>";
         }
         else{
             // check if name only contains letters and whitespace
@@ -216,7 +216,7 @@ class Contactus
         $error ="";
         if(empty($Lname))
         {
-            $error.="<p style ='color:red;'>Please enter lastname</p>";
+            $error.="<p style ='color:red;'>Please enter lastname !</p>";
         }
         else
         {
@@ -238,20 +238,28 @@ class Contactus
         $error ="";
         if(empty($email))
         {
-            $error .= "<p style='color:red;'>please enter email </p>";
+            $error .= "<p style='color:red;'>Please enter email !</p>";
         }
         else
         {
             if(!filter_var($email,FILTER_VALIDATE_EMAIL))
             {
-                $error .= "Invalid email <br />";
+                $error .= "Invalid email ! <br />";
             }
 
         }
         return $error;
     }
-    public function  getError()
+
+    /**
+     * Validate Message Box
+     */
+    public function validMessagebox($message)
     {
-        return $this->error;
+        $error = "";
+        if (empty($message)) {
+            $error .= "<p style ='color:red;'>Please enter Comment.!!</p>";
+        }
+        return $error;
     }
 }
