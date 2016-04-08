@@ -20,8 +20,7 @@ class ApiController extends Controller{
     $menuName = Helper::getParam('name', INPUT_GET);
     if (isset($menuName)) {
       foreach ($menus as $menu) {
-        if ( $menu['name'] == $menuName ) $this->view->json($menu['menu']);
-        return ;
+        if ( $menu['name'] == $menuName ) return $this->view->json($menu['menu']);
       }
       $this->view->json($this->resultArray(false, 'no such menu'));
     }else {
