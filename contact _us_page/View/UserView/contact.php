@@ -1,11 +1,10 @@
 <body style="background-color:#CEF6D8;">
 <?php
-require_once 'Mail.php';
 use Project\Classes\DB\DB;
 include '../../../autoloader.php';
 //$db = DB::getDB();
 require_once '../../Model/Contactus.php';
-
+require '../../Model/PHP_Mailer/PHPMailerAutoload.php';
 if(isset($_POST['submit']))
 {
     $first_name = htmlspecialchars($_POST['first_name']);
@@ -24,26 +23,6 @@ if(isset($_POST['submit']))
 
 // ====Validation End here=====
 
- //==================Email FUnction================
-    $sendEmail = new Contactus();
-
-    //$to = 'abrar@abrarsheikh.com';
-    $to = 'er.abrar@gmail.com';
-    $subject ='This come from movie server';
-    $is_body_html = true;
-
-    $body = "From".$first_name . $last_name . $Message;
-
-    $from ="From my server";
-
-
-    $headers = '$Email';
-//mail($to,$from, $subject, $body, $headers,$is_body_html = false);
-
-  // echo $sendEmail->mail($to,$from, $subject, $body, $is_body_html);
-
-
- //==================End Email FUnction================
 //After submitting form redirect user to main page
 if(empty($error))
 {
@@ -53,6 +32,10 @@ if(empty($error))
     $storeUservalue = new Contactus();
 
     $storeUservalue ->contactProcess();
+
+    // Call the gMail file to sent an Email
+
+    include '../../controller/sentToGmail.php';
 }
 
 }

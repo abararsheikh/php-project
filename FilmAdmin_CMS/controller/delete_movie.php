@@ -12,5 +12,5 @@ $deleteMovies = new Filmadmin();
 $deleteMovies->deleteMovie($film_id);
 
 // Redirect to display the Product List
-header('location: ../View/movieindex.php');
+header('location: ../View/IndexMovies_AdminView.php');
 ?>
