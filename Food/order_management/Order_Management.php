@@ -9,14 +9,15 @@
     <script src="../../Assets/js/jquery.min.js" ></script>
     <script src="../../Assets/js/bootstrap.min.js" ></script>
     <link rel="stylesheet" type="text/css" href="../../Assets/css/food-shopping-cart.css" />
-    <script src="../../Assets/js/Order_Management.js"></script>
+    <script src="../../Assets/js/Food/Order_Management.js"></script>
 </head>
 <main>
 
     <div class="container-fluid">
         <div class="page-header row">
             <h1 class="col-md-4">Order Management</h1>
-            <div class="container button-wrapper cart col-md-offset-10">
+            <div class="col-md-offset-8 col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
+            <div class="container button-wrapper cart col-md-1">
                 <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items">1</span></button>
             </div>
             </div>
@@ -32,9 +33,7 @@
                      <li role="presentation"  class="" id="comment">
                          <a href="">Waiting for comment</a>
                      </li>
-                     <div class="col-md-offset-8"><p class="navbar-text">Selected Food: $0.00</p>
-                         <button type="button" class="btn btn-default navbar-btn">Settlement</button>
-                     </div>
+
 
                  </ul>
 

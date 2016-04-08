@@ -4,31 +4,41 @@
 
     <tr style="background-color:salmon;"><td>2012-3-6</td><td>Order ID:0001</td><td colspan="4"></td></tr>
      <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
-         <td rowspan="4">2</td>
-         <td rowspan="4">3</td>
-         <td rowspan="4">4</td>
+         <td rowspan="4">2.00</td>
          <td rowspan="4">5</td>
-         <td rowspan="4">6</td>
+         <td rowspan="4">10.00</td>
+         <td rowspan="4">Successful deal</td>
+         <td rowspan="2">
+             <p><a htef="" style="cursor: pointer;text-decoration: none;">Delete</a></p>
+            <p> <a htef="" style="cursor: pointer;text-decoration: none;">Make a comment</a></p>
+         </td>
 
-</tr>
+     </tr>
+
+
                      <tr></tr>
                      <tr>
 
                      </tr>
                      <tr></tr>
-                     <tr style="background-color: salmon;"><td>2012-3-6</td><td>Order ID:0001</td><td colspan="4"></td></tr>
-                     <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
-                         <td rowspan="4">2</td>
-                         <td rowspan="4">3</td>
-                         <td rowspan="4">4</td>
-                         <td rowspan="4">5</td>
-                         <td rowspan="4">6</td>
+    <tr style="background-color:salmon;"><td>2012-3-6</td><td>Order ID:0001</td><td colspan="4"></td></tr>
+    <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
+        <td rowspan="4">2.00</td>
+        <td rowspan="4">5</td>
+        <td rowspan="4">10.00</td>
+        <td rowspan="4">Unpaid</td>
+        <td rowspan="2">
+            <p><a htef="" style="cursor: pointer;text-decoration: none;">Delete</a></p>
 
-                     </tr>
-                     <tr></tr>
-                     <tr>
+        </td>
 
-                     </tr>
-                     <tr></tr>
+    </tr>
+
+
+    <tr></tr>
+    <tr>
+
+    </tr>
+    <tr></tr>
 
                  </table>

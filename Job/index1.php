@@ -1,3 +1,23 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yi
+ * Date: 22/03/16
+ * Time: 9:57 AM
+ */
+
+# PHP
+// Add these to the top
+use Project\Auth\models\AuthModel;
+
+// needs auto loader
+include '../autoloader.php';
+
+// This returns username by default,
+// if user is not logged in, returns false.
+var_dump(AuthModel::getUser())
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
