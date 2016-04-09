@@ -1,5 +1,4 @@
 <?php
-
 use Project\Classes\DB\DB;
 //connect to database :
 include '../../autoloader.php';

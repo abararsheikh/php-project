@@ -56,10 +56,10 @@ $mail->Subject = 'Contact Notification';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML('Firstname :'.$first_name."<br/>".'Lastname :' .$last_name ."<br/>".$Message);
+$mail->msgHTML('Firstname : '.$first_name."<br/>".'Lastname : ' .$last_name ."<br/>".'Email : '.$Email."<br/>".$Message);
 
 //Replace the plain text body with one created manually
-$mail->AltBody = 'This is a plain-text message body';
+$mail->AltBody = 'This is a plain-text contactUS body';
 
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');

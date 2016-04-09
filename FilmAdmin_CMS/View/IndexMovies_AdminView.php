@@ -1,14 +1,11 @@
 <?php
-
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
 $db = DB::getDB();
 require_once '../Model/Filmadmin.php';
 $displayAllMovies = new Filmadmin();
 $allMovies = $displayAllMovies->displayMovie();
-
 ?>
-
 <!Doctype HTML>
 <html>
 <head>

@@ -1,5 +1,4 @@
 <?php
-
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
 $db = DB::getDB();
