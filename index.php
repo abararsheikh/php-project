@@ -2,8 +2,6 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/Assets/html/header.php';
 include 'autoloader.php';
-//var_dump(\Project\Auth\models\AuthModel::getUser('id'));
-
 ?>
 
 <section id="slider" class="container-fluid">

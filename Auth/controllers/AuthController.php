@@ -73,6 +73,22 @@ class AuthController extends Controller {
     $this->view->json($output);
   }
 
+  public function adminLoginPage() {
+    $this->view->render('/Auth/Views/index', 'admin login Page');
+  }
+
+  // Admin POST
+  public function adminLogin() {
+    $output = ['success' => false, 'error' => []];
+    $loginResult = $this->model->adminLogin(Helper::getParam('username'), Helper::getParam('password'));
+    if ($loginResult) {
+      $output['success'] = true;
+    } else {
+      $output['error'][] = 'username or password is not correct';
+    }
+    $this->view->json($output);
+  }
+
   // Logout GET
   public function logout() {
     $this->view->json($this->resultArray(AuthModel::getUser(), 'You have not logged in yet'));

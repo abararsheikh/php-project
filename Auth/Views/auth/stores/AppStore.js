@@ -13,6 +13,13 @@ let submitLogin = (username, password) => {
     data: {username, password}
   });
 };
+let adminLogin = (username, password) => {
+  return $.ajax({
+    url: '/Auth/admin',
+    method: 'POST',
+    data: {username, password}
+  });
+};
 
 class AppStore extends EventEmitter {
   _currentView;
@@ -82,6 +89,14 @@ class AppStore extends EventEmitter {
           this.emitChange();
         });
         break;
+      case AppConstant.ADMIN_LOGIN:
+        console.log('admin logging in');
+        adminLogin(action.username, action.password).then(data => {
+          if (data.success) window.location.replace('/admin');
+          this._isLoggedIn = data.success;
+          this._loginError = data.error[0];
+          this.emitChange();
+        })
     }
   }
 }

@@ -15,11 +15,14 @@ Nav::group('/Auth as Auth', function () use($auth) {
   Nav::get('/ as Home', $auth->action('home'));
   Nav::get('/register as Register', $auth->action('registerPage'));
   Nav::get('/login as Login', $auth->action('loginPage'));
+  Nav::get('/admin', $auth->action('adminLoginPage'));
+
   Nav::get('/logout as Logout', $auth->action('logout'));
 
   Nav::get('/getLogin as Logout', $auth->action('getLogin'));
 
   Nav::post('/login', $auth->action('processLogin'));
+  Nav::post('/admin', $auth->action('adminLogin'));
   Nav::post('/register', $auth->action('registerUser'));
   Nav::post('/register/user', $auth->action('checkAvailability'));
 
