@@ -30,7 +30,8 @@ export default class MenuItem extends React.Component {
                   <span className="input-group-addon">Name</span>
                   <input type="text" name='name'
                          className="form-control" placeholder="name"
-                         valueLink={this.props.nameValueLink}/>
+                         value={this.props.nameValueLink.value}
+                         onChange={this.props.nameValueLink.onChange}/>
                 </div>
               </div>
 
@@ -39,7 +40,8 @@ export default class MenuItem extends React.Component {
                   <span className="input-group-addon">Link</span>
                   <input type="text" name='link'
                          className="form-control" placeholder="link"
-                         valueLink={this.props.linkValueLink}/>
+                         value={this.props.linkValueLink.value}
+                         onChange={this.props.linkValueLink.onChange}/>
                 </div>
               </div>
 
