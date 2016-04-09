@@ -28,7 +28,7 @@ export default class AdminLogin extends React.Component {
   getAppState = () => {
     return {
       view: AppStore.getCurrentView(),
-      loginStatus: AppStore.getLogin()
+      loginStatus: false
     }
   };
 

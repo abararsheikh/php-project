@@ -92,7 +92,7 @@ class AppStore extends EventEmitter {
       case AppConstant.ADMIN_LOGIN:
         console.log('admin logging in');
         adminLogin(action.username, action.password).then(data => {
-          if (data.success) window.location.replace('/admin');
+          if (data.success) window.location.replace('/Admin_Login/admin.php');
           this._isLoggedIn = data.success;
           this._loginError = data.error[0];
           this.emitChange();
