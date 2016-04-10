@@ -11,7 +11,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    $.getJSON('/api/menu', {name: this.state.menuName}, data => {
+    $.getJSON(`/api/menu/${this.state.menuName}`, data => {
       console.log(JSON.parse(data));
       this.setState({menu: JSON.parse(data)});
     });

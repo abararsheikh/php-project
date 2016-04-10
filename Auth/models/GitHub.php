@@ -4,7 +4,7 @@ namespace Project\Auth\models;
 
 
 use Project\Classes\Helper;
-use Project\Classes\Request;
+use Project\Classes\Curl;
 
 class GitHub {
   private $access_token = '';
@@ -20,11 +20,11 @@ class GitHub {
   }
 
   public function getUser() {
-    return json_decode(Request::get($this->apiUrl, ['access_token' => $this->access_token]), true)['login'];
+    return json_decode(Curl::get($this->apiUrl, ['access_token' => $this->access_token]), true)['login'];
   }
 
   public function getEmail() {
-    return json_decode(Request::get("$this->apiUrl/emails", ['access_token' => $this->access_token]), true)[0]['email'];
+    return json_decode(Curl::get("$this->apiUrl/emails", ['access_token' => $this->access_token]), true)[0]['email'];
   }
 
   public function connect() {
@@ -38,7 +38,7 @@ class GitHub {
         'client_secret' => $this->client_secret,
         'code' => $code,
     );
-    $response = Request::post($this->token_url, $data, Request::HEADER_OAUTH);
+    $response = Curl::post($this->token_url, $data, Curl::HEADER_OAUTH);
     if (!$response) return false;
     $this->access_token = json_decode($response, true)['access_token'];
     return true;
