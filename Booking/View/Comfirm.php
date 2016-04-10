@@ -1,4 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php'?>
+<?php var_dump($_SESSION)?>
 
 <!Doctype HTML>
 <html>

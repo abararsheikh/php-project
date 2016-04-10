@@ -3,6 +3,3 @@ Thirty years after the defeat of the Galactic Empire, the galaxy faces a new thr
 <<<<<<< HEAD
 [movie-hit]:86
 =======
-[movie-hit]:76
-
->>>>>>> 51ba154293b7eba101b739a4f503506421ce0cba
