@@ -32,36 +32,14 @@ eval("submenu" + sid + ".style.display='none';");
 </table>
 <table width="158" height="25"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td background="image/system/menu_bg_Home.jpg" class="Td_Menu"><div align="left"><a href="#">Marger</a> | &nbsp; <a href="Session_Abandon.php" target="_top">Login out</a></div></td>
-  </tr>
-</table>
-
-
-<table width="158" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-   <td background="image/system/menu_bg_Product.jpg" class="Td_left_menu" onClick="showsubmenu(46)" style="cursor:hand; "><a href="#" class="Td_Menu">Marger</a></td>
- 
-  </tr>
-  <tr>
-    <td bgcolor="#D4ECF5" id='submenu46' style="display:none"><div align="left">
-        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="Td_Word">
-			<a href="admin_add.php" target="main">Add marger</a><br>			
-			</td>
-          </tr>
-          <tr>
-            <td height="15" bgcolor="#0650D3"></td>
-          </tr>
-        </table>
-    </div></td>
+    <td background="" class="Td_Menu"><div align="left"><a href="#">Marger</a> | &nbsp; <a href="#" target="_top">Login out</a></div></td>
   </tr>
 </table>
 
 <table width="158" border="0" align="center" cellpadding="0" cellspacing="0">
  
   <tr>
-    <td background="image/system/menu_bg_Manage.jpg" class="Td_left_menu" onClick="showsubmenu(28)" style="cursor:hand;"><a href="#" class="Td_Menu">Applyer</a></td>
+    <td background="image/system/menu_bg_Product.jpg" class="Td_left_menu" onClick="showsubmenu(28)" style="cursor:hand;"><a href="#" class="Td_Menu">Applyer</a></td>
   </tr>
   <tr>
     <td bgcolor="#D4ECF5" id='submenu28' style="display:none"><div align="left">
@@ -114,7 +92,7 @@ eval("submenu" + sid + ".style.display='none';");
 <table width="158" border="0" align="center" cellpadding="0" cellspacing="0">
  
   <tr>
-    <td background="image/system/menu_bg_Manage.jpg" class="Td_left_menu" onClick="showsubmenu(27)" style="cursor:hand;"><a href="#" class="Td_Menu"> Show question</a></td>
+    <td background="image/system/menu_bg_Product.jpg" class="Td_left_menu" onClick="showsubmenu(27)" style="cursor:hand;"><a href="#" class="Td_Menu"> Show question</a></td>
   </tr>
   <tr>
     <td bgcolor="#D4ECF5" id='submenu27' style="display:none"><div align="left">
@@ -136,8 +114,28 @@ eval("submenu" + sid + ".style.display='none';");
     </div></td>
   </tr>
 </table>
-    
-  
+
+<table width="158" border="0" align="center" cellpadding="0" cellspacing="0">
+
+  <tr>
+    <td background="image/system/menu_bg_Product.jpg" class="Td_left_menu" onClick="showsubmenu(30)" style="cursor:hand;"><a href="#" class="Td_Menu"> Show Feedback</a></td>
+  </tr>
+  <tr>
+    <td bgcolor="#D4ECF5" id='submenu30' style="display:none"><div align="left">
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="Td_Word">
+              <a href="feedbackzhanshi.php" target="main">Show </a><br>
+            </td>
+          </tr>
+          <tr>
+            <td height="15" bgcolor="#0650D2"></td>
+          </tr>
+        </table>
+      </div></td>
+  </tr>
+</table>
                                            
 
 </body>

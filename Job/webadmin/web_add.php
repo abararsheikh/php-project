@@ -74,6 +74,12 @@ function  Check_stu()
     <td><input name="qixian" type="text"  size="40"></td>
   </tr>
     <tr class="tdbg">
+
+
+
+
+
+        
     <td width="20%"><div align="right"><strong>Hire number/strong></div></td>
     <td><input name="renshu" type="text"  size="40"></td>
   </tr>

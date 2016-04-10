@@ -103,6 +103,20 @@ function CheckAll(formall)
   -->
 </script>
 <body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(document.ready(function () {
+        $.getJOSN('getemail.php',function(data)){
+            var result ="<ul>";
+            $.each(data, function(key, product){
+                result += "<li>" + product.category +" : " +product.productName +"<li>";
+            });
+            result += "</ul>";
+            console.log(data);
+        });
+
+    });
+</script>
 <table width="101%"  border="0" align="center" cellpadding="0" cellspacing="1" class="border">
   <tr>
     <td class="title_dh"><div align="center">

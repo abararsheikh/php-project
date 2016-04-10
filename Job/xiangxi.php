@@ -14,8 +14,8 @@ if($act=='add')
 		$a++;
 	}
   }
-  $sqlC="select * from ceshi";
-   $resC= $db->query($sqlC);
+  $sql="select * from ceshi";
+   $resC= $db->query($sql);
   $fenshu = 0;
   while($rs = $resC->fetchObject()){
   	foreach($questionArr as $key => $value){
@@ -28,18 +28,26 @@ if($act=='add')
   }
   $sql="insert into xinxi(name,xingbie,hunfou,chusheng,xueli,biyetime,biyeschool,tel,xiandxi,fenshu)values('".$_POST['name']."','".$_POST['xingbie']."','".$_POST['hunfou']."','".$_POST['chusheng']."','".$_POST['xueli']."','".$_POST['biyetime']."','".$_POST['biyeschool']."','".$_POST['tel']."','".$_POST['xiandxi']."',".$fenshu.")";
 
-   $result=$db->query($sql);
-  if($result->execute() or die("无法执行"))
-  {
-    echo  "<script language='javascript'>";
-    echo  "alert('提交成功');";
-    //echo  "location.href='index.php'";
-    echo "</script>";
-  }
+   $result=$db->exec($sql);
+  //  header('location:index1.php');
+
 }
 
+if(isset($_POST['Submit'])){
+    if ($_POST['rand3']==$_POST['username32']){
+        header('location:index1.php');
+    }
+    else{
+        $error=(" <span style='color :red;'> Wrong code </span>");
+    }
+
+}
+
+
+
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Creer Information</title>
@@ -61,6 +69,7 @@ width:1400px;
 </head>
 
 <body>
+
 <div>
 
 
@@ -74,17 +83,19 @@ width:1400px;
       <td height="85" bgcolor="#CCCCCC">&nbsp;</td>
     </tr>
         <tr bordercolor="#CCCCCC">
-          <td width="135" valign="top" bgcolor="#CCCCCC"><table width="157" border="0">
-            <tr id="nav">
-              <td height="64" align="center" valign="middle"><a href="index.php?home"><img src="img/pic1.jpg" /></a></td>
-            </tr>
-            <tr>
-              <td height="68" align="center" valign="middle"><a href="index.php?products"><img src="img/pic2.jpg" /></a></td>
-            </tr>
-            <tr>
-              <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="img/pic3.jpg" /></a></td>
-            </tr>
-          </table></td>
+          <td width="135" valign="top" bgcolor="#CCCCCC">
+              <table width="157" border="0">
+                  <tr id="nav">
+                      <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="img/pic1.jpg"></a></td>
+                  </tr>
+                  <tr>
+                      <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
+                  </tr>
+                  <tr>
+                      <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="img/pic3.jpg"></a></td>
+                  </tr>
+          </table>
+          </td>
           <td width="887" height="928" bgcolor="#CCCCCC"><table width="694" border="0">
             <tr>
               <td colspan="2" bgcolor="#CCCCCC"><strong>Web developer</strong></td>
@@ -110,7 +121,8 @@ width:1400px;
             <p>$3000+</p></td>
           </tr>
             </table>
-	  <form name="form1" action="xiangxi.php?act=add" method="post" enctype="multipart/form-data">
+
+              <form name="form1" action="xiangxi.php?act=add" method="post" enctype="multipart/form-data">
 	    <table width="692" border="0">
 	      <tr>
 	        <td height="40" colspan="2" bgcolor="#CCCCCC"><span class="STYLE1">Job（*）</span></td>
@@ -192,6 +204,7 @@ width:1400px;
               if($rs = $res->fetchObject()){
                 array_push($ids,$id);
         ?>
+
           <tr>
             <td colspan="2" bgcolor="#CCCCCC"><p><?php echo $i.".".$rs->wenti; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="a"/><?php echo "A.".$rs->answer1; ?></p>
@@ -204,16 +217,32 @@ width:1400px;
           }
         }
 		}
+
+
       ?>
-          <tr>
-            <td height="23" colspan="2" bgcolor="#CCCCCC">Codes：
-              <input type="text" name="username32" value=""/>&nbsp;&nbsp;<input name="Submit" type="submit" id="Submit" value="Submit"/></td>
+<?php
+     $numberrand=rand();
+
+   ?>
+
+            <tr>
+            <td height="23" colspan="2" bgcolor="#CCCCCC" name="vcode">Codes：<?php echo $numberrand;?>  <input type="hidden" name="rand3" value="<?php echo $numberrand;?>">
+                <?php if(isset($error)){
+                    echo $error;
+                }
+                ?>
+
+                <input type="text" name="username32" value="">
+              <td>
+                <input name="Submit" type="submit" id="Submit" value="Submit" /></td>
           </tr>
           </table>
 	    </form>
-      <p>&nbsp;</p></td>
+
+      </td>
     </tr>
-      </table></td>
+      </table>
+    </td>
     </tr>
 </table>
 
@@ -222,5 +251,12 @@ width:1400px;
 
 <p>&nbsp;</p>
 </div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+
+</script>
+<script>
+    
+</script>
+
 </body>
 </html>

@@ -40,12 +40,12 @@ export default class MenuList extends React.Component {
 
   };
 
-  handleInputChange = (id, prop) => (value) => {
+  handleInputChange = (id, prop) => (event) => {
       let menu = [].concat(this.props.menu);
     let menuItem = id.toString().split(',').reduce((acc, item) => {
       return acc[item];
     }, menu);
-    menuItem[prop] = value;
+    menuItem[prop] = event.target.value;
     this.props.onChange(menu);
   };
 
@@ -71,11 +71,11 @@ export default class MenuList extends React.Component {
       }
       const nameValueLink = {
         value: item.name,
-        requestChange: this.handleInputChange(id, 'name')
+        onChange: this.handleInputChange(id, 'name')
       };
       const linkValueLink = {
         value: item.link,
-        requestChange: this.handleInputChange(id, 'link')
+        onChange: this.handleInputChange(id, 'link')
       };
 
       return (
