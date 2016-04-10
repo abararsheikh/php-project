@@ -1,63 +1,56 @@
 import React from 'react';
-import {findDOMNode} from 'react-dom';
-import {DragSource, DropTarget} from 'react-dnd';
 
-const itemSource = {
-  beginDrag(props) {
-    console.log('begin drag');
-    return {
-      id: props.id,
-      link: props.link,
-      name: props.name
-    };
-  }
-};
-
-const itemTarget = {
-  hover(props, monitor, component) {
-    const targetItem = props;
-    const sourceItem = monitor.getItem();
-    const findItem = props.findItem;
-
-    const sourceIndex = findItem(['id', sourceItem.id]).index;
-    const targetIndex = findItem(['id', targetItem.id]).index;
-
-    if (targetItem === sourceItem) return;
-    // Determine rectangle on screen
-    const hoverBoundingRect = findDOMNode(component).getBoundingClientRect();
-    // Get vertical middle
-    const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-    // Determine mouse position
-    const clientOffset = monitor.getClientOffset();
-    // Get pixels to the top
-    const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-
-    // Dragging downwards
-    if (sourceIndex < targetIndex && hoverClientY < hoverMiddleY) {
-      props.moveItem('down', sourceItem, targetItem);
-    }
-    // Dragging upwards
-    if (sourceIndex > targetIndex && hoverClientY > hoverMiddleY) {
-      props.moveItem('up', sourceItem, targetItem);
-    }
-    console.log(monitor.getItem());
-  }
-};
-
-@DropTarget('menuItem', itemTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
-}))
-@DragSource('menuItem', itemSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging()
-}))
 export default class MenuItem extends React.Component {
+  static defaultProps = {
+    collapseButton: ""
+  };
+
+  static propTypes = {
+    nameValueLink: React.PropTypes.object.isRequired,
+    linkValueLink: React.PropTypes.object.isRequired,
+    onChange: React.PropTypes.func.isRequired,
+    onDelete: React.PropTypes.func.isRequired,
+    collapseButton: React.PropTypes.node
+  };
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.name !== this.props.name
+        || nextProps.link !== this.props.link
+        || nextProps.collapseButton !== this.props.collapseButton
+  }
 
   render() {
-    const {name, id, isDragging, connectDragSource, connectDropTarget} = this.props;
-    const opacity = isDragging ? 0 : 1;
-    return connectDragSource(connectDropTarget(
-        <p style={{border: '1px solid black', opacity: opacity}}>{id}: {name}</p>
-    ))
+    return (
+        <div className="panel panel-default" style={{marginBottom: '0px', cursor: 'move'}}>
+          {this.props.collapseButton}
+          <div className="panel-body" style={{padding: '2px'}}>
+            <div className="row">
+              <div className="col-xs-5">
+                <div className="input-group">
+                  <span className="input-group-addon">Name</span>
+                  <input type="text" name='name'
+                         className="form-control" placeholder="name"
+                         value={this.props.nameValueLink.value}
+                         onChange={this.props.nameValueLink.onChange}/>
+                </div>
+              </div>
+
+              <div className="col-xs-5">
+                <div className="input-group">
+                  <span className="input-group-addon">Link</span>
+                  <input type="text" name='link'
+                         className="form-control" placeholder="link"
+                         value={this.props.linkValueLink.value}
+                         onChange={this.props.linkValueLink.onChange}/>
+                </div>
+              </div>
+
+              <div className="col-xs-2">
+                <button className="btn btn-danger" onClick={this.props.onDelete}>Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    );
   }
 }

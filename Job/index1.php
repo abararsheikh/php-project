@@ -6,8 +6,6 @@
 
 <script type="text/javascript" src="11-2-routing.js"></script>
 <style type="text/css">
-<!--
-
 .STYLE1 {
 	color: #FF0000;
 	font-weight: bold;
@@ -17,7 +15,7 @@
 	font-weight: bold;
 }
 
-#mainContent{width: 300px; height:200px; padding:20px;} .nav{margin-bottom: 15px; text-decoration:none;} #nav li{display:inline; list-style:none; border:1px solid black; padding:3px 15px; #nav a {text-decoration: none;}
+
 -->
 </style>
 </head>
@@ -29,29 +27,26 @@
   <tr>
     <td width="94" rowspan="3" valign="top" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><table width="200" border="0">
       <tr id="nav">
-        <td height="64" align="center" valign="middle"><a href="index.php?home"><img src="img/pic1.jpg"></a></td>
+        <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="img/pic1.jpg"></a></td>
       </tr>
       <tr>
-        <td height="68" align="center" valign="middle"><a href="index.php?products"><img src="img/pic2.jpg"></a></td>
+        <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
       </tr>
       <tr>
-        <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="img/pic3.jpg"></a></td>
+        <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="img/pic3.jpg"></a></td>
       </tr>
     </table>
-    <p class="STYLE1">&nbsp;	</p>
-      <p class="STYLE1">&nbsp; </p>
-      <p>&nbsp;</p>
-    <p>&nbsp;</p>      <p>&nbsp;</p></td>
     <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Web develope</p>
       <p><strong>Seach Job：
-        <input type="text" name="neirong"/>
+            <input type="text" name="neirong"/>
             <input name="submit" type="submit" value="submit seach" />
-    </strong></p></td>
+    </strong></p>
+      </td>
   </tr>
   <tr>
     <td width="871" height="676" valign="top" bgcolor="#CCCCCC">
 	
-	<div id="output">
+	<div id="output"/>
 	<?php
 
 require('conn.php');
@@ -106,16 +101,13 @@ $PageCount=0;
 
 
 
-
-//翻页连接
-
 $Page_String="";
 if ($page==1){
 $Page_String.='First|Previous |';
 }
 else{
 
-$Page_String.='<a href=?page=1>第一页</a>|<a href=?page='.($page-1).'>Last page</a>|';
+$Page_String.='<a href=?page=1>First Page</a>|<a href=?page='.($page-1).'>Last page</a>|';
 
 }
 
@@ -174,20 +166,22 @@ while($rs=$result->fetchObject())
 	  
         </tr>
       </table>
-	  	  
-
-	<?php
+    <?php
 }
- ?>  
-	 </div>   
+ ?>
+	 </div>
       </td>
   </tr>
   <tr>
-    <td height="139" font-size:"20" bgcolor="#CCCCCC"><div  id="output"><a href="xiangxi.php" class="STYLE2">Apply right now>></a></div></td>
+    <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="xiangxi.php" class="STYLE2">Apply right now>></a></div></td>
+
   </tr>
-  
+    <tr>
+        <td height="90"  bgcolor="#CCCCCC" align="center"><div  id="outpyhut"><a href="web_add.php">Add Job</a></div></td>
+    </tr>
+
    
-</table>	
+</table>
 <p>&nbsp;</p>
 		  		</div>
 	</div>

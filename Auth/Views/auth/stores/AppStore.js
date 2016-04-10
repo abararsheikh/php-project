@@ -2,12 +2,20 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import {EventEmitter} from 'events';
 import AppConstant from '../constants/AppConstants';
 
+
 const CHANGE_EVENT = 'change';
 
 
 let submitLogin = (username, password) => {
   return $.ajax({
     url: '/Auth/login',
+    method: 'POST',
+    data: {username, password}
+  });
+};
+let adminLogin = (username, password) => {
+  return $.ajax({
+    url: '/Auth/admin',
     method: 'POST',
     data: {username, password}
   });
@@ -81,6 +89,14 @@ class AppStore extends EventEmitter {
           this.emitChange();
         });
         break;
+      case AppConstant.ADMIN_LOGIN:
+        console.log('admin logging in');
+        adminLogin(action.username, action.password).then(data => {
+          if (data.success) window.location.replace('/Admin_Login/admin.php');
+          this._isLoggedIn = data.success;
+          this._loginError = data.error[0];
+          this.emitChange();
+        })
     }
   }
 }

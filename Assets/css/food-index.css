@@ -176,11 +176,7 @@ div h3{
     background-color:white;
 
 }
-.menu img:hover + .plus{
-    position: relative;
-    top:90%;
-    left:90%;
-}
+
 .plus:hover{
     top:90%;
     left:90%;
@@ -191,9 +187,10 @@ div h3{
 
 }
 .food_title{
-    font-size: large;
-    font-weight: 800;
+    font-size:x-small;
+    font-weight:600;
     color:white;
+
 }
 .view{
     background-color: transparent;
@@ -206,11 +203,7 @@ div h3{
 
     background-color: black;
 }
-@media only screen and (max-width: 768px){
-    .image3{
 
-    }
-}
 
 .test1{
 width:200px;
@@ -225,14 +218,37 @@ width:200px;
 .test{
     margin-bottom: 30px;
 }
-.thumbnail{
+.menu .thumbnail{
     padding: 0;
     background-color: black;
     margin-left: 0;
     margin-right: 0;
+
 }
-.thumbnail img{
+.menu .thumbnail img{
     margin-right: 0;
     margin-left: 0;
     width:100%;
+}
+#rate .thumbnail{
+    background-color: white;
+}
+#rate p{
+    font-weight: 800;
+}
+@media (min-width:768px) and (max-width: 800px) {
+    .food_title{
+        font-size:x-small;
+        font-weight:600;
+        color:white;
+    }
+}
+.menu nav li:not(.disabled){
+cursor: pointer;
+}
+span.form-control-feedback:hover{
+    cursor: pointer;
+}
+input::-webkit-calendar-picker-indicator {
+    display: none;-webkit-appearance: none;
 }

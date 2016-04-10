@@ -1,7 +1,7 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/Assets/html/header.php'
-
+include $_SERVER['DOCUMENT_ROOT'] . '/Assets/html/header.php';
+include 'autoloader.php';
 ?>
 
 <section id="slider" class="container-fluid">

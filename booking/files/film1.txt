@@ -1,0 +1,9 @@
+Wade Wilson (Ryan Reynolds) is a former Special Forces operative who now works as a mercenary. His world comes crashing down when evil scientist Ajax (Ed Skrein) tortures, disfigures and transforms him into Deadpool. The rogue experiment leaves Deadpool with accelerated healing powers and a twisted sense of humor. With help from mutant allies Colossus and Negasonic Teenage Warhead (Brianna Hildebrand), Deadpool uses his new skills to hunt down the man who nearly destroyed his life.
+
+<<<<<<< HEAD:Booking/files/film1.txt
+[movie-hit]:375
+
+=======
+
+[movie-hit]:375
+>>>>>>> b2cea57e552ec83be272c7f96349b2cf12273b32:booking/files/film1.txt

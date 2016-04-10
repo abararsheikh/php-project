@@ -27,7 +27,9 @@ class DB {
     return $insert->execute() ? true : $insert->errorInfo()[2];
   }
 
-  public static function find() {
-
+  public static function find($query, $params) {
+    $stmt = self::getDB()->prepare($query);
+    $stmt->execute($params);
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 }

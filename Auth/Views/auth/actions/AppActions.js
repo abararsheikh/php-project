@@ -24,6 +24,13 @@ export default {
       username: username,
       password: password
     })
+  },
+  adminLogin: (username, password) => {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.ADMIN_LOGIN,
+      username: username,
+      password: password
+    })
   }
 
 }
