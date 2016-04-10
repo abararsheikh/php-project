@@ -1,8 +1,8 @@
 <?php
 include '../autoloader.php';
-$getUserName =\Project\Auth\models\AuthModel::getUser('username');
+//$getUserName =\Project\Auth\models\AuthModel::getUser('username');
 
-var_dump($getUserName);
+//var_dump($getUserName);
 ?>
 <html>
 <head>

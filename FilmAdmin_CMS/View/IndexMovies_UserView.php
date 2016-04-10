@@ -2,10 +2,6 @@
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
 require_once '../Model/Filmadmin.php';
-//include '../../Rating_System/rate.php';
-//include '../../Rating_System/database.php';
-//include '../../Rating_System/rating.php';
-//$db = DB::getDB();
 $indexMovies = new Filmadmin();
 $allMovies = $indexMovies->movieIndex();
 ?>
@@ -24,9 +20,8 @@ $allMovies = $indexMovies->movieIndex();
         <link rel="stylesheet" href="/Rating_System/rating.css" />
         <title>Homepage</title>
     </head>
-
-
     <body>
+    <?php include '../../Assets/html/header.php'?>
         <section id="slider" class="container-fluid">
            <h2 class=hidden>slide show</h2>
            <div class="row">
@@ -42,8 +37,7 @@ $allMovies = $indexMovies->movieIndex();
              <div class="col-lg-8 col-sm-8 col-md-8">
                     <div class="row">
                          <ul class="nav nav-tabs home-tab">
-                             <li><a class="active-link">Now Showing</a></li>
-                             <li><a>Coming Soon</a></li>
+                             <li><a class="active-link">All Movies</a></li>
                          </ul>
                     </div>
 

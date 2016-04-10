@@ -16,11 +16,10 @@ $id_sent = preg_replace("/[^0-9]/","",$_REQUEST['id']);
 $vote_sent = preg_replace("/[^0-9]/","",$_REQUEST['stars']);
 
 // Get The IP address of the local server host machine.
-/*
-$realIP = new Ratings();
-$ip = $realIP->getRealIpAddr();
-var_dump($ip);
-*/
+
+//$realIP = new Ratings();
+//$ip = $realIP->getRealIpAddr();
+//var_dump($ip);
 $ip =$_SERVER['REMOTE_ADDR'] ;
 
 $getIP = new Ratings();
