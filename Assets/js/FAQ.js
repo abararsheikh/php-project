@@ -4,7 +4,6 @@ function init(){
 	selectSorting();
 	searchQuestion();
 	submitForm();
-	showTerms();
 }
 
 function hideAndShow(){

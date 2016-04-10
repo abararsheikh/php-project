@@ -124,21 +124,23 @@
           <h2>Message</h2>
 
           <form action="#" method="post" id="contactForm">
-           
+           				<input type="hidden" name="route" value="FAQ/SendEmail"/>
 			  <div class="contactform">
-                                <p class="form-group">
-                                    <label for="contactName"><b>Name:</b></label>
-                                    <input type="text" class="form-text" name="contactName" id="contactName" value="" class="required requiredField full">
 
+							  <p class="form-group">
+								  <label for="email"><b>Email:</b></label>
+								  <input type="text" class="form-text" name="email" id="email" value="" class="required requiredField email full">
+							  </p>
+
+                                <p class="form-group">
+                                    <label for="Title"><b>Title:</b></label>
+                                    <input type="text" class="form-text" name="Title" id="Title" value="" class="required requiredField full">
                                 </p>
 
-                                <p class="form-group">
-                                    <label for="email"><b>Email:</b></label>
-                                    <input type="text" class="form-text" name="email" id="email" value="" class="required requiredField email full">
-                                </p>
+
 
                                 <p class="form-group">
-                                    <label for="commentsText"><b>Message:</b></label>
+                                    <label for="comments"><b>Message:</b></label>
                                     <textarea name="comments" class="form-text" id="commentsText" rows="10"></textarea>
                                 </p>
                                
@@ -146,11 +148,15 @@
                             </div>
             
 
-            <button type="button" class="btn btn-default booking-btn">Send
+            <button type="submit" class="btn btn-default booking-btn">Send
               <img alt="arrow pic" class="btn-arrow" src="../../Assets/image/btn-arrow.png">
             </button>
           </form>
-
+					<div id="errorMessage">
+					<?php if(isset($error)):?>
+					<?php echo $error?>
+					<?php endif?>
+					</div>
         </div>
 			</div>
 			

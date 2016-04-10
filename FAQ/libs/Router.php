@@ -11,8 +11,7 @@ namespace Project\FAQ\libs;
         public function __construct(){
 //            echo "This is Router";
             $this->routeArray=[
-                "FAQ"=>["index","selectQuestionByCategory","sortingQuetions","increaseClickNumber","searchQuestion"],
-                "Terms"=>["index"]
+                "FAQ"=>["index","selectQuestionByCategory","sortingQuetions","increaseClickNumber","searchQuestion","SendEmail"]
             ];
             $this->route();
         }
@@ -53,8 +52,9 @@ namespace Project\FAQ\libs;
 
             $check =false;
             foreach($this->routeArray as $controller=>$actions){
-                    //var_dump($controller);
+                   // var_dump($controller);
                     //var_dump($controllerName);
+                    //var_dump($actionName);
                 if($controller==$controllerName){
 
                     if(is_array($actions)){

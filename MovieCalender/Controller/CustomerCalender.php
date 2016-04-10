@@ -23,7 +23,7 @@ class CustomerCalender
     }
 
     public function index(){
-        echo "This is index";
+        //echo "This is index";
         $error="";
         $name =filter_input(INPUT_POST,"name");
         $phone =filter_input(INPUT_POST,"phone");

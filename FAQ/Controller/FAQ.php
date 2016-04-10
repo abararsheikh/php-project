@@ -9,6 +9,8 @@
 namespace Project\FAQ\Controller;
 
 
+use Project\FAQ\libs\Email;
+use Project\FAQ\libs\Validation;
 use Project\FAQ\Models\FAQModel;
 use Project\FAQ\Models\TermModel;
 
@@ -18,7 +20,7 @@ class FAQ
 
     }
 
-    public function index(){
+    static function index($error=""){
         //echo "this is FAQ index";
         $getFAQ = new FAQModel();
         $results = $getFAQ->getAllQuestions();
@@ -107,6 +109,30 @@ class FAQ
         });
         //var_dump($filmsInfo);
         return $results;
+    }
+
+    public function SendEmail(){
+          //echo "This is SendEmail";
+        $email =filter_input(INPUT_POST,"email");
+        $comments =filter_input(INPUT_POST,"comments");
+        $Title =filter_input(INPUT_POST,"Title");
+        $validation = new Validation();
+
+        if($validation->isEmpty($Title) || $validation->isEmpty($comments) || $validation->isEmpty($email)){
+            $error ="all the fields should not be empty";
+            //require_once "./Views/FAQ.php";
+            self::index($error);
+        }else if($validation->EmailValidator($email)!=""){
+            $error =$validation->EmailValidator($email);
+            //require_once "./Views/FAQ.php";
+            self::index($error);
+        }else{
+
+            $sendemail = new Email();
+            $sendemail->sendEmail($email,$Title,$comments);
+            $error = "email is sent to our team";
+            self::index($error);
+        }
     }
 
 
