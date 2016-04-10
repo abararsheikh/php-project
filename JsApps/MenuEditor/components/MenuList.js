@@ -40,13 +40,12 @@ export default class MenuList extends React.Component {
 
   };
 
-  handleInputChange = (id, prop) => (value) => {
+  handleInputChange = (id, prop) => (event) => {
       let menu = [].concat(this.props.menu);
-      console.log(id);
     let menuItem = id.toString().split(',').reduce((acc, item) => {
       return acc[item];
     }, menu);
-    menuItem[prop] = value;
+    menuItem[prop] = event.target.value;
     this.props.onChange(menu);
   };
 
@@ -60,7 +59,7 @@ export default class MenuList extends React.Component {
       const nextItem = menuItems[index + 1];
       // Set submenu
       let subMenu, collapseButton;
-      if ($.isArray(nextItem)) subMenu = this.drawMenu(nextItem, baseIndex + (index  + 1) + ',');
+      if ($.isArray(nextItem) && nextItem.length > 0) subMenu = this.drawMenu(nextItem, baseIndex + (index  + 1) + ',');
       if ($.isArray(item)) return;
       // If there is submenu, add collapse button
       if (subMenu) {
@@ -72,11 +71,11 @@ export default class MenuList extends React.Component {
       }
       const nameValueLink = {
         value: item.name,
-        requestChange: this.handleInputChange(id, 'name')
+        onChange: this.handleInputChange(id, 'name')
       };
       const linkValueLink = {
         value: item.link,
-        requestChange: this.handleInputChange(id, 'link')
+        onChange: this.handleInputChange(id, 'link')
       };
 
       return (

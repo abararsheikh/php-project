@@ -33,7 +33,6 @@ class Contactus
             // getting the value from the edit fields or text boxes from editfrom.php
             // $_POST['name attribute of input type']
 
-
                 $first_name = htmlspecialchars($_POST["firstname"]);
                 $last_name =  htmlspecialchars($_POST["lastname"]);
                 $Email =htmlspecialchars($_POST["email"]);
@@ -91,7 +90,7 @@ class Contactus
 
         $sql = "SELECT * FROM contactus WHERE contact_id ='$contact_id'";
 
-// Execute the sql query and get the result
+    // Execute the sql query and get the result
 
         $delQuery = $db->prepare($sql);
         $delQuery->execute();
@@ -141,45 +140,6 @@ class Contactus
         $query ="INSERT INTO contactus(first_name,last_name,Email,Message) VALUES ('$first_name','$last_name','$Email','$Message')";
         $db->exec($query);
 
-
-    }
-
-   public function mail($to,$from, $subject, $body, $is_body_html = false)
-    {
-        include '../../../autoloader.php';
-        $db = DB::getDB();
-        $smtp = array();
-
-        // **** You must change the following to match your
-        // **** SMTP server and account information.
-
-        $smtp['host'] = 'ssl://smtp.gmail.com';
-        $smtp['port'] = 465;
-        $smtp['auth'] = true;
-        $smtp['username'] = 'er.abrar@gmail.com';
-        $smtp['password'] = '';
-
-        $mailer = Mail::factory('smtp', $smtp);
-
-        // Add the email address to the list of all recipients
-        $recipients = array();
-        $recipients[] = $to;
-
-        // Set the headers
-        $headers = array();
-        $headers['From'] = $from;
-        $headers['To']  = $to;
-        $headers['Subject'] = $subject;
-        if ($is_body_html)
-        {
-            $headers['Content-type']  = 'text/html';
-        }
-
-        // Send the email
-
-        $result = $mailer->send($recipients, $headers, $body);
-        // Check the result and throw an error if one exists
-        return $result;
 
     }
 

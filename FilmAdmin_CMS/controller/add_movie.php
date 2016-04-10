@@ -18,6 +18,6 @@ if (empty($title) || empty($releaseDate) || empty($cast) || empty($director)) {
     $db->exec($query);
 
     // Display the Movie List page
-   header('location: ../View/movieindex.php');
+   header('location: ../View/IndexMovies_AdminView.php');
 }
 
