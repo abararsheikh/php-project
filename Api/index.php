@@ -4,13 +4,13 @@ include '../autoloader.php';
 
 use Project\Classes\Router\Nav;
 
-$apiController = new \Project\Api\ApiController();
+$apiController = 'Project\Api\ApiController';
 
 Nav::group('/Api', function() use($apiController) {
-  Nav::get('/menu', $apiController->action('Menu'));
-  Nav::post('/menu', $apiController->action('SaveMenu'));
+  Nav::get('/menu', "$apiController@Menu");
+  Nav::post('/menu', "$apiController@SaveMenu");
 
-  Nav::get('/page', $apiController->action('getPage'));
+  Nav::get('/page/:id', "$apiController@GetPage");
 });
 
 Nav::start();

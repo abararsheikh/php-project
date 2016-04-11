@@ -6,6 +6,7 @@
 
 namespace Project\Classes\Router;
 use Project\Classes\Helper;
+use Project\Classes\Request;
 
 /**
  * Class Nav
