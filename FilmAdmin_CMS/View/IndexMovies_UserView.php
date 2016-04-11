@@ -45,7 +45,7 @@ $allMovies = $indexMovies->movieIndex();
                         <?php foreach($allMovies as $displayMovie) : ?>
                          <div class="film-container col-lg-4 col-md-4 col-sm-4 col-xs-4">
 
-                             <img alt="film1" src="<?php echo $displayMovie['img'] ?>"/>
+                             <img alt="film1" src="<?php echo $displayMovie['img'] ?>" />
                              <p class="film-title"><?php echo $displayMovie['title'] ?>(U)</p>
                              <p class="film-detail">
 Cast :
@@ -60,145 +60,74 @@ Release Date :
                              <!--Include Movie Rating HTML Part here -->
                              <div id= "<?php echo $displayMovie['film_id']; ?>">
                              <?php include '../../Rating_System/Rating_Html.php';?>
-                                </div>
-                             <!--
-                             <div class="product">
-                                 Rate : Movie
-                                 <div id="rating_1" class="ratings">
-                                     <div class="star_1 ratings_stars"></div>
-                                     <div class="star_2 ratings_stars"></div>
-                                     <div class="star_3 ratings_stars"></div>
-                                     <div class="star_4 ratings_stars"></div>
-                                     <div class="star_5 ratings_stars"></div>
-                                     <div class="total_votes">vote data</div>
-
-                                 </div>
                              </div>
-                             -->
-                             <!--End of Include Movie Rating HTML Part  -->
+                           <!--End of Include Movie Rating HTML Part  -->
 
                          </div>
                         <?php endforeach; ?>
                     </div>
-
-<!--
-             <div class="col-lg-4 col-sm-4 col-md-4 ">
-                   <div class="booking-form">
-                    <h2>Book Tickets</h2>
-                     <form action="#" method="post" >
-                        <div class="form-space">
-                                 <select name="select-movie">
-                                     <option value ="movie">Select Movie</option>
-                                     <option value ="film1">option1</option>
-                                     <option value ="film2">option2</option>
-                                     <option value ="film3">option3</option>
-                                 </select>
-                        </div>
-
-                        <div class="form-space">
-                             <select class="" name="select-Date">
-                                 <option value ="date">Select Date</option>
-                                 <option value ="date1">option1</option>
-                                 <option value ="date2">option2</option>
-                                 <option value ="data3">option3</option>
-                             </select>
-                         </div>
-
-                         <div class="form-space">
-                             <select class="" name="select-Time">
-                             <option value ="time">Select Time</option>
-                             <option value ="time1">option1</option>
-                             <option value ="time2">option2</option>
-                             <option value ="time3">option3</option>
-                             </select>
-                         </div>
-
-                         <button type="button" class="btn btn-default btn-booking">Book Now
-<img  alt="arrow pic" class="btn-arrow" src="../Assets/image/btn-arrow.png"/>
-                         </button>
-                     </form>
-
                  </div>
+                <div class="col-lg-4 col-sm-4 col-md-4" style="margin-top: 60px;">
+                    <h2 style="text-align: center;margin-right: 40%;">Top Rated</h2>
 
-                  <div class="about-us">
-                      <h2>ABOUT US</h2>
-                      <p>PVR's Director's Cut®, the luxury arm of PVR Cinemas, blends the best in high-end hospitality and entertainment.</p>
-                  </div>
-             </div>
-             </div>
+                    <div class="movie-list row">
 
+                        <div class="col-lg-4 col-sm-4 col-md-4" style="width:70%;">
+                            <img alt="film1" src="/Assets/image/TheRevenant.jpg"/>
+                        </div>
+<!--
+                        <div class="col-sm-1 col-xs-5">
+                            <p>Top 1</p>
+
+                            <p>$ 26.00M</p>
+
+                            <P>Running Time:<span> 1h 35m</span></P>
+
+                            <p>Opening: Jan 29, 2016</p>
+                        </div>
+-->
+                     </div>
+                        <div class="col-lg-8 col-sm-8 col-md-8">
+                            <p>Top 1</p>
+
+                            <p>$ 26.00M</p>
+
+                            <P>Running Time:<span> 1h 48m</span></P>
+
+                            <p>Opening: April 29, 2016</p>
+                        </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-4 col-md-4 ">
+                    <div class="movie-list row">
+                        <div class="col-lg-4 col-sm-4 col-md-4" style="width:70%;">
+                            <img alt="film1" src="/Assets/image/kongfupanda.jpg"/>
+                        </div>
+                        <!--
+                                                <div class="col-sm-1 col-xs-5">
+                                                    <p>Top 1</p>
+
+                                                    <p>$ 26.00M</p>
+
+                                                    <P>Running Time:<span> 1h 35m</span></P>
+
+                                                    <p>Opening: Jan 29, 2016</p>
+                                                </div>
+                        -->
+                    </div>
+                    <div class="col-lg-8 col-sm-8 col-md-8">
+                        <p>Top 2</p>
+
+                        <p>$ 26.00M</p>
+
+                        <P>Running Time:<span> 1h 35m</span></P>
+
+                        <p>Opening: Jan 29, 2016</p>
+                    </div>
+                </div>
 
          </section>
-
-         <section id="top-movie" class="container">
-             <h2>Top rated</h2>
-             <div class="movie-list row">
-
-                     <div class="col-sm-3 col-xs-7">
-                         <img alt="film1" src="../Assets/image/kongfupanda.jpg"/>
-                     </div>
-
-                     <div class="col-sm-3 col-xs-5">
-
-                         <h3><img src="../Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
-                         <p>Top 1</p>
-                         <p>$ 26.00M</p>
-                         <P>Running Time:<span> 1h 35m</span></P>
-                         <p>Opening: Jan 29, 2016</p>
-                     </div>
-
-
-                     <div class="col-sm-3 col-xs-7">
-                         <img alt="film1" src="../Assets/image/starwar.jpg"/>
-                     </div>
-
-                     <div class="col-sm-3 col-xs-5">
-                         <h3><img src="../Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
-                         <p>Top 2</p>
-                         <p>$ 26.00M</p>
-                         <P>Running Time:<span> 1h 35m</span></P>
-                         <p>Opening: Jan 29, 2016</p>
-                     </div>
-
-
-
-
-             </div>
-
-              <div class="movie-list row">
-
-                     <div class="col-sm-3 col-xs-7">
-                         <img alt="film1" src="../Assets/image/stevejobs.jpg"/>
-                     </div>
-
-                     <div class="col-sm-3 col-xs-5">
-                         <h3><img src="../Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
-                         <p>Top 3</p>
-                         <p>$ 26.00M</p>
-                         <P>Running Time:<span> 1h 35m</span></P>
-                         <p>Opening: Jan 29, 2016</p>
-                     </div>
-
-
-                     <div class="col-sm-3 col-xs-7">
-                         <img alt="film1" src="../Assets/image/TheRevenant.jpg"/>
-                     </div>
-
-                     <div class="col-sm-3 col-xs-5">
-                         <h3><img src="../Assets/image/arrow-highlight.png"/>Kung Fu Panda 3</h3>
-                         <p>Top 4</p>
-                         <p>$ 26.00M</p>
-                         <P>Running Time:<span> 1h 35m</span></P>
-                         <p>Opening: Jan 29, 2016</p>
-                     </div>
-
-              </div>
-         </section>
-  -->
-
-
-
-         </main>
+     </main>
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
