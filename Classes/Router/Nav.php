@@ -36,6 +36,8 @@ use Project\Classes\Request;
  * @package Project\Classes\Router
  * @method static void get($pathAsName, $callback)
  * @method static void post($pathAsName, $callback)
+ * @method static void put($pathAsName, $callback)
+ * @method static void delete($pathAsName, $callback)
  */
 class Nav {
   private static $base = [];

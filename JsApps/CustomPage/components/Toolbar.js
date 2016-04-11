@@ -11,7 +11,7 @@ export default class Toolbar extends React.Component {
               <p>Click to edit</p>
             </div>
             <div className="pull-right">
-              <button className="btn btn-primary">Save</button>
+              <button className="btn btn-primary" onClick={this.props.onSave}>Save</button>
               <button className="btn btn-danger">Cancel</button>
             </div>
           </div>

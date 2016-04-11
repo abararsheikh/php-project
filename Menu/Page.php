@@ -29,11 +29,12 @@ class Page {
     self::bindValues($stmt,
         [':id' => $id, ':content' => $content, ':link' => $link]
     );
-    return $stmt->execute() ?  true : false;
+
+    return $stmt->execute() ? true : false;
   }
 
   public static function get($id) {
-    return DB::find('SELECT * FROM pages WHERE id = :id', [':id' => $id]);
+    return DB::find('SELECT * FROM pages WHERE id = :id', [':id' => $id])[0];
   }
 
   public static function delete($id) {
