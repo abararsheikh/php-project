@@ -25,8 +25,10 @@ class Route {
   public function __construct($path, $name, $method, $callback) {
     $this->requestUrl = $_SERVER['REQUEST_URI'];
     $route = $this->getRouteParam($path);
-    if (is_string($callback)) $callback = $this->controllerShortHand($callback, $route['param']);
-    $this->path = $route['route'] . '/' . $route['param'];
+    $routeParam = $route['param'];
+    if (is_string($callback)) $callback = $this->controllerShortHand($callback, $routeParam);
+
+    $this->path = !empty($routeParam) ? $route['route'] . '/' . $routeParam : $path;
     $this->name = $name;
     $this->method = $method;
     $this->callback = $callback;
@@ -71,7 +73,7 @@ class Route {
     if(preg_match('/.+@.+/', $controllerAtAction) == 1) {
       list ($controller, $action) = explode('@', $controllerAtAction);
       return function() use($controller, $action, $routeParam) {
-        if ($routeParam !== null) {
+        if (!empty($routeParam)) {
           call_user_func([new $controller(), $action], $routeParam, new Request());
         } else {
           call_user_func([new $controller(), $action], new Request());

@@ -24,7 +24,13 @@ class ApiController extends Controller{
         if ( $menu['name'] == $name ) return $this->view->json($menu['menu']);
       }
       $this->view->json($this->resultArray(false, 'no such menu'));
+    }else {
+      $this->view->json($menus);
     }
+  }
+  public function MenuAll() {
+    $menus = Menu::getMenuAll();
+    $this->view->json($menus);
   }
 
   public function SaveMenu(Request $request) {
