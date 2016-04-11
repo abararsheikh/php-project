@@ -6,6 +6,7 @@ use Project\Classes\Controller;
 use Project\Classes\Helper;
 use Project\Classes\View;
 use Project\Menu\Menu;
+use Project\Menu\Page;
 
 class ApiController extends Controller{
   protected $model;
@@ -30,7 +31,33 @@ class ApiController extends Controller{
 
   public function SaveMenu() {
     $result = Menu::saveMenu($_POST['menu']);
-
     $this->view->json($this->resultArray($result, null));
   }
+
+  public function updatePage() {
+    $id = Helper::getParam('id');
+    $content = Helper::getParam('content');
+    $link = Helper::getParam('link');
+    $result = Page::update($id, $content, $link);
+    $this->view->json($this->resultArray($result, null));
+  }
+
+  public function getPage() {
+    $info = Page::get(Helper::getParam('id', INPUT_GET));
+    $this->view->json($info);
+  }
+
+  public function deletePage() {
+    $id = Helper::getParam('id');
+    $result = Page::delete($id);
+    $this->view->json($this->resultArray($result, null));
+  }
+
+  public function addPage() {
+    $content = Helper::getParam('content');
+    $link = Helper::getParam('link');
+    $result = Page::add($content, $link);
+    $this->view->json($this->resultArray($result, null));
+  }
+
 }
