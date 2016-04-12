@@ -12,7 +12,9 @@ export function add(content, link = '') {
 
 export function get(id) {
   if (id) return $.get(`/api/page/${id}`);
-
   return $.get(`/api/page/5`);
+}
 
+export function getPageList() {
+  return $.getJSON('/api/page');
 }

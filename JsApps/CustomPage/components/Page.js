@@ -42,7 +42,7 @@ export default class Page extends React.Component {
 
   render() {
     return (
-        <div className="container">
+        <div>
           <Toolbar onSave={this.handleSave}/>
           <Editor name={EDITOR_NAME} content={this.state.content}/>
         </div>

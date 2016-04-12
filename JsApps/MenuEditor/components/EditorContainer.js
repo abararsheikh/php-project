@@ -131,7 +131,6 @@ export default class EditorContainer extends React.Component {
             </aside>
             <div ref="sortable" id="sortableMenu" className="col-sm-9">
               <button className="btn btn-success " onClick={this.handleNewItem}>New Item</button>
-              <button className="btn btn-success" onClick={this.handleNewCustomPage}>New Custom Page</button>
               <button className="btn btn-primary" onClick={this.saveMenu}>Save</button>
 
               <MenuList
