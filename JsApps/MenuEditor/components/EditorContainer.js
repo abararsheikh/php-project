@@ -6,7 +6,6 @@ import MenuStore from '../stores/MenuStore';
 import MenuActions from '../actions/MenuActions';
 import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
 import '../css/menu.css!';
-import $ from 'jquery';
 import 'jquery-ui';
 
 Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {

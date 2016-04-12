@@ -21,6 +21,12 @@ class Page {
     return $stmt->execute() ?  true : false;
   }
 
+  public static function getLastId() {
+    $stmt = DB::getDB()->prepare('SELECT LAST_INSERT_ID()');
+    $stmt->execute();
+    return $stmt->fetch()[0];
+  }
+
   public static function update($id, $content, $link) {
     $stmt = DB::getDB()->prepare('
       UPDATE pages SET content = :content, link = :link

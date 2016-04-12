@@ -2,6 +2,9 @@ import React from 'react';
 import Editor from './Editor';
 import Toolbar from './Toolbar';
 import * as API from '../api';
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css!';
+
 const EDITOR_NAME = 'editor';
 
 export default class Page extends React.Component {
@@ -14,7 +17,7 @@ export default class Page extends React.Component {
   }
 
   componentDidMount() {
-    API.get(this.state.id).then(data => this.setState(data));
+    API.get(this.state.id).then(data => this.setState({content: data.content}));
   }
 
   handleSave = () => {
@@ -22,9 +25,18 @@ export default class Page extends React.Component {
     const content = CKEDITOR.instances[EDITOR_NAME].getData();
     this.setState({content: content});
     if (id) {
-      API.update(id, content).then(data => console.log(data));
+      API.update(id, content).then(data => {
+        if (data.success) toastr.success('Page Saved');
+        if (!data.success) toastr.warn('Failed to save');
+      });
     } else {
-      API.add(content).then(data => console.log(data));
+      API.add(content).then(data => {
+        if (data.success) {
+          this.setState({id: data.id});
+          toastr.success('Page Saved');
+        }
+        if (!data.success) toastr.warn('Failed to save');
+      });
     }
   };
 

@@ -1,8 +1,8 @@
-export function update(id, content, link = '') {
+export function update(id, content) {
   return $.ajax({
     url: `/api/page/${id}`,
     method: 'PUT',
-    data: {content, link}
+    data: {content, link: `/page/${id}`}
   })
 }
 

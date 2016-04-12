@@ -63,7 +63,7 @@ class ApiController extends Controller{
   // POST /page
   public function AddPage(Request $request) {
     $result = Page::add($request->param('content'), $request->param('link'));
-    $this->view->json($this->resultArray($result, null));
+    $this->view->json(['success' => $result, 'id' => Page::getLastId()]);
   }
 
 }
