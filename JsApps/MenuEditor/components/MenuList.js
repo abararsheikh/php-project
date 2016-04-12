@@ -50,6 +50,12 @@ export default class MenuList extends React.Component {
     this.props.onChange(menu);
   };
 
+  handleCustomPageChange = (id) => (pageId) => {
+    const value = 'page/' + pageId;
+    console.log(value);
+    this.handleInputChange(id, 'link')({target:{value: value}});
+  };
+
   drawMenu = (menuItems, baseIndex = '') => {
     return menuItems.map((item, index) => {
       let style = {minHeight: '10px', margin: '0 0 0 2em', padding: '0.5em'};
@@ -81,6 +87,7 @@ export default class MenuList extends React.Component {
 
       let element = <MenuItem  {...item}
           pageList={this.props.pageList}
+          customPageChange={this.handleCustomPageChange(id)}
           nameValueLink={nameValueLink}
           linkValueLink={linkValueLink}
           collapseButton={collapseButton}

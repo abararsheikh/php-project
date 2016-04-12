@@ -9,6 +9,7 @@ export default class MenuItem extends React.Component {
   static propTypes = {
     nameValueLink: React.PropTypes.object.isRequired,
     linkValueLink: React.PropTypes.object.isRequired,
+    pageList: React.PropTypes.array,
     onChange: React.PropTypes.func.isRequired,
     onDelete: React.PropTypes.func.isRequired,
     collapseButton: React.PropTypes.node
@@ -48,7 +49,10 @@ export default class MenuItem extends React.Component {
               </div>
 
               <div className="col-xs-2">
-                <UsePageBtn pageList={this.props.pageList} />
+                <UsePageBtn 
+                    link={this.props.link}
+                    pageList={this.props.pageList}
+                    onPageChange={this.props.customPageChange} />
                 <button className="btn btn-danger" onClick={this.props.onDelete}>Delete</button>
               </div>
             </div>
