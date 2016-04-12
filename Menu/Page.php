@@ -10,7 +10,8 @@ class Page {
   const types = [
     ':id' => \PDO::PARAM_INT,
     ':content' => \PDO::PARAM_STR,
-    ':link' => \PDO::PARAM_STR
+    ':link' => \PDO::PARAM_STR,
+    ':name' => \PDO::PARAM_STR
   ];
 
   public static function add($content, $link) {
@@ -41,6 +42,10 @@ class Page {
 
   public static function get($id) {
     return DB::find('SELECT * FROM pages WHERE id = :id', [':id' => $id])[0];
+  }
+
+  public static function getAll() {
+    return DB::find('SELECT * FROM pages', null);
   }
 
   public static function delete($id) {

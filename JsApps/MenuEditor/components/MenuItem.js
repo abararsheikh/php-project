@@ -1,4 +1,5 @@
 import React from 'react';
+import UsePageBtn from './UsePageBtn';
 
 export default class MenuItem extends React.Component {
   static defaultProps = {
@@ -17,6 +18,7 @@ export default class MenuItem extends React.Component {
     return nextProps.name !== this.props.name
         || nextProps.link !== this.props.link
         || nextProps.collapseButton !== this.props.collapseButton
+        || nextProps.pageList !== this.props.pageList
   }
 
   render() {
@@ -46,6 +48,7 @@ export default class MenuItem extends React.Component {
               </div>
 
               <div className="col-xs-2">
+                <UsePageBtn pageList={this.props.pageList} />
                 <button className="btn btn-danger" onClick={this.props.onDelete}>Delete</button>
               </div>
             </div>

@@ -54,6 +54,10 @@ class ApiController extends Controller{
     $this->view->json($info);
   }
 
+  public function GetAll() {
+    $this->view->json(Page::getAll());
+  }
+
   // DELETE /page/:id
   public function DeletePage($id) {
     $result = Page::delete($id);

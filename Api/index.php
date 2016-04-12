@@ -13,6 +13,7 @@ Nav::group('/Api', function() use($apiController) {
   Nav::get('/menu/:name', "$apiController@Menu");
   Nav::post('/menu', "$apiController@SaveMenu");
 
+  Nav::get('/page', "$apiController@GetAll");
   Nav::post('/page', "$apiController@AddPage");
   Nav::delete('/page/:id', "$apiController@DeletePage");
   Nav::get('/page/:id', "$apiController@GetPage");
