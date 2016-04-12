@@ -14,7 +14,6 @@ class Filmadmin
         $query = "DELETE FROM moviefeature
           WHERE film_id = '$film_id' ";
         $db->exec($query);
-
     }
     public function editMovie($film_id)
     {
