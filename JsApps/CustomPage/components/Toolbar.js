@@ -6,13 +6,17 @@ export default class Toolbar extends React.Component {
     return (
         <div className="panel panel-default">
           <div className="panel-body">
-            <div className="page-header">
-              <h1>Page Preview</h1>
+            <div className="page-header" id={this.props.editorName}>
+              <h1>
+                <input type="text"
+                       onChange={this.props.onChange}
+                       value={this.props.pageName}/>
+              </h1>
               <p>Click to edit</p>
             </div>
             <div className="pull-right">
-              <button className="btn btn-primary">Save</button>
-              <button className="btn btn-danger">Cancel</button>
+              <button className="btn btn-primary" onClick={this.props.onSave}>Save</button>
+              <button className="btn btn-danger" onClick={this.props.onDelete}>Cancel</button>
             </div>
           </div>
         </div>

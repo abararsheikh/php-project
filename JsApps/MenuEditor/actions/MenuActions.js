@@ -47,6 +47,11 @@ export default {
       actionType: MenuConstants.CREATE_MENU
     })
   },
+  createCustomPage: () => {
+    AppDispatcher.dispatch({
+      actionType: MenuConstants.CREATE_CUSTOM_PAGE
+    })
+  },
   updateName: (name, num) => {
     AppDispatcher.dispatch({
       actionType: MenuConstants.UPDATE_NAME,

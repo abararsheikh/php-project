@@ -14,7 +14,7 @@ export default class MenuDisplay extends React.Component {
           <ul key={index}>{this.drawMenu(menu[index + 1])}</ul>
       );
       return (
-          <li key={index}><a href={`http://${location.hostname}/${item.link}`}>{item.name}</a>{submenu}</li>
+          <li key={index}><a href={`http://${location.hostname}${item.link}`}>{item.name}</a>{submenu}</li>
       )
     })
   };

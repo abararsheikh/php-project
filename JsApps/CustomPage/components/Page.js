@@ -2,26 +2,17 @@ import React from 'react';
 import Editor from './Editor';
 import Toolbar from './Toolbar';
 
-const EDITOR_NAME = 'editor';
-
 export default class Page extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      content: ''
-    }
-  }
-
-  handleSave = () => {
-    const content = CKEDITOR.instances[EDITOR_NAME].getData();
-    this.setState({content: content});
-  };
 
   render() {
     return (
-        <div className="container">
-          <Toolbar />
-          <Editor name={EDITOR_NAME} content="test"/>
+        <div>
+          <Toolbar
+              pageName={this.props.pageItem.name}
+              onChange={this.props.onNameChange}
+              onDelete={this.props.onDelete}
+              onSave={this.props.onSave}/>
+          <Editor name={this.props.editorName} content={this.props.pageItem.content}/>
         </div>
     )
   }

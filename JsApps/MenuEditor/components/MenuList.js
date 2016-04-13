@@ -34,14 +34,14 @@ export default class MenuList extends React.Component {
       }));
     } else {
       const newArray = this.state.collapsedItems
-          .filter( item => !(item.name === parentItem.name && item.link === parentItem.link));
+          .filter(item => !(item.name === parentItem.name && item.link === parentItem.link));
       this.setState({collapsedItems: newArray})
     }
 
   };
 
   handleInputChange = (id, prop) => (event) => {
-      let menu = [].concat(this.props.menu);
+    let menu = [].concat(this.props.menu);
     let menuItem = id.toString().split(',').reduce((acc, item) => {
       return acc[item];
     }, menu);
@@ -49,9 +49,14 @@ export default class MenuList extends React.Component {
     this.props.onChange(menu);
   };
 
+  handleCustomPageChange = (id) => (pageId) => {
+    const value = '/page/' + pageId;
+    this.handleInputChange(id, 'link')({target:{value: value}});
+  };
+
   drawMenu = (menuItems, baseIndex = '') => {
     return menuItems.map((item, index) => {
-      let style={ minHeight: '10px', margin: '0 0 0 2em', padding: '0.5em'};
+      let style = {minHeight: '10px', margin: '0 0 0 2em', padding: '0.5em'};
 
       // don't draw array - submenu
       // unique react id
@@ -59,7 +64,7 @@ export default class MenuList extends React.Component {
       const nextItem = menuItems[index + 1];
       // Set submenu
       let subMenu, collapseButton;
-      if ($.isArray(nextItem) && nextItem.length > 0) subMenu = this.drawMenu(nextItem, baseIndex + (index  + 1) + ',');
+      if ($.isArray(nextItem) && nextItem.length > 0) subMenu = this.drawMenu(nextItem, baseIndex + (index + 1) + ',');
       if ($.isArray(item)) return;
       // If there is submenu, add collapse button
       if (subMenu) {
@@ -78,14 +83,18 @@ export default class MenuList extends React.Component {
         onChange: this.handleInputChange(id, 'link')
       };
 
+      let element = <MenuItem  {...item}
+          pageList={this.props.pageList}
+          customPageChange={this.handleCustomPageChange(id)}
+          nameValueLink={nameValueLink}
+          linkValueLink={linkValueLink}
+          collapseButton={collapseButton}
+          onChange={this.props.onChange}
+          onDelete={this.props.onDelete}/>;
+
       return (
           <li key={id} data-id={id}>
-            <MenuItem  {...item}
-                nameValueLink={nameValueLink}
-                linkValueLink={linkValueLink}
-                collapseButton={collapseButton}
-                onChange={this.props.onChange}
-                onDelete={this.props.onDelete}/>
+            {element}
             <ul className="sortable" style={style}>
               {subMenu}
             </ul>

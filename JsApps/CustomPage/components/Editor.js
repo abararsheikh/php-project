@@ -5,7 +5,7 @@ export default class Editor extends React.Component {
 
   static propTypes = {
     name: React.PropTypes.string.isRequired,
-    content: React.PropTypes.string.isRequired
+    content: React.PropTypes.string
   };
 
   componentDidMount() {
@@ -45,6 +45,10 @@ export default class Editor extends React.Component {
     })
   }
 
+  componentDidUpdate() {
+    CKEDITOR.instances[this.props.name].setData(this.props.content);
+  }
+
   componentWillUnmount() {
     this._editor.destroy();
   }
@@ -52,7 +56,7 @@ export default class Editor extends React.Component {
   render() {
     return (
         <div id={this.props.name} style={{padding: '20px'}}>
-          {this.props.content}
+
         </div>
     );
   }

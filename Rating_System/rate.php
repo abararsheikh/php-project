@@ -7,8 +7,8 @@ $db = Database::getDB();
 $units = Database::unit();
 
 require_once '/Model/Ratings.php';
-//$getUserId =\Project\Auth\models\AuthModel::getUser('id');
-//var_dump($getUserId);
+$ip =\Project\Auth\models\AuthModel::getUser('id');
+var_dump($ip);
 //getting id of movie-1,2,3 which one is click that id from the rating.js page
 $id_sent = preg_replace("/[^0-9]/","",$_REQUEST['id']);
 

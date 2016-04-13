@@ -74,7 +74,7 @@ class AuthController extends Controller {
   }
 
   public function adminLoginPage() {
-    $this->view->render('/Auth/Views/index', 'admin login Page');
+    $this->view->render('/Auth/Views/admin', 'admin login Page');
   }
 
   // Admin POST

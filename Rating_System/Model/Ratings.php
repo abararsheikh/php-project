@@ -122,5 +122,6 @@ class Ratings
         $query = "DELETE FROM ratings
           WHERE rating_id = '$rating_id' ";
         $db->exec($query);
+        
     }
 }
