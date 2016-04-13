@@ -58,26 +58,29 @@
 
             </div>
         </div>
+            <form method="post" action="./index.php">
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
                     <p>Please select your preferred movie languages and we will create your personalized movie calendar.</p>
                     <div class="col-lg-3 col-md-3 col-sm-3">
                         <ul class="list-unstyled">
-                            <li><button id="allMovies" class="btn btn-default btn-calender">ALL MOVIES</button></li>
-                            <li><button id="EnglishMovies" class="btn btn-default btn-calender">ENGLISH</button></li>
-                            <li><button id="ChineseMovies" class="btn btn-default btn-calender">CHINESE</button></li>
+                            <li><button id="allMovies" class="btn btn-default btn-calender" type="button">ALL MOVIES</button></li>
+                            <li><button id="EnglishMovies" class="btn btn-default btn-calender" type="button">ENGLISH</button></li>
+                            <li><button id="ChineseMovies" class="btn btn-default btn-calender" type="button">CHINESE</button></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-9 col-md-9 col-sm-9">
-                        <div class="movieName nicescroll-cursors">
+
+                            <input type="hidden" name="route" value="SendCalender/index">
+                            <div class="movieName nicescroll-cursors">
                             <ul id="filmList" class="list-unstyled">
                                 <?php foreach($calender as $filmCalender):?>
                                 <li class="movieList">
 
-                                    <input type="checkbox" name="runningfilmId[]" class="film-list" value="<?php echo $filmCalender->Film_Id?>" checked/>
-                                    <label for="runningfilmId[]" class="checked"><?php echo $filmCalender->Film_Name?></label>
+                                    <input type="checkbox" name="<?php echo "$filmCalender->Film_Name/$filmCalender->Run_Date/$filmCalender->Run_Time/$filmCalender->Film_Id"?>" class="film-list" value="<?php echo $filmCalender->Film_Id?>" checked/>
+                                    <label for="<?php echo $filmCalender->Film_Name?>" class="checked"><?php echo $filmCalender->Film_Name?></label>
                                     <small>[<?php echo $filmCalender->Run_Date?>]</small>
                                     <span class="time-float"><?php echo $filmCalender->Run_Time?></span>
 
@@ -85,15 +88,17 @@
                                 <?php endforeach?>
                             </ul>
                         </div>
+
+
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-12">
-                <a class="moviedem-submit">Continue to next step<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></a>
-
+                <button type="submit" class="moviedem-submit">Continue to next step<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></button>
             </div>
         </div>
+            </form>
 
     </div>
     </div>

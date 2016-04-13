@@ -70,7 +70,8 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <a class="moviedem-submit">Send to you by email<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></a>
+
+                <a class="moviedem-submit" href="./index.php?route=SendCalender/BuildMessageAndSend">Send to you by email<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></a>
             </div>
         </div>
 
@@ -83,6 +84,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../../Booking/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../Booking/js/slick.min.js"></script>
-<script type="text/javascript" src="../../Booking/js/homepage.js"></script>
+<script type="text/javascript" src="../../Booking/js/sendCalender.js"></script>
 </body>
 </html> 

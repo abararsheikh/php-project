@@ -5,5 +5,3 @@ Wade Wilson (Ryan Reynolds) is a former Special Forces operative who now works a
 
 =======
 
-[movie-hit]:375
->>>>>>> b2cea57e552ec83be272c7f96349b2cf12273b32:booking/files/film1.txt

@@ -68,7 +68,7 @@ class DetailController{
                        $param = ["Room_ID" => $bookInfo->Room_ID, "Run_Time" => $bookInfo->Run_Time, "Seat_Name" => $seat];
                        $seatInfo = $filmBooking->getBookingDetail($param, $sql);
 
-
+                       // var_dump($seatInfo);
                        if (is_array($seatInfo)) {
                            if ($seatInfo[0]->available == 'N') {
                                // require_once"./View/Error404.php";
@@ -295,7 +295,7 @@ class DetailController{
             "Total_Price"=>$totalPrice
         ];
         $orderId = $order->getOrderDetail($param,$sql);
-        var_dump($orderId);
+        //var_dump($orderId);
         foreach($items as $item){
             $item->Film_Name=trim($item->Film_Name);
             self::createReservations($orderId[0]->order_id,$item);
@@ -320,5 +320,7 @@ class DetailController{
                 "Price"=>$item->Price];
        $order->modifyOrder($param,$sql);
    }
+
+
 }
 

@@ -5,11 +5,11 @@ function init(){
     paymentButton();
     var endTime = new Date();
     endTime.setMinutes(endTime.getMinutes() + 6);
-    console.log(endTime);
+    //console.log(endTime);
     //getTimeRemaining(endTime);
     var timeinterval = setInterval(function(){
        var timer = getTimeRemaining(endTime);
-        console.log(timer);
+        //console.log(timer);
         $(".timer").html(timer.minutes+":"+timer.seconds+" Mins");
         if(timer.seconds<10){
             $(".timer").html(timer.minutes+":0"+timer.seconds+" Mins");
@@ -18,7 +18,7 @@ function init(){
 
             alert("Session Expired");
             var url="./index.php?route=DetailController/sessionExpired";
-            console.log(url);
+            //console.log(url);
             $.get(url, function(data, status){
 
                 window.location.replace("./index.php");
@@ -27,6 +27,7 @@ function init(){
         }
     },1000);
     deleteItem();
+    closeBrowerEmtpyShoppingCart();
 }
 
 function deleteItem(){
@@ -134,6 +135,23 @@ function paymentButton(){
     $(".stripe-button-el").addClass("btn-payment");
 }
 
+function closeBrowerEmtpyShoppingCart(){
 
+    //$(window).on('beforeunload ',function() {
+    //    alert('');
+    //    var url="./index.php?route=DetailController/sessionExpired";
+    //    $.get(url, function(data, success){
+    //        alert("shopping cart empty");
+    //    })
+    //});
+
+    onunload=function(){
+            alert('');
+            var url="./index.php?route=DetailController/sessionExpired";
+            $.get(url, function(data, success){
+                alert("shopping cart empty");
+            })};
+
+}
 
 init();

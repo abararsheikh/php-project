@@ -7,7 +7,7 @@ function init(){
     findEnglishMovie();
     findChineseMovie();
     findAllMovie();
-
+    checkedRadioButton();
 }
 
 function chooseCalender(){
@@ -21,10 +21,14 @@ function findChineseMovie(){
         url="../MovieCalender/index.php?route=CustomerCalender/showChineseMovies";
         $.get(url,function(data,status){
             data = JSON.parse(data);
-            console.log(data);
+            //console.log(data);
             createList(data);
         })
     });
+}
+function checkedRadioButton(){
+    console.log($("input:checkbox:not(:checked)"));
+    $("input:checkbox:not(:checked)").prop("checked", true);
 }
 
 function findAllMovie(){
@@ -43,19 +47,25 @@ function findEnglishMovie(){
         url="../MovieCalender/index.php?route=CustomerCalender/showEnglishMovies";
         $.get(url, function(data,status){
                 data = JSON.parse(data);
-                console.log(data);
+                //console.log(data);
                 createList(data);
         })
     });
 }
 
+//function warningGoBack(){
+//    window.onbeforeunload = function() { return "You work will be lost."; };
+//}
+
 function createList(data){
    var str="";
+
     for(var i=0; i<data.length; i++){
+        var moive =data[i].Film_Name+'/'+data[i].Run_Date+'/'+data[i].Run_Time+'/'+data[i].Film_Id;
         str+= "<li class='movieList'>";
-        str+="<input type='checkbox' name='runningfilmId[]' class='film-list' value="+"'"+data[i].Film_Id+"'"+" checked/>";
-        str+="<label for='runningfilmId[]' class='checked'>"+data[i].Film_Name+"</label>";
-        str+="<small>["+data[i].Run_Time+"]</small></li>";
+        str+="<input type='checkbox' name="+"'"+moive+"'"+"class='film-list' value="+"'"+data[i].Film_Id+"'"+" checked/>";
+        str+="<label for='' class='checked'>"+data[i].Film_Name+"</label>";
+        str+="<small>["+data[i].Run_Date+"]</small><span class='time-float'>"+data[i].Run_Time+"</span></li>";
     }
     $("#filmList").html(str);
 }
