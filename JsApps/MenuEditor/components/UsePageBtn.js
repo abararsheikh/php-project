@@ -13,14 +13,16 @@ export default class UsePageBtn extends React.Component {
       usePage
     };
   }
-  componentWillReceiveProps(nextProps) {
-    const link = nextProps.link;
-    if (/page\/.+/.test(link)) {
-      const pageId = link.slice(link.lastIndexOf('/') + 1);
-      const pageItem = _.find(nextProps.pageList, {id: pageId});
-      this.setState({usePage: pageItem.name});
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   const link = nextProps.link;
+  //   if (/page\/.+/.test(link)) {
+  //     const pageId = link.slice(link.lastIndexOf('/') + 1);
+  //     const pageItem = _.find(nextProps.pageList, {id: pageId});
+  //     this.setState({usePage: pageItem.name});
+  //   } else {
+  //     this.setState({usePage: 'Custom Page'})
+  //   }
+  // }
 
   handlePageChange = (item) => () => {
     this.setState({usePage: item.name});
@@ -30,10 +32,18 @@ export default class UsePageBtn extends React.Component {
 
   render() {
     if (!this.props.pageList) return;
+    const link = this.props.link;
+    let usePage = '';
+    if (/page\/.+/.test(link) && this.props.pageList) {
+      const pageId = link.slice(link.lastIndexOf('/') + 1);
+      usePage = _.find(this.props.pageList, {id: pageId});
+      usePage = usePage && usePage.name
+    }
+
     return (
         <div className="btn-group">
           <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            {this.state.usePage} <span className="caret"></span>
+            {usePage} <span className="caret"></span>
           </button>
           <ul className="dropdown-menu">
             {this.props.pageList.map((item, index) => {

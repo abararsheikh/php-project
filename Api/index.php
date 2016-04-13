@@ -15,9 +15,9 @@ Nav::group('/Api', function() use($apiController) {
 
   Nav::get('/page', "$apiController@GetAll");
   Nav::post('/page', "$apiController@AddPage");
-  Nav::delete('/page/:id', "$apiController@DeletePage");
   Nav::get('/page/:id', "$apiController@GetPage");
   Nav::put('/page/:id', "$apiController@UpdatePage");
+  Nav::delete('/page/:id', "$apiController@DeletePage");
 
 
 });
