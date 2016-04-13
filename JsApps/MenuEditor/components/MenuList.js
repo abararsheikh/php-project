@@ -1,6 +1,5 @@
 import React from 'react';
 import update from 'react/lib/update';
-import CustomPageItem from './CustomPageItem';
 import _ from 'lodash';
 import MenuItem from './MenuItem';
 import CollapseButton from './CollapseButton';
@@ -51,8 +50,7 @@ export default class MenuList extends React.Component {
   };
 
   handleCustomPageChange = (id) => (pageId) => {
-    const value = 'page/' + pageId;
-    console.log(value);
+    const value = '/page/' + pageId;
     this.handleInputChange(id, 'link')({target:{value: value}});
   };
 

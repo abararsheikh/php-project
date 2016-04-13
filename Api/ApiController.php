@@ -44,7 +44,7 @@ class ApiController extends Controller{
 
   // PUT /page/:id
   public function UpdatePage($id, Request $request) {
-    $result = Page::update($id, $request->param('content'), $request->param('link'));
+    $result = Page::update($id, $request->param('content'), $request->param('name'), $request->param('link'));
     $this->view->json($this->resultArray($result, null));
   }
 
@@ -66,7 +66,7 @@ class ApiController extends Controller{
 
   // POST /page
   public function AddPage(Request $request) {
-    $result = Page::add($request->param('content'), $request->param('link'));
+    $result = Page::add($request->param('content'), $request->param('name'), $request->param('link'));
     $this->view->json(['success' => $result, 'id' => Page::getLastId()]);
   }
 

@@ -6,6 +6,7 @@
     "bundle-authpage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/appPage.js Assets/js/authPage.js",
     "bundle-adminLogin": "jspm bundle-sfx --no-mangle --skip-source-maps --minify Auth/Views/auth/adminLogin.js Assets/js/adminLogin.js",
     "bundle-trailer": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MovieTrailer/app.js Assets/js/trailerApp.js",
+    "bundle-customPage": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/CustomPage/app.js Assets/js/CustomPage.js",
     "bundle-menuEditor": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MenuEditor/app.js Assets/js/MenuEditor.js",
     "bundle-menuDisplay": "jspm bundle-sfx --no-mangle --skip-source-maps --minify JsApps/MenuDisplay/app.js Assets/js/MenuDisplay.js"
   },

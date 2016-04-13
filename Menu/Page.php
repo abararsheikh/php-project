@@ -14,11 +14,11 @@ class Page {
     ':name' => \PDO::PARAM_STR
   ];
 
-  public static function add($content, $link) {
+  public static function add($content, $name, $link) {
     $stmt = DB::getDB()->prepare('
-      INSERT INTO pages (content, link) VALUES (:content, :link)
+      INSERT INTO pages (content, name, link) VALUES (:content, :name, :link)
     ');
-    self::bindValues($stmt, [':content' => $content, ':link' => $link]);
+    self::bindValues($stmt, [':content' => $content, ':link' => $link, ':name' => $name]);
     return $stmt->execute() ?  true : false;
   }
 
@@ -28,13 +28,13 @@ class Page {
     return $stmt->fetch()[0];
   }
 
-  public static function update($id, $content, $link) {
+  public static function update($id, $content, $name, $link) {
     $stmt = DB::getDB()->prepare('
-      UPDATE pages SET content = :content, link = :link
+      UPDATE pages SET content = :content, link = :link, name = :name
       WHERE id = :id;
     ');
     self::bindValues($stmt,
-        [':id' => $id, ':content' => $content, ':link' => $link]
+        [':id' => $id, ':content' => $content, ':link' => $link, ':name' => $name]
     );
 
     return $stmt->execute() ? true : false;

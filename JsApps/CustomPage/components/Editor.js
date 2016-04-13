@@ -5,7 +5,7 @@ export default class Editor extends React.Component {
 
   static propTypes = {
     name: React.PropTypes.string.isRequired,
-    content: React.PropTypes.string.isRequired
+    content: React.PropTypes.string
   };
 
   componentDidMount() {
