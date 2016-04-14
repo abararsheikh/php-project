@@ -2,46 +2,9 @@
 
 <?php
 require('conn.php');
-
-$act=$_GET['act']?$_GET['act']:'';
-$a=0;
-if($act=='add')
-{
-  foreach($_POST as $key => $value){
-  	if(strpos($key,"answer")>0){
-		$questionArr[$a]["id"] = substr($key,strpos($key,"answer")+6);
-		$questionArr[$a]["answer"] = $value;
-		$a++;
-	}
-  }
-  $sql="select * from ceshi";
-   $resC= $db->query($sql);
-  $fenshu = 0;
-  while($rs = $resC->fetchObject()){
-  	foreach($questionArr as $key => $value){
- 	 	if($value["id"] == $rs->id){
-			if($value["answer"] == $rs->rights){
-				$fenshu += $rs->fenshu;
-			}
-		}
- 	}
-  }
-  $sql="insert into xinxi(name,xingbie,hunfou,chusheng,xueli,biyetime,biyeschool,tel,xiandxi,fenshu)values('".$_POST['name']."','".$_POST['xingbie']."','".$_POST['hunfou']."','".$_POST['chusheng']."','".$_POST['xueli']."','".$_POST['biyetime']."','".$_POST['biyeschool']."','".$_POST['tel']."','".$_POST['xiandxi']."',".$fenshu.")";
-
-   $result=$db->exec($sql);
-  //  header('location:index1.php');
-
-}
-
-if(isset($_POST['Submit'])){
-    if ($_POST['rand3']==$_POST['username32']){
-        header('location:index1.php');
-    }
-    else{
-        $error=(" <span style='color :red;'> Wrong code </span>");
-    }
-
-}
+include("../controller/informationcontroller.php");
+$info=new information();
+$info->index();
 
 
 
@@ -92,7 +55,7 @@ width:1400px;
                       <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
                   </tr>
                   <tr>
-                      <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="img/pic3.jpg"></a></td>
+                      <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="img/pic3.jpg"></a></td>
                   </tr>
           </table>
           </td>
@@ -185,6 +148,12 @@ width:1400px;
           </tr>
           <?php
 
+          require('conn.php');
+          include("../controller/informationcontroller.php");
+          $info=new information();
+          $info->info();
+
+          /*
           $sqlMax = "select * from ceshi order by id desc";
           $resMax = $db->query($sqlMax) or die($sqlMax);
           $rsMax = $resMax->fetchObject();
@@ -203,6 +172,16 @@ width:1400px;
               $res = $db->query($sql);
               if($rs = $res->fetchObject()){
                 array_push($ids,$id);
+                */
+      $i = 1;
+      while($i<=10){
+            $id = round(rand($min,$max));
+            if(!in_array($id,$ids)){
+              $sql = "select * from ceshi where id=".$id;
+              $res = $db->query($sql);
+              if($rs = $res->fetchObject()){
+                array_push($ids,$id);
+
         ?>
 
           <tr>
