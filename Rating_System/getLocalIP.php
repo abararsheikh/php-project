@@ -9,7 +9,8 @@
 <iframe id="iframe" sandbox="allow-same-origin" style="display: none"></iframe>
 <script>
     //get the IP addresses associated with an account
-    function getIPs(callback){
+    function getIPs(callback)
+    {
         var ip_dups = {};
 
         //compatibility for firefox and chrome
@@ -101,12 +102,13 @@
         //assume the rest are public IPs
         else
             document.getElementsByTagName("ul")[1].appendChild(li);
+
     });
 </script>
 <?php $jproducts = json_encode($products);
 
 header("Content-Type: application/json");
-echo $jproducts
-;?>
+echo $jproducts;
+?>
 </body>
 </html>

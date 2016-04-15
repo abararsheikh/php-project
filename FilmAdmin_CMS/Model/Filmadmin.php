@@ -10,7 +10,6 @@ class Filmadmin
         include '../../autoloader.php';
         $db = DB::getDB();
         //Execute the Query
-
         $query = "DELETE FROM moviefeature
           WHERE film_id = '$film_id' ";
         $db->exec($query);
@@ -56,4 +55,20 @@ class Filmadmin
         $indexMovie = $statement1->fetchAll();
         return $indexMovie;
     }
+// function for rating movies ..is used in rating.php file
+    public function getMoviesID()
+    {
+        //connect to database :
+        include '../autoloader.php';
+        $db2 = DB::getDB();
+        //Execute the Query
+        $queryAllMoviesId ='SELECT film_id FROM moviefeature';
+        $getId= $db2->prepare($queryAllMoviesId);
+        $getId->execute();
+        $getIds= $getId->fetchAll();
+
+        return $getIds;
+    }
+
+
 }

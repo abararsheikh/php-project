@@ -6,7 +6,6 @@ require_once '../Model/Filmadmin.php';
 $displayAllMovies = new Filmadmin();
 $allMovies = $displayAllMovies->displayMovie();
 ?>
-<!Doctype HTML>
 <html>
 <head>
     <meta charset="utf-8">
@@ -14,13 +13,14 @@ $allMovies = $displayAllMovies->displayMovie();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/Assets/css/style.css"/>
-
+    <!--Attahced Admin CSS-->
+    <link rel="stylesheet" type="text/css" href="../../Admin_Login/admin.css" />
     <title>Homepage</title>
 </head>
 
 
 <body>
-
+<?php include '../../Admin_Login/admin.php'?>
 <main id="main-content">
     <section  class="container">
         <div class="row">
