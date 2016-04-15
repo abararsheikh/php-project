@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Career</title>
 
-<script type="text/javascript" src="11-2-routing.js"></script>
+<script type="text/javascript" src="../public/11-2-routing.js"></script>
 <style type="text/css">
 .STYLE1 {
 	color: #FF0000;
@@ -27,13 +27,13 @@
   <tr>
     <td width="94" rowspan="3" valign="top" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><table width="200" border="0">
       <tr id="nav">
-        <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="img/pic1.jpg"></a></td>
+        <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="../public/pic1.jpg"></a></td>
       </tr>
       <tr>
-        <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
+        <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public/pic2.jpg"></a></td>
       </tr>
       <tr>
-        <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="img/pic3.jpg"></a></td>
+        <td height="57" align="center" valign="middle"><a href="information.php?about"><img src="../public/pic3.jpg"></a></td>
       </tr>
     </table>
     <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Web develope</p>
@@ -47,11 +47,10 @@
     <td width="871" height="676" valign="top" bgcolor="#CCCCCC">
 	
 	<div id="output"/>
+
 	<?php
 
 require('conn.php');
-
-
 
 $PageSize=10;
 $act=isset($_GET["action"])?$_GET["action"]:'';
@@ -99,8 +98,6 @@ else{
 $PageCount=0;
 }
 
-
-
 $Page_String="";
 if ($page==1){
 $Page_String.='First|Previous |';
@@ -123,12 +120,11 @@ $Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCo
 
 }
 $mount-($page-1)*$PageSize;
-$num=$a
-
+$num=$a;
 
 ?>
-<?php 
 
+<?php 
 
  $upLimit   =   ($page-1)*$PageSize;   
   $lowLimit   =  $PageSize; 
