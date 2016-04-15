@@ -1,3 +1,13 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="../../Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../Assets/js/jquery.min.js" ></script>
+    <script src="../../Assets/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../../Assets/css/food-shopping-cart.css" />
+    <script src="../../Assets/js/Food/food_shopping_cart.js"></script>
+</head>
 
 <main>
     <div class="container-fluid">
@@ -16,11 +26,11 @@
             </div>
         <div class="row menu">
     <ul class="nav nav-tabs menu-nav col-md-12 col-sm-12 col-xs-12">
-        <li role="presentation" class="<?php if($page=="cart_list") echo "active";?>" onclick="Item()"><a href="index.php">All Items</a></li>
-        <li role="presentation"  class="<?php if($page=="instock") echo "active";?>" onclick="Instock()"><a href="?page=instock">Low stock</a></li>
-        <li role="presentation"  class="<?php if($page=="price") echo "active";?>" onclick="Price()"><a href="?page=price">Price reduction</a></li>
+        <li role="presentation" class="active" id="selectall"><a >All Items</a></li>
+        <li role="presentation"  class="" id="lowstock"><a >Low stock</a></li>
+        <li role="presentation"  class="" id="reduction"><a >Price reduction</a></li>
         <div class="col-md-offset-8"><p class="navbar-text">Selected Food: $<span>0.00</span></p>
-            <button type="button" class="btn btn-default navbar-btn">Settlement</button>
+            <button type="button" class="btn btn-default navbar-btn" id="checkout">Check out</button>
         </div>
 
     </ul>
@@ -28,9 +38,10 @@
             </div>
         <div class="table-responsive" id="foods">
             <table class="table table-hover">
-                <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td><td colspan="4">Food information</td><td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td></thead>
+                <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td><td colspan="4">Food information</td>
+                <td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td><td>Delivery Time</td></thead>
                <?php foreach($cart as $item){?>
-                <tr>
+                <tr class="item">
                   <td rowspan="4"><input type="checkbox" class="check"/> </td>
                     <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
                     <td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><?php echo $item->Food_Name;?></a></td>
@@ -98,10 +109,11 @@
                         <input type="hidden" value="<?php echo $item->Id;?>" name="id"/>
                         <a href="" name="delete">Delete</a>
                     </td>
+                    <td rowspan="4">date:<input type="date"/></td>
                 </tr>
 <tr></tr>
                 <tr></tr>
-                <tr></tr>
+                <tr><td colspan="7"></td><td>Time:<input type="time"/></td></tr>
                <?php }?>
             </table>
         </div>
@@ -117,9 +129,9 @@
         <div style="margin: 30px auto;" class="row">
 
 
-        <ul class="nav nav-pills ">
-            <li role="presentation" class="active"><a href="#">Guess you like</a></li>
-            <li role="presentation"><a href="#">Viewed recently</a></li>
+        <ul class="nav nav-pills navbottom">
+            <li role="presentation" class="active" id="guess"><a>Guess you like</a></li>
+            <li role="presentation" id="history"><a>Viewed recently</a></li>
 
         </ul>
 
@@ -140,70 +152,21 @@
                 </button>
             </div>
         </div>
-        <div class="row">
-
+        <div class="row" id="bottomcontent">
+<?php foreach($guess as $item){ ?>
 
             <div class="col-xs-10 col-sm-4 col-md-2">
                 <div href="#" class="thumbnail">
-                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
+                    <img src="../../Assets/image/food/<?php echo $item->getImage();?>" alt="..." class="">
                     <div class="caption">
-                    <h3 class="food_title">Good food</h3>
+                    <h3 class="food_title"><?php echo $item->getName();?></h3>
                     <button type="button" class="btn btn-default btn-sm view">View Detail</button>
 </div>
                 </div>
 
             </div>
-            <div class="col-xs-10 col-sm-4 col-md-2">
-                <div href="#" class="thumbnail">
-                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
-                    <div class="caption">
-                        <h3 class="food_title">Good food</h3>
-                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
-                    </div>
-                </div>
 
-            </div>
-            <div class="col-xs-10 col-sm-4 col-md-2">
-                <div href="#" class="thumbnail">
-                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
-                    <div class="caption">
-                        <h3 class="food_title">Good food</h3>
-                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-xs-10 col-sm-4 col-md-2">
-                <div href="#" class="thumbnail">
-                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
-                    <div class="caption">
-                        <h3 class="food_title">Good food</h3>
-                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-xs-10 col-sm-4 col-md-2">
-                <div href="#" class="thumbnail">
-                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
-                    <div class="caption">
-                        <h3 class="food_title">Good food</h3>
-                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-xs-10 col-sm-4 col-md-2">
-                <div href="#" class="thumbnail">
-                    <img src="../../Assets/image/food/food1.jpg" alt="..." class="">
-                    <div class="caption">
-                        <h3 class="food_title">Good food</h3>
-                        <button type="button" class="btn btn-default btn-sm view">View Detail</button>
-                    </div>
-                </div>
-
-            </div>
-
+<?php } ?>
     </div>
 </main>
 

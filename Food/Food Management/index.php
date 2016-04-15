@@ -19,6 +19,9 @@ session_start();
 if(isset($_GET["id"])){
     $food=FoodDB::getFoodById($_GET["id"]);
     $cinemas=FoodDB::getFoodCinema();
+
+FoodDB::setHistory($_GET["id"]);
+
     include "food_product.php";
 }else if(isset($_POST["action"])){
       if($_POST["action"]=="add") {
