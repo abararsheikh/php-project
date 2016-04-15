@@ -10,12 +10,6 @@ $navTemplate = [
     'selected' => 'active',
 ];
 
-if(AuthModel::getUser('roleId') !== false){
-  echo AuthModel::getUser('roleId');
-}else {
-  echo 'not logged in';
-  header("Location: /");
-}
 ?>
 
 <!Doctype HTML>
