@@ -1,9 +1,10 @@
 
 <?php
+
 session_start();
 require "Model/FoodDB.php";
 require_once "Model/Food.php";
-
+require_once "Model/ShoppingcartDB.php";
 if(isset($_POST["page"])){
     $page=$_POST["page"];
 }else if(isset($_GET["page"])){
@@ -23,6 +24,8 @@ if(isset($_GET["search"])){
 
         $topfoods = FoodDB::getTopFoods(5);
         $pages = FoodDB::pages($foods);
+        $cartnumber=ShoppingcartDB::getCount(7);
+
         include "Food_Menu.php";
     } else if ($page == "allFoods") {
         $foods = FoodDB::getAll();

@@ -106,15 +106,13 @@ class FAQModel
             $question = $this->getAll($query, $param);
             //var_dump($question);
         }
-        $hint=[
-
-        ];
+        $hint=[];
         if($str!=""){
             $search = strtolower($str);
             //var_dump($question);
             $len=strlen($search);
             foreach ($question as $value){
-                        //var_dump($value->questions);
+                     $flag =0;   //var_dump($value->questions);
                 if (stristr($search, substr($value->questions,0,$len))) {
                     $hintobj=new \stdClass();
                     $hintobj->question_id = $value->question_id;
@@ -123,8 +121,18 @@ class FAQModel
                     $hintobj->frequency = $value->frequency;
 
                     $hint[] =$hintobj;
+                    $flag=1;
                 }
-
+                //////
+                if(stripos($value->questions,$search) && $flag==0){
+                    $hintobj=new \stdClass();
+                    $hintobj->question_id = $value->question_id;
+                    $hintobj->questions = $value->questions;
+                    $hintobj->answer = $value->answer;
+                    $hintobj->frequency = $value->frequency;
+                    $hint[] =$hintobj;
+                }
+                /////
             }
             return $hint;
         }else{

@@ -1,4 +1,4 @@
-public/<http>
+<http>
     <head>
 
     </head>
@@ -12,16 +12,16 @@ public/<http>
             <td width="135" valign="top" bgcolor="#CCCCCC">
                 <table width="157" border="0">
                     <tr id="nav">
-                        <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="img/pic1.jpg"></a></td>
+                        <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="../public//pic1.jpg"></a></td>
                     </tr>
                     <tr>
-                        <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
+                        <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public//pic2.jpg"></a></td>
                     </tr>
                     <tr>
-                        <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="img/pic3.jpg"></a></td>
+                        <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="../public//pic3.jpg"></a></td>
                     </tr>
                 </table>
-                <h1>From........................................</h1>
+                <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From........................</h1>
                 </td>
 
             </tr>

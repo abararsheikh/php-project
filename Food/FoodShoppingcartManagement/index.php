@@ -1,14 +1,5 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="../../Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../../Assets/js/jquery.min.js" ></script>
-    <script src="../../Assets/js/bootstrap.min.js" ></script>
-    <link rel="stylesheet" type="text/css" href="../../Assets/css/food-shopping-cart.css" />
-    <script src="../../Assets/js/Food/food_shopping_cart.js"></script>
-</head>
+
+
 
 <?php
 require_once "../Model/Food.php";
@@ -30,26 +21,43 @@ if(isset($_GET['action'])){
         $page = "cart_list";
     }
 }
-//}else{
 
-//}
 if($action=="delete"){
     ShoppingcartDB::deleteById($_POST['id']);
 
-}
+}else if($action=="stock"){
+ $results= ShoppingcartDB::getLowstock(5,7);
+    $cinemas = FoodDB::getFoodCinema();
+   include "load.php";
+
+}else if($action=="all"){
+    $results = ShoppingcartDB::getCartByUserId(7);
+    $cinemas = FoodDB::getFoodCinema();
+    include "load.php";
+
+}else if($action=="reduction"){
+    $results = ShoppingcartDB::getReduction(7);
+    $cinemas = FoodDB::getFoodCinema();
+    include "load.php";
+
+}else if($action=="history"){
+   $foods=ShoppingcartDB::getHistory(6);
+
+    include "bottomload.php";
+}else if($action=="guess"){
+    $foods=ShoppingcartDB::getGuess(7,6);
+    include "bottomload.php";
+}else{
     if ($page == "cart_list") {
-       $cart=ShoppingcartDB::getCartByUserId(7);
-        $cinemas=FoodDB::getFoodCinema();
-     include "food-shopping-cart.php";
-    } else if ($page == "instock") {
-        include "food-shopping-cart.php";
-    } else if ($page == "price") {
+        $cart = ShoppingcartDB::getCartByUserId(7);
+        $cinemas = FoodDB::getFoodCinema();
+        $guess=ShoppingcartDB::getGuess(7,6);
         include "food-shopping-cart.php";
     } else if ($page == "order_management") {
         include "Order_Management.php";
     }
 
-
+}
 ?>
 
-</html>
+

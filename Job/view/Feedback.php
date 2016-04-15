@@ -1,26 +1,8 @@
 <?php
-// Get the product data
-if(isset($_POST['send'])){
-    $username1 = $_POST['UserName1'];
-    $phone = $_POST['Phone'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
-    $message = $_POST['message'];
-// Validate inputs\
-    var_dump($_POST);
 
-    if (empty($username1) || empty($phone) || empty($email)|| empty($address)|| empty($message) ) {
-        $error = "Invalid data. Check all fields and try again.";
-    } else {
-        require_once('conn.php');
-        $query = "INSERT INTO feedback
-                 (username, phone, email, address,message)
-              VALUES
-                 ('$username1', '$phone', '$email', '$address','$message')";
-        $db->exec($query);
-
-    }
-}
+include("../controller/feedbackcontroller.php");
+$feed=new feedback();
+$feed->index();
 
 ?>
 
@@ -75,13 +57,13 @@ if(isset($_POST['send'])){
                     <td width="135" valign="top" bgcolor="#CCCCCC">
                         <table width="157" border="0">
                             <tr id="nav">
-                                <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="img/pic1.jpg"></a></td>
+                                <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="../public/pic1.jpg"></a></td>
                             </tr>
                             <tr>
-                                <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
+                                <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public/pic2.jpg"></a></td>
                             </tr>
                             <tr>
-                                <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="img/pic3.jpg"></a></td>
+                                <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="../public/pic3.jpg"></a></td>
                             </tr>
                         </table>
 
@@ -120,7 +102,7 @@ if(isset($_POST['send'])){
                         </div>
 
                         <div class="row">
-                            <textarea name="message"  style="width:66%;padding:2%;height:50%; border-left-width:50%;font:36px/44px sans-serif;color:white;text-shadow:1px 1px 5px black; background:url('');">
+                            <textarea name="message"  style="width:66%;padding:2%;height:20%; border-left-width:50%;font:36px/44px sans-serif;color:white;text-shadow:1px 1px 5px black; background:url('');">
 How was your feeling?
 </textarea>
 
@@ -151,11 +133,11 @@ How was your feeling?
 <style type='text/css'>
     @media only screen and (min-width:1024px) {
         .wrappMax .wrapp_box{
-            width: 1024px;
+            width: 100%;
         }
         body {
             background-color:#fff;
-            max-width: 1024px;
+            max-width: 100%;
             max-height: inherit;
         }
         #reg{

@@ -1,10 +1,13 @@
 /**
  * Created by ran on 3/18/2016.
  */
+
+var validNavigation = false;
+
 function init(){
     paymentButton();
     var endTime = new Date();
-    endTime.setMinutes(endTime.getMinutes() + 6);
+    endTime.setMinutes(endTime.getMinutes() + 8);
     //console.log(endTime);
     //getTimeRemaining(endTime);
     var timeinterval = setInterval(function(){
@@ -20,14 +23,15 @@ function init(){
             var url="./index.php?route=DetailController/sessionExpired";
             //console.log(url);
             $.get(url, function(data, status){
-
+                window.onbeforeunload=null;
                 window.location.replace("./index.php");
             })
             clearInterval(timeinterval);
         }
     },1000);
     deleteItem();
-    closeBrowerEmtpyShoppingCart();
+    //closeBrowerEmtpyShoppingCart();
+    //wireUpEvents();
 }
 
 function deleteItem(){
@@ -139,13 +143,10 @@ function closeBrowerEmtpyShoppingCart(){
 
     //$(window).on('beforeunload ',function() {
     //    alert('');
-    //    var url="./index.php?route=DetailController/sessionExpired";
-    //    $.get(url, function(data, success){
-    //        alert("shopping cart empty");
-    //    })
+
     //});
 
-    onunload=function(){
+    window.onunload=function(){
             alert('');
             var url="./index.php?route=DetailController/sessionExpired";
             $.get(url, function(data, success){
@@ -154,4 +155,81 @@ function closeBrowerEmtpyShoppingCart(){
 
 }
 
+
+
+//////////////////////////////////////////
+
+var validNavigation = false;
+
+function wireUpEvents() {
+    /**
+     * For a list of events that triggers onbeforeunload on IE
+     * check http://msdn.microsoft.com/en-us/library/ms536907(VS.85).aspx
+     *
+     * onbeforeunload for IE and chrome
+     * check http://stackoverflow.com/questions/1802930/setting-onbeforeunload-on-body-element-in-chrome-and-ie-using-jquery
+     */
+    var dont_confirm_leave = 0; //set dont_confirm_leave to 1 when you want the user to be able to leave without confirmation
+    var leave_message = 'You sure you want to leave?'
+    function goodbye(e) {
+        if (!validNavigation) {
+            endSession();
+            if (dont_confirm_leave!==0) {
+                if(!e) e = window.event;
+                //e.cancelBubble is supported by IE - this will kill the bubbling process.
+                e.cancelBubble = true;
+
+                e.returnValue = leave_message;
+                console.log(e);
+                if(e.defaultPrevented ==true){
+                    console.log(e.defaultPrevented);
+                }else{
+
+                }
+                //e.stopPropagation works in Firefox.
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                }
+                //return works for Chrome and Safari
+                //return leave_message;
+            }
+        }
+    }
+    window.onbeforeunload=goodbye;
+
+    // Attach the event keypress to exclude the F5 refresh
+    $(document).bind('keypress', function(e) {
+        if (e.keyCode == 116){
+            validNavigation = true;
+        }
+    });
+
+    // Attach the event click for all links in the page
+    $("a").bind("click", function() {
+        validNavigation = true;
+    });
+
+    // Attach the event submit for all forms in the page
+    $("form").bind("submit", function() {
+        validNavigation = true;
+    });
+
+    // Attach the event click for all inputs in the page
+    $("input[type=submit]").bind("click", function() {
+        validNavigation = true;
+    });
+
+}
+
+
+function endSession() {
+    // Browser or broswer tab is closed
+    // Do sth here ...
+        var url="./index.php?route=DetailController/sessionExpired";
+        $.get(url, function(data, success){
+            alert("shopping cart empty");
+        })
+}
 init();
