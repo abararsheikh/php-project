@@ -307,6 +307,7 @@ class DetailController{
 
    static function createReservations($orderId,$item){
        $order = new OrderModel();
+
        $sql ="INSERT INTO `reservations` VALUES (NULL, :Running_films, :Cinema_Name, :Cinema_Address
                                           ,:Run_Time,:Room_Name,:Room_id,:Seats_Numbers,:Order_Id,:Price)";
        $param=["Running_films"=>$item->Film_Name,
@@ -317,7 +318,7 @@ class DetailController{
                 "Room_id"=>$item->Room_ID,
                 "Seats_Numbers"=>$item->Seats,
                 "Order_Id"=>$orderId,
-                "Price"=>$item->Price];
+                "Price"=>$item->TotalPrice];
        $order->modifyOrder($param,$sql);
    }
 

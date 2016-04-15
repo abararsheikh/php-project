@@ -18,6 +18,7 @@ class PaymentController extends Controller{
 
   // POST: /payment/stripe
   public function Stripe() {
+
     $token = Helper::getParam('stripeToken');
     if ($this->model->stripe($token)) {
       //header('Refresh: 5; url=/');
