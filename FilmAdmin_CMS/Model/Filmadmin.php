@@ -13,6 +13,10 @@ class Filmadmin
         $query = "DELETE FROM moviefeature
           WHERE film_id = '$film_id' ";
         $db->exec($query);
+
+        //Once the Admin delete the Movie ..Delete the cookies also which is created
+
+        setcookie("rating_".$film_id,1, time()- 2592000,'/');
     }
     public function editMovie($film_id)
     {

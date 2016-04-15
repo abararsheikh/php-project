@@ -3,6 +3,7 @@
 //$getUserName =\Project\Auth\models\AuthModel::getUser('username');
 
 //var_dump($getUserName);
+
 ?>
 <html>
 <head>

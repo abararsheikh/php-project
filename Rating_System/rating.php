@@ -1,15 +1,15 @@
 <?php
 use Project\Classes\DB\DB;
 require_once '/Model/Ratings.php';
-include 'database.php';
-$db = Database::getDB();
-include '../autoloader.php';
-$db2 = DB::getDB();
+require_once '../autoloader.php';
+require_once 'database.php';
 require_once '../FilmAdmin_CMS/Model/Filmadmin.php';
+$db = Database::getDB();
+$db2 = DB::getDB();
 $getMovieID = new Filmadmin();
 $getMoviesId = $getMovieID->getMoviesID();
-
-//$ids=array(1,2,3,4,5,6);  //define  quantity of movies in array and it's display rating system for that
+//$ids=array(1,2,3,4,5,6);
+ //define  quantity of movies in array and it's display rating system for that
 $ids = array();
 
 //  $ids= $getMoviesId ;
@@ -24,8 +24,6 @@ foreach($getMoviesId as $film)
 }
 //$ids=array(1,2,3,4,5,6)
 //var_dump($ids);
-
-
 ?>
 
 <html>

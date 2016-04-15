@@ -3,21 +3,19 @@
 header("Cache-Control: no-cache");
 include 'database.php';
 include '../autoloader.php';
+require_once '/Model/Ratings.php';
 $db = Database::getDB();
 $units = Database::unit();
+$getRollId = Project\Auth\models\AuthModel::getUser('roleId');
 
-require_once '/Model/Ratings.php';
-
- $ip =\Project\Auth\models\AuthModel::getUser('id');
-if(Project\Auth\models\AuthModel::getUser('roleId'))
+if($getRollId==false)
 {
-
+    echo "Please Login First to Rate the movies !! Thank You.";
 }
 else
 {
-   header(location:/);
-}
-//var_dump($ip);
+ $ip =\Project\Auth\models\AuthModel::getUser('id');
+
 //getting id of movie-1,2,3 which one is click that id from the rating.js page
 $id_sent = preg_replace("/[^0-9]/","",$_REQUEST['id']);
 
@@ -26,9 +24,6 @@ $vote_sent = preg_replace("/[^0-9]/","",$_REQUEST['stars']);
 
 // Get The IP address of the local server host machine.
 
-//$realIP = new Ratings();
-//$ip = $realIP->getRealIpAddr();
-//var_dump($ip);
 //$ip =$_SERVER['REMOTE_ADDR'] ;
 
 $getIP = new Ratings();
@@ -62,7 +57,7 @@ $insertIP=serialize($checkIP);  //it serialize IP to {i:0;s:9:"127.0.0.1} this f
 
 
 //IP check when voting if there is no cookie then create the cookie
-if(!isset($_COOKIE['rating_'.$id_sent])) //concatenating rating_ with whichever user select movie from list
+if(!isset($_COOKIE['rating_'.$id_sent])) //concatenating rating_ with whichever user select movie from the list
 {
     $usedIp=new Ratings();
     $voted = $usedIp->usedIP($ip,$id_sent);
@@ -144,4 +139,5 @@ $newResult = join("\n", $new_back);
 $output = $newResult;
 echo $output;
 
+}
 ?>
