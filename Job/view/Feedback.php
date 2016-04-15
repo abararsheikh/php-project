@@ -1,11 +1,3 @@
-<?php
-
-include("../controller/feedbackcontroller.php");
-$feed=new feedback();
-$feed->index();
-
-?>
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

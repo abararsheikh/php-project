@@ -67,7 +67,7 @@ if(isset($_POST['send'])){
 
     <div style="margin: 0 auto; width: 40%;" >
 
-        <form name="form1" action="" method="post" >
+        <form name="form1" action="/Job/controller/feedback.php" method="post" >
             <div id="reg">
                 <h3>Feedback page</h3>
                 <div id="slider">
