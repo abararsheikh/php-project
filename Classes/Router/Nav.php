@@ -6,6 +6,7 @@
 
 namespace Project\Classes\Router;
 use Project\Classes\Helper;
+use Project\Classes\Request;
 
 /**
  * Class Nav
@@ -35,6 +36,8 @@ use Project\Classes\Helper;
  * @package Project\Classes\Router
  * @method static void get($pathAsName, $callback)
  * @method static void post($pathAsName, $callback)
+ * @method static void put($pathAsName, $callback)
+ * @method static void delete($pathAsName, $callback)
  */
 class Nav {
   private static $base = [];

@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-sm-12">
                     <button type="submit" class="moviedem-submit">Continue to next step<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></button>
                     <?php if(isset($error)):?>
                         <div class="row">

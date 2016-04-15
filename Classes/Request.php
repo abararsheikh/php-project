@@ -1,50 +1,27 @@
 <?php
+
 namespace Project\Classes;
-ini_set('allow_url_fopen', 'On');
-ini_set('allow_url_include', 'On');
 
-/**
- * Class Request
- * @package Project\Classes
- */
+
 class Request {
+  private $params;
+  public $method;
 
-  const HEADER_OAUTH = ['Accept: application/json', 'Content-type: application/x-www-form-urlencoded'];
-
-  // Sends GET / POST request to other pages and get the return value
-  public static function post( $url, $data, $header) {
-    $options = [
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_USERAGENT => 'Mozilla/5.0',
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => http_build_query($data),
-        CURLOPT_HTTPHEADER => $header
-    ];
-    $ch = curl_init();
-    curl_setopt_array($ch, $options);
-    $response = curl_exec($ch);
-    $error = curl_error($ch);
-    curl_close($ch);
-    return empty($error) ? $response : false;
+  public function __construct() {
+    $this->params = $_REQUEST;
+    $this->method = $_SERVER['REQUEST_METHOD'];
+    if ($this->method !== 'GET' || 'POST') {
+      $str = file_get_contents("php://input");
+      parse_str($str, $params);
+//      $params = json_decode($str, true);
+      $this->params = $params;
+    }
   }
 
-  public static function get($url, $params) {
-    $ch = curl_init();
-    $url = $url . '?' . http_build_query($params, '', '&amp;');
-    $options = [
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_USERAGENT => 'Mozilla/5.0'
-    ];
-    curl_setopt_array($ch, $options);
-    $response = curl_exec($ch);
-    $error = curl_error($ch);
-    curl_close($ch);
-    return empty($error) ? $response : false;
+  public function param($key) {
+    $value = $this->params[$key];
+    if (is_array($value)) return $value;
+    return ($value);
   }
 
 }

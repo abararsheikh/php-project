@@ -7,8 +7,8 @@ $db = Database::getDB();
 $units = Database::unit();
 
 require_once '/Model/Ratings.php';
-$a=\Project\Auth\models\AuthModel::getUser('id');
-var_dump($a);
+$ip =\Project\Auth\models\AuthModel::getUser('id');
+var_dump($ip);
 //getting id of movie-1,2,3 which one is click that id from the rating.js page
 $id_sent = preg_replace("/[^0-9]/","",$_REQUEST['id']);
 
@@ -16,6 +16,10 @@ $id_sent = preg_replace("/[^0-9]/","",$_REQUEST['id']);
 $vote_sent = preg_replace("/[^0-9]/","",$_REQUEST['stars']);
 
 // Get The IP address of the local server host machine.
+
+//$realIP = new Ratings();
+//$ip = $realIP->getRealIpAddr();
+//var_dump($ip);
 $ip =$_SERVER['REMOTE_ADDR'] ;
 
 $getIP = new Ratings();

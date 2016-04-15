@@ -42,6 +42,15 @@ class AuthModel {
     $this->updateCookie(self::getUser('id'));
     return true;
   }
+
+  public function adminLogin($username, $password) {
+    $user = $this->findUser($username, $password);
+    if (!$user || $user['role_id'] !== '0') return false;
+    $this->addUserToSession($user);
+    $this->updateCookie(self::getUser('id'));
+    return true;
+  }
+
   public function logInViaCookie() {
     $cookie = isset($_COOKIE['rememberme']) ? $_COOKIE['rememberme'] : null;
     if (!$cookie) return false;

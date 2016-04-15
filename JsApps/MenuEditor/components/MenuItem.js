@@ -1,4 +1,5 @@
 import React from 'react';
+import UsePageBtn from './UsePageBtn';
 
 export default class MenuItem extends React.Component {
   static defaultProps = {
@@ -8,6 +9,7 @@ export default class MenuItem extends React.Component {
   static propTypes = {
     nameValueLink: React.PropTypes.object.isRequired,
     linkValueLink: React.PropTypes.object.isRequired,
+    pageList: React.PropTypes.array,
     onChange: React.PropTypes.func.isRequired,
     onDelete: React.PropTypes.func.isRequired,
     collapseButton: React.PropTypes.node
@@ -17,6 +19,7 @@ export default class MenuItem extends React.Component {
     return nextProps.name !== this.props.name
         || nextProps.link !== this.props.link
         || nextProps.collapseButton !== this.props.collapseButton
+        || nextProps.pageList !== this.props.pageList
   }
 
   render() {
@@ -30,7 +33,8 @@ export default class MenuItem extends React.Component {
                   <span className="input-group-addon">Name</span>
                   <input type="text" name='name'
                          className="form-control" placeholder="name"
-                         valueLink={this.props.nameValueLink}/>
+                         value={this.props.nameValueLink.value}
+                         onChange={this.props.nameValueLink.onChange}/>
                 </div>
               </div>
 
@@ -39,11 +43,16 @@ export default class MenuItem extends React.Component {
                   <span className="input-group-addon">Link</span>
                   <input type="text" name='link'
                          className="form-control" placeholder="link"
-                         valueLink={this.props.linkValueLink}/>
+                         value={this.props.linkValueLink.value}
+                         onChange={this.props.linkValueLink.onChange}/>
                 </div>
               </div>
 
               <div className="col-xs-2">
+                <UsePageBtn 
+                    link={this.props.link}
+                    pageList={this.props.pageList}
+                    onPageChange={this.props.customPageChange} />
                 <button className="btn btn-danger" onClick={this.props.onDelete}>Delete</button>
               </div>
             </div>

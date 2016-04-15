@@ -12,6 +12,7 @@ namespace Project\MovieCalender\Controller;
 
 
 
+use Project\MovieCalender\libs\Session;
 use Project\MovieCalender\libs\Validation;
 use Project\MovieCalender\Model\CalenderModel;
 
@@ -23,7 +24,7 @@ class CustomerCalender
     }
 
     public function index(){
-        echo "This is index";
+        //echo "This is index";
         $error="";
         $name =filter_input(INPUT_POST,"name");
         $phone =filter_input(INPUT_POST,"phone");
@@ -50,6 +51,8 @@ class CustomerCalender
             $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p') AS Run_Time  FROM `films` JOIN running_films ON films.Film_Id = running_films.Film_Id";
             $calender = $calenderInfo->getCalenderDetail($sql);
             //var_dump($calender);
+            $calenderEmail = new Session('calenderEmail');
+            $calenderEmail->data = $email;
             require_once "./View/CustomerCalender.php";
         }
 

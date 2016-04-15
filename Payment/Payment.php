@@ -12,6 +12,8 @@ class Payment {
   }
 
   public function stripe($stripeToken) {
+    var_dump($_SESSION);
+
     $customer = \Stripe\Customer::create(array(
         'email' => AuthModel::getUser('email'),
         'source' => $stripeToken

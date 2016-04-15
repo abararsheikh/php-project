@@ -1,33 +1,35 @@
 <?php
 
 namespace Project\Auth;
-use Project\Auth\controllers\AuthController;
-use Project\Auth\controllers\OAuthController;
+
 use Project\Classes\Router\Nav;
 
 include '../autoloader.php';
 
 
-$auth = new AuthController();
-$oauth = new OAuthController();
+$auth = 'Project\Auth\controllers\AuthController';
+$oauth = 'Project\Auth\controllers\OAuthController';
 
 Nav::group('/Auth as Auth', function () use($auth) {
-  Nav::get('/ as Home', $auth->action('home'));
-  Nav::get('/register as Register', $auth->action('registerPage'));
-  Nav::get('/login as Login', $auth->action('loginPage'));
-  Nav::get('/logout as Logout', $auth->action('logout'));
+  Nav::get('/ as Home', "$auth@home");
+  Nav::get('/register as Register', "$auth@registerPage");
+  Nav::get('/login as Login', "$auth@loginPage");
+  Nav::get('/admin', "$auth@adminLoginPage");
 
-  Nav::get('/getLogin as Logout', $auth->action('getLogin'));
+  Nav::get('/logout as Logout', "$auth@logout");
 
-  Nav::post('/login', $auth->action('processLogin'));
-  Nav::post('/register', $auth->action('registerUser'));
-  Nav::post('/register/user', $auth->action('checkAvailability'));
+  Nav::get('/getLogin as Logout', "$auth@getLogin");
+
+  Nav::post('/login', "$auth@processLogin");
+  Nav::post('/admin', "$auth@adminLogin");
+  Nav::post('/register', "$auth@registerUser");
+  Nav::post('/register/user', "$auth@checkAvailability");
 
 });
 
 // Oauth
 Nav::group('/Auth as OAuth', function() use($oauth) {
-  Nav::get('/login/github', $oauth->action('github'));
+  Nav::get('/login/github', "$oauth@github");
 });
 
 Nav::start();

@@ -12,7 +12,8 @@ namespace Project\MovieCalender\libs;
 //            echo "This is Router";
             $this->routeArray=[
                 "MovieCalender"=>["index"],
-                "CustomerCalender"=>["index","showEnglishMovies","showChineseMovies","showAllMovies"]
+                "CustomerCalender"=>["index","showEnglishMovies","showChineseMovies","showAllMovies"],
+                "SendCalender"=>["index","BuildMessageAndSend"]
             ];
             $this->route();
         }

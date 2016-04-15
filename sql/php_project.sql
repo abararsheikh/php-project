@@ -1,22 +1,62 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.0.2
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 15, 2016 at 07:35 PM
+-- Server version: 10.0.17-MariaDB
+-- PHP Version: 5.6.14
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `php_project` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `php_project`;
+--
+-- Database: `php_project`
+--
 
-DROP TABLE IF EXISTS `answer`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(10) NOT NULL,
+  `name` char(20) NOT NULL,
+  `password` char(20) NOT NULL,
+  `qq` char(20) NOT NULL,
+  `tel` char(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `password`, `qq`, `tel`) VALUES
+(2, 'admin', 'admin', '21342352', '23453453');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answer`
+--
+
 CREATE TABLE `answer` (
   `answer_id` int(11) NOT NULL DEFAULT '0',
   `question_id` int(11) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `answer`;
+--
+-- Dumping data for table `answer`
+--
+
 INSERT INTO `answer` (`answer_id`, `question_id`, `title`) VALUES
 (1, 1, 'The file is in C:My Documents'),
 (2, 1, '0'),
@@ -43,30 +83,84 @@ INSERT INTO `answer` (`answer_id`, `question_id`, `title`) VALUES
 (23, 6, 'can contain special characters'),
 (24, 6, 'can be a PHP reserved word');
 
-DROP TABLE IF EXISTS `categories`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
 CREATE TABLE `categories` (
   `categoryID` int(11) NOT NULL,
   `categoryName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `categories`;
+--
+-- Dumping data for table `categories`
+--
+
 INSERT INTO `categories` (`categoryID`, `categoryName`) VALUES
 (1, 'NowShowing'),
 (2, 'ComingSoon');
 
-DROP TABLE IF EXISTS `cinemas`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ceshi`
+--
+
+CREATE TABLE `ceshi` (
+  `id` int(20) NOT NULL,
+  `wenti` varchar(255) NOT NULL,
+  `answer1` varchar(255) NOT NULL,
+  `answer2` varchar(255) NOT NULL,
+  `answer3` varchar(255) NOT NULL,
+  `answer4` varchar(255) NOT NULL,
+  `fenshu` int(100) NOT NULL,
+  `rights` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ceshi`
+--
+
+INSERT INTO `ceshi` (`id`, `wenti`, `answer1`, `answer2`, `answer3`, `answer4`, `fenshu`, `rights`, `name`) VALUES
+(4, 'ewrfqwe', 'frweqfgwq', 'rgfwerg', 'ewrg', 'werqge', 34, 'b', 'dwsefwer'),
+(5, 'fwer', 'werg', 'wergw', 'egwe', 'tgwe', 11, 'd', 'wqew'),
+(6, 'wqerq', 'rqwr', 'qwer', 'wqer', 'wqer', 44, 'a', 'dwefdqw'),
+(7, 'wqerq', 'rqwr', 'qwer', 'wqer', 'wqer', 44, 'a', 'dwefdqw'),
+(8, 'wqerq', 'rqwr', 'qwer', 'wqer', 'wqer', 44, 'a', 'dwefdqw'),
+(9, 'wqerq', 'rqwr', 'qwer', 'wqer', 'wqer', 44, 'a', 'dwefdqw'),
+(10, 'wqerq', 'rqwr', 'qwer', 'wqer', 'wqer', 44, 'a', 'dwefdqw'),
+(11, 'wqerq', 'rqwr', 'qwer', 'wqer', 'wqer', 44, 'a', 'dwefdqw'),
+(17, '日期为任务', '热舞特特', '特认为他娃儿', '额外人提问人', '额外瑞特让他', 4, 'a', 'dftwert');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cinemas`
+--
+
 CREATE TABLE `cinemas` (
   `Cinema_ID` int(11) NOT NULL,
   `Cinema_Name` varchar(255) NOT NULL,
   `Cinema_Address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `cinemas`;
+--
+-- Dumping data for table `cinemas`
+--
+
 INSERT INTO `cinemas` (`Cinema_ID`, `Cinema_Name`, `Cinema_Address`) VALUES
 (1, 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3'),
 (2, 'Cinema2', 'Yorkdale Shopping Centre, 3401 Dufferin Street , c/o Yorkdale Shopping Centre, Toronto, ON, M6A 2T9');
 
-DROP TABLE IF EXISTS `contactus`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
 CREATE TABLE `contactus` (
   `contact_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -75,7 +169,10 @@ CREATE TABLE `contactus` (
   `Message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `contactus`;
+--
+-- Dumping data for table `contactus`
+--
+
 INSERT INTO `contactus` (`contact_id`, `first_name`, `last_name`, `Email`, `Message`) VALUES
 (2, 'navaz', 'sheikh', 'navaz@gmail.com', 'Hello world'),
 (3, 'amrin', 'sheikh', 'amrin@gmail.com', 'Hello canada'),
@@ -91,43 +188,59 @@ INSERT INTO `contactus` (`contact_id`, `first_name`, `last_name`, `Email`, `Mess
 (36, 'fadwwf', 'wfwr', 'er.abrar@gmail.com', '         wfsfws   '),
 (37, 'aaaaa', 'aaaaa', 'tina@yahoo.com', 'qjqq            ');
 
-DROP TABLE IF EXISTS `design`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `design`
+--
+
 CREATE TABLE `design` (
   `Design_Id` int(11) NOT NULL,
   `Logo_Id` int(11) DEFAULT NULL,
   `Tshirt_Id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `design`;
+--
+-- Dumping data for table `design`
+--
+
 INSERT INTO `design` (`Design_Id`, `Logo_Id`, `Tshirt_Id`) VALUES
 (2, 1, 2),
 (3, 2, 3),
 (4, 1, 2),
 (5, 2, 3);
 
-DROP TABLE IF EXISTS `feedback`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
 CREATE TABLE `feedback` (
   `username` varchar(50) NOT NULL,
   `sex` tinyint(1) NOT NULL,
-  `mobile_tel` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(20) NOT NULL,
-  `content` text NOT NULL,
-  `reply_content` text NOT NULL,
-  `reply_time` int(11) NOT NULL,
-  `create_time` int(11) NOT NULL,
-  `update_time` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL
+  `message` text NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `feedback`;
-INSERT INTO `feedback` (`username`, `sex`, `mobile_tel`, `email`, `address`, `content`, `reply_content`, `reply_time`, `create_time`, `update_time`, `id`, `title`) VALUES
-('1', 0, '4172446525', '1', '123344556', 'hello,please phoneme', 'hello~~~I am waiting u', 0, 1, 0, 1, 'whyefffefre'),
-('bin', 0, '1234456678', 'binhunmber@gmail.com', '18 ft mash1-2', 'Hello i want', 'I am good for this', 1, 1, 1, 123, 'IT'),
-('bin', 1, '647346624', 'binhunmber@gmail.com', '18 ft mash1-2', 'I am very like cooking .i can do mu best,I have enough experience', 'I am very like cooking .I can do mu best,I have enough experience', 1, 1, 1, 124, 'cook');
+--
+-- Dumping data for table `feedback`
+--
 
-DROP TABLE IF EXISTS `films`;
+INSERT INTO `feedback` (`username`, `sex`, `phone`, `email`, `address`, `message`, `id`) VALUES
+('bin', 0, '21423', 'ewfwefewg4', 'efewferfre', 'How was your feeling?\r\n', 0),
+('1', 0, '4172446525', '1', '123344556', 'hello,please phoneme', 1),
+('bin', 1, '647346624', 'binhunmber@gmail.com', '18 ft mash1-2', 'I am very like cooking .i can do mu best,I have enough experience', 124);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `films`
+--
+
 CREATE TABLE `films` (
   `Film_Id` int(11) NOT NULL,
   `Film_Time` date DEFAULT NULL,
@@ -142,7 +255,10 @@ CREATE TABLE `films` (
   `film_description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `films`;
+--
+-- Dumping data for table `films`
+--
+
 INSERT INTO `films` (`Film_Id`, `Film_Time`, `Film_Name`, `Film_Director`, `Film_Actor`, `Film_Intro`, `Film_pic`, `Film_length`, `Price_Full`, `Avaliable`, `film_description`) VALUES
 (1, '2016-02-12', 'Deadpool', 'Tim Miller', 'Ryan Reynolds', 'Deadpool.txt', 'image/deadpool.jpg', '1h 48m', 14, 'Y', 'film1'),
 (2, '2016-01-29', 'Kung Fu Panda 3', 'Jennifer Yuh Nelson', 'Jack Black', 'Kungfupanada.txt', 'image/kongfupanda.jpg', '1h 35m', 15, 'Y', 'film2'),
@@ -150,7 +266,12 @@ INSERT INTO `films` (`Film_Id`, `Film_Time`, `Film_Name`, `Film_Director`, `Film
 (4, '2015-12-18', 'Star Wars:The Force Awakens', 'J.J. Abrams', 'Daisy Ridley', 'StarWars.txt', 'image/starwar.jpg', '2h 16m', 20, 'Y', 'film4'),
 (5, '2016-01-08', 'The Revenant', 'Alejandro González Iñárritu', 'Leonordo DiCaprio', 'TheRevenant.txt', 'image/TheRevenant.jpg', '2h 36m', 15, 'Y', 'film5');
 
-DROP TABLE IF EXISTS `food`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food`
+--
+
 CREATE TABLE `food` (
   `Food_id` int(8) NOT NULL,
   `Food_Catagory` varchar(50) NOT NULL,
@@ -162,11 +283,19 @@ CREATE TABLE `food` (
   `Food_Image` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food`;
+--
+-- Dumping data for table `food`
+--
+
 INSERT INTO `food` (`Food_id`, `Food_Catagory`, `Food_Price`, `Food_Instock`, `Food_description`, `Food_mark`, `Food_Name`, `Food_Image`) VALUES
 (1, 'special', '1.00', 2, 'good food', 5, 'salmon', 'food1.jpg');
 
-DROP TABLE IF EXISTS `food_comment`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_comment`
+--
+
 CREATE TABLE `food_comment` (
   `Comment_id` int(8) NOT NULL,
   `Food_id` int(8) NOT NULL,
@@ -175,11 +304,19 @@ CREATE TABLE `food_comment` (
   `Mark` float(3,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food_comment`;
+--
+-- Dumping data for table `food_comment`
+--
+
 INSERT INTO `food_comment` (`Comment_id`, `Food_id`, `User_id`, `Comment`, `Mark`) VALUES
 (1, 1, 1, 'good', 5.00);
 
-DROP TABLE IF EXISTS `food_order`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_order`
+--
+
 CREATE TABLE `food_order` (
   `Order_id` int(8) NOT NULL,
   `User_id` int(8) NOT NULL,
@@ -192,11 +329,19 @@ CREATE TABLE `food_order` (
   `Room_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food_order`;
+--
+-- Dumping data for table `food_order`
+--
+
 INSERT INTO `food_order` (`Order_id`, `User_id`, `Order_time`, `Cinema_id`, `Deliver_time`, `Total_price`, `Phone_number`, `Email_address`, `Room_id`) VALUES
 (1, 1, '2016-03-02', 1, '2016-03-03', '9.00', '6477725042', 'h8@fd5.com', 1);
 
-DROP TABLE IF EXISTS `food_order_item`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_order_item`
+--
+
 CREATE TABLE `food_order_item` (
   `Order_item_id` int(8) NOT NULL,
   `Food_id` int(8) NOT NULL,
@@ -205,22 +350,38 @@ CREATE TABLE `food_order_item` (
   `User_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food_order_item`;
+--
+-- Dumping data for table `food_order_item`
+--
+
 INSERT INTO `food_order_item` (`Order_item_id`, `Food_id`, `Order_id`, `Quantity`, `User_id`) VALUES
 (1, 1, 1, 2, 1);
 
-DROP TABLE IF EXISTS `food_test`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_test`
+--
+
 CREATE TABLE `food_test` (
   `Test_id` int(8) NOT NULL,
   `Score` int(3) NOT NULL,
   `User_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food_test`;
+--
+-- Dumping data for table `food_test`
+--
+
 INSERT INTO `food_test` (`Test_id`, `Score`, `User_id`) VALUES
 (1, 60, 1);
 
-DROP TABLE IF EXISTS `food_test_question`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_test_question`
+--
+
 CREATE TABLE `food_test_question` (
   `Question_id` int(11) NOT NULL,
   `Question` varchar(200) NOT NULL,
@@ -231,45 +392,129 @@ CREATE TABLE `food_test_question` (
   `Answer` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food_test_question`;
+--
+-- Dumping data for table `food_test_question`
+--
+
 INSERT INTO `food_test_question` (`Question_id`, `Question`, `Option1`, `Option2`, `Option3`, `Option4`, `Answer`) VALUES
 (1, '1234567', 'A', 'B', 'C', 'D', 2);
 
-DROP TABLE IF EXISTS `food_user_recording`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_user_recording`
+--
+
 CREATE TABLE `food_user_recording` (
   `Record_id` int(8) NOT NULL,
   `User_id` int(8) NOT NULL,
   `Total_amount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `food_user_recording`;
+--
+-- Dumping data for table `food_user_recording`
+--
+
 INSERT INTO `food_user_recording` (`Record_id`, `User_id`, `Total_amount`) VALUES
 (1, 1, '80.00');
 
-DROP TABLE IF EXISTS `logo`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `information`
+--
+
+CREATE TABLE `information` (
+  `id` int(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `xingbie` varchar(10) NOT NULL,
+  `hunfou` varchar(10) NOT NULL,
+  `chusheng` int(20) NOT NULL,
+  `xueli` varchar(100) NOT NULL,
+  `biyetime` varchar(100) NOT NULL,
+  `biyeschool` varchar(100) NOT NULL,
+  `tel` int(20) NOT NULL,
+  `xiandxi` varchar(200) NOT NULL,
+  `fenshu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `information`
+--
+
+INSERT INTO `information` (`id`, `name`, `xingbie`, `hunfou`, `chusheng`, `xueli`, `biyetime`, `biyeschool`, `tel`, `xiandxi`, `fenshu`) VALUES
+(1, 'wqeqw', '男', '已婚', 0, 'qweq', 'eqweqw', 'rqweqw', 0, 'rwqerqwe', 0),
+(2, 'yangyangyang', '男', '否', 19910211, '大学', '沈阳', '沈阳', 2147483647, '舞蹈服IE范围覅u', 0),
+(3, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(4, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(5, '', '', '', 0, '', '', '', 0, '', 0),
+(6, '', '', '', 0, '', '', '', 0, '', 0),
+(7, 'dwqdqw', '男', '已婚', 0, '', '', '', 0, 'qwdqwd', 0),
+(8, '', '', '', 0, '', '', '', 0, '', 0),
+(9, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(10, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(11, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(12, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(13, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(14, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 0),
+(15, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(16, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(17, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(18, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(19, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(20, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(21, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(22, 'qwdqwd', '男', '已婚', 0, '', '', '', 0, 'dasdad', 88),
+(23, '', '男', '已婚', 0, '', '', '', 0, '', 88),
+(24, '', '男', '已婚', 0, '', '', '', 0, '', 0),
+(25, '', '男', '已婚', 0, '', '', '', 0, '', 176),
+(26, '', 'Male', 'Married', 0, '', '', '', 0, '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logo`
+--
+
 CREATE TABLE `logo` (
   `Logo_Id` int(11) NOT NULL,
   `Logo_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `logo`;
+--
+-- Dumping data for table `logo`
+--
+
 INSERT INTO `logo` (`Logo_Id`, `Logo_image`) VALUES
 (1, 'image\\logo\\logo1.png'),
 (2, '\\image\\logo\\logo2.png'),
 (3, '\\image\\logo\\logo3.jpg'),
 (4, '\\image\\logo\\logo4.jpg');
 
-DROP TABLE IF EXISTS `menus`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menus`
+--
+
 CREATE TABLE `menus` (
   `name` varchar(20) NOT NULL,
   `menu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `menus`;
+--
+-- Dumping data for table `menus`
+--
+
 INSERT INTO `menus` (`name`, `menu`) VALUES
 ('Main', '[{"name":"Home","link":"Home"},{"name":"News","link":"Home"},{"name":"Booking","link":"booking"},{"name":"About","link":"about"}]');
 
-DROP TABLE IF EXISTS `moviefeature`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `moviefeature`
+--
+
 CREATE TABLE `moviefeature` (
   `film_id` int(11) NOT NULL,
   `title` text NOT NULL,
@@ -280,12 +525,20 @@ CREATE TABLE `moviefeature` (
   `img` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `moviefeature`;
+--
+-- Dumping data for table `moviefeature`
+--
+
 INSERT INTO `moviefeature` (`film_id`, `title`, `language`, `releaseDate`, `director`, `cast`, `img`) VALUES
 (16, 'SINGHAM', '', '2010-02-10', 'sgdsg', ' aflnwlflwfw ', '../Assets/image/HomePage/kongfupanda.jpg'),
 (21, 'kwnklwn', '', '2015-05-04', ' dwewef', '    skfjsjkfjlsl  ', '../Assets/image/HomePage/starwar.jpg');
 
-DROP TABLE IF EXISTS `orders`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
 CREATE TABLE `orders` (
   `Order_Id` int(11) NOT NULL,
   `Design_Id` int(11) NOT NULL,
@@ -295,15 +548,22 @@ CREATE TABLE `orders` (
   `Total_Price` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `orders`;
-DROP TABLE IF EXISTS `question`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question`
+--
+
 CREATE TABLE `question` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `answer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `question`;
+--
+-- Dumping data for table `question`
+--
+
 INSERT INTO `question` (`id`, `title`, `answer_id`) VALUES
 (1, 'What is stored in $message by the code that follows?', 1),
 (2, 'How many times will the while loop that follows be executed?', 5),
@@ -312,7 +572,12 @@ INSERT INTO `question` (`id`, `title`, `answer_id`) VALUES
 (5, 'What does $message contain after the following code executes?', 11),
 (6, 'A PHP variable name', 14);
 
-DROP TABLE IF EXISTS `rating`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating`
+--
+
 CREATE TABLE `rating` (
   `rating_id` int(11) NOT NULL,
   `rating_Name` varchar(50) NOT NULL,
@@ -320,14 +585,22 @@ CREATE TABLE `rating` (
   `rating_Votes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `rating`;
+--
+-- Dumping data for table `rating`
+--
+
 INSERT INTO `rating` (`rating_id`, `rating_Name`, `rating_Total`, `rating_Votes`) VALUES
 (1, 'alex', 4, 2),
 (2, 'Tom', 5, 1),
 (3, 'mike', 6, 4),
 (4, 'yi', 7, 4);
 
-DROP TABLE IF EXISTS `reservations`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservations`
+--
+
 CREATE TABLE `reservations` (
   `Reservation_Id` int(11) NOT NULL,
   `Running_films` varchar(255) NOT NULL,
@@ -341,8 +614,12 @@ CREATE TABLE `reservations` (
   `Price` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `reservations`;
-DROP TABLE IF EXISTS `rooms`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms`
+--
+
 CREATE TABLE `rooms` (
   `Room_ID` int(11) NOT NULL,
   `Room_Name` varchar(255) NOT NULL,
@@ -350,14 +627,22 @@ CREATE TABLE `rooms` (
   `available` char(1) DEFAULT 'Y'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `rooms`;
+--
+-- Dumping data for table `rooms`
+--
+
 INSERT INTO `rooms` (`Room_ID`, `Room_Name`, `Cinema_ID`, `available`) VALUES
 (1, 'ROOM1', 1, 'Y'),
 (2, 'ROOM2', 1, 'Y'),
 (3, 'ROOM1', 2, 'Y'),
 (4, 'ROOM2', 2, 'Y');
 
-DROP TABLE IF EXISTS `running_films`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `running_films`
+--
+
 CREATE TABLE `running_films` (
   `Room_ID` int(11) NOT NULL,
   `Run_Time` datetime NOT NULL,
@@ -369,7 +654,10 @@ CREATE TABLE `running_films` (
   `running_films_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `running_films`;
+--
+-- Dumping data for table `running_films`
+--
+
 INSERT INTO `running_films` (`Room_ID`, `Run_Time`, `Film_Id`, `RVST`, `RVET`, `RUNATTIME`, `Avaliable`, `running_films_id`) VALUES
 (1, '2016-02-22 09:30:00', 2, '2016-02-11', '2016-02-18', '2016-02-22', 'Y', 1),
 (1, '2016-04-30 09:30:00', 1, '2016-02-03', '2016-03-10', '2016-04-30', 'Y', 2),
@@ -391,7 +679,12 @@ INSERT INTO `running_films` (`Room_ID`, `Run_Time`, `Film_Id`, `RVST`, `RVET`, `
 (3, '2016-04-29 09:30:00', 3, '2016-03-19', '2016-04-15', '2016-04-29', 'Y', 24),
 (3, '2016-04-29 13:30:00', 3, '2016-04-14', '2016-03-22', '2016-04-29', 'Y', 25);
 
-DROP TABLE IF EXISTS `seats`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seats`
+--
+
 CREATE TABLE `seats` (
   `Seat_ID` int(11) NOT NULL,
   `Room_ID` int(11) NOT NULL,
@@ -400,7 +693,10 @@ CREATE TABLE `seats` (
   `Run_Time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `seats`;
+--
+-- Dumping data for table `seats`
+--
+
 INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`) VALUES
 (1, 1, 'A1', 'Y', '2016-04-30 09:30:00'),
 (2, 1, 'A2', 'N', '2016-04-30 09:30:00'),
@@ -593,14 +889,22 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (189, 4, 'B4', 'Y', '2016-04-30 19:30:00'),
 (190, 4, 'B5', 'Y', '2016-04-30 19:30:00');
 
-DROP TABLE IF EXISTS `tokens`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tokens`
+--
+
 CREATE TABLE `tokens` (
   `id` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `tokens`;
+--
+-- Dumping data for table `tokens`
+--
+
 INSERT INTO `tokens` (`id`, `user_id`, `token`) VALUES
 ('070d6be12c0fdd10447bd1d665db0b158459f91b2b704c2ba5f5095131baeeb9', 3, '$2y$10$8rzSfISQtkdKNx24G3ApcuUzrIk7oQL0gN4vG9kKQ2j3yRonEWRSG'),
 ('2884930a1edab39c0481b7c17a3ac52e156b3fc2b809500a293c51a9e3d7b413', 3, '$2y$10$OKcZDGrzO/8.IP4N0b27Ae34jk2Wer3C4DDNhWoY36DQY9cSJe.w2'),
@@ -624,7 +928,12 @@ INSERT INTO `tokens` (`id`, `user_id`, `token`) VALUES
 ('fe4e7d87cfa46714e77d66a78432f235e9506dc215ec9c6a47fc05cfb27b376b', 3, '$2y$10$sIxcIXTYojZwZhXlzLy.1.h.0a3T5avK.cZTUOtHTy5n61OCkDpCW'),
 ('ff6ec307a51edc663b10711eba73da098c2cde5017130202034d9c58cb510ac2', 3, '$2y$10$kzmTqqi5t6rb/M5OVSEuiOXqDJQweKxfrdRlZ9J6rsJVuk5Fw9s0u');
 
-DROP TABLE IF EXISTS `transactions`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
 CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -634,21 +943,32 @@ CREATE TABLE `transactions` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `transactions`;
+--
+-- Dumping data for table `transactions`
+--
+
 INSERT INTO `transactions` (`id`, `user_id`, `items`, `cost`, `is_paid`, `time`) VALUES
 (1, 1, '[{movie: {id: 1, amount: 3}, {id: 2, amount: 1}, food: {id: 2, amount: 2}}]', 20.34, 0, '2016-03-01 00:00:00'),
 (2, 0, '{"test":"123","p2":234}', 12, 0, '0000-00-00 00:00:00'),
 (3, 0, '{"test":"121233","p2":234}', 12, 0, '0000-00-00 00:00:00'),
 (4, 0, '{"test":"121233","p2":234}', 12, 0, '2016-03-21 18:09:05');
 
-DROP TABLE IF EXISTS `tshirt`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tshirt`
+--
+
 CREATE TABLE `tshirt` (
   `Tshirt_id` int(11) NOT NULL,
   `Tshirt_color` varchar(50) DEFAULT NULL,
   `Tshirt_image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `tshirt`;
+--
+-- Dumping data for table `tshirt`
+--
+
 INSERT INTO `tshirt` (`Tshirt_id`, `Tshirt_color`, `Tshirt_image`) VALUES
 (2, 'green', 'image\\Tshirt\\Tshirt01.jpg'),
 (3, 'white', 'image\\Tshirt\\Tshirt02.jpg'),
@@ -657,7 +977,12 @@ INSERT INTO `tshirt` (`Tshirt_id`, `Tshirt_color`, `Tshirt_image`) VALUES
 (6, 'sky blue', 'image\\Tshirt\\Tshirt05.jpg'),
 (7, 'dark blue', 'image\\Tshirt\\Tshirt06.jpg');
 
-DROP TABLE IF EXISTS `users`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
@@ -666,7 +991,10 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `users`;
+--
+-- Dumping data for table `users`
+--
+
 INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `email`) VALUES
 (1, 'test', 'test', 1, '123'),
 (3, 'abc', '$2y$10$oNdeFwyBJdCsQy2e0LYfA.oVe5A65SUVeqPBGZlVqukH2AkgBgEdy', 1, '00'),
@@ -674,7 +1002,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `email`) VALUES
 (133, '12345', '$2y$10$tl5rNBQ5eIk6rv6IoHGYqeNFHkqYS.nuyTYRqyA5tab.wV/7u370u', 1, '123456@12.com'),
 (134, 'github_zhaoyiyi', '$2y$10$fHBaDDqTXtCUt3sXZco1/uv6q5cYS9rekB99Ef2zX830GpPTw4tZS', 1, 'zhao1max@gmail.com');
 
-DROP TABLE IF EXISTS `user_profiles`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_profiles`
+--
+
 CREATE TABLE `user_profiles` (
   `id` int(11) NOT NULL,
   `first_name` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
@@ -685,7 +1018,10 @@ CREATE TABLE `user_profiles` (
   `province` varchar(30) CHARACTER SET utf8 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `user_profiles`;
+--
+-- Dumping data for table `user_profiles`
+--
+
 INSERT INTO `user_profiles` (`id`, `first_name`, `last_name`, `phone`, `street`, `city`, `province`) VALUES
 (1, 'Johanna', 'Steele', '(956) 434-2004', '153 Poplar Street', 'Inkerman', 'Puerto Rico'),
 (2, 'Kathleen', 'Garner', '(814) 545-2100', '651 Kenmore Court', 'Kidder', 'Arizona'),
@@ -718,7 +1054,12 @@ INSERT INTO `user_profiles` (`id`, `first_name`, `last_name`, `phone`, `street`,
 (29, 'Wade', 'Hayes', '(947) 583-2116', '756 Fair Street', 'Canterwood', 'Idaho'),
 (30, 'Moran', 'Bean', '(943) 512-2074', '417 Duffield Street', 'Detroit', 'Guam');
 
-DROP TABLE IF EXISTS `user_resum`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_resum`
+--
+
 CREATE TABLE `user_resum` (
   `user_resum_id` int(11) NOT NULL,
   `First name` varchar(50) NOT NULL,
@@ -733,169 +1074,474 @@ CREATE TABLE `user_resum` (
   `ATTACH_FILE` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-TRUNCATE TABLE `user_resum`;
+--
+-- Dumping data for table `user_resum`
+--
+
 INSERT INTO `user_resum` (`user_resum_id`, `First name`, `Last name`, `phone number`, `Email`, `birthday`, `School name`, `Date of graduation`, `introduction`, `sex`, `ATTACH_FILE`) VALUES
 (1, 'bin', 'liu', '6453247285', 'hunbdr@gmail.com', '01-05-1989', 'humber', '01-09-2016', 'To work as an HR Summer Student at Ontario Energy Board where, I am aspiring to contribute my professional education, interpersonal and organizational skills and to add value to Ontario Energy Board and HR team in accomplishing its goals', 'ma', ' '),
 (2, 'aleax', 'send', '1234545678', 'liubindr@gmail.com', '01-05-1989', 'humber', '01-03-2016', '•	Familiar with employment law, OHSA and JHSC; skilled decision maker and problem solver by balancing employees’ needs with law and company’s policy', 'fa', ' '),
 (3, 'zhao', 'yi', '6453247285', 'lina@gmail.com', '01-05-1989', 'sence', '01-03-2014', '•	Helped to prepare payroll, position evaluations and performance review report\r\n•	Collected and analyzed internal and external compensation statistics, identified trends and proposed recommendations to HR manager\r\n•	Assisted in adjusting salary structures and designing compensation packages based on company’s budget while complying with government laws and regulations\r\n•	Researched for other discount and noncash incentive to existing benefit programs\r\n', 'fa', ' ');
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `xinxi`
+--
+
+CREATE TABLE `xinxi` (
+  `id` int(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `xingbie` varchar(10) NOT NULL,
+  `hunfou` varchar(10) NOT NULL,
+  `chusheng` int(20) NOT NULL,
+  `xueli` varchar(100) NOT NULL,
+  `biyetime` varchar(100) NOT NULL,
+  `biyeschool` varchar(100) NOT NULL,
+  `tel` int(20) NOT NULL,
+  `xiandxi` varchar(200) NOT NULL,
+  `fenshu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `xinxi`
+--
+
+INSERT INTO `xinxi` (`id`, `name`, `xingbie`, `hunfou`, `chusheng`, `xueli`, `biyetime`, `biyeschool`, `tel`, `xiandxi`, `fenshu`) VALUES
+(1, 'wqeqw', '男', 'Married', 0, 'qweq', 'eqweqw', 'rqweqw', 0, 'rwqerqwe', 0),
+(2, 'yangyangyang', '男', 'Single', 19910211, '大学', '沈阳', '沈阳', 2147483647, '舞蹈服IE范围覅u', 0),
+(3, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(4, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(5, '', '', '', 0, '', '', '', 0, '', 0),
+(6, '', '', '', 0, '', '', '', 0, '', 0),
+(7, 'dwqdqw', '男', 'Married', 0, '', '', '', 0, 'qwdqwd', 0),
+(8, '', '', '', 0, '', '', '', 0, '', 0),
+(9, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(10, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(11, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(12, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(13, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(14, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 0),
+(15, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 88),
+(16, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 88),
+(17, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 88),
+(18, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 88),
+(19, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 88),
+(20, 'qwdqwd', '男', 'Married', 0, '', '', '', 0, 'dasdad', 88);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `zhaoadd`
+--
+
+CREATE TABLE `zhaoadd` (
+  `id` int(20) NOT NULL,
+  `qixian` int(100) NOT NULL,
+  `renshu` int(10) NOT NULL,
+  `yaoqiu` varchar(255) NOT NULL,
+  `zhiwei` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `zhaoadd`
+--
+
+INSERT INTO `zhaoadd` (`id`, `qixian`, `renshu`, `yaoqiu`, `zhiwei`) VALUES
+(1, 0, 12, 'dsads', 'qwewq'),
+(2, 1, 12, 'eqweqe', 'asdasd'),
+(3, 0, 12, 'wqdqsd', 'qwewq'),
+(4, 0, 12, 'dsaada', 'qwewq'),
+(5, 0, 12, 'dsadad', 'qwewq'),
+(7, 0, 0, '', ''),
+(9, 0, 0, '', ''),
+(10, 0, 0, 'qwrwerrr', 'wqeqw'),
+(11, 0, 34, 'eqwrw', 'qwe'),
+(12, 0, 0, '', ''),
+(13, 0, 0, '', ''),
+(14, 0, 0, '', ''),
+(15, 0, 0, '', ''),
+(16, 0, 0, '', ''),
+(17, 0, 0, '', ''),
+(18, 9, 213, 'wdwdwe', 'Web developer');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `answer`
+--
 ALTER TABLE `answer`
   ADD PRIMARY KEY (`answer_id`);
 
+--
+-- Indexes for table `categories`
+--
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`categoryID`);
 
+--
+-- Indexes for table `ceshi`
+--
+ALTER TABLE `ceshi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cinemas`
+--
 ALTER TABLE `cinemas`
   ADD PRIMARY KEY (`Cinema_ID`);
 
+--
+-- Indexes for table `contactus`
+--
 ALTER TABLE `contactus`
   ADD PRIMARY KEY (`contact_id`);
 
+--
+-- Indexes for table `design`
+--
 ALTER TABLE `design`
   ADD PRIMARY KEY (`Design_Id`),
   ADD KEY `Logo_Id` (`Logo_Id`),
   ADD KEY `Tshirt_Id` (`Tshirt_Id`);
 
+--
+-- Indexes for table `feedback`
+--
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `films`
+--
 ALTER TABLE `films`
   ADD PRIMARY KEY (`Film_Id`);
 
+--
+-- Indexes for table `food`
+--
 ALTER TABLE `food`
   ADD PRIMARY KEY (`Food_id`);
 
+--
+-- Indexes for table `food_comment`
+--
 ALTER TABLE `food_comment`
   ADD PRIMARY KEY (`Comment_id`);
 
+--
+-- Indexes for table `food_order`
+--
 ALTER TABLE `food_order`
   ADD PRIMARY KEY (`Order_id`);
 
+--
+-- Indexes for table `food_order_item`
+--
 ALTER TABLE `food_order_item`
   ADD PRIMARY KEY (`Order_item_id`);
 
+--
+-- Indexes for table `food_test`
+--
 ALTER TABLE `food_test`
   ADD PRIMARY KEY (`Test_id`);
 
+--
+-- Indexes for table `food_test_question`
+--
 ALTER TABLE `food_test_question`
   ADD PRIMARY KEY (`Question_id`);
 
+--
+-- Indexes for table `food_user_recording`
+--
 ALTER TABLE `food_user_recording`
   ADD PRIMARY KEY (`Record_id`);
 
+--
+-- Indexes for table `information`
+--
+ALTER TABLE `information`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `logo`
+--
 ALTER TABLE `logo`
   ADD PRIMARY KEY (`Logo_Id`);
 
+--
+-- Indexes for table `menus`
+--
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`name`),
   ADD UNIQUE KEY `name` (`name`);
 
+--
+-- Indexes for table `moviefeature`
+--
 ALTER TABLE `moviefeature`
   ADD PRIMARY KEY (`film_id`),
   ADD UNIQUE KEY `Id` (`film_id`);
 
+--
+-- Indexes for table `orders`
+--
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`Order_Id`),
   ADD UNIQUE KEY `uc_Design` (`Design_Id`),
   ADD KEY `Customer_Id` (`Customer_Id`);
 
+--
+-- Indexes for table `question`
+--
 ALTER TABLE `question`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `rating`
+--
 ALTER TABLE `rating`
   ADD PRIMARY KEY (`rating_id`);
 
+--
+-- Indexes for table `reservations`
+--
 ALTER TABLE `reservations`
   ADD PRIMARY KEY (`Reservation_Id`),
   ADD KEY `reservations_ibfk_2` (`Order_Id`);
 
+--
+-- Indexes for table `rooms`
+--
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`Room_ID`),
   ADD UNIQUE KEY `Room_Name` (`Room_Name`,`Cinema_ID`),
   ADD KEY `Cinema_ID` (`Cinema_ID`);
 
+--
+-- Indexes for table `running_films`
+--
 ALTER TABLE `running_films`
   ADD PRIMARY KEY (`running_films_id`),
   ADD UNIQUE KEY `Room_ID` (`Room_ID`,`Run_Time`),
   ADD KEY `fk_films` (`Film_Id`);
 
+--
+-- Indexes for table `seats`
+--
 ALTER TABLE `seats`
   ADD PRIMARY KEY (`Seat_ID`),
   ADD UNIQUE KEY `uc_seat` (`Room_ID`,`Seat_Name`,`Run_Time`);
 
+--
+-- Indexes for table `tokens`
+--
 ALTER TABLE `tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
+--
+-- Indexes for table `transactions`
+--
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `tshirt`
+--
 ALTER TABLE `tshirt`
   ADD PRIMARY KEY (`Tshirt_id`);
 
+--
+-- Indexes for table `users`
+--
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `id` (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
+--
+-- Indexes for table `user_profiles`
+--
 ALTER TABLE `user_profiles`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `user_resum`
+--
 ALTER TABLE `user_resum`
   ADD PRIMARY KEY (`user_resum_id`);
 
+--
+-- Indexes for table `xinxi`
+--
+ALTER TABLE `xinxi`
+  ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `zhaoadd`
+--
+ALTER TABLE `zhaoadd`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `categories`
+--
 ALTER TABLE `categories`
   MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `ceshi`
+--
+ALTER TABLE `ceshi`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `cinemas`
+--
 ALTER TABLE `cinemas`
   MODIFY `Cinema_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `contactus`
+--
 ALTER TABLE `contactus`
   MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `design`
+--
 ALTER TABLE `design`
   MODIFY `Design_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `films`
+--
 ALTER TABLE `films`
   MODIFY `Film_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `information`
+--
+ALTER TABLE `information`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `logo`
+--
 ALTER TABLE `logo`
   MODIFY `Logo_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `moviefeature`
+--
 ALTER TABLE `moviefeature`
   MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `orders`
+--
 ALTER TABLE `orders`
   MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `rating`
+--
 ALTER TABLE `rating`
   MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `reservations`
+--
 ALTER TABLE `reservations`
   MODIFY `Reservation_Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `rooms`
+--
 ALTER TABLE `rooms`
   MODIFY `Room_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `running_films`
+--
 ALTER TABLE `running_films`
   MODIFY `running_films_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `seats`
+--
 ALTER TABLE `seats`
   MODIFY `Seat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+--
+-- AUTO_INCREMENT for table `transactions`
+--
 ALTER TABLE `transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tshirt`
+--
 ALTER TABLE `tshirt`
   MODIFY `Tshirt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `users`
+--
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+--
+-- AUTO_INCREMENT for table `user_profiles`
+--
 ALTER TABLE `user_profiles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `xinxi`
+--
+ALTER TABLE `xinxi`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `zhaoadd`
+--
+ALTER TABLE `zhaoadd`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- Constraints for dumped tables
+--
 
+--
+-- Constraints for table `design`
+--
 ALTER TABLE `design`
   ADD CONSTRAINT `design_ibfk_1` FOREIGN KEY (`Logo_Id`) REFERENCES `logo` (`Logo_Id`),
   ADD CONSTRAINT `design_ibfk_2` FOREIGN KEY (`Tshirt_Id`) REFERENCES `tshirt` (`Tshirt_id`);
 
+--
+-- Constraints for table `reservations`
+--
 ALTER TABLE `reservations`
   ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`Order_Id`) REFERENCES `orders` (`Order_Id`);
 
+--
+-- Constraints for table `rooms`
+--
 ALTER TABLE `rooms`
   ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`Cinema_ID`) REFERENCES `cinemas` (`Cinema_ID`);
 
+--
+-- Constraints for table `running_films`
+--
 ALTER TABLE `running_films`
   ADD CONSTRAINT `fk_films` FOREIGN KEY (`Film_Id`) REFERENCES `films` (`Film_Id`),
   ADD CONSTRAINT `running_films_ibfk_1` FOREIGN KEY (`Room_ID`) REFERENCES `rooms` (`Room_ID`);
 
+--
+-- Constraints for table `seats`
+--
 ALTER TABLE `seats`
   ADD CONSTRAINT `seats_ibfk_1` FOREIGN KEY (`Room_ID`) REFERENCES `rooms` (`Room_ID`);
 

@@ -3,19 +3,32 @@ import update from 'react/lib/update';
 import MenuList from './MenuList';
 import MenuTab from './MenuTab';
 import MenuStore from '../stores/MenuStore';
+import PageStore from '../stores/PageStore';
 import MenuActions from '../actions/MenuActions';
+import PageActions from '../actions/PageActions'
 import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
 import '../css/menu.css!';
-import $ from 'jquery';
 import 'jquery-ui';
 
 Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
   if (!indexArray) return;
-  return indexArray.reduce((acc, currentIndex, i) => {
-    console.log(currentIndex);
-    if (i < indexArray.length - 1) return acc[currentIndex];
-    return acc.splice(currentIndex, deleteCount, ...replacement);
-  }, this)
+  indexArray.reduce((acc, currentIndex, i) => {
+    currentIndex = Number(currentIndex);
+    if (i === indexArray.length - 1 && acc) {
+      // Delete sub items.
+      if (Array.isArray(acc[currentIndex + 1])) acc.splice(currentIndex + 1, 1);
+      acc.splice(currentIndex, deleteCount, ...replacement);
+    }
+
+    if (i === indexArray.length - 2 && acc[currentIndex].length === 1) {
+      acc.splice(currentIndex, 1);
+    } else if (i < indexArray.length - 1) {
+      return acc[currentIndex];
+    }
+
+  }, this);
+
+  return this;
 };
 
 export default class EditorContainer extends React.Component {
@@ -26,7 +39,9 @@ export default class EditorContainer extends React.Component {
 
   componentDidMount() {
     MenuStore.addChangeListener(this._onChange);
+    PageStore.addChangeListener(this._onChange);
     MenuActions.getMenu();
+    PageActions.getList();
   }
 
   componentDidUpdate() {
@@ -47,6 +62,7 @@ export default class EditorContainer extends React.Component {
 
   componentWillUnmount() {
     MenuStore.removeChangeListener(this._onChange);
+    PageStore.removeChangeListener(this._onChange);
   }
 
   _onChange = () => {
@@ -76,12 +92,16 @@ export default class EditorContainer extends React.Component {
     // get data-id on li element
     const id = $(event.target).closest('li').data('id');
     let menuTree = [].concat(this.state.menu[this.state.num].menu);
-    menuTree.deepSplice(id.toString().split(''), 1);
-    MenuActions.update(menuTree)
+    const newTree = menuTree.deepSplice(id.toString().split(','), 1);
+    MenuActions.update(newTree)
   };
 
   handleNewItem = () => {
     MenuActions.createMenuItem();
+  };
+
+  handleNewCustomPage = () => {
+    MenuActions.createCustomPage();
   };
 
   handleMenuUpdate = (menu) => {
@@ -115,6 +135,7 @@ export default class EditorContainer extends React.Component {
 
               <MenuList
                   menu={this.state.menu[this.state.num].menu}
+                  pageList={PageStore.getState()}
                   onChange={this.handleMenuUpdate}
                   onDelete={this.handleDeleteItem}
               />

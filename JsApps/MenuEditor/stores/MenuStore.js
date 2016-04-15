@@ -72,14 +72,17 @@ class MenuStore extends EventEmitter {
         this.emitChange();
         break;
       case MenuConstants.CREATE_MENU:
-        this._state.menu.push({menu:[], name:'new'});
+        this._state.menu.push({menu: [], name: 'new'});
         this.emitChange();
         break;
       case MenuConstants.DELETE_MENU:
         this._state.menu.splice(action.index, 1);
-          this._state.num = 0;
+        this._state.num = 0;
         this.emitChange();
         break;
+      case MenuConstants.CREATE_CUSTOM_PAGE:
+        this._state.menu[this._state.num].menu.unshift({name: '', link: '', pageId: ''});
+        this.emitChange();
     }
   }
 }

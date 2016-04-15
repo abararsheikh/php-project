@@ -1,5 +1,6 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php'?>
 
+
 <!Doctype HTML>
 <html>
     <head>
@@ -146,6 +147,13 @@
                                 <tr>
                                     <td colspan="2">
                                         <a href="./index.php">ADD OTHER FILMS</a>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <a href="./index.php?route=DetailController/sessionExpired">CANCEL</a>
                                     </td>
                                 </tr>
 
@@ -155,8 +163,7 @@
                     </table>
                     <div class="row">
                         <div class="col-lg-12">
-                        <?php echo \Project\Payment\Payment::stripeButton() ?>
-
+                            <?php echo \Project\Payment\Payment::stripeButton() ?>
                         </div>
                     </div>
                 </div>
