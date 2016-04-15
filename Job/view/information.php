@@ -3,6 +3,7 @@
 <?php
 require('conn.php');
 include("../controller/informationcontroller.php");
+
 $info=new information();
 $info->index();
 

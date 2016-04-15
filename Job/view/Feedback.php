@@ -3,6 +3,7 @@
 include("../controller/feedbackcontroller.php");
 $feed=new feedback();
 $feed->index();
+
 ?>
 
 <html>

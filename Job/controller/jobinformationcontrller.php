@@ -32,7 +32,7 @@ if($act=='add')
  	}
   }
   
-  $sql="insert into information(name,xingbie,hunfou,chusheng,xueli,biyetime,biyeschool,tel,xiandxi,fenshu)values('".$_POST['name']."','".$_POST['xingbie']."','".$_POST['hunfou']."','".$_POST['chusheng']."','".$_POST['xueli']."','".$_POST['biyetime']."','".$_POST['biyeschool']."','".$_POST['tel']."','".$_POST['xiandxi']."',".$fenshu.")";
+  $sql="insert into information(name,xingbie,hunfou,chusheng,xueli,biyetime,biyeschool,tel,xiandxi,fenshu)values('".$_POST['name']."','".$_POST['xingbie']."','".$_POST['hunfou']."','".$_POST['chusheng']."','".$_POST['xueli']."','".$_POST['biyetime']."','".$_POST['biyeschool']."','".$_POST['tel']."','".$_POST['information']."',".$fenshu.")";
 
    $result=$db->exec($sql);
   //  header('location:index1.php');
@@ -48,33 +48,35 @@ if(isset($_POST['Submit'])){
     }
 }
 	}
-    public function info(){
-    require_once('conn.php');
-      $sqlMax = "select * from test order by id desc";
-          $resMax = $db->query($sqlMax) or die($sqlMax);
-          $rsMax = $resMax->fetchObject();
-          $max = $rsMax -> id;
+    public function info()
+    {
+        require_once('conn.php');
+        $sqlMax = "select * from ceshi order by id desc";
+        $resMax = $db->query($sqlMax) or die($sqlMax);
+        $rsMax = $resMax->fetchObject();
+        $max = $rsMax->id;
 
-          $sqlMin = "select * from test order by id";
-          $resMin = $db->query($sqlMin) or die($sqlMin);
-          $rsMin = $resMin->fetchObject();
-          $min = $rsMin -> id;
+        $sqlMin = "select * from ceshi order by id";
+        $resMin = $db->query($sqlMin) or die($sqlMin);
+        $rsMin = $resMin->fetchObject();
+        $min = $rsMin->id;
 
-          $i = 1;
-		  while($i<=10){
-            $id = round(rand($min,$max));
-            if(!in_array($id,$ids)){
-              $sql = "select * from test where id=".$id;
-              $res = $db->query($sql);
-              if($rs = $res->fetchObject()){
-                array_push($ids,$id);
+        $i = 1;
+        while ($i <= 10) {
+            $id = round(rand($min, $max));
+            if (!in_array($id, $ids)) {
+                $sql = "select * from ceshi where id=" . $id;
+                $res = $db->query($sql);
+                if ($rs = $res->fetchObject()) {
+                    array_push($ids, $id);
 
+                }
+            }
+
+
+        }
     }
-
-
-
 }
-
 
 
 ?>

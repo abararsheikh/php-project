@@ -65,8 +65,8 @@ $Page_String.='Next page|End page|';
 else{
 $Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCount.'>End page</a>';
 }
-$mount-($page-1)*$PageSize;
-$num=$a
+//$mount-($page-1)*$PageSize;
+//$num=$a
 
 
 
