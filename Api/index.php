@@ -23,3 +23,6 @@ Nav::group('/Api', function() use($apiController) {
 });
 
 Nav::start();
+
+
+// todo: pass db to constructor 

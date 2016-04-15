@@ -56,6 +56,7 @@ if(empty($error))
 
 <body>
 <div class="container">
+    <?php include '../../../Assets/html/header.php'?>
     <div class="row">
         <div class="col-md-12">
             <img src="/Assets/image/HomePage/contact_slider.jpg" style="height: 260px;">

@@ -61,7 +61,7 @@ class Ratings
     {
         //connect to database :
         $db = Database::getDB();
-        $query = "SELECT total_votes, total_value FROM ratings WHERE rating_id = $id";
+        $query = "SELECT total_votes, total_value FROM ratings WHERE rating_id = '$id'";
         $queryPre = $db ->prepare($query);
         $result = $queryPre->execute();
         //  $result = $queryPre->fetch();

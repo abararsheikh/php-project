@@ -39,7 +39,9 @@
             </div>
 
             <div class="container button-wrapper cart col-md-1">
-                <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items">1</span></button>
+               <a href="FoodShoppingcartManagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
+                           echo $cartnumber;
+                           ?></span></button></a>
             </div>
 
         </div>

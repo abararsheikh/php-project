@@ -110,4 +110,17 @@ public static function getAll(){
         $results = $result->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($results);
     }
+    public static function setHistory($foodid){
+        $t=time();
+
+        if(isset($_COOKIE[$foodid])){
+
+
+            setcookie($foodid, $t,$t + (86400 * 30),"/");
+
+        }else {
+            setcookie($foodid, $t,$t + (86400 * 30),"/");
+        }
+
+    }
 }
