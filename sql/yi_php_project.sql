@@ -1,41 +1,21 @@
--- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: 2016-04-15 21:45:27
--- 服务器版本： 10.1.10-MariaDB
--- PHP Version: 5.6.19
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `php_project`
---
-
--- --------------------------------------------------------
-
---
--- 表的结构 `answer`
---
+CREATE DATABASE IF NOT EXISTS `php_project` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `php_project`;
 
 DROP TABLE IF EXISTS `answer`;
-CREATE TABLE `answer` (
+CREATE TABLE IF NOT EXISTS `answer` (
   `answer_id` int(11) NOT NULL DEFAULT '0',
   `question_id` int(11) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL
+  `title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`answer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `answer`
---
 
 INSERT INTO `answer` (`answer_id`, `question_id`, `title`) VALUES
 (1, 1, 'The file is in C:My Documents'),
@@ -63,65 +43,38 @@ INSERT INTO `answer` (`answer_id`, `question_id`, `title`) VALUES
 (23, 6, 'can contain special characters'),
 (24, 6, 'can be a PHP reserved word');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `categories`
---
-
 DROP TABLE IF EXISTS `categories`;
-CREATE TABLE `categories` (
-  `categoryID` int(11) NOT NULL,
-  `categoryName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `categories`
---
+CREATE TABLE IF NOT EXISTS `categories` (
+  `categoryID` int(11) NOT NULL AUTO_INCREMENT,
+  `categoryName` varchar(255) NOT NULL,
+  PRIMARY KEY (`categoryID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 INSERT INTO `categories` (`categoryID`, `categoryName`) VALUES
 (1, 'NowShowing'),
 (2, 'ComingSoon');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `cinemas`
---
-
 DROP TABLE IF EXISTS `cinemas`;
-CREATE TABLE `cinemas` (
-  `Cinema_ID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `cinemas` (
+  `Cinema_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Cinema_Name` varchar(255) NOT NULL,
-  `Cinema_Address` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `cinemas`
---
+  `Cinema_Address` varchar(255) NOT NULL,
+  PRIMARY KEY (`Cinema_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 INSERT INTO `cinemas` (`Cinema_ID`, `Cinema_Name`, `Cinema_Address`) VALUES
 (1, 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3'),
 (2, 'Cinema2', 'Yorkdale Shopping Centre, 3401 Dufferin Street , c/o Yorkdale Shopping Centre, Toronto, ON, M6A 2T9');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `contactus`
---
-
 DROP TABLE IF EXISTS `contactus`;
-CREATE TABLE `contactus` (
-  `contact_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `contactus` (
+  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `contactus`
---
+  `Message` text NOT NULL,
+  PRIMARY KEY (`contact_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 
 INSERT INTO `contactus` (`contact_id`, `first_name`, `last_name`, `Email`, `Message`) VALUES
 (2, 'navaz', 'sheikh', 'navaz@gmail.com', 'Hello world'),
@@ -143,23 +96,14 @@ INSERT INTO `contactus` (`contact_id`, `first_name`, `last_name`, `Email`, `Mess
 (54, 'adf', 'sdfsdf', 'sdfsdf@12.com', 'sdf'),
 (55, 'Yi', 'Zhao', 'zhao1max@gmail.com', '                           asdfsdfsd               sdf                  asdf');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `faq`
---
-
 DROP TABLE IF EXISTS `faq`;
-CREATE TABLE `faq` (
-  `question_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `faq` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
   `questions` varchar(255) DEFAULT NULL,
   `answers` varchar(255) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `faq`
---
+  `category` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 INSERT INTO `faq` (`question_id`, `questions`, `answers`, `category`) VALUES
 (1, 'Why Become An Online Member?', 'answer1.txt', 'Membership Question'),
@@ -168,14 +112,8 @@ INSERT INTO `faq` (`question_id`, `questions`, `answers`, `category`) VALUES
 (4, 'Can I Book Tickets In Advance?', 'answer4.txt', 'Booking Question'),
 (5, 'Can I Cancel Tickets Booked Online And Get A Refund?', 'answer5.txt', 'Booking Question');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `feedback`
---
-
 DROP TABLE IF EXISTS `feedback`;
-CREATE TABLE `feedback` (
+CREATE TABLE IF NOT EXISTS `feedback` (
   `username` varchar(50) NOT NULL,
   `sex` tinyint(1) NOT NULL,
   `mobile_tel` varchar(20) NOT NULL,
@@ -187,27 +125,18 @@ CREATE TABLE `feedback` (
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `feedback`
---
 
 INSERT INTO `feedback` (`username`, `sex`, `mobile_tel`, `email`, `address`, `content`, `reply_content`, `reply_time`, `create_time`, `update_time`, `id`, `title`) VALUES
 ('1', 0, '4172446525', '1', '123344556', 'hello,please phoneme', 'hello~~~I am waiting u', 0, 1, 0, 1, 'whyefffefre'),
 ('bin', 0, '1234456678', 'binhunmber@gmail.com', '18 ft mash1-2', 'Hello i want', 'I am good for this', 1, 1, 1, 123, 'IT'),
 ('bin', 1, '647346624', 'binhunmber@gmail.com', '18 ft mash1-2', 'I am very like cooking .i can do mu best,I have enough experience', 'I am very like cooking .I can do mu best,I have enough experience', 1, 1, 1, 124, 'cook');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `films`
---
-
 DROP TABLE IF EXISTS `films`;
-CREATE TABLE `films` (
-  `Film_Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `films` (
+  `Film_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Film_Time` date DEFAULT NULL,
   `Film_Name` varchar(50) DEFAULT NULL,
   `Film_Director` varchar(50) DEFAULT NULL,
@@ -217,12 +146,9 @@ CREATE TABLE `films` (
   `Price_Full` float DEFAULT NULL,
   `Avaliable` char(1) DEFAULT 'Y',
   `film_description` varchar(255) DEFAULT NULL,
-  `LANGUAGE` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `films`
---
+  `LANGUAGE` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`Film_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 INSERT INTO `films` (`Film_Id`, `Film_Time`, `Film_Name`, `Film_Director`, `Film_Actor`, `Film_pic`, `Film_length`, `Price_Full`, `Avaliable`, `film_description`, `LANGUAGE`) VALUES
 (1, '2016-02-12', 'Deadpool', 'Tim Miller', 'Ryan Reynolds', 'image/deadpool.jpg', '1h 48m', 14, 'Y', 'film1', 'English'),
@@ -233,15 +159,9 @@ INSERT INTO `films` (`Film_Id`, `Film_Time`, `Film_Name`, `Film_Director`, `Film
 (6, '2016-02-16', 'The Mermaid', 'Stephen Chow', 'Deng Chao', 'image/meirenyu.jpg', '1h 40m', 25, 'Y', 'film6', 'CHINESE'),
 (7, '2015-09-09', 'Mr. Six', 'Guan Hu', 'Feng Xiaogang', 'image/mrsix.jpg', '2h 16m', 30, 'Y', 'film7', 'CHINESE');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food`
---
-
 DROP TABLE IF EXISTS `food`;
-CREATE TABLE `food` (
-  `Food_id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food` (
+  `Food_id` int(8) NOT NULL AUTO_INCREMENT,
   `Food_Catagory` varchar(50) NOT NULL,
   `Food_Price` decimal(10,2) NOT NULL,
   `Food_Instock` int(8) NOT NULL,
@@ -251,12 +171,9 @@ CREATE TABLE `food` (
   `Food_Image` varchar(50) NOT NULL,
   `Discount_price` decimal(10,2) NOT NULL,
   `Viewed_times` int(8) NOT NULL,
-  `Sales_volume` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food`
---
+  `Sales_volume` int(8) NOT NULL,
+  PRIMARY KEY (`Food_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food` (`Food_id`, `Food_Catagory`, `Food_Price`, `Food_Instock`, `Food_description`, `Food_mark`, `Food_Name`, `Food_Image`, `Discount_price`, `Viewed_times`, `Sales_volume`) VALUES
 (1, 'special', '1.00', 2, 'good food', '5.0', 'Salmon', 'food1.jpg', '0.40', 0, 1),
@@ -273,184 +190,112 @@ INSERT INTO `food` (`Food_id`, `Food_Catagory`, `Food_Price`, `Food_Instock`, `F
 (12, 'LunchAndDinner', '13.00', 15, 'Cajun-seasoned medley of smoked sausage, shrimp and chicken, grilled together with green peppers and onions. Tossed with a spicy Creole sauce and served over thin spaghetti. No sides', '5.0', 'Ragin'' Cajun', 'food12.jpg', '13.00', 0, 0),
 (13, 'LunchAndDinner', '15.00', 10, 'Your choice of grilled shrimp, chicken or steak* tips with fresh broccoli, red peppers and onions, drizzled with a zesty sweet chili sauce and served over jasmine rice. No sides\r\nAvailable with Shrimp, Chicken or Steak (prices vary).', '5.0', 'San Francisco Stir Fry', 'food13.jpg', '15.00', 0, 0);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_comment`
---
-
 DROP TABLE IF EXISTS `food_comment`;
-CREATE TABLE `food_comment` (
-  `Comment_id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_comment` (
+  `Comment_id` int(8) NOT NULL AUTO_INCREMENT,
   `Food_id` int(8) NOT NULL,
   `User_id` int(8) NOT NULL,
   `Comment` varchar(500) NOT NULL,
   `Mark` float(3,2) NOT NULL,
   `Evaluation` int(1) NOT NULL,
-  `Date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_comment`
---
+  `Date` date NOT NULL,
+  PRIMARY KEY (`Comment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_comment` (`Comment_id`, `Food_id`, `User_id`, `Comment`, `Mark`, `Evaluation`, `Date`) VALUES
 (1, 1, 1, 'good', 5.00, 1, '2016-03-02'),
 (2, 1, 3, 'Bad', 3.00, 3, '2016-03-11');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_order`
---
-
 DROP TABLE IF EXISTS `food_order`;
-CREATE TABLE `food_order` (
-  `Order_id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_order` (
+  `Order_id` int(8) NOT NULL AUTO_INCREMENT,
   `User_id` int(8) NOT NULL,
   `Order_time` date NOT NULL,
   `Total_price` decimal(10,2) NOT NULL,
   `Phone_number` varchar(11) NOT NULL,
-  `State` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_order`
---
+  `State` int(1) NOT NULL,
+  PRIMARY KEY (`Order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_order` (`Order_id`, `User_id`, `Order_time`, `Total_price`, `Phone_number`, `State`) VALUES
 (1, 1, '2016-03-02', '9.00', '6477725042', 0);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_order_item`
---
-
 DROP TABLE IF EXISTS `food_order_item`;
-CREATE TABLE `food_order_item` (
-  `Order_item_id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_order_item` (
+  `Order_item_id` int(8) NOT NULL AUTO_INCREMENT,
   `Food_id` int(8) NOT NULL,
   `Order_id` int(8) NOT NULL,
   `Quantity` int(8) NOT NULL,
   `Size` int(1) NOT NULL,
   `Date` date NOT NULL,
   `Time` time NOT NULL,
-  `Cinema` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_order_item`
---
+  `Cinema` varchar(50) NOT NULL,
+  PRIMARY KEY (`Order_item_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_order_item` (`Order_item_id`, `Food_id`, `Order_id`, `Quantity`, `Size`, `Date`, `Time`, `Cinema`) VALUES
 (1, 1, 1, 2, 0, '0000-00-00', '00:00:00', '');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_shoppingcart`
---
-
 DROP TABLE IF EXISTS `food_shoppingcart`;
-CREATE TABLE `food_shoppingcart` (
-  `Id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_shoppingcart` (
+  `Id` int(8) NOT NULL AUTO_INCREMENT,
   `User_id` varchar(8) NOT NULL,
   `Food_id` int(8) NOT NULL,
   `Quantity` int(8) NOT NULL,
   `Size` int(1) NOT NULL,
   `Cinema_Name` varchar(50) NOT NULL,
-  `price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_shoppingcart`
---
+  `price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_shoppingcart` (`Id`, `User_id`, `Food_id`, `Quantity`, `Size`, `Cinema_Name`, `price`) VALUES
 (1, '1', 1, 5, 2, '0', '0.00'),
 (13, '7', 1, 2, 1, 'Cinema_Name', '0.40'),
 (14, '7', 2, 3, 2, 'Cinema_Name', '6.00');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_test`
---
-
 DROP TABLE IF EXISTS `food_test`;
-CREATE TABLE `food_test` (
-  `Test_id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_test` (
+  `Test_id` int(8) NOT NULL AUTO_INCREMENT,
   `Score` int(3) NOT NULL,
-  `User_id` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_test`
---
+  `User_id` int(8) NOT NULL,
+  PRIMARY KEY (`Test_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_test` (`Test_id`, `Score`, `User_id`) VALUES
 (1, 60, 1);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_test_question`
---
-
 DROP TABLE IF EXISTS `food_test_question`;
-CREATE TABLE `food_test_question` (
-  `Question_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_test_question` (
+  `Question_id` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(200) NOT NULL,
   `Option1` varchar(100) NOT NULL,
   `Option2` varchar(100) NOT NULL,
   `Option3` varchar(100) NOT NULL,
   `Option4` varchar(100) NOT NULL,
-  `Answer` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_test_question`
---
+  `Answer` int(1) NOT NULL,
+  PRIMARY KEY (`Question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_test_question` (`Question_id`, `Question`, `Option1`, `Option2`, `Option3`, `Option4`, `Answer`) VALUES
 (1, '1234567', 'A', 'B', 'C', 'D', 2);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `food_user_recording`
---
-
 DROP TABLE IF EXISTS `food_user_recording`;
-CREATE TABLE `food_user_recording` (
-  `Record_id` int(8) NOT NULL,
+CREATE TABLE IF NOT EXISTS `food_user_recording` (
+  `Record_id` int(8) NOT NULL AUTO_INCREMENT,
   `User_id` int(8) NOT NULL,
-  `Total_amount` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `food_user_recording`
---
+  `Total_amount` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`Record_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 INSERT INTO `food_user_recording` (`Record_id`, `User_id`, `Total_amount`) VALUES
 (1, 1, '80.00');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `logo`
---
-
 DROP TABLE IF EXISTS `logo`;
-CREATE TABLE `logo` (
-  `Logo_Id` int(11) NOT NULL,
-  `Logo_image` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `logo`
---
+CREATE TABLE IF NOT EXISTS `logo` (
+  `Logo_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Logo_image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Logo_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO `logo` (`Logo_Id`, `Logo_image`) VALUES
 (1, 'image\\logo\\logo1.png'),
@@ -458,67 +303,43 @@ INSERT INTO `logo` (`Logo_Id`, `Logo_image`) VALUES
 (3, '\\image\\logo\\logo3.jpg'),
 (4, '\\image\\logo\\logo4.jpg');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `menus`
---
-
 DROP TABLE IF EXISTS `menus`;
-CREATE TABLE `menus` (
+CREATE TABLE IF NOT EXISTS `menus` (
   `name` varchar(20) NOT NULL,
-  `menu` text NOT NULL
+  `menu` text NOT NULL,
+  PRIMARY KEY (`name`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `menus`
---
 
 INSERT INTO `menus` (`name`, `menu`) VALUES
 ('Main', '[{"name":"test page","link":"\\/page\\/24"},{"name":"Booking","link":"\\/booking"},{"name":"Movies","link":"\\/movies"},{"name":"Food","link":"\\/food"},{"name":"Career","link":"\\/career"}]');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `moviefeature`
---
-
 DROP TABLE IF EXISTS `moviefeature`;
-CREATE TABLE `moviefeature` (
-  `film_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `moviefeature` (
+  `film_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
   `language` text NOT NULL,
   `releaseDate` date NOT NULL,
   `director` text NOT NULL,
   `cast` text NOT NULL,
-  `img` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `moviefeature`
---
+  `img` varchar(100) NOT NULL,
+  PRIMARY KEY (`film_id`),
+  UNIQUE KEY `Id` (`film_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 INSERT INTO `moviefeature` (`film_id`, `title`, `language`, `releaseDate`, `director`, `cast`, `img`) VALUES
 (16, 'SINGHAM', '', '2010-02-10', 'sgdsg', ' aflnwlflwfw ', '../Assets/image/HomePage/kongfupanda.jpg'),
 (21, 'kwnklwn', '', '2015-05-04', ' dwewef', '    skfjsjkfjlsl  ', '/Assets/image/HomePage/starwar.jpg');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `orders`
---
-
 DROP TABLE IF EXISTS `orders`;
-CREATE TABLE `orders` (
-  `Order_Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `orders` (
+  `Order_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Order_DATE` datetime DEFAULT NULL,
   `Customer_Id` int(11) DEFAULT NULL,
-  `Total_Price` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `orders`
---
+  `Total_Price` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Order_Id`),
+  KEY `Customer_Id` (`Customer_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 INSERT INTO `orders` (`Order_Id`, `Order_DATE`, `Customer_Id`, `Total_Price`) VALUES
 (14, '2016-03-24 07:48:27', 7, '45.2'),
@@ -532,23 +353,14 @@ INSERT INTO `orders` (`Order_Id`, `Order_DATE`, `Customer_Id`, `Total_Price`) VA
 (22, '2016-04-15 02:18:38', 7, '0'),
 (23, '2016-04-15 02:20:53', 7, '22.6');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `pages`
---
-
 DROP TABLE IF EXISTS `pages`;
-CREATE TABLE `pages` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `content` text NOT NULL,
-  `link` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `pages`
---
+  `link` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 INSERT INTO `pages` (`id`, `name`, `content`, `link`) VALUES
 (7, 'test123', '<p>2asdfwefwef</p><p>asdfsdf</p>', '/page/7'),
@@ -561,22 +373,13 @@ INSERT INTO `pages` (`id`, `name`, `content`, `link`) VALUES
 (24, '321', '<h1 style="text-align: center;">asdfsadfsadf</h1><p>adsfsoiwejf</p><p>Â </p><p>Â </p><p><strong>tesasdfsdfsdfsdfsdf</strong></p><p>Â </p>', '/page/24'),
 (25, 'newfasdfasdf', '<table border="1" cellpadding="0" cellspacing="0" style="width: 100%"><tbody><tr><td>Â </td><td>Â </td><td>Â </td></tr><tr><td>Â </td><td>Â </td><td>Â </td></tr><tr><td>Â </td><td>Â </td><td>Â </td></tr></tbody></table><p>Â </p>', '/page/25');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `question`
---
-
 DROP TABLE IF EXISTS `question`;
-CREATE TABLE `question` (
+CREATE TABLE IF NOT EXISTS `question` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `answer_id` int(11) NOT NULL
+  `answer_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `question`
---
 
 INSERT INTO `question` (`id`, `title`, `answer_id`) VALUES
 (1, 'What is stored in $message by the code that follows?', 1),
@@ -586,23 +389,14 @@ INSERT INTO `question` (`id`, `title`, `answer_id`) VALUES
 (5, 'What does $message contain after the following code executes?', 11),
 (6, 'A PHP variable name', 14);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `rating`
---
-
 DROP TABLE IF EXISTS `rating`;
-CREATE TABLE `rating` (
-  `rating_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rating` (
+  `rating_id` int(11) NOT NULL AUTO_INCREMENT,
   `rating_Name` varchar(50) NOT NULL,
   `rating_Total` int(11) NOT NULL,
-  `rating_Votes` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `rating`
---
+  `rating_Votes` int(11) NOT NULL,
+  PRIMARY KEY (`rating_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO `rating` (`rating_id`, `rating_Name`, `rating_Total`, `rating_Votes`) VALUES
 (1, 'alex', 4, 2),
@@ -610,37 +404,22 @@ INSERT INTO `rating` (`rating_id`, `rating_Name`, `rating_Total`, `rating_Votes`
 (3, 'mike', 6, 4),
 (4, 'yi', 7, 4);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `ratings`
---
-
 DROP TABLE IF EXISTS `ratings`;
-CREATE TABLE `ratings` (
+CREATE TABLE IF NOT EXISTS `ratings` (
   `rating_id` int(10) NOT NULL,
   `total_votes` int(5) NOT NULL DEFAULT '0',
   `total_value` int(5) NOT NULL DEFAULT '0',
   `used_ips` longtext NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`rating_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `ratings`
---
 
 INSERT INTO `ratings` (`rating_id`, `total_votes`, `total_value`, `used_ips`, `date`) VALUES
 (1, 1, 5, 'a:1:{i:0;s:9:"127.0.0.1";}', '2016-04-01 04:00:00');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `reservations`
---
-
 DROP TABLE IF EXISTS `reservations`;
-CREATE TABLE `reservations` (
-  `Reservation_Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `reservations` (
+  `Reservation_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Running_films` varchar(255) NOT NULL,
   `Cinema_Name` varchar(255) NOT NULL,
   `Cinema_Address` varchar(255) NOT NULL,
@@ -649,12 +428,10 @@ CREATE TABLE `reservations` (
   `Room_id` int(11) NOT NULL,
   `Seats_Numbers` varchar(255) NOT NULL,
   `Order_Id` int(11) NOT NULL,
-  `Price` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `reservations`
---
+  `Price` float DEFAULT NULL,
+  PRIMARY KEY (`Reservation_Id`),
+  KEY `reservations_ibfk_2` (`Order_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 INSERT INTO `reservations` (`Reservation_Id`, `Running_films`, `Cinema_Name`, `Cinema_Address`, `Run_Time`, `Room_Name`, `Room_id`, `Seats_Numbers`, `Order_Id`, `Price`) VALUES
 (5, 'Steve Jobs', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-22 12:30:00', 'ROOM1', 1, 'B1', 16, 20),
@@ -669,23 +446,16 @@ INSERT INTO `reservations` (`Reservation_Id`, `Running_films`, `Cinema_Name`, `C
 (14, 'Mr. Six', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-29 09:30:00', 'ROOM2', 2, 'B1', 21, 33.9),
 (15, 'Steve Jobs', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-22 12:30:00', 'ROOM1', 1, 'B2', 23, 22.6);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `rooms`
---
-
 DROP TABLE IF EXISTS `rooms`;
-CREATE TABLE `rooms` (
-  `Room_ID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `Room_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Room_Name` varchar(255) NOT NULL,
   `Cinema_ID` int(11) NOT NULL,
-  `available` char(1) DEFAULT 'Y'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `rooms`
---
+  `available` char(1) DEFAULT 'Y',
+  PRIMARY KEY (`Room_ID`),
+  UNIQUE KEY `Room_Name` (`Room_Name`,`Cinema_ID`),
+  KEY `Cinema_ID` (`Cinema_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO `rooms` (`Room_ID`, `Room_Name`, `Cinema_ID`, `available`) VALUES
 (1, 'ROOM1', 1, 'Y'),
@@ -693,14 +463,8 @@ INSERT INTO `rooms` (`Room_ID`, `Room_Name`, `Cinema_ID`, `available`) VALUES
 (3, 'ROOM1', 2, 'Y'),
 (4, 'ROOM2', 2, 'Y');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `running_films`
---
-
 DROP TABLE IF EXISTS `running_films`;
-CREATE TABLE `running_films` (
+CREATE TABLE IF NOT EXISTS `running_films` (
   `Room_ID` int(11) NOT NULL,
   `Run_Time` datetime NOT NULL,
   `Film_Id` int(11) NOT NULL,
@@ -708,12 +472,11 @@ CREATE TABLE `running_films` (
   `RVET` date NOT NULL,
   `RUNATTIME` date DEFAULT NULL,
   `Avaliable` char(1) DEFAULT 'Y',
-  `running_films_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `running_films`
---
+  `running_films_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`running_films_id`),
+  UNIQUE KEY `Room_ID` (`Room_ID`,`Run_Time`),
+  KEY `fk_films` (`Film_Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 INSERT INTO `running_films` (`Room_ID`, `Run_Time`, `Film_Id`, `RVST`, `RVET`, `RUNATTIME`, `Avaliable`, `running_films_id`) VALUES
 (1, '2016-02-22 09:30:00', 2, '2016-02-11', '2016-02-18', '2016-02-22', 'Y', 1),
@@ -738,24 +501,16 @@ INSERT INTO `running_films` (`Room_ID`, `Run_Time`, `Film_Id`, `RVST`, `RVET`, `
 (1, '2016-04-29 09:30:00', 6, '2016-04-23', '2016-04-29', '2016-04-29', 'Y', 28),
 (2, '2016-04-29 09:30:00', 7, '2016-04-23', '2016-04-29', '2016-04-29', 'Y', 29);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `seats`
---
-
 DROP TABLE IF EXISTS `seats`;
-CREATE TABLE `seats` (
-  `Seat_ID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seats` (
+  `Seat_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Room_ID` int(11) NOT NULL,
   `Seat_Name` varchar(255) DEFAULT NULL,
   `available` char(1) DEFAULT 'Y',
-  `Run_Time` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `seats`
---
+  `Run_Time` datetime DEFAULT NULL,
+  PRIMARY KEY (`Seat_ID`),
+  UNIQUE KEY `uc_seat` (`Room_ID`,`Seat_Name`,`Run_Time`)
+) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=latin1;
 
 INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`) VALUES
 (1, 1, 'A1', 'Y', '2016-04-30 09:30:00'),
@@ -969,22 +724,13 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (209, 2, 'B4', 'Y', '2016-04-29 09:30:00'),
 (210, 2, 'B5', 'Y', '2016-04-29 09:30:00');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `terms`
---
-
 DROP TABLE IF EXISTS `terms`;
-CREATE TABLE `terms` (
-  `terms_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `terms` (
+  `terms_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
-  `info` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `terms`
---
+  `info` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`terms_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 INSERT INTO `terms` (`terms_id`, `title`, `info`) VALUES
 (1, 'Definitions', 'Definitions.txt'),
@@ -993,22 +739,14 @@ INSERT INTO `terms` (`terms_id`, `title`, `info`) VALUES
 (4, 'Cancellation of tickets', 'CancellationTickets.txt'),
 (5, 'General Conditions', 'GeneralCanditions.txt');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `tokens`
---
-
 DROP TABLE IF EXISTS `tokens`;
-CREATE TABLE `tokens` (
+CREATE TABLE IF NOT EXISTS `tokens` (
   `id` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `token` varchar(255) NOT NULL
+  `token` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `tokens`
---
 
 INSERT INTO `tokens` (`id`, `user_id`, `token`) VALUES
 ('070d6be12c0fdd10447bd1d665db0b158459f91b2b704c2ba5f5095131baeeb9', 3, '$2y$10$8rzSfISQtkdKNx24G3ApcuUzrIk7oQL0gN4vG9kKQ2j3yRonEWRSG'),
@@ -1033,25 +771,16 @@ INSERT INTO `tokens` (`id`, `user_id`, `token`) VALUES
 ('fe4e7d87cfa46714e77d66a78432f235e9506dc215ec9c6a47fc05cfb27b376b', 3, '$2y$10$sIxcIXTYojZwZhXlzLy.1.h.0a3T5avK.cZTUOtHTy5n61OCkDpCW'),
 ('ff6ec307a51edc663b10711eba73da098c2cde5017130202034d9c58cb510ac2', 3, '$2y$10$kzmTqqi5t6rb/M5OVSEuiOXqDJQweKxfrdRlZ9J6rsJVuk5Fw9s0u');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `transactions`
---
-
 DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE `transactions` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `items` text NOT NULL,
   `cost` double NOT NULL,
   `is_paid` tinyint(1) NOT NULL,
-  `time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `transactions`
---
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 INSERT INTO `transactions` (`id`, `user_id`, `items`, `cost`, `is_paid`, `time`) VALUES
 (1, 1, '[{movie: {id: 1, amount: 3}, {id: 2, amount: 1}, food: {id: 2, amount: 2}}]', 20.34, 0, '2016-03-01 00:00:00'),
@@ -1059,24 +788,18 @@ INSERT INTO `transactions` (`id`, `user_id`, `items`, `cost`, `is_paid`, `time`)
 (3, 0, '{"test":"121233","p2":234}', 12, 0, '0000-00-00 00:00:00'),
 (4, 0, '{"test":"121233","p2":234}', 12, 0, '2016-03-21 18:09:05');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `users`
---
-
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role_id` int(11) NOT NULL DEFAULT '1',
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `users`
---
+  `email` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
 
 INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `email`) VALUES
 (1, 'test', 'test', 1, '123'),
@@ -1086,26 +809,17 @@ INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `email`) VALUES
 (134, 'github_zhaoyiyi', '$2y$10$fHBaDDqTXtCUt3sXZco1/uv6q5cYS9rekB99Ef2zX830GpPTw4tZS', 1, 'zhao1max@gmail.com'),
 (135, '1234', '$2y$10$jkJ4CO6TuoU8LqiWFhfpr.Oq7rRB6fTWFCucxJH5aJiVF81Jo3ne2', 1, '123456%4012.com');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `user_profiles`
---
-
 DROP TABLE IF EXISTS `user_profiles`;
-CREATE TABLE `user_profiles` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
   `last_name` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
   `phone` varchar(14) CHARACTER SET utf8 DEFAULT NULL,
   `street` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `city` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `province` varchar(30) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `user_profiles`
---
+  `province` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 INSERT INTO `user_profiles` (`id`, `first_name`, `last_name`, `phone`, `street`, `city`, `province`) VALUES
 (1, 'Johanna', 'Steele', '(956) 434-2004', '153 Poplar Street', 'Inkerman', 'Puerto Rico'),
@@ -1139,14 +853,8 @@ INSERT INTO `user_profiles` (`id`, `first_name`, `last_name`, `phone`, `street`,
 (29, 'Wade', 'Hayes', '(947) 583-2116', '756 Fair Street', 'Canterwood', 'Idaho'),
 (30, 'Moran', 'Bean', '(943) 512-2074', '417 Duffield Street', 'Detroit', 'Guam');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `user_resum`
---
-
 DROP TABLE IF EXISTS `user_resum`;
-CREATE TABLE `user_resum` (
+CREATE TABLE IF NOT EXISTS `user_resum` (
   `user_resum_id` int(11) NOT NULL,
   `First name` varchar(50) NOT NULL,
   `Last name` varchar(50) NOT NULL,
@@ -1157,399 +865,29 @@ CREATE TABLE `user_resum` (
   `Date of graduation` text NOT NULL,
   `introduction` text NOT NULL,
   `sex` char(2) NOT NULL,
-  `ATTACH_FILE` varchar(100) NOT NULL
+  `ATTACH_FILE` varchar(100) NOT NULL,
+  PRIMARY KEY (`user_resum_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `user_resum`
---
 
 INSERT INTO `user_resum` (`user_resum_id`, `First name`, `Last name`, `phone number`, `Email`, `birthday`, `School name`, `Date of graduation`, `introduction`, `sex`, `ATTACH_FILE`) VALUES
 (1, 'bin', 'liu', '6453247285', 'hunbdr@gmail.com', '01-05-1989', 'humber', '01-09-2016', 'To work as an HR Summer Student at Ontario Energy Board where, I am aspiring to contribute my professional education, interpersonal and organizational skills and to add value to Ontario Energy Board and HR team in accomplishing its goals', 'ma', ' '),
 (2, 'aleax', 'send', '1234545678', 'liubindr@gmail.com', '01-05-1989', 'humber', '01-03-2016', '•	Familiar with employment law, OHSA and JHSC; skilled decision maker and problem solver by balancing employees’ needs with law and company’s policy', 'fa', ' '),
 (3, 'zhao', 'yi', '6453247285', 'lina@gmail.com', '01-05-1989', 'sence', '01-03-2014', '•	Helped to prepare payroll, position evaluations and performance review report\r\n•	Collected and analyzed internal and external compensation statistics, identified trends and proposed recommendations to HR manager\r\n•	Assisted in adjusting salary structures and designing compensation packages based on company’s budget while complying with government laws and regulations\r\n•	Researched for other discount and noncash incentive to existing benefit programs\r\n', 'fa', ' ');
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `answer`
---
-ALTER TABLE `answer`
-  ADD PRIMARY KEY (`answer_id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`categoryID`);
-
---
--- Indexes for table `cinemas`
---
-ALTER TABLE `cinemas`
-  ADD PRIMARY KEY (`Cinema_ID`);
-
---
--- Indexes for table `contactus`
---
-ALTER TABLE `contactus`
-  ADD PRIMARY KEY (`contact_id`);
-
---
--- Indexes for table `faq`
---
-ALTER TABLE `faq`
-  ADD PRIMARY KEY (`question_id`);
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `films`
---
-ALTER TABLE `films`
-  ADD PRIMARY KEY (`Film_Id`);
-
---
--- Indexes for table `food`
---
-ALTER TABLE `food`
-  ADD PRIMARY KEY (`Food_id`);
-
---
--- Indexes for table `food_comment`
---
-ALTER TABLE `food_comment`
-  ADD PRIMARY KEY (`Comment_id`);
-
---
--- Indexes for table `food_order`
---
-ALTER TABLE `food_order`
-  ADD PRIMARY KEY (`Order_id`);
-
---
--- Indexes for table `food_order_item`
---
-ALTER TABLE `food_order_item`
-  ADD PRIMARY KEY (`Order_item_id`);
-
---
--- Indexes for table `food_shoppingcart`
---
-ALTER TABLE `food_shoppingcart`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `food_test`
---
-ALTER TABLE `food_test`
-  ADD PRIMARY KEY (`Test_id`);
-
---
--- Indexes for table `food_test_question`
---
-ALTER TABLE `food_test_question`
-  ADD PRIMARY KEY (`Question_id`);
-
---
--- Indexes for table `food_user_recording`
---
-ALTER TABLE `food_user_recording`
-  ADD PRIMARY KEY (`Record_id`);
-
---
--- Indexes for table `logo`
---
-ALTER TABLE `logo`
-  ADD PRIMARY KEY (`Logo_Id`);
-
---
--- Indexes for table `menus`
---
-ALTER TABLE `menus`
-  ADD PRIMARY KEY (`name`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `moviefeature`
---
-ALTER TABLE `moviefeature`
-  ADD PRIMARY KEY (`film_id`),
-  ADD UNIQUE KEY `Id` (`film_id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`Order_Id`),
-  ADD KEY `Customer_Id` (`Customer_Id`);
-
---
--- Indexes for table `pages`
---
-ALTER TABLE `pages`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `rating`
---
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`rating_id`);
-
---
--- Indexes for table `ratings`
---
-ALTER TABLE `ratings`
-  ADD PRIMARY KEY (`rating_id`);
-
---
--- Indexes for table `reservations`
---
-ALTER TABLE `reservations`
-  ADD PRIMARY KEY (`Reservation_Id`),
-  ADD KEY `reservations_ibfk_2` (`Order_Id`);
-
---
--- Indexes for table `rooms`
---
-ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`Room_ID`),
-  ADD UNIQUE KEY `Room_Name` (`Room_Name`,`Cinema_ID`),
-  ADD KEY `Cinema_ID` (`Cinema_ID`);
-
---
--- Indexes for table `running_films`
---
-ALTER TABLE `running_films`
-  ADD PRIMARY KEY (`running_films_id`),
-  ADD UNIQUE KEY `Room_ID` (`Room_ID`,`Run_Time`),
-  ADD KEY `fk_films` (`Film_Id`);
-
---
--- Indexes for table `seats`
---
-ALTER TABLE `seats`
-  ADD PRIMARY KEY (`Seat_ID`),
-  ADD UNIQUE KEY `uc_seat` (`Room_ID`,`Seat_Name`,`Run_Time`);
-
---
--- Indexes for table `terms`
---
-ALTER TABLE `terms`
-  ADD PRIMARY KEY (`terms_id`);
-
---
--- Indexes for table `tokens`
---
-ALTER TABLE `tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `user_profiles`
---
-ALTER TABLE `user_profiles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user_resum`
---
-ALTER TABLE `user_resum`
-  ADD PRIMARY KEY (`user_resum_id`);
-
---
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `categories`
---
-ALTER TABLE `categories`
-  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- 使用表AUTO_INCREMENT `cinemas`
---
-ALTER TABLE `cinemas`
-  MODIFY `Cinema_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- 使用表AUTO_INCREMENT `contactus`
---
-ALTER TABLE `contactus`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
---
--- 使用表AUTO_INCREMENT `faq`
---
-ALTER TABLE `faq`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- 使用表AUTO_INCREMENT `films`
---
-ALTER TABLE `films`
-  MODIFY `Film_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- 使用表AUTO_INCREMENT `food`
---
-ALTER TABLE `food`
-  MODIFY `Food_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- 使用表AUTO_INCREMENT `food_comment`
---
-ALTER TABLE `food_comment`
-  MODIFY `Comment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- 使用表AUTO_INCREMENT `food_order`
---
-ALTER TABLE `food_order`
-  MODIFY `Order_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- 使用表AUTO_INCREMENT `food_order_item`
---
-ALTER TABLE `food_order_item`
-  MODIFY `Order_item_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- 使用表AUTO_INCREMENT `food_shoppingcart`
---
-ALTER TABLE `food_shoppingcart`
-  MODIFY `Id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- 使用表AUTO_INCREMENT `food_test`
---
-ALTER TABLE `food_test`
-  MODIFY `Test_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- 使用表AUTO_INCREMENT `food_test_question`
---
-ALTER TABLE `food_test_question`
-  MODIFY `Question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- 使用表AUTO_INCREMENT `food_user_recording`
---
-ALTER TABLE `food_user_recording`
-  MODIFY `Record_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- 使用表AUTO_INCREMENT `logo`
---
-ALTER TABLE `logo`
-  MODIFY `Logo_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `moviefeature`
---
-ALTER TABLE `moviefeature`
-  MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- 使用表AUTO_INCREMENT `orders`
---
-ALTER TABLE `orders`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
---
--- 使用表AUTO_INCREMENT `pages`
---
-ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
---
--- 使用表AUTO_INCREMENT `rating`
---
-ALTER TABLE `rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `reservations`
---
-ALTER TABLE `reservations`
-  MODIFY `Reservation_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- 使用表AUTO_INCREMENT `rooms`
---
-ALTER TABLE `rooms`
-  MODIFY `Room_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `running_films`
---
-ALTER TABLE `running_films`
-  MODIFY `running_films_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
---
--- 使用表AUTO_INCREMENT `seats`
---
-ALTER TABLE `seats`
-  MODIFY `Seat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
---
--- 使用表AUTO_INCREMENT `terms`
---
-ALTER TABLE `terms`
-  MODIFY `terms_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- 使用表AUTO_INCREMENT `transactions`
---
-ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
---
--- 使用表AUTO_INCREMENT `user_profiles`
---
-ALTER TABLE `user_profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
---
--- 限制导出的表
---
-
---
--- 限制表 `orders`
---
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`Customer_Id`) REFERENCES `users` (`id`);
 
---
--- 限制表 `reservations`
---
 ALTER TABLE `reservations`
   ADD CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`Order_Id`) REFERENCES `orders` (`Order_Id`);
 
---
--- 限制表 `rooms`
---
 ALTER TABLE `rooms`
   ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`Cinema_ID`) REFERENCES `cinemas` (`Cinema_ID`);
 
---
--- 限制表 `running_films`
---
 ALTER TABLE `running_films`
   ADD CONSTRAINT `fk_films` FOREIGN KEY (`Film_Id`) REFERENCES `films` (`Film_Id`),
   ADD CONSTRAINT `running_films_ibfk_1` FOREIGN KEY (`Room_ID`) REFERENCES `rooms` (`Room_ID`);
 
---
--- 限制表 `seats`
---
 ALTER TABLE `seats`
   ADD CONSTRAINT `seats_ibfk_1` FOREIGN KEY (`Room_ID`) REFERENCES `rooms` (`Room_ID`);
 
