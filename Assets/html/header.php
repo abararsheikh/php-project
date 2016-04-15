@@ -1,16 +1,7 @@
 <?php
+use Project\Auth\models\AuthModel;
 use Project\Classes\Router\Nav;
 use Project\Classes\View;
-
-Nav::group('/ as Homepage', function () {
-  Nav::get('/ as Home', function () { /*echo 'homepage';*/ });
-  Nav::get('/cinemas as Cinemas', function () { echo 'cinemas'; });
-  Nav::get('/movies as Movies', function () { echo 'movies'; });
-  Nav::get('/booking as Booking', function () { echo 'booking'; });
-  Nav::get('/career as Career', function () { echo 'career'; });
-
-});
-
 
 $navTemplate = [
     '<ul class="nav navbar-nav">',
@@ -18,6 +9,13 @@ $navTemplate = [
     '</ul>',
     'selected' => 'active',
 ];
+
+if(AuthModel::getUser('roleId') !== false){
+  echo AuthModel::getUser('roleId');
+}else {
+  echo 'not logged in';
+  header("Location: /");
+}
 ?>
 
 <!Doctype HTML>
