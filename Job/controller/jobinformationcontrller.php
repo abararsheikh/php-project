@@ -19,7 +19,7 @@ if($act=='add')
 	}
   }
       require_once('conn.php');
-  $sql="select * from test";
+  $sql="select * from ceshi";
    $resC= $db->query($sql);
   $fenshu = 0;
   while($rs = $resC->fetchObject()){
@@ -41,7 +41,7 @@ if($act=='add')
 
 if(isset($_POST['Submit'])){
     if ($_POST['rand3']==$_POST['username32']){
-        header('location:index1.php');
+        header('location:index.php');
     }
     else{
         $error=(" <span style='color :red;'> Wrong code </span>");

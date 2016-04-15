@@ -22,7 +22,7 @@
       
         $query = "INSERT INTO feedback (username, phone, email,address,message) VALUES ('$username1', '$phone', '$email', '$address','$message')";
         $db->exec($query);
-        echo 'Success';
+        echo 'Successful';
 
     }
 }
