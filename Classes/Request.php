@@ -5,15 +5,14 @@ namespace Project\Classes;
 
 class Request {
   private $params;
-  public $method;
+  private $method;
 
   public function __construct() {
     $this->params = $_REQUEST;
     $this->method = $_SERVER['REQUEST_METHOD'];
-    if ($this->method !== 'GET' || 'POST') {
+    if ($this->method !== 'GET' && $this->method !== 'POST') {
       $str = file_get_contents("php://input");
       parse_str($str, $params);
-//      $params = json_decode($str, true);
       $this->params = $params;
     }
   }
@@ -24,4 +23,13 @@ class Request {
     return ($value);
   }
 
+  public function requestURL() {
+    $url = $_SERVER['REQUEST_URI'];
+    $index = strpos($_SERVER['REQUEST_URI'], '?');
+    return $index ? substr($url, 0, $index) : $url;
+  }
+  
+  public function method() {
+    return $_SERVER['REQUEST_METHOD'];
+  }
 }

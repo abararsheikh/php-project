@@ -32,13 +32,15 @@ class AdminController {
     ]);
   }
 
-  public function home() {
+  public function home(Request $request) {
+    var_dump($request);
     $this->view->render('/Examples/admin/test', 'Admin Home');
   }
 
   public function news() {
     $this->view->render('/index', 'Admin news');
   }
+
 
 
 
