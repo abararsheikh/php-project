@@ -6,7 +6,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
 <head>
   <script src="/Assets/js/homepage.js"></script>
   <link href="Assets/css/homepage.css" type="text/css" rel="stylesheet">
-  
+
 </head>
 
 <body>
@@ -18,7 +18,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
     <p>Watch:</p>
     <p><span id="target"></span><span id="cursor">|</span></p>
     <div class="text-center">
-      <button class="btn btn-primary">Book Ticket</button>
+      <a href="/booking"><button class="btn btn-primary">Book Ticket</button></a>
     </div>
   </div>
   <div id="movePlaceholder"></div>
