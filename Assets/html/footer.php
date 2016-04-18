@@ -16,10 +16,8 @@
     </div>
   </div>
 </footer>
+
 <script src="/Assets/js/jquery.min.js"></script>
 <script src="/Assets/js/bootstrap.min.js"></script>
 <script src="/Assets/js/authApp.js"></script>
 <script src="/Assets/js/MenuDisplay.js"></script>
-
-</body>
-</html>
