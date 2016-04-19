@@ -16,7 +16,9 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
+  /*background-color: ghostwhite;*/
   background-image: url("/Assets/image/cinema.png");
+  /*background-blend-mode: screen;*/
   background-size: 100% 100%;
 }
 
