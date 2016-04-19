@@ -24,7 +24,7 @@ class DB {
   /**
    * Bind values then perform insert action.
    *
-   * @param string $tableAndColumns Table name, and column name if necessary
+   * @param string $tableAndColumns Table name
    * @param array $valuesArray Array of values to be inserted, key should be column name
    * @param array $typesArray Array contains pdo param types of each column
    * @return bool|string              Return true if insert success, error message if not
@@ -37,19 +37,63 @@ class DB {
       INSERT INTO $tableName ($columns)
       VALUES ($valuesPlaceholder);
     ");
-    var_dump($insertStmt);
     $insertStmt = self::bindValues($insertStmt, $valuesArray, $typesArray);
     return $insertStmt->execute() ? true : $insertStmt->errorInfo()[2];
   }
 
-  public static function select($tableName) {
-
+  /**
+   * Simple select. NOTE: it only uses AND to connect each condition.
+   *
+   * @param string $tableName
+   * @param array $valuesArray  Array of values in key value pair
+   * @param array $typesArray   Array contains types of each column
+   * @param string $condition   Sign will be used in where clause
+   * @return array  Result of select or error information
+   */
+  public static function select($tableName, $valuesArray = [], $typesArray = [], $condition = '=') {
+    $whereClause = '';
+    if (!empty($valuesArray)) {
+      $whereClause = 'WHERE ' . join(' AND ', array_map(function($key) use($condition) {
+        return "$key $condition :$key";
+      }, array_keys($valuesArray)));
+    }
+    $selectStmt = self::getDB()->prepare("
+      SELECT * FROM $tableName $whereClause
+    ");
+    $selectStmt = !empty($whereClause) ? self::bindValues($selectStmt, $valuesArray, $typesArray) : $selectStmt;
+    return $selectStmt->execute() ? $selectStmt->fetchAll(PDO::FETCH_ASSOC) : $selectStmt->errorInfo()[2];
   }
 
   public static function find($query, $params) {
     $stmt = self::getDB()->prepare($query);
     $stmt->execute($params);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function update($table, array $update, $condition, array $conditionArray, array $typesArray) {
+    $set = join(', ', array_map(function ($key) {
+      return "$key=:$key";
+    }, array_keys($update)));
+    $updateStmt = self::getDB()->prepare("
+      UPDATE $table
+      SET $set
+      WHERE $condition
+    ");
+    $updateStmt = self::bindValues($updateStmt, $update, $typesArray);
+    $updateStmt = self::bindValues($updateStmt, $conditionArray, $typesArray);
+    return $updateStmt->execute() ? true : $updateStmt->errorInfo()[2];
+  }
+
+  public static function delete($table, array $conditionArray, array $typesArray, $condition = '=') {
+    $deleteCondition = join($condition, array_map(function($key) {
+      return "$key = :$key";
+    }, array_keys($conditionArray)));
+    $deleteStmt = self::getDB()->prepare("
+      DELETE FROM $table
+      WHERE $deleteCondition
+    ");
+    $deleteStmt = self::bindValues($deleteStmt, $conditionArray, $typesArray);
+    return $deleteStmt->execute() ? true : $deleteStmt->errorInfo()[2];
   }
 
   //
@@ -60,22 +104,19 @@ class DB {
     return $stmt;
   }
 
-  private static function valuesPlaceholder(array $valuesArray) {
-    return join(',', array_map(function ($key) {
-      return ":$key";
-    }, array_keys($valuesArray)));
-  }
 }
 
 include '../../autoloader.php';
 
-$valuesArray = [
-    'username' => 'test2',
-    'password' => '123'
+$conditionArray = [
+    'oldUsername' => 'abc'
 ];
 $typesArray = [
-    'username' => PDO::PARAM_INT,
-    'password' => PDO::PARAM_STR
+    'username' => PDO::PARAM_STR,
+    'oldUsername' => PDO::PARAM_STR,
 ];
-$result = DB::insert('users', $valuesArray, $typesArray);
+//$result = DB::insert('users', ['username' => '123456'], ['username' => PDO::PARAM_STR]);
+//$result = DB::select('users', ['username' => '123'], ['username' => PDO::PARAM_STR]);
+//$result = DB::update('users', ['username' => 'abcd'], 'username=:oldUsername', $conditionArray, $typesArray);
+$result = DB::delete('users', ['username' => 'abcd'], ['username' => PDO::PARAM_STR]);
 var_dump($result);
