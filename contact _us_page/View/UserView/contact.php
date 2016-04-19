@@ -12,6 +12,7 @@ if(isset($_POST['submit']))
     $Email = htmlspecialchars($_POST['Email']);
     $Message =htmlspecialchars($_POST['Message']);
     $Message = trim($Message);
+
 //===validate the input=========
 
     $validate = new Contactus();
@@ -33,7 +34,7 @@ if(empty($error))
 
     $storeUservalue ->contactProcess();
 
-    // Call the gMail file to sent an Email
+    // Call the GMail file to sent an Email
 
     include '../../controller/sentToGmail.php';
 }
@@ -56,6 +57,7 @@ if(empty($error))
 
 <body>
 <div class="container">
+    <?php include '../../../Assets/html/header.php'?>
     <div class="row">
         <div class="col-md-12">
             <img src="/Assets/image/HomePage/contact_slider.jpg" style="height: 260px;">

@@ -96,24 +96,12 @@ Release Date :
 
                             <p>Opening: April 29, 2016</p>
                         </div>
-                </div>
-
-                <div class="col-lg-4 col-sm-4 col-md-4 ">
+                    <!----------------------------------->
                     <div class="movie-list row">
                         <div class="col-lg-4 col-sm-4 col-md-4" style="width:70%;">
                             <img alt="film1" src="/Assets/image/kongfupanda.jpg"/>
                         </div>
-                        <!--
-                                                <div class="col-sm-1 col-xs-5">
-                                                    <p>Top 1</p>
 
-                                                    <p>$ 26.00M</p>
-
-                                                    <P>Running Time:<span> 1h 35m</span></P>
-
-                                                    <p>Opening: Jan 29, 2016</p>
-                                                </div>
-                        -->
                     </div>
                     <div class="col-lg-8 col-sm-8 col-md-8">
                         <p>Top 2</p>

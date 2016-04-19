@@ -8,8 +8,8 @@ const $ = gulpLoadPlugins({
 });
 const browserSync = $.browserSync.create();
 const dir = {
-  src: './src',
-  dest: './public'
+  src: './',
+  dest: './'
 };
 
 // HTML
@@ -39,14 +39,14 @@ const dir = {
 //});
 //
 //// Browser Sync
-//gulp.task('serve', ['html', 'ts', 'styles'], () => {
-//  browserSync.init({
-//    proxy: 'php.project',
-//    port: 3000
-//  });
-//
-//  gulp.watch(`${dir.src}/**/*.sass`, ['styles']);
-//  gulp.watch(`${dir.src}/**/*.ts`, ['ts']);
-//  gulp.watch(`${dir.src}/**/*.html`, ['html']);
-//  gulp.watch(`${dir.dest}/**/*.html`).on('change', browserSync.reload);
-//});
+gulp.task('serve', () => {
+ browserSync.init({
+   proxy: 'php.project',
+   port: 3000
+ });
+
+ // gulp.watch(`${dir.src}/**/*.sass`, ['styles']);
+ // gulp.watch(`${dir.src}/**/*.ts`, ['ts']);
+ // gulp.watch(`${dir.src}/**/*.html`, ['html']);
+ gulp.watch(`${dir.dest}/**/*.php`).on('change', browserSync.reload);
+});

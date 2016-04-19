@@ -14,53 +14,48 @@ class Route {
   private $name;
   private $method;
   private $callback;
+  private $resolver;
+  private $routeParam;
 
   /**
    * Route constructor.
+   *
    * @param $path string
    * @param $name string
    * @param $method string
    * @param callable $callback
    */
   public function __construct($path, $name, $method, $callback) {
-    $this->requestUrl = $_SERVER['REQUEST_URI'];
-    $route = $this->getRouteParam($path);
-    $routeParam = $route['param'];
-    if (is_string($callback)) $callback = $this->controllerShortHand($callback, $routeParam);
+    $this->resolver = new RouteCallbackResolver();
 
-    $this->path = !empty($routeParam) ? $route['route'] . '/' . $routeParam : $path;
+    $route = $this->getRouteParam($path);
+    $this->routeParam = $route['param'];
+    // Set route to correct format if there is route param so it is not like /path/:param
+    $this->path = !empty($this->routeParam) ? $route['route'] . '/' . $this->routeParam : $path;
     $this->name = $name;
     $this->method = $method;
     $this->callback = $callback;
   }
 
   public function match($base = '/') {
+    $request = new Request();
 //    var_dump('Route base--', $base);
-    if ($index = strpos($this->requestUrl, '?')) {
-      $requestURL = substr($this->requestUrl, 0, $index);
-    } else {
-      $requestURL = $this->requestUrl;
-    }
-    $requestMethod = $_SERVER['REQUEST_METHOD'];
-
-//    var_dump('request', $requestURL);
+//    var_dump('request', $request->requestURL());
 //    var_dump('match', $base . $this->path);
     $path = $base . $this->path;
     // takeout extra slash
     $path = str_replace('//', '/', $path);
-    if (strtolower($requestURL) == strtolower($path) &&
-        strtolower($requestMethod) == strtolower($this->method)
+    if (strtolower($request->requestURL()) == strtolower($path) &&
+        strtolower($request->method()) == strtolower($this->method)
     ) {
-      call_user_func($this->callback);
+
+      $page = $this->resolver->resolveCallback($this->callback, [$this->routeParam]);
+      echo $page;
       return true;
     }
     return false;
   }
 
-  /**
-   * @param $propName string
-   * @return mixed
-   */
   public function getProp($propName) {
     return $this->$propName;
   }
@@ -69,19 +64,6 @@ class Route {
     $this->$propName = $value;
   }
 
-  private function controllerShortHand($controllerAtAction, $routeParam) {
-    if(preg_match('/.+@.+/', $controllerAtAction) == 1) {
-      list ($controller, $action) = explode('@', $controllerAtAction);
-      return function() use($controller, $action, $routeParam) {
-        if (!empty($routeParam)) {
-          call_user_func([new $controller(), $action], $routeParam, new Request());
-        } else {
-          call_user_func([new $controller(), $action], new Request());
-        }
-      };
-    }
-    throw new \Exception('syntax error');
-  }
 
   private function getRouteParam($route) {
     $output = ['param' => '', 'route' => $route];

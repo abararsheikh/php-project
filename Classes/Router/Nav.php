@@ -6,7 +6,6 @@
 
 namespace Project\Classes\Router;
 use Project\Classes\Helper;
-use Project\Classes\Request;
 
 /**
  * Class Nav
@@ -19,18 +18,6 @@ use Project\Classes\Request;
  *
  * Every item's link inside a group is the relative path to that
  * group's base dir.
- *
- * Example:
- *  Nav::group('/ as Home', function() {
- *    Nav::get('news as News', function() {
- *      // do something coming to this link
- *    })
- *    Nav::post('news as News', function() {
- *      // do something coming to this link
- *    })
- *  })
- *
- *  Nav::start()
  *
  *
  * @package Project\Classes\Router
@@ -47,23 +34,18 @@ class Nav {
   private static $menu = [];
   private static $hasMatch = false;
 
-  public static function dumpMenu() {
-//    var_dump(self::$menu);
-    var_dump(self::getLink());
-  }
-
   public static function __callStatic($name, $arguments) {
     list($pathAsName, $callback) = $arguments;
     self::$routes[] = self::add($pathAsName, $callback, $name);
   }
 
   /**
-   * Groups whatever inside together, this method should first, then add routes or groups inside.
+   * Groups whatever inside, this method should first, then add routes or groups inside.
    * @param string $baseAsName Base dir and name of this group, separated by 'as', for example, '/ as Home'
    * @param callable $callback Should be either routes of groups.
    */
   public static function group($baseAsName, $callback) {
-    list($base, $name) = Helper::separateName($baseAsName);
+    list($base, $name) = self::separateName($baseAsName);
     self::$base[] = $base;
     self::$name[] = $name;
     self::$callbacks[] = $callback;
@@ -93,17 +75,7 @@ class Nav {
     }
   }
 
-  public static function menu() {
-    return self::getLink();
 
-  }
-
-  // Redirect to another page.
-  public static function redirectTo($path) {
-    return function () use ($path) {
-      header("Location: $path");
-    };
-  }
   ///////////////////////
   //  Private functions
   ///////////////////////
@@ -258,8 +230,12 @@ class Nav {
   }
 
   private function add($pathAsName, $action, $method = 'GET') {
-    list($path, $name) = Helper::separateName($pathAsName);
+    list($path, $name) = self::separateName($pathAsName);
     return new Route($path, $name, $method, $action);
+  }
+
+  private function separateName($pathAsName) {
+    return strpos($pathAsName, ' as ') ? explode(' as ', $pathAsName) : [$pathAsName, null];
   }
 
 }

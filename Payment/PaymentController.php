@@ -23,7 +23,7 @@ class PaymentController extends Controller{
     if ($this->model->stripe($token)) {
       //header('Refresh: 5; url=/');
       header("Location: ../Booking/View/payment.php");
-      echo "<h1 style='color: lightgreen;'>Thank you, you will be redirected to homepage shortly</h1>";
+      return "<h1 style='color: lightgreen;'>Thank you, you will be redirected to homepage shortly</h1>";
     }
   }
 }

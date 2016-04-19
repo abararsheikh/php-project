@@ -61,30 +61,14 @@ class Ratings
     {
         //connect to database :
         $db = Database::getDB();
-        $query = "SELECT total_votes, total_value FROM ratings WHERE rating_id = $id";
+        $query = "SELECT total_votes, total_value FROM ratings WHERE rating_id = '$id'";
         $queryPre = $db ->prepare($query);
         $result = $queryPre->execute();
         //  $result = $queryPre->fetch();
         $rows = $queryPre->fetch(PDO::FETCH_ASSOC);
         return $rows;
     }
-    /*  Get the local IP address  */
-    function getRealIpAddr()
-    {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-        {
-            $ip=$_SERVER['HTTP_CLIENT_IP'];
-        }
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-        {
-            $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-        else
-        {
-            $ip=$_SERVER['REMOTE_ADDR'];
-        }
-        return $ip;
-    }
+
                     /*
                      * ===Admin Part===
                      *

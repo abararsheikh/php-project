@@ -48,15 +48,15 @@ class AuthController extends Controller {
   }
 
   public function home() {
-    $this->view->render('/Auth/Views/index', 'auth');
+    return $this->view->render('/Auth/Views/index', 'auth');
   }
 
   // Login page GET
   public function loginPage() {
     if ($this->model->logInViaCookie()) {
-      echo('logged in as ' . AuthModel::getUser());
+      return ('logged in as ' . AuthModel::getUser());
     } else {
-      $this->view->render('/Auth/Views/index', 'Login Page');
+      return $this->view->render('/Auth/Views/index', 'Login Page');
     }
   }
 
@@ -70,11 +70,11 @@ class AuthController extends Controller {
     } else {
       $output['error'][] = 'username or password is not correct';
     }
-    $this->view->json($output);
+    return $this->view->json($output);
   }
 
   public function adminLoginPage() {
-    $this->view->render('/Auth/Views/admin', 'admin login Page');
+    return $this->view->render('/Auth/Views/admin', 'admin login Page');
   }
 
   // Admin POST
@@ -86,7 +86,7 @@ class AuthController extends Controller {
     } else {
       $output['error'][] = 'username or password is not correct';
     }
-    $this->view->json($output);
+    return $this->view->json($output);
   }
 
   // Logout GET
@@ -98,8 +98,8 @@ class AuthController extends Controller {
   public function getLogin() {
     $this->model->logInViaCookie();
     $username = AuthModel::getUser();
-    if ($username) $this->view->json(['success' => true, 'username' => $username]);
-    if (!$username) $this->view->json($this->resultArray(false, ''));
+    if ($username) return $this->view->json(['success' => true, 'username' => $username]);
+    if (!$username) return $this->view->json($this->resultArray(false, ''));
   }
 
 
@@ -107,14 +107,14 @@ class AuthController extends Controller {
   // Register GET
   //////////////////////////////////
   public function registerPage() {
-    $this->view->render('/Auth/Views/index', 'Register');
+    return $this->view->render('/Auth/Views/index', 'Register');
   }
 
   // Register/user POST
   public function checkAvailability() {
     $name = Helper::getParam('name');
     $value = Helper::getParam('value');
-    $this->view->json(['available' => $this->model->checkAvailability($name, $value)]);
+    return $this->view->json(['available' => $this->model->checkAvailability($name, $value)]);
   }
 
   // Register POST
@@ -126,9 +126,9 @@ class AuthController extends Controller {
 
     if ($v->isValid()) {
       $result = $this->model->newUser(Helper::getParam('username'), Helper::getParam('password'), Helper::getParam('email'));
-      $this->view->json($this->resultArray($result['success'], $result['error']));
+      return $this->view->json($this->resultArray($result['success'], $result['error']));
     } else {
-      $this->view->json($this->resultArray(false, $v->getErrors()));
+      return $this->view->json($this->resultArray(false, $v->getErrors()));
     }
   }
 

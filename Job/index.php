@@ -20,7 +20,7 @@
 </style>
 </head>
 
-	
+
 <body>
 
 <table width="981" height="939" border="0" align="center" bgcolor="#CCCCCC" matgin: 0 auto;>
@@ -45,7 +45,7 @@
   </tr>
   <tr>
     <td width="871" height="676" valign="top" bgcolor="#CCCCCC">
-	
+
 	<div id="output"/>
 
 	<?php
@@ -119,15 +119,15 @@ else{
 $Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCount.'>End page</a>';
 
 }
-$mount-($page-1)*$PageSize;
-$num=$a;
+//$mount-($page-1)*$PageSize;
+//$num=$a;
 
 ?>
 
-<?php 
+<?php
 
- $upLimit   =   ($page-1)*$PageSize;   
-  $lowLimit   =  $PageSize; 
+ $upLimit   =   ($page-1)*$PageSize;
+  $lowLimit   =  $PageSize;
   $act=$_GET["action"];
 if($act=="search")
 {
@@ -146,7 +146,7 @@ while($rs=$result->fetchObject())
 {
 
 
-?> 
+?>
 
 	<table  width="863" border="0">
         <tr>
@@ -159,7 +159,7 @@ while($rs=$result->fetchObject())
         <tr>
           <td><p>Requirement:</p></td>
           <td width="738" align="left"><?php echo $rs->yaoqiu;?>&nbsp;</td>
-	  
+
         </tr>
       </table>
     <?php
@@ -176,7 +176,7 @@ while($rs=$result->fetchObject())
         <td height="90"  bgcolor="#CCCCCC" align="center"><div  id="outpyhut"><a href="web_add.php">Add Job</a></div></td>
     </tr>
 
-   
+
 </table>
 <p>&nbsp;</p>
 		  		</div>

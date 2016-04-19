@@ -76,6 +76,7 @@ class AppStore extends EventEmitter {
           if (data.success) {
             this._isLoggedIn = false;
             this._username = '';
+            window.location.href = '/';
           }
           this.emitChange();
         });

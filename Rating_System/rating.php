@@ -1,10 +1,29 @@
 <?php
+use Project\Classes\DB\DB;
 require_once '/Model/Ratings.php';
-include 'database.php';
+require_once '../autoloader.php';
+require_once 'database.php';
+require_once '../FilmAdmin_CMS/Model/Filmadmin.php';
 $db = Database::getDB();
-$ids=array(1,2,3,4,5);  //define  quantity of movies in array and it's display rating system for that
-//$ids =array();
+$db2 = DB::getDB();
+$getMovieID = new Filmadmin();
+$getMoviesId = $getMovieID->getMoviesID();
+//$ids=array(1,2,3,4,5,6);
+ //define  quantity of movies in array and it's display rating system for that
+$ids = array();
 
+//  $ids= $getMoviesId ;
+
+foreach($getMoviesId as $film)
+{
+   // $ids = $film['film_id'];
+     array_push($ids,$film['film_id']);
+      $filename_arr = $ids;
+      $Movieid = implode(',', $filename_arr);
+
+}
+//$ids=array(1,2,3,4,5,6)
+//var_dump($ids);
 ?>
 
 <html>
@@ -62,7 +81,8 @@ for($i=0;$i<count($ids);$i++)
     }
     echo' <div class="total_votes"><p class="voted"> Rating: <strong>'.@number_format($rat).'</strong>/5 ('.$v. '  vote(s) cast)
             </div>
-        </div></div>';}
+        </div></div>';
+}
 ?>
 
 
