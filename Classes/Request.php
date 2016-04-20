@@ -2,7 +2,11 @@
 
 namespace Project\Classes;
 
-
+/**
+ * Class Request
+ * @package Project\Classes
+ * @author Yi
+ */
 class Request {
   private $params;
   private $method;
@@ -10,6 +14,7 @@ class Request {
   public function __construct() {
     $this->params = $_REQUEST;
     $this->method = $_SERVER['REQUEST_METHOD'];
+    // store
     if ($this->method !== 'GET' && $this->method !== 'POST') {
       $str = file_get_contents("php://input");
       parse_str($str, $params);
