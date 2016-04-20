@@ -49,7 +49,8 @@ class Route {
         strtolower($request->method()) == strtolower($this->method)
     ) {
 
-      $this->resolver->resolveCallback($this->callback, [$this->routeParam]);
+      $page = $this->resolver->resolveCallback($this->callback, [$this->routeParam]);
+      echo $page;
       return true;
     }
     return false;

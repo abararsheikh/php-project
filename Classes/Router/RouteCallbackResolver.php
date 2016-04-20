@@ -18,7 +18,7 @@ class RouteCallbackResolver {
       return !empty($item);
     });
     $methodParams = !empty($allParams) ? $allParams : [];
-    call_user_func_array($parsedCallback['method'], $methodParams);
+    return call_user_func_array($parsedCallback['method'], $methodParams);
   }
 
   /**

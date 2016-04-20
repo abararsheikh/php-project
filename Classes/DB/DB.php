@@ -106,17 +106,3 @@ class DB {
 
 }
 
-include '../../autoloader.php';
-
-$conditionArray = [
-    'oldUsername' => 'abc'
-];
-$typesArray = [
-    'username' => PDO::PARAM_STR,
-    'oldUsername' => PDO::PARAM_STR,
-];
-//$result = DB::insert('users', ['username' => '123456'], ['username' => PDO::PARAM_STR]);
-//$result = DB::select('users', ['username' => '123'], ['username' => PDO::PARAM_STR]);
-//$result = DB::update('users', ['username' => 'abcd'], 'username=:oldUsername', $conditionArray, $typesArray);
-$result = DB::delete('users', ['username' => 'abcd'], ['username' => PDO::PARAM_STR]);
-var_dump($result);
