@@ -6,12 +6,8 @@ use \Project\Classes\DB\DB as DB;
 use \PDO;
 use Project\Classes\Helper;
 
-// TODO: config
-/**
- * @Author Yi Zhao
- *
- */
-class AuthModel {
+class LoginModel {
+
   protected $db;
 
   public function __construct() {
@@ -19,22 +15,6 @@ class AuthModel {
     Helper::startSession();
   }
 
-  // New user
-  public function newUser($username, $password, $email) {
-    $newStmt = $this->db->prepare('
-      INSERT INTO users(username, password, email)
-      VALUES (:username, :password, :email);'
-    );
-    $newStmt->bindValue(':username', $username, PDO::PARAM_STR);
-    $newStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-    $newStmt->bindValue(':email', $email, PDO::PARAM_STR);
-
-    $queryResult['success'] = $newStmt->execute() ? true : false;
-    $queryResult['error'] = $newStmt->errorInfo()[2];
-
-    return $queryResult;
-
-  }
   public function logIn($username, $password) {
     $user = $this->findUser($username, $password);
     if (!$user) return false;
@@ -78,14 +58,7 @@ class AuthModel {
     $_SESSION = [];
     session_destroy();
   }
-  public function checkAvailability($name, $value) {
-    $col = ['username'=>'username', 'password' => 'password', 'email' => 'email'];
-    $sql = "SELECT * FROM users WHERE $col[$name]";
-    $stmt = $this->db->prepare($sql . ' = :colValue');
-    $stmt->bindParam(':colValue', $value, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetch() ? false : true;
-  }
+
 
   // Generates a random password
   // Source: https://gist.github.com/zyphlar/7217f566fc83a9633959
@@ -108,7 +81,7 @@ class AuthModel {
   }
 
   // Protected
-  protected function addUserToSession($user) {
+  public function addUserToSession($user) {
     $_SESSION['user'] = [
         'id' => $user['id'],
         'username' => $user['username'],
@@ -145,7 +118,8 @@ class AuthModel {
   private function findUser($username, $password) {
     $selectStmt = $this->db->prepare('
       SELECT * FROM users
-      WHERE username = :username;
+      WHERE username = :username
+      OR email = :username;
     ');
     $selectStmt->bindValue(':username', $username, PDO::PARAM_STR);
     if ($selectStmt->execute()) {
@@ -154,8 +128,4 @@ class AuthModel {
     }
     return false;
   }
-
-
-
 }
-
