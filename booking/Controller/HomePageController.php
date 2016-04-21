@@ -9,7 +9,7 @@
 
 class HomePageController {
     public function __construct(){
-        echo "This is Home Controller <br/>";
+      //  echo "This is Home Controller <br/>";
     }
     //HTTP GET
     public function index(){
@@ -25,7 +25,7 @@ class HomePageController {
          $shoppingCart = new ShoppingCart();
             $shoppingCart->deleteItem($itemId);
             $editItem->emptySession();
-            echo "edit item has been delete";
+           // echo "edit item has been delete";
         }
 
         $getfilmInfo = new TopRateModel();
@@ -167,7 +167,7 @@ class HomePageController {
             //$item->Room_ID = $_POST['']
             // var_dump($item);
             $filmBooking = new FilmBookingModel();
-            $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime'
+            $sql = "SELECT DISTINCT(rooms.Room_Name), rooms.Room_ID,DATE_FORMAT(Run_Time, '%H:%i') AS 'RunTime', Run_Time
                               FROM films JOIN running_films
                                           ON films.Film_Id = running_films.Film_Id
                                          JOIN rooms
@@ -179,6 +179,8 @@ class HomePageController {
                                          ORDER BY DATE_FORMAT(Run_Time, '%H:%i')";
             $TimeInfos = $filmBooking->getBookingDetail($para = ["Film_Id" => $item->FilmId, "Cinema_ID" => $item->Cinema_ID, "Room_Id" => $item->Room_ID], $sql);
 
+            $seatsLoadArray = self::checkSeats($TimeInfos);
+
             $sql = "SELECT Seat_Name, available
                 From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
 
@@ -189,10 +191,38 @@ class HomePageController {
             //var_dump($TimeInfos);
             require_once "./View/Booking.php";
         }else{
-            echo "In else";
+            //echo "In else";
             header("Location: ./index.php?route=HomePageController/index&error=$error");
         }
     }
+
+   static function checkSeats($TimeInfos){
+       $filmBooking = new FilmBookingModel();
+       $seatsLoadArray = [];
+       foreach($TimeInfos as $timeInfo) {
+           $sql = "SELECT Seat_Name, available
+                From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
+            $i=0;
+           $SeatsInfos = $filmBooking->getBookingDetail($para = ["Room_ID" => $timeInfo->Room_ID, "Run_Time" => $timeInfo->Run_Time], $sql);
+           foreach($SeatsInfos as $seat){
+               if($seat->available=='Y'){
+                   $i++;
+               }
+           }
+           if($i==0){
+               $seatsLoadArray[$timeInfo->RunTime]="sold-out";
+           }
+           if($i>0 && $i<3){
+               $seatsLoadArray[$timeInfo->RunTime]="filling";
+           }
+           if($i>=3){
+               $seatsLoadArray[$timeInfo->RunTime]="available";
+           }
+
+       }
+
+       return $seatsLoadArray;
+   }
 
 
 

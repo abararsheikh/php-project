@@ -8,7 +8,7 @@
 
 class BookingController{
     public function __construct(){
-        echo "This is Booking Controller <br/>";
+        //echo "This is Booking Controller <br/>";
     }
 
     public function index(){

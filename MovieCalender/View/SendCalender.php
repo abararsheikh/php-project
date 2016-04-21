@@ -59,15 +59,7 @@
             <p class="col-lg-12">You've selected most Anticipated movies to be added to your personalized Movie Calendar</p>
         </div>
         <form>
-        <div class="row">
-            <p class="col-lg-4 col-md-4 col-sm-4">
-                <select class="mp-caltype">
-                    <option>option1</option>
-                    <option>option1</option>
-                    <option>option1</option>
-                </select>
-            </p>
-        </div>
+
         <div class="row">
             <div class="col-lg-12">
 
