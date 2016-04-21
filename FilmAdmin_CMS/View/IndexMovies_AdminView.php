@@ -20,7 +20,7 @@ $allMovies = $displayAllMovies->displayMovie();
 
 
 <body>
-<?php include '../../Admin_Login/admin.php'?>
+<!--<?//php include '../../Admin_Login/admin.php' ?>-->
 <main id="main-content">
     <section  class="container">
         <div class="row">

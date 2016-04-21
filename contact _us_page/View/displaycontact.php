@@ -2,12 +2,9 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-//$db = DB::getDB();
 require_once '../Model/Contactus.php';
-
 $contactList = new Contactus();
 $selectResult = $contactList->displayContacts();
-
 ?>
 <!Doctype HTML>
 <html>

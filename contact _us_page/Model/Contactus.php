@@ -17,19 +17,17 @@ class Contactus
 
         //var_dump($sqlStat);
         // Execute the sql query and get the result
-
-        $stmt = $db->query($sqlStat);
+        $stmt= $db->prepare($sqlStat);
+        $stmt->execute();
         $editedResult = $stmt->fetch();
-
+        $stmt->closeCursor();
         return $editedResult;
     }
     public function updateFrom($contact_id)
     {
                 //connect to database :
-
                 include '../../autoloader.php';
                 $db = DB::getDB();
-
             // getting the value from the edit fields or text boxes from editfrom.php
             // $_POST['name attribute of input type']
 
@@ -58,8 +56,9 @@ class Contactus
                 //Execute the Query
 
                  $updateStatment = $db->prepare($sql);
-                $updatedValues=  $updateStatment->execute();
-                    return $updatedValues;
+                 $updatedValues=  $updateStatment->execute();
+                 $updateStatment->closeCursor();
+                 return $updatedValues;
 
                 }
             }
@@ -77,6 +76,7 @@ class Contactus
         $delQuery = $db->prepare($sql);
         $delQuery->execute();
         $resultSet = $delQuery->fetch();
+        $delQuery->closeCursor();
         return $resultSet;
     }
 
@@ -95,7 +95,7 @@ class Contactus
         $delQuery = $db->prepare($sql);
         $delQuery->execute();
         $deletedResult = $delQuery->fetch();
-
+        $delQuery->closeCursor();
         return $deletedResult;
     }
     public function deletedContactDB($contact_id)
@@ -104,7 +104,9 @@ class Contactus
         $db = DB::getDB();
 
         $sql = "DELETE FROM contactus WHERE contact_id = '$contact_id'";
-        $db->exec($sql);
+        $deletedQuery= $db->prepare($sql);
+        $deletedQuery->execute();
+        $deletedQuery->closeCursor();
     }
     public function displayContacts()
     {
@@ -117,7 +119,7 @@ class Contactus
         $statement1 = $db->prepare($sql);
         $statement1->execute();
         $selectResults= $statement1->fetchAll();
-
+        $statement1->closeCursor();
         return $selectResults;
     }
 
@@ -128,7 +130,6 @@ class Contactus
         //connect to database :
         include '../../../autoloader.php';
         $db = DB::getDB();
-
         $first_name = htmlspecialchars($_POST['first_name']);
         $last_name = htmlspecialchars($_POST['last_name']);
         $Email = htmlspecialchars($_POST['Email']);
@@ -136,10 +137,10 @@ class Contactus
 
     // Now inserting form values to the database table
 
-    //$query ="INSERT INTO contactus(first_name,last_name,Email,Message) VALUES ('$first_name','$last_name','$email','$user_msg')";
         $query ="INSERT INTO contactus(first_name,last_name,Email,Message) VALUES ('$first_name','$last_name','$Email','$Message')";
-        $db->exec($query);
-
+        $contactQuery= $db->prepare($query);
+        $contactQuery->execute();
+        $contactQuery->closeCursor();
 
     }
 

@@ -2,9 +2,8 @@
 //connect to database
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-//$db = DB::getDB();
 require_once '../Model/Filmadmin.php';
-include 'manage_movie.php';
+require_once 'manage_movie.php';
 // Validate inputs
 if (empty($title) || empty($releaseDate) || empty($cast) || empty($director)) {
     $error = "Invalid Movie data. Please Check and fill all fields and then try again.";

@@ -2,7 +2,7 @@
 use Project\Classes\DB\DB;
 include '../../../autoloader.php';
 require_once '../../Model/Ratings.php';
-include '../../database.php';
+require_once '../../database.php';
 $db = Database::getDB();
 // Get the value from the form
 $rating_id = $_POST['rating_id'];
@@ -18,9 +18,8 @@ if (empty($total_votes) || empty($total_value) || empty($used_ips) || empty($dat
     echo "</span>";
 } else {
     // If valid, update the Rating data to the database
-    $query = "UPDATE ratings SET total_votes ='$total_votes',total_value='$total_value',used_ips ='$used_ips',date='$date' WHERE rating_id = '$rating_id'";
-    $db->exec($query);
-
+    $ratingData = new Ratings();
+     $ratingData->ratingUpdate($total_votes,$total_value,$used_ips,$date,$rating_id);
     // Display the Rating List page
     header('location: ../View/Ratings_Index.php');
 }

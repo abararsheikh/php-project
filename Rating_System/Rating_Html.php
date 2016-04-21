@@ -1,5 +1,3 @@
-<?php
-?>
 <div class="product">
     Rate : Movie
     <div id="rating_<?php echo $displayMovie['film_id']; ?>" class="ratings">

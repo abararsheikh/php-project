@@ -2,16 +2,14 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-//$db = DB::getDB();
 require_once '../Model/Contactus.php';
-
 $contact_id =  $_POST["id"];
 $first_name = htmlspecialchars($_POST["firstname"]);
 $last_name =  htmlspecialchars($_POST["lastname"]);
 $Email = htmlspecialchars($_POST["email"]);
 $Message = htmlspecialchars($_POST["message"]);
 $modifiedContact = new Contactus();
- $modifiedContact ->updateFrom($contact_id);
+$modifiedContact ->updateFrom($contact_id);
 ?>
 
 <!Doctype HTML>

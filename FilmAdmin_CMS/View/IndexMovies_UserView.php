@@ -21,7 +21,7 @@ $allMovies = $indexMovies->movieIndex();
         <title>Homepage</title>
     </head>
     <body>
-    <?php include '../../Assets/html/header.php'?>
+       <?php include '../../Assets/html/header.php'?>
         <section id="slider" class="container-fluid">
            <h2 class=hidden>slide show</h2>
            <div class="row">
@@ -75,17 +75,7 @@ Release Date :
                         <div class="col-lg-4 col-sm-4 col-md-4" style="width:70%;">
                             <img alt="film1" src="/Assets/image/TheRevenant.jpg"/>
                         </div>
-<!--
-                        <div class="col-sm-1 col-xs-5">
-                            <p>Top 1</p>
 
-                            <p>$ 26.00M</p>
-
-                            <P>Running Time:<span> 1h 35m</span></P>
-
-                            <p>Opening: Jan 29, 2016</p>
-                        </div>
--->
                      </div>
                         <div class="col-lg-8 col-sm-8 col-md-8">
                             <p>Top 1</p>

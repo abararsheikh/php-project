@@ -3,7 +3,7 @@
 use Project\Classes\DB\DB;
 include '../../../autoloader.php';
 require_once '../../Model/Ratings.php';
-include '../../database.php';
+require_once '../../database.php';
 $ratingList = new Ratings();
 $selectResult = $ratingList->displayRatings();
 ?>
@@ -29,7 +29,7 @@ $selectResult = $ratingList->displayRatings();
         <tr>
             <th scope="row">Total Votes</th>
             <th>Total Ratings</th>
-            <th>Used IP</th>
+            <th>Used ID</th>
             <th>Date</th>
             <th>Delete</th>
             <th>Update</th>
