@@ -6,23 +6,19 @@ namespace Project\Auth\models;
 use PDO;
 use Project\Classes\DB\DB;
 
-class RegisterModel {
+class RegisterModel extends AuthModel {
 
-  public function __construct() {
-    $this->db = DB::getDB();
-  }
   // New user
   public function newUser($username, $password, $email) {
-    $newStmt = $this->db->prepare('
-      INSERT INTO users(username, password, email)
-      VALUES (:username, :password, :email);'
-    );
-    $newStmt->bindValue(':username', $username, PDO::PARAM_STR);
-    $newStmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-    $newStmt->bindValue(':email', $email, PDO::PARAM_STR);
 
-    $queryResult['success'] = $newStmt->execute() ? true : false;
-    $queryResult['error'] = $newStmt->errorInfo()[2];
+    $insertResult = DB::insert('users', [
+        'username' => $username,
+        'password' => password_hash($password, PASSWORD_DEFAULT),
+        'email' => $email
+    ], self::USER_TYPES);
+    
+    $queryResult['success'] = is_bool($insertResult) ? true : false;
+    $queryResult['error'] = is_string($insertResult) ? $insertResult : '';
 
     return $queryResult;
 

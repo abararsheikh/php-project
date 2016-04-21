@@ -6,8 +6,11 @@ use Project\Classes\Controller;
 use Project\Classes\View;
 
 /**
- * @Author Yi Zhao
- *
+ * Class AuthController
+ * Base controller for all authentication features.
+ * View is set up here.
+ * @package Project\Auth\controllers
+ * @author Yi
  */
 class AuthController extends Controller {
 

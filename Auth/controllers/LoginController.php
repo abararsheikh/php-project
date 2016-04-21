@@ -28,7 +28,6 @@ class LoginController extends AuthController{
 
   // Login page POST
   public function processLogin() {
-
     $output = ['success' => false, 'error' => []];
     // try login user
     $loginResult = $this->model->logIn(Helper::getParam('username'), Helper::getParam('password'));

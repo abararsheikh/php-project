@@ -6,14 +6,7 @@ use \Project\Classes\DB\DB as DB;
 use \PDO;
 use Project\Classes\Helper;
 
-class LoginModel {
-
-  protected $db;
-
-  public function __construct() {
-    $this->db = DB::getDB();
-    Helper::startSession();
-  }
+class LoginModel extends AuthModel{
 
   public function logIn($username, $password) {
     $user = $this->findUser($username, $password);
@@ -35,17 +28,11 @@ class LoginModel {
     $cookie = isset($_COOKIE['rememberme']) ? $_COOKIE['rememberme'] : null;
     if (!$cookie) return false;
     list($id, $token) = explode(';', $cookie);
-    $getTokenStmt = $this->db->prepare('
-      SELECT * FROM tokens WHERE id = :id
-    ');
-    $getTokenStmt->bindValue(':id', $id, PDO::PARAM_STR);
-    $getTokenStmt->execute();
-    $tokenInfo = $getTokenStmt->fetch();
+    $tokenInfo = DB::select('tokens', ['id' => $id], self::USER_TYPES)[0];
+
     if ($tokenInfo['token'] && hash_equals($token, $tokenInfo['token'])) {
       $userId = $tokenInfo['user_id'];
-      $user = $this->db->query("
-        SELECT * FROM users WHERE id = $userId;
-      ")->fetch();
+      $user = DB::select('users', ['id' => $userId], self::USER_TYPES)[0];
       $this->addUserToSession($user);
       // Change token after it is used for logging in
       $this->updateCookie(self::getUser('id'));
@@ -53,12 +40,12 @@ class LoginModel {
     }
     return false;
   }
+
   public function logOut() {
     $this->deleteCookie(self::getUser('id'));
     $_SESSION = [];
     session_destroy();
   }
-
 
   // Generates a random password
   // Source: https://gist.github.com/zyphlar/7217f566fc83a9633959
@@ -70,16 +57,13 @@ class LoginModel {
     else {
       throw new \Exception("Unable to generate secure token from OpenSSL.");
     }
-
   }
-
   // Static functions
   // Returns user information, false if user is not logged in
   public static function getUser($key = 'username') {
     Helper::startSession();
     return isset($_SESSION['user']) ? $_SESSION['user'][$key] : false;
   }
-
   // Protected
   public function addUserToSession($user) {
     $_SESSION['user'] = [
@@ -91,17 +75,20 @@ class LoginModel {
   }
 
   // Private functions
+
+  // Encrypt a random number as cookie, save it to database.
+  // After user has logged in with cookie, change it to another random number
   private function updateCookie($userId) {
     $id = hash('sha256', mt_rand());
     $token = password_hash(mt_rand(), PASSWORD_DEFAULT);
     $rememberStmt = $this->db->prepare('
       INSERT INTO tokens (id, token, user_id)
-      VALUES(:id, :token, :userId)
+      VALUES(:id, :token, :user_id)
       ON DUPLICATE KEY UPDATE token = :token;
     ');
-    $rememberStmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $rememberStmt->bindValue(':userId', $userId, PDO::PARAM_INT);
-    $rememberStmt->bindValue(':token', $token, PDO::PARAM_STR);
+    $rememberStmt = DB::bindValues($rememberStmt, [
+        'id' => $id, 'user_id' => $userId, 'token' => $token
+    ], self::TOKEN_TYPES);
     if ($rememberStmt->execute()) {
       $cookie = "$id;$token";
       return setcookie('rememberme', $cookie, (time() + 604800), '/', '', false, true);
@@ -115,6 +102,7 @@ class LoginModel {
         DELETE FROM tokens WHERE user_id = $userId
     ");
   }
+  // Find a user with username or email that matches the password
   private function findUser($username, $password) {
     $selectStmt = $this->db->prepare('
       SELECT * FROM users
