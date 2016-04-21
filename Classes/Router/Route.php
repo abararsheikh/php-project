@@ -37,6 +37,7 @@ class Route {
     $this->callback = $callback;
   }
 
+  // Match current url with stored url, and echo the return value of the controller.
   public function match($base = '/') {
     $request = new Request();
 //    var_dump('Route base--', $base);
@@ -49,6 +50,7 @@ class Route {
         strtolower($request->method()) == strtolower($this->method)
     ) {
 
+      // Resolve dependency
       $page = $this->resolver->resolveCallback($this->callback, [$this->routeParam]);
       echo $page;
       return true;

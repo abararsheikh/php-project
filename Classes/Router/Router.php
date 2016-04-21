@@ -1,7 +1,6 @@
 <?php
 
 namespace Project\Classes\Router;
-use Project\Classes\Helper;
 
 /**
  * Class Router

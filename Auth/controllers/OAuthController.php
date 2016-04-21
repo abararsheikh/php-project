@@ -24,7 +24,6 @@ class OAuthController extends Controller{
 
     if($gitHub->getToken()) {
       $this->model->logIn('github', $gitHub->getUser(), $gitHub->getEmail());
-//      View::previousPage();
       header("Location: http://php.project");
     }
 

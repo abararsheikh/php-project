@@ -6,7 +6,7 @@ namespace Project\Classes\Router;
 class RouteCallbackResolver {
 
   /**
-   * Parse and execute the callback function.
+   * Parse and the callback function. Instantiate dependent classes and add them to parameter
    *
    * @param string|callable $callback
    * @return mixed Return value of the callback.

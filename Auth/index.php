@@ -7,28 +7,32 @@ use Project\Classes\Router\Nav;
 include '../autoloader.php';
 
 
-$auth = 'Project\Auth\controllers\AuthController';
-$oauth = 'Project\Auth\controllers\OAuthController';
 
-Nav::group('/Auth as Auth', function () use($auth) {
-  Nav::get('/ as Home', "$auth@home");
-  Nav::get('/register as Register', "$auth@registerPage");
-  Nav::get('/login as Login', "$auth@loginPage");
-  Nav::get('/admin', "$auth@adminLoginPage");
+Nav::group('/Auth as Auth', function () {
+  $login = 'Project\Auth\controllers\LoginController';
+  Nav::get('/ as Home', "$login@home");
+  Nav::get('/login as Login', "$login@loginPage");
+  Nav::get('/admin', "$login@adminLoginPage");
+  Nav::get('/logout as Logout', "$login@logout");
+  Nav::get('/getLogin as Logout', "$login@getLogin");
 
-  Nav::get('/logout as Logout', "$auth@logout");
+  Nav::post('/login', "$login@processLogin");
+  Nav::post('/admin', "$login@adminLogin");
 
-  Nav::get('/getLogin as Logout', "$auth@getLogin");
+});
 
-  Nav::post('/login', "$auth@processLogin");
-  Nav::post('/admin', "$auth@adminLogin");
-  Nav::post('/register', "$auth@registerUser");
-  Nav::post('/register/user', "$auth@checkAvailability");
+Nav::group('/Auth as register', function() {
+  $register = 'Project\Auth\controllers\RegisterController';
+  Nav::get('/register as Register', "$register@registerPage");
+  Nav::post('/register', "$register@registerUser");
+  Nav::post('/register/user', "$register@checkAvailability");
 
 });
 
 // Oauth
-Nav::group('/Auth as OAuth', function() use($oauth) {
+Nav::group('/Auth as OAuth', function() {
+  $oauth = 'Project\Auth\controllers\OAuthController';
+
   Nav::get('/login/github', "$oauth@github");
 });
 

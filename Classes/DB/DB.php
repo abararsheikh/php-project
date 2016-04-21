@@ -126,8 +126,10 @@ class DB {
    * @param array $typesArray   PDO param type of each value
    * @return \PDOStatement
    */
-  private static function bindValues(\PDOStatement $stmt, array $valuesArray, array $typesArray) {
+  public static function bindValues(\PDOStatement $stmt, array $valuesArray, array $typesArray) {
     foreach ($valuesArray as $key => $value) {
+      // add colon
+      $key = !strpos($key, ':') ? $key : ':' . $key;
       $stmt->bindValue($key, $value, $typesArray[$key]);
     }
     return $stmt;
