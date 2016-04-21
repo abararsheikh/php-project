@@ -73,11 +73,12 @@ class AppStore extends EventEmitter {
         break;
       case AppConstant.LOGOUT:
         $.get('/Auth/logout').then(data=> {
+          console.log(data);
           if (data.success) {
             this._isLoggedIn = false;
             this._username = '';
+            this.emitChange();
           }
-          this.emitChange();
         });
         break;
       case AppConstant.LOGIN:

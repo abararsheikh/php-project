@@ -84,41 +84,30 @@ class View {
     $this->HTML = $template;
   }
   // Includes predefined contents to current page, also add css and js files.
-  public function render($fileName = null, $title = null) {
+  public function render($fileName = null, $title = null, $variables = []) {
     if ($fileName) $this->quickSet($fileName);
     if ($title) $this->title = $title;
-    // timer
-    $start = microtime(true);
-
-    echo str_replace(
-      ['%title%', '%css%', '%header%', '%content%', '%footer%', '%js%'], [
+    return str_replace(
+        ['%title%', '%css%', '%header%', '%content%', '%footer%', '%js%'], [
         $this->title,
         $this->addCSS(),
         self::addContent($this->header),
-        self::addContent($this->content),
+        self::addContent($this->content, $variables),
         self::addContent($this->footer),
         $this->addJS()],
-      $this->HTML);
-    // timer end
-    $end = microtime(true);
-    $creationtime = ($end - $start);
-    printf("<!-- page created in %.5f seconds. -->", $creationtime);
-
+        $this->HTML);
   }
   // Renders JSON
   public function json($variable) {
     header('Content-Type: application/json');
-    echo json_encode($variable);
+    return json_encode($variable);
   }
 
   // Static functions
-  public static function addContent() {
-    $templates = func_get_args();
+  public static function addContent($templates, $variables = []) {
     ob_start();
-    // timer start
-    $start = microtime(true);
-    printf("<!-- start timer -->");
-
+    extract($variables);
+    if (!is_array($templates)) $templates = [$templates];
     foreach ($templates as $template) {
       if (is_array($template)) {
         foreach ($template as $item) {
@@ -128,22 +117,7 @@ class View {
         include_once $template;
       }
     }
-    // timer end
-    $end = microtime(true);
-    $creationtime = ($end - $start);
-    printf("<!-- created in %.5f seconds. -->", $creationtime);
-
     return ob_get_clean();
-  }
-  public static function useContent() {
-    $args = func_get_args();
-    return function() use($args) {
-      echo self::addContent($args);
-    };
-  }
-
-  public static function previousPage() {
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
   // Private functions
@@ -179,6 +153,4 @@ class View {
     if(empty($this->js)) $this->js[] = '/js/' . $name . '.js';
     if(empty($this->css))$this->css[] = '/css/' . $name . '.css';
   }
-
-
 }

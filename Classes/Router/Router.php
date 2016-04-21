@@ -1,7 +1,6 @@
 <?php
 
 namespace Project\Classes\Router;
-use Project\Classes\Helper;
 
 /**
  * Class Router
@@ -24,24 +23,20 @@ class Router {
 
   public function startRouting($base = '') {
     foreach ($this->routes as $route) {
-      // get_class($route) == __NAMESPACE__ . '\Route'
       if ( is_object($route) && $route->match($base)) {
         return true;
       }
     }
     return false;
   }
-  public function dumpRoutes() {
-    var_dump($this->routes);
-  }
 
   protected function add($pathAsName, $action, $method = 'GET') {
-    list($path, $name) = Helper::separateName($pathAsName);
+    list($path, $name) = self::separateName($pathAsName);
     return new Route($this->baseDir . $path, $name, $method, $action);
   }
 
-
-
-
+  protected function separateName($pathAsName) {
+    return strpos($pathAsName, ' as ') ? explode(' as ', $pathAsName) : [$pathAsName, null];
+  }
 }
 

@@ -17,30 +17,30 @@ class PageController extends Controller{
   // PUT /page/:id
   public function UpdatePage($id, Request $request) {
     $result = Page::update($id, $request->param('content'), $request->param('name'), $request->param('link'));
-    $this->view->json($this->resultArray($result, null));
+    return $this->view->json($this->resultArray($result, null));
   }
 
   // GET /page/:id
   public function GetPage($id) {
     $info = Page::get($id);
-    $this->view->json($info);
+    return $this->view->json($info);
   }
 
   // GET /page
   public function GetAll() {
-    $this->view->json(Page::getAll());
+    return $this->view->json(Page::getAll());
   }
 
   // DELETE /page/:id
   public function DeletePage($id) {
     $result = Page::delete($id);
-    $this->view->json($this->resultArray($result, null));
+    return $this->view->json($this->resultArray($result, null));
   }
 
   // POST /page
   public function AddPage(Request $request) {
     $result = Page::add($request->param('content'), $request->param('name'), $request->param('link'));
-    $this->view->json(['success' => $result, 'id' => Page::getLastId()]);
+    return $this->view->json(['success' => $result, 'id' => Page::getLastId()]);
   }
 
 }

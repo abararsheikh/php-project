@@ -11,26 +11,18 @@ $navTemplate = [
 ];
 
 ?>
+<script src="/Assets/js/jquery.min.js"></script>
+<script src="/Assets/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/Assets/css/style.css"/>
 
-<!Doctype HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/Assets/css/style.css"/>
-  <title>Homepage</title>
-</head>
-
-
-<body>
 <div class="pull-right">
   <div id="login"></div>
 </div>
 
 <div id="menuDisplay" data-menuName="Main"></div>
+<script src="/Assets/js/authApp.js"></script>
+<script src="/Assets/js/MenuDisplay.js"></script>
 
-<!--   login   -->
 
 

@@ -3,7 +3,7 @@
 namespace Project\Auth\models;
 
 
-class OAuthModel extends AuthModel{
+class OAuthModel extends RegisterModel{
 
   // for every new oauth user,
   // register if there is no existing user,
@@ -15,7 +15,8 @@ class OAuthModel extends AuthModel{
       $this->register($type, $username, $email);
       $user = $this->findOAuthUser($email);
     }
-    $this->addUserToSession($user);
+    $login = new LoginModel();
+    $login->addUserToSession($user);
   }
 
   private function findOAuthUser($email) {

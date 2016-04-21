@@ -3,18 +3,18 @@ namespace Project\Auth\controllers;
 
 use Project\Auth\models\AuthModel;
 use Project\Classes\Controller;
-use Project\Classes\Helper;
 use Project\Classes\View;
-use Project\Validation\Validator;
 
 /**
- * @Author Yi Zhao
- *
+ * Class AuthController
+ * Base controller for all authentication features.
+ * View is set up here.
+ * @package Project\Auth\controllers
+ * @author Yi
  */
 class AuthController extends Controller {
 
   protected $view;
-  protected $model;
 
   public function __construct() {
     $this->model = new AuthModel();
@@ -31,6 +31,8 @@ class AuthController extends Controller {
       'header' => '/Auth/Views/header.php',
       'footer' => '/Auth/Views/footer.php'
     ]);
+
+    // Set page template
     $this->view->setTemplate("
       <html>
       <head>
@@ -46,91 +48,5 @@ class AuthController extends Controller {
       </html>
     ");
   }
-
-  public function home() {
-    $this->view->render('/Auth/Views/index', 'auth');
-  }
-
-  // Login page GET
-  public function loginPage() {
-    if ($this->model->logInViaCookie()) {
-      echo('logged in as ' . AuthModel::getUser());
-    } else {
-      $this->view->render('/Auth/Views/index', 'Login Page');
-    }
-  }
-
-  // Login page POST
-  public function processLogin() {
-
-    $output = ['success' => false, 'error' => []];
-    $loginResult = $this->model->logIn(Helper::getParam('username'), Helper::getParam('password'));
-    if ($loginResult) {
-      $output['success'] = true;
-    } else {
-      $output['error'][] = 'username or password is not correct';
-    }
-    $this->view->json($output);
-  }
-
-  public function adminLoginPage() {
-    $this->view->render('/Auth/Views/admin', 'admin login Page');
-  }
-
-  // Admin POST
-  public function adminLogin() {
-    $output = ['success' => false, 'error' => []];
-    $loginResult = $this->model->adminLogin(Helper::getParam('username'), Helper::getParam('password'));
-    if ($loginResult) {
-      $output['success'] = true;
-    } else {
-      $output['error'][] = 'username or password is not correct';
-    }
-    $this->view->json($output);
-  }
-
-  // Logout GET
-  public function logout() {
-    $this->view->json($this->resultArray(AuthModel::getUser(), 'You have not logged in yet'));
-    $this->model->logOut();
-  }
-
-  public function getLogin() {
-    $this->model->logInViaCookie();
-    $username = AuthModel::getUser();
-    if ($username) $this->view->json(['success' => true, 'username' => $username]);
-    if (!$username) $this->view->json($this->resultArray(false, ''));
-  }
-
-
-  ////////////////////////////////////
-  // Register GET
-  //////////////////////////////////
-  public function registerPage() {
-    $this->view->render('/Auth/Views/index', 'Register');
-  }
-
-  // Register/user POST
-  public function checkAvailability() {
-    $name = Helper::getParam('name');
-    $value = Helper::getParam('value');
-    $this->view->json(['available' => $this->model->checkAvailability($name, $value)]);
-  }
-
-  // Register POST
-  public function registerUser() {
-    $v = new Validator($_POST);
-    $v->validate('username', ['notEmpty']);
-    //    $v->password()->validate('password', ['password']);
-    $v->email()->validate('email', ['notEmpty', 'EmailValidator']);
-
-    if ($v->isValid()) {
-      $result = $this->model->newUser(Helper::getParam('username'), Helper::getParam('password'), Helper::getParam('email'));
-      $this->view->json($this->resultArray($result['success'], $result['error']));
-    } else {
-      $this->view->json($this->resultArray(false, $v->getErrors()));
-    }
-  }
-
 
 }

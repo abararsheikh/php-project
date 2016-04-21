@@ -6,7 +6,7 @@ namespace Project\Classes\Router;
 class RouteCallbackResolver {
 
   /**
-   * Parse and execute the callback function.
+   * Parse and the callback function. Instantiate dependent classes and add them to parameter
    *
    * @param string|callable $callback
    * @return mixed Return value of the callback.
@@ -18,7 +18,7 @@ class RouteCallbackResolver {
       return !empty($item);
     });
     $methodParams = !empty($allParams) ? $allParams : [];
-    call_user_func_array($parsedCallback['method'], $methodParams);
+    return call_user_func_array($parsedCallback['method'], $methodParams);
   }
 
   /**

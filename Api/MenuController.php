@@ -22,20 +22,20 @@ class MenuController extends Controller{
       foreach ($menus as $menu) {
         if ( $menu['name'] == $name ) return $this->view->json($menu['menu']);
       }
-      $this->view->json($this->resultArray(false, 'no such menu'));
+      return $this->view->json($this->resultArray(false, 'no such menu'));
     }
   }
 
   // GET /menu
   public function MenuAll() {
     $menus = Menu::getMenuAll();
-    $this->view->json($menus);
+    return $this->view->json($menus);
   }
 
   // POST /menu
   public function SaveMenu(Request $request) {
     $result = Menu::saveMenu($request->param('menu'));
-    $this->view->json($this->resultArray($result, null));
+    return $this->view->json($this->resultArray($result, null));
   }
 
 

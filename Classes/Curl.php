@@ -4,8 +4,10 @@ ini_set('allow_url_fopen', 'On');
 ini_set('allow_url_include', 'On');
 
 /**
- * Class Request
+ * Class Curl
+ * Curl wrapper
  * @package Project\Classes
+ * @author Yi
  */
 class Curl {
 
@@ -31,6 +33,11 @@ class Curl {
     return empty($error) ? $response : false;
   }
 
+  /**
+   * @param string $url Target URL
+   * @param array $params Array of GET params
+   * @return bool|string
+   */
   public static function get($url, $params) {
     $ch = curl_init();
     $url = $url . '?' . http_build_query($params, '', '&amp;');
