@@ -172,11 +172,19 @@
                                 <?php if(isset($TimeInfos)):?>
                                     <?php foreach($TimeInfos as $time):?>
                                         <?php if($time->RunTime == $item->showTime):?>
-                                        <button id="selected" type="button" class="btn btn-time"><?php echo $time->RunTime?> </button>
+                                        <button id="selected" type="button" class="btn btn-time
+                                         <?php if(isset($seatsLoadArray)):?>
+                                         <?php echo $seatsLoadArray[$item->showTime]?>
+                                         <?php endif?>
+                                        "><?php echo $time->RunTime?> </button>
                                         <?php endif?>
 
                                         <?php if($time->RunTime != $item->showTime):?>
-                                            <button type="button" class="btn btn-time"><?php echo $time->RunTime?> </button>
+                                            <button type="button" class="btn btn-time
+                                            <?php if(isset($seatsLoadArray)):?>
+                                         <?php echo $seatsLoadArray[$time->RunTime]?>
+                                         <?php endif?>
+                                            "><?php echo $time->RunTime?> </button>
                                         <?php endif?>
                                     <?php endforeach; ?>
                                 <?php endif?>
