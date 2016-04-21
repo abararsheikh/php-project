@@ -50,6 +50,26 @@ class Filmadmin
 
         return $allMovie;
     }
+    public function addMovie($title,$releaseDate,$director,$cast,$thumbnail)
+    {
+        //connect to database :
+        include '../autoloader.php';
+        $db = DB::getDB();
+        $query = "INSERT INTO moviefeature (title ,releaseDate,director,cast,img) VALUES ('$title','$releaseDate','$director','$cast','$thumbnail')";
+        $addedMovies= $db->prepare($query);
+        $addedMovies->execute();
+        $addedMovies->closeCursor();
+    }
+    public function updateMovie($title,$releaseDate,$director,$cast,$thumbnail,$film_id)
+    {
+        include '../autoloader.php';
+        $db = DB::getDB();
+        $query = "UPDATE moviefeature SET title ='$title',releaseDate='$releaseDate',director ='$director',cast='$cast',img='$thumbnail' WHERE film_id = '$film_id'";
+        $updatedMovie= $db->prepare($query);
+        $updatedMovie->execute();
+        $updatedMovie->closeCursor();
+    }
+
     /**
      * User View of Movies
      */

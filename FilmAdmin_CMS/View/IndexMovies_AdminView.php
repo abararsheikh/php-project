@@ -1,8 +1,8 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-$db = DB::getDB();
 require_once '../Model/Filmadmin.php';
+$db = DB::getDB();
 $displayAllMovies = new Filmadmin();
 $allMovies = $displayAllMovies->displayMovie();
 ?>
@@ -25,8 +25,6 @@ $allMovies = $displayAllMovies->displayMovie();
     <section  class="container">
         <div class="row">
             <div class="col-lg-8 col-sm-8 col-md-8">
-
-
                 <div class="row film-gallery">
                     <form action="add_movie_form.php" method="post"
                           id="add_movie_form">
