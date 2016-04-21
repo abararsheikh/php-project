@@ -4,7 +4,6 @@ $film_id = $_POST['film_id'];
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
 require_once '../Model/Filmadmin.php';
-//$db = DB::getDB();
 $deleteMovies = new Filmadmin();            // Delete the movie from the database
 $deleteMovies->deleteMovie($film_id);
 

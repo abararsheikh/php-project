@@ -1,13 +1,12 @@
 <?php
 // disable the catch from the client browser
 header("Cache-Control: no-cache");
-include 'database.php';
+require_once 'database.php';
 include '../autoloader.php';
 require_once '/Model/Ratings.php';
 $db = Database::getDB();
 $units = Database::unit();
 $getRollId = Project\Auth\models\AuthModel::getUser('roleId');
-
 if($getRollId==false)
 {
     echo "Please Login First to Rate the movies !! Thank You.";

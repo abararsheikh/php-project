@@ -29,14 +29,14 @@ class AdminController {
             '/jspm_packages/system.js',
             '/config.js'
         ],
-        'header' => '/Admin_Login/admin_header.php',
+        'header' => '/Admin_Login/admin/admin_header.php',
         'footer' => '/Auth/Views/footer.php'
     ]);
   }
 
   public function home(Request $request) {
     var_dump($request);
-    $this->view->render('/Examples/admin/test', 'Admin Home');
+    $this->view->render('/Admin_Login/admin/test', 'Admin Home');
   }
 
   public function news() {

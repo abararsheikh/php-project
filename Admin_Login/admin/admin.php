@@ -9,19 +9,19 @@
 <head>
      <meta charset="utf-8" />
     
-  <link rel="stylesheet" type="text/css" href="admin.css" />
+  <link rel="stylesheet" type="text/css" href="../admin.css" />
     <link rel="stylesheet" type="text/css" href="../../Admin_Login/admin.css" />
     <script src ="jquery-1.11.1.js"></script>
     <script src ="admin.js"></script>
 </head>
 <body>
-   
+   <!--
     <div id ="header">
         <div class="logo">
         <a href="#">Welcome to admin page</a>
         </div>
     </div>
-
+-->
     <div id ="container">
         <div class="sidebar">
             <ul id="nav">

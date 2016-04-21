@@ -12,7 +12,10 @@ class Filmadmin
         //Execute the Query
         $query = "DELETE FROM moviefeature
           WHERE film_id = '$film_id' ";
-        $db->exec($query);
+        $delMovies= $db->prepare($query);
+        $delMovies->execute();
+
+        $delMovies->closeCursor();
 
         //Once the Admin delete the Movie ..Delete the cookies also which is created
 
@@ -25,8 +28,11 @@ class Filmadmin
         $db = DB::getDB();
         //Execute the Query
         $sql = "SELECT * FROM moviefeature WHERE film_id = '$film_id'";
-        $result = $db->query($sql);
+        $result = $db->prepare($sql);
+        $result->execute();
         $editMovies = $result->fetch();
+        $result->closeCursor();
+
         return $editMovies;
     }
     public function displayMovie()
@@ -34,13 +40,14 @@ class Filmadmin
         //connect to database :
         include '../../autoloader.php';
         $db = DB::getDB();
-        //Execute the Query
-        //get all the movies
+        //Execute the Query and //get all the movies
 
         $queryAllMovies = 'SELECT * FROM moviefeature ORDER BY releaseDate DESC';
         $statement1 = $db->prepare($queryAllMovies);
         $statement1->execute();
         $allMovie = $statement1->fetchAll();
+        $statement1->closeCursor();
+
         return $allMovie;
     }
     /**
@@ -57,6 +64,8 @@ class Filmadmin
         $statement1 = $db->prepare($queryAllMovies);
         $statement1->execute();
         $indexMovie = $statement1->fetchAll();
+        $statement1->closeCursor();
+
         return $indexMovie;
     }
 // function for rating movies ..is used in rating.php file
@@ -70,6 +79,7 @@ class Filmadmin
         $getId= $db2->prepare($queryAllMoviesId);
         $getId->execute();
         $getIds= $getId->fetchAll();
+        $getId->closeCursor();
 
         return $getIds;
     }

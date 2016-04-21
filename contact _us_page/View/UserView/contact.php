@@ -1,8 +1,6 @@
-<!--<body style="background-color:#CEF6D8;">-->
 <?php
 use Project\Classes\DB\DB;
 include '../../../autoloader.php';
-//$db = DB::getDB();
 require_once '../../Model/Contactus.php';
 require '../../Model/PHP_Mailer/PHPMailerAutoload.php';
 if(isset($_POST['submit']))
@@ -60,7 +58,7 @@ if(empty($error))
     <?php include '../../../Assets/html/header.php'?>
     <div class="row">
         <div class="col-md-12">
-            <img src="/Assets/image/HomePage/contact_slider.jpg" style="height: 260px;">
+            <img src="/Assets/image/HomePage/contact_slider.jpg" style="height: 290px;">
         </div>
     </div>
   <div class="row">

@@ -50,14 +50,13 @@ $mail->setFrom('brdhcgroup@gmail.com', 'Humber Cinema House');
 
 //Set who the message is to be sent to
 $mail->addAddress($Email,$first_name);
-
 //Set the subject line
 $mail->Subject = 'Thank You for contacting US.';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 $body="Thanks for contacting us, we will reply to you as soon as possible";
-$text ="You enter the following information:";
+$text ="We have received the following  information from you :";
 $mail->msgHTML($body."<br/>". $text."<br/>".'Firstname : '.$first_name."<br/>".'Lastname : ' .$last_name ."<br/>".'Email : '.$Email."<br/>".'Message : '.$Message);
 
 //Replace the plain text body with one created manually
