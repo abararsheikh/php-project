@@ -4,7 +4,6 @@ namespace Project\Auth\models;
 
 use \Project\Classes\DB\DB as DB;
 use \PDO;
-use Project\Classes\Helper;
 
 class LoginModel extends AuthModel{
 
@@ -58,12 +57,7 @@ class LoginModel extends AuthModel{
       throw new \Exception("Unable to generate secure token from OpenSSL.");
     }
   }
-  // Static functions
-  // Returns user information, false if user is not logged in
-  public static function getUser($key = 'username') {
-    Helper::startSession();
-    return isset($_SESSION['user']) ? $_SESSION['user'][$key] : false;
-  }
+
   // Protected
   public function addUserToSession($user) {
     $_SESSION['user'] = [
