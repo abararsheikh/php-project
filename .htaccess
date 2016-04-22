@@ -13,5 +13,7 @@ RewriteRule    ^Payment.* Payment/index.php                    [NC,L]
 # Api
 RewriteRule    ^api.* Api/index.php                    [NC,L]
 
+RewriteRule    ^admin.* Admin_Login/admin/index.php                    [NC,L]
+
 #Home page
 #RewriteRule    ^.*$ index.php

@@ -8,7 +8,7 @@
 
 class DetailController{
     public function __construct(){
-        echo "This is DetailController";
+        //echo "This is DetailController";
 
     }
 
@@ -186,7 +186,7 @@ class DetailController{
                                           AND rooms.Room_ID=:Room_Id AND DATE_FORMAT(Run_Time, '%Y-%m-%d') =:Run_Time
                                          ORDER BY DATE_FORMAT(Run_Time, '%H:%i')";
         $TimeInfos = $filmBooking->getBookingDetail($para=["Film_Id"=>$item->FilmId, "Cinema_ID"=>$item->Cinema_ID,"Room_Id"=>$item->Room_ID,"Run_Time"=>$item->showDate],$sql);
-
+        $seatsLoadArray = self::checkSeats($TimeInfos);
         $sql = "SELECT Seat_Name, available
                 From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
 
@@ -322,6 +322,33 @@ class DetailController{
        $order->modifyOrder($param,$sql);
    }
 
+    static function checkSeats($TimeInfos){
+        $filmBooking = new FilmBookingModel();
+        $seatsLoadArray = [];
+        foreach($TimeInfos as $timeInfo) {
+            $sql = "SELECT Seat_Name, available
+                From seats WHERE Room_ID=:Room_ID AND Run_Time=:Run_Time";
+            $i=0;
+            $SeatsInfos = $filmBooking->getBookingDetail($para = ["Room_ID" => $timeInfo->Room_ID, "Run_Time" => $timeInfo->Run_Time], $sql);
+            foreach($SeatsInfos as $seat){
+                if($seat->available=='Y'){
+                    $i++;
+                }
+            }
+            if($i==0){
+                $seatsLoadArray[$timeInfo->RunTime]="sold-out";
+            }
+            if($i>0 && $i<3){
+                $seatsLoadArray[$timeInfo->RunTime]="filling";
+            }
+            if($i>=3){
+                $seatsLoadArray[$timeInfo->RunTime]="available";
+            }
+
+        }
+
+        return $seatsLoadArray;
+    }
 
 }
 

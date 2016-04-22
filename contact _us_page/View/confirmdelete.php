@@ -2,12 +2,8 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-//$db = DB::getDB();
 require_once '../Model/Contactus.php';
-
-//include 'dbconnect.php';
 $contact_id = $_POST['confirmid'];
-
 $deletedRecord = new Contactus();
 $result = $deletedRecord->confirmDelete($contact_id);
 

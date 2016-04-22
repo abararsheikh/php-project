@@ -1,12 +1,9 @@
 <body style="background-color:#CEF6D8;">
 <?php
-
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-//$db = DB::getDB();
 require_once '../Model/Contactus.php';
 $sel_record = $_POST['sel_record'];
-
 $deleteContactList = new Contactus();
 $result= $deleteContactList->deleteMovie($sel_record);
 

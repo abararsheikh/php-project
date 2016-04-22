@@ -8,7 +8,7 @@
 
 require_once "config.php";
 require_once "../autoloader.php";
-require './libs/phpMailer/PHPMailerAutoload.php';
+
 use \Project\FAQ\libs\Router;
 
 new Router();

@@ -64,6 +64,7 @@ class SendCalender
         $emailToSend = $email->data;
         $sendEmail = new Email();
         $sendEmail->sendEmail($emailToSend,"movieCalender",$message );
+        header("Location:../index.php");
     }
 
 }

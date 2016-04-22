@@ -6,7 +6,6 @@ require_once '../Model/Contactus.php';
 $sel_record = $_POST['sel_record'];
 $editValues = new Contactus();
 $editResult = $editValues->editForm($sel_record);
-
 ?>
 <!Doctype HTML>
 <html>

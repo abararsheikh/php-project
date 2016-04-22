@@ -3,20 +3,17 @@ namespace Project\Classes;
 
 /**
  * Class Controller
+ * Controller class, all controllers should inherit this class.
  * @package Project\Classes
+ * @author Yi
  */
 abstract class Controller {
   protected $model;
   protected $view;
-  // TODO: probably needs a better way to implement this
-
-  public function action($action) {
-    return function() use($action) {
-      call_user_func([$this, $action]);
-    };
-  }
 
   /**
+   * Make json result easier and consistent.
+   *
    * @param $result boolean
    * @param $errors string
    * @return array

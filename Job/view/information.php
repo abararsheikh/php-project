@@ -1,14 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
-require('conn.php');
-include("../controller/informationcontroller.php");
+//require('conn.php');
+include("../controller/jobinformationcontrller.php");
 
 $info=new information();
 $info->index();
-
-
-
 ?>
 
 <html>
@@ -86,7 +83,7 @@ width:1400px;
           </tr>
             </table>
 
-              <form name="form1" action="xiangxi.php?act=add" method="post" enctype="multipart/form-data">
+              <form name="form1" action="information.php?act=add" method="post" enctype="multipart/form-data">
 	    <table width="692" border="0">
 	      <tr>
 	        <td height="40" colspan="2" bgcolor="#CCCCCC"><span class="STYLE1">Job（*）</span></td>
@@ -150,7 +147,7 @@ width:1400px;
           <?php
 
           require('conn.php');
-          include("../controller/informationcontroller.php");
+          include("../controller/jobinformationcontrller.php");
           $info=new information();
           $info->info();
 

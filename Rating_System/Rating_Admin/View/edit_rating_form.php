@@ -1,9 +1,9 @@
 <body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
-include '../../../autoloader.php';
+require_once '../../../autoloader.php';
 require_once '../../Model/Ratings.php';
-include '../../database.php';
+require_once '../../database.php';
 $db = Database::getDB();
 $rating_id = $_POST['rating_id'];     // Get the product data
 $updateRating = new Ratings();

@@ -1,9 +1,9 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-$db = DB::getDB();
 require_once '../Model/Filmadmin.php';
-include 'manage_movie.php';
+require_once 'manage_movie.php';
+$db = DB::getDB();
 // Validate inputs
 if (empty($title) || empty($releaseDate) || empty($cast) || empty($director) || empty($thumbnail) ) {
     echo "<span style='color:red;font-size:24px;'>";
@@ -13,8 +13,8 @@ if (empty($title) || empty($releaseDate) || empty($cast) || empty($director) || 
 } else {
     // If valid, update the movie to the database
     $thumbnail = "/Assets/image/HomePage/"."thumb_".$file_get;
-    $query = "UPDATE moviefeature SET title ='$title',releaseDate='$releaseDate',director ='$director',cast='$cast',img='$thumbnail' WHERE film_id = '$film_id'";
-    $db->exec($query);
+    $updatingMovie = new Filmadmin();
+    $updatingMovie->updateMovie($title,$releaseDate,$director,$cast,$thumbnail,$film_id);
 
     // Display the Movie List page
     header('location: ../View/IndexMovies_AdminView.php');

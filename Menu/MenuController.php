@@ -18,7 +18,7 @@ class MenuController extends Controller{
   // GET /page/:id
   public function GetPage($id) {
     $page = Page::get($id);
-    $this->renderPage($page['content']);
+    return $this->renderPage($page['content']);
   }
 
 
@@ -31,6 +31,6 @@ class MenuController extends Controller{
       %footer%
     ";
     $this->view->setTemplate($template);
-    $this->view->render();
+    return $this->view->render();
   }
 }

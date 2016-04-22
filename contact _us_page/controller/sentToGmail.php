@@ -37,26 +37,27 @@ $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "brdhcgroup@gmail.com";
+$mail->Username = "abrar.phpproject@gmail.com";
 
 //Password to use for SMTP authentication
-$mail->Password = "brdhc@123";
+$mail->Password = "phpproject@123";
 
 //Set who the message is to be sent from
-$mail->setFrom('brdhcgroup@gmail.com', 'Contact US');
+$mail->setFrom('brdhcgroup@gmail.com', 'Humber Cinema House');
 
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 
 //Set who the message is to be sent to
-$mail->addAddress('er.abrar@gmail.com', 'Abarar Sheikh');
-
+$mail->addAddress($Email,$first_name);
 //Set the subject line
-$mail->Subject = 'Contact Notification';
+$mail->Subject = 'Thank You for contacting US.';
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->msgHTML('Firstname : '.$first_name."<br/>".'Lastname : ' .$last_name ."<br/>".'Email : '.$Email."<br/>".$Message);
+$body="Thanks for contacting us, we will reply to you as soon as possible";
+$text ="We have received the following  information from you :";
+$mail->msgHTML($body."<br/>". $text."<br/>".'Firstname : '.$first_name."<br/>".'Lastname : ' .$last_name ."<br/>".'Email : '.$Email."<br/>".'Message : '.$Message);
 
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text contactUS body';

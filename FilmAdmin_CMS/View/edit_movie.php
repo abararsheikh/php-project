@@ -1,9 +1,9 @@
 <body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
+require_once '../Model/Filmadmin.php';
 include '../../autoloader.php';
 $db = DB::getDB();
-require_once '../Model/Filmadmin.php';
 $film_id = $_POST['film_id'];       // Get the product data
 $updateMovie = new Filmadmin();
 $editMovies = $updateMovie->editMovie($film_id);
