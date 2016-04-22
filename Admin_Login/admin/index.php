@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yi
- * Date: 15/04/16
- * Time: 4:14 PM
- */
 
 include '../../autoloader.php';
 include "AdminController.php";
@@ -22,4 +16,3 @@ Nav::group('/admin as admin', function() use($controller) {
 });
 
 Nav::start();
-
