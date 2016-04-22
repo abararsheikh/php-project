@@ -9,16 +9,18 @@
         <link rel="stylesheet" href="css/chooseSeat.css"/>
         <link rel="stylesheet" href="css/booking.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+        <script src="./js/bootstrap.min.js"></script>
         <title>Booking</title>
     </head>
 
 
     <body>
+   <div style="height:70px">
+        <?php require_once "../Assets/html/header.php"?>
+   </div>
 
-    <?php require_once "../Assets/html/header.php"?>
-     <main>
 
+<main>
      <section id="seat" class="container max-space">
       <!--film name -->
 
@@ -280,12 +282,12 @@
       </section>
          <?php require_once "../Assets/html/footer.php"?>
       </div>
+</main>
 
-    </main>
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="./js/bootstrap.min.js"></script>
+
     <script src="/Assets/js/trailerApp.js"></script>
    <script src="./js/booking.js"></script>
 

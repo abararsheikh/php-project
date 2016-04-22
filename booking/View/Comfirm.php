@@ -9,7 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/bootstrap.min.css"/>
         <link rel="stylesheet" href="./css/confirm.css"/>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
         <title>Comfirm</title>
     </head>
         
@@ -17,7 +18,9 @@
     <body>
     <!--seat map-->
 
-    <?php require_once "../Assets/html/header.php"?>
+    <div style="height:70px">
+        <?php require_once "../Assets/html/header.php"?>
+    </div>
     <section id="film-banner" class="container-fluid">
             <h1>Hi <?php echo $_SESSION['user']['username'] ?> You film is ready to pay</h1>
     </section>
@@ -174,10 +177,9 @@
     </main>
     <?php require_once "../Assets/html/footer.php"?>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="/Assets/js/stripeButton.js"></script>
+
     <script src="./js/confirm.js"></script>
     </body>
 </html> 

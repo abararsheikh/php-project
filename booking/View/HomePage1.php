@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="./css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="./css/slick.css"/>
         <link rel="stylesheet" href="./css/style.css"/>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="./js/bootstrap.min.js"></script>
         <title>Homepage</title>
     </head>
 
@@ -156,9 +158,7 @@
 
     <?php require_once "../Assets/html/footer.php"?>
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="./js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="./js/slick.min.js"></script>
     <script type="text/javascript" src="./js/homepage.js"></script>
     <script type="text/javascript" src="./js/home.js"></script>
