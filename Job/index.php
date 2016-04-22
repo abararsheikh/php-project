@@ -54,15 +54,15 @@ require('conn.php');
 
 $PageSize=10;
 $act=isset($_GET["action"])?$_GET["action"]:'';
-$sql="select count(*) from  zhaoadd order by id desc";
+$sql="select count(*) from  hiring order by id desc";
 if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select count(*) from  zhaoadd order by id desc";
+  $sql="select count(*) from  hiring order by id desc";
 }
-$result=$db->query($sql)  or die("$sql");
+$result=$db->query($sql)  or die(mysql_error());
 $amount=$result->rowCount ;
 }
 if(isset($_GET["page"]))
@@ -75,7 +75,7 @@ else
 $page=1;
 
 }
-if($amount){
+if(isset($amount)){
 
 if ($amount<$PageSize){
 
@@ -128,18 +128,18 @@ $Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCo
 
  $upLimit   =   ($page-1)*$PageSize;
   $lowLimit   =  $PageSize;
-  $act=$_GET["action"];
+  $act=isset($_GET["action"])?$_GET["action"]:'';
 if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  zhaoadd where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+  $sql="select * from  hiring where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  zhaoadd  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  hiring  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
-$result=$db->query($sql)  or die("$sql");
+$result=$db->query($sql)  or die(mysql_error());
 
 
 while($rs=$result->fetchObject())
@@ -150,15 +150,15 @@ while($rs=$result->fetchObject())
 
 	<table  width="863" border="0">
         <tr>
-          <td colspan="2"><span class="STYLE1"><?php echo $rs->zhiwei;?></span> (<?php echo $rs->qixian;?>)</td>
+          <td colspan="2"><span class="STYLE1"><?php echo $rs->jobtitle;?></span> (<?php echo $rs->hiretime;?>)</td>
         </tr>
         <tr>
           <td width="109">Number</td>
-          <td width="738" align="left"><?php echo $rs->renshu;?>&nbsp;</td>
+          <td width="738" align="left"><?php echo $rs->hirenumber;?>&nbsp;</td>
         </tr>
         <tr>
           <td><p>Requirement:</p></td>
-          <td width="738" align="left"><?php echo $rs->yaoqiu;?>&nbsp;</td>
+          <td width="738" align="left"><?php echo $rs->hirerequirement;?>&nbsp;</td>
 
         </tr>
       </table>
@@ -169,7 +169,7 @@ while($rs=$result->fetchObject())
       </td>
   </tr>
   <tr>
-    <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="xiangxi.php" class="STYLE2">Apply right now>></a></div></td>
+    <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="./view/information.php" class="STYLE2">Apply right now>></a></div></td>
 
   </tr>
     <tr>

@@ -12,7 +12,7 @@ if($act=="search")
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select * from  xinxi order by id desc";
+  $sql="select * from  information order by id desc";
 }
 $result=$db->query($sql)  or die("NoworkSQL：$sql");
 $amount=$result->rowCount();
@@ -166,11 +166,11 @@ if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  xinxi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+  $sql="select * from  information where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  xinxi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  information  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
 $result=$db->query($sql)  or die("NoworkSQL：$sql");
 
@@ -184,14 +184,14 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
     <td>
       <div align="center"><?php echo $rs->name;?></div></td>
          <td><div align="center"><?php echo $rs->tel;?></div></td>
-	 <td><div align="center"><?php echo $rs->xingbie;?></div></td>
+	 <td><div align="center"><?php echo $rs->sex;?></div></td>
 	  <td><div align="center"><?php echo $rs->hunfou;?></div></td>
 	     <td>
-      <div align="center"><?php echo $rs->chusheng;?></div></td>
-         <td><div align="center"><?php echo $rs->biyetime;?></div></td>
+      <div align="center"><?php echo $rs->birthday;?></div></td>
+         <td><div align="center"><?php echo $rs->graduation;?></div></td>
 	 <td><div align="center"><?php echo $rs->biyeschool;?></div></td>
-      <td><div align="center"><?php echo $rs->xueli;?></div></td>
-	        <td><div align="center"><?php echo $rs->fenshu;?></div></td>
+      <td><div align="center"><?php echo $rs->education;?></div></td>
+	        <td><div align="center"><?php echo $rs->mark;?></div></td>
       <td><div align="center"><?php echo $rs->xiandxi;?></div></td>
 	  
 

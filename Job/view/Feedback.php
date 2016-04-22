@@ -1,3 +1,10 @@
+<?php
+include("../controller/feedbackcontroller.php");
+
+$feed=new feedback();
+$feed->index();
+?>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -55,66 +62,66 @@
                                 <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public/pic2.jpg"></a></td>
                             </tr>
                             <tr>
-                                <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="../public/pic3.jpg"></a></td>
+                                <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="../public/pic3.jpg"></a></td>
                             </tr>
                         </table>
 
 
 
-<div class="contact-textarea">
+                        <div class="contact-textarea">
 
-    <div style="margin: 0 auto; width: 40%;" >
+                            <div style="margin: 0 auto; width: 40%;" >
 
-        <form name="form1" action="" method="post" >
-            <div id="reg">
-                <h3>Feedback page</h3>
-                <div id="slider">
-                    <div class="form-step" >
+                                <form name="form1" action="" method="post" >
+                                    <div id="reg">
+                                        <h3>Feedback page</h3>
+                                        <div id="slider">
+                                            <div class="form-step" >
 
 
 
-                        <div class="row" >
-                            <div class="form-left" style="font-size: 20px;">username *</div>
-                            <div class="form-right"><input type="text"  name="UserName1" class="form-input" /></div>
+                                                <div class="row" >
+                                                    <div class="form-left" style="font-size: 20px;">username *</div>
+                                                    <div class="form-right"><input type="text"  name="UserName1" class="form-input" /></div>
 
-                        </div>
-                        <div class="row">
-                            <div class="form-left" style="font-size: 20px;">Phone *</div>
-                            <div class="form-right" ><input type="text"  name="Phone" class="form-input" /></div>
-                        </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-left" style="font-size: 20px;">Phone *</div>
+                                                    <div class="form-right" ><input type="text"  name="Phone" class="form-input" /></div>
+                                                </div>
 
-                        <div class="row">
-                            <div class="form-left" style="font-size: 20px;">Email *</div>
-                            <div class="form-right" ><input type="text"  name="email" class="form-input" /></div>
-                        </div>
+                                                <div class="row">
+                                                    <div class="form-left" style="font-size: 20px;">Email *</div>
+                                                    <div class="form-right" ><input type="text"  name="email" class="form-input" /></div>
+                                                </div>
 
-                        <div class="row">
-                            <div class="form-left" style="font-size: 20px;">address *</div>
-                            <div class="form-right" ><input type="text"  name="address" class="form-input" /></div>
-                        </div>
+                                                <div class="row">
+                                                    <div class="form-left" style="font-size: 20px;">address *</div>
+                                                    <div class="form-right" ><input type="text"  name="address" class="form-input" value="" /></div>
+                                                </div>
 
-                        <div class="row">
+                                                <div class="row">
                             <textarea name="message"  style="width:66%;padding:2%;height:20%; border-left-width:50%;font:36px/44px sans-serif;color:white;text-shadow:1px 1px 5px black; background:url('');">
 How was your feeling?
 </textarea>
 
-                    </div>
-                        <div id="form-submit">
+                                                </div>
+                                                <div id="form-submit">
 
-                            <input  type="submit" id="Submit" value="ADD" name="send">
-                            <button class="button1" type="reset" value="CLEAR" id="clean1" >CLEAR</button>
+                                                    <input  type="submit" id="Submit" value="ADD" name="send">
+                                                    <button class="button1" type="reset" value="CLEAR" id="clean1" >CLEAR</button>
 
+                                                </div>
+
+
+                                                <div id="output" style="margin: 0 auto; width: 40%; color: red;"></div>
+                                            </div>
+                                        </div>
+
+
+                                </form>
+                            </div>
                         </div>
-
-
-                    <div id="output" style="margin: 0 auto; width: 40%; color: red;"></div>
-                </div>
-            </div>
-
-
-        </form>
-    </div>
-</div>
                     </td>
                 </tr>
             </table>

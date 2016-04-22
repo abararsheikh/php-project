@@ -5,7 +5,7 @@ $act=$_GET['act']?$_GET['act']:'';
 if($act=='add')
 {
 
-  $sql="insert into zhaoadd(qixian,renshu,yaoqiu,zhiwei)values('".$_POST['qixian']."','".$_POST['renshu']."','".$_POST['yaoqiu']."','".$_POST['zhiwei']."')";
+  $sql="insert into hiring(hiretime,hirenumber,hirerequirement,jobtitle)values('".$_POST['hiretime']."','".$_POST['hirenumber']."','".$_POST['hirerequirement']."','".$_POST['jobtitle']."')";
   $result=$db->exec($sql);
   if($result)
   {
@@ -31,25 +31,25 @@ if($act=='add')
 function  Check_stu()
 {
 
-	if (document.form1.zhiwei.value == "")
+	if (document.form1.jobtitle.value == "")
 	 {   alert("Enter JOb title");
-		document.form1.zhiwei.focus();
+		document.form1.jobtitle.focus();
 		return false;
 	 }
-	if (document.form1.qixian.value == "")
+	if (document.form1.hiretime.value == "")
 	 {   alert("Enter time");
-		document.form1.qixian.focus();
+		document.form1.hiretime.focus();
 		return false;
 	 }
-	 if (document.form1.renshu.value == "")
+	 if (document.form1.hirenumber.value == "")
 	 {   alert("Enter numbet you want");
-		document.form1.renshu.focus();
+		document.form1.hirenumber.focus();
 		return false;
 	 }
 	
-	 if (document.form1.yaoqiu.value == "")
+	 if (document.form1.hirerequirement.value == "")
 	 {   alert("Enter your reqiorement");
-		document.form1.yaoqiu.focus();
+		document.form1.hirerequirement.focus();
 		return false;
 	 }	 
 }
@@ -66,12 +66,12 @@ function  Check_stu()
     <td colspan="2"><div align="center">Add Hire information</div></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Job title/strong></div></td>
-    <td><input name="zhiwei" type="text"  size="40"></td>
+    <td width="20%"><div align="right"><strong>Job title</div></td>
+    <td><input name="jobtitle" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="20%"><div align="right"><strong>Limit time/strong></div></td>
-    <td><input name="qixian" type="text"  size="40"></td>
+    <td width="20%"><div align="right"><strong>Limit time</div></td>
+    <td><input name="hiretime" type="text"  size="40"></td>
   </tr>
     <tr class="tdbg">
 
@@ -80,12 +80,12 @@ function  Check_stu()
 
 
         
-    <td width="20%"><div align="right"><strong>Hire number/strong></div></td>
-    <td><input name="renshu" type="text"  size="40"></td>
+    <td width="20%"><div align="right"><strong>Hire number</div></td>
+    <td><input name="hirenumber" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
-    <td width="40%"><div align="right"><strong>Hire requirement/strong></div></td>
-    <td><textarea name="yaoqiu" rows="5" cols="36"></textarea></td>
+    <td width="40%"><div align="right"><strong>Hire requirement</div></td>
+    <td><textarea name="hirerequirement" rows="5" cols="36"></textarea></td>
   </tr>
     
 </table>

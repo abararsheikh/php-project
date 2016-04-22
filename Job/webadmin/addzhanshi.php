@@ -1,7 +1,7 @@
 <?php
 require('conn.php');
     if($_GET["act"]=="del"){
-         $sql="delete from zhaoadd where id=".$_GET["id"];
+         $sql="delete from hiring where id=".$_GET["id"];
          $result=$db->query($sql);
     if($result->execute() or die(error())){
         echo  "<script language='javascript'>";
@@ -22,7 +22,7 @@ if($act=="search")
     $type=$_POST["type"];
     $keywords=$_POST["keywords"];
     if($_SESSION['id']!=="" ){
-        $sql="select * from  zhaoadd order by id desc";
+        $sql="select * from  hiring order by id desc";
     }
     $result=$db->query($sql)  or die("$sql");
     $amount=$result->rowCount($result);
@@ -78,11 +78,11 @@ else
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-   $sql="select * from  zhaoadd where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+   $sql="select * from  hiring where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  zhaoadd  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  hiring  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
    $result=$db->query($sql)  or die("$sql");
 
@@ -94,10 +94,10 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
 ?>
 
   <tr class="tdbg">
-        <td><div align="center"><?php echo $rs->zhiwei;?></div></td>
-        <td><div align="center"><?php echo $rs->qixian;?></div></td>
-	    <td><div align="center"><?php echo $rs->renshu;?></div></td>
-        <td><div align="center"><?php echo $rs->yaoqiu;?></div></td>
+        <td><div align="center"><?php echo $rs->jobtitle;?></div></td>
+        <td><div align="center"><?php echo $rs->hiretime;?></div></td>
+	    <td><div align="center"><?php echo $rs->hirenumber;?></div></td>
+        <td><div align="center"><?php echo $rs->hirerequirement;?></div></td>
 	    <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
         <td><form action="edit.php" method="post"
                 id="edit.php">
