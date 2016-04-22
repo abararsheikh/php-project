@@ -55,9 +55,11 @@ ul#nav
 {
     
 }
-ul#nav li
+#sidebar ul li
 {
     list-style: none;
+    padding: 20px;
+    border: 1px solid black;
 }
 ul#nav li a
 {

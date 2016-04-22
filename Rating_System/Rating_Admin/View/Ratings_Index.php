@@ -1,7 +1,8 @@
 <body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
-include '../../../autoloader.php';
+//include '../../../autoloader.php';
+include '../../autoloader.php';
 require_once '../../Model/Ratings.php';
 require_once '../../database.php';
 $ratingList = new Ratings();
@@ -19,7 +20,7 @@ $selectResult = $ratingList->displayRatings();
     <title>List of Ratings</title>
 </head>
 
-<?php include '../../../Assets/html/header.php'?>
+<!--<?php //include '../../../Assets/html/header.php'?>-->
 <div class="container">
     <body>
     <h2>List of Ratings</h2>
