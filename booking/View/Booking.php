@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/chooseSeat.css"/>
-        <link rel="stylesheet" href="css/booking.css"/>
+        <link rel="stylesheet" href="../Assets/css/booking/chooseSeat.css"/>
+        <link rel="stylesheet" href="../Assets/css/booking/booking.css"/>
 
         <title>Booking</title>
     </head>
@@ -288,7 +288,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <script src="/Assets/js/trailerApp.js"></script>
-   <script src="./js/booking.js"></script>
+   <script src="../Assets/js/booking/booking.js"></script>
 
     </body>
 </html> 

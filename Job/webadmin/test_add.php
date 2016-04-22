@@ -5,7 +5,7 @@ $act=$_GET['act']?$_GET['act']:'';
 if($act=='add')
 {
 
-  $sql="insert into ceshi(wenti,answer1,answer2,answer3,answer4,rights,fenshu,name)values('".$_POST['wenti']."','".$_POST['answer1']."','".$_POST['answer2']."','".$_POST['answer3']."','".$_POST['answer4']."','".$_POST['rights']."','".$_POST['fenshu']."','".$_POST['name']."')";
+  $sql="insert into test(question,answer1,answer2,answer3,answer4,mark,rights,name)values('".$_POST['question']."','".$_POST['answer1']."','".$_POST['answer2']."','".$_POST['answer3']."','".$_POST['answer4']."','".$_POST['rights']."','".$_POST['mark']."','".$_POST['name']."')";
    $result=$db->exec($sql);
   if($result)
   {
@@ -32,35 +32,35 @@ if($act=='add')
 function  Check_stu()
 {
 
-	if (document.form1.wenti.value == "")
-	 {   alert("Enter job");
-		document.form1.wenti.focus();
+	if (document.form1.question.value == "")
+	 {   alert("Enter question");
+		document.form1.question.focus();
 		return false;
 	 }
 	if (document.form1.answer1.value == "")
-	 {   alert("Enter time");
+	 {   alert("Enter answer1");
 		document.form1.answer1.focus();
 		return false;
 	 }
 	 if (document.form1.answer2.value == "")
-	 {   alert("Enter nunmber");
+	 {   alert("Enter answer2");
 		document.form1.answer2.focus();
 		return false;
 	 }
 	
 	 if (document.form1.answer3.value == "")
-	 {   alert("Enter Hire Requirement");
+	 {   alert("Enter Hire answer3");
 		document.form1.answer3.focus();
 		return false;
 	 }
     if (document.form1.answer4.value == "")
-    {   alert("Enter Hire Requirement");
+    {   alert("Enter Hire answer4");
         document.form1.answer4.focus();
         return false;
     }
-    if (document.form1.fenshu.value == "")
-    {   alert("Enter Hire Requirement");
-        document.form1.fenshu.focus();
+    if (document.form1.mark.value == "")
+    {   alert("Enter Hire mark");
+        document.form1.mark.focus();
         return false;
     }
     if (document.form1.rights.value == "")
@@ -88,7 +88,7 @@ function  Check_stu()
   </tr>
   <tr class="tdbg">
     <td width="20%"><div align="right"><strong>Question Title：</strong></div></td>
-    <td><input name="wenti" type="text"  size="40"></td>
+    <td><input name="question" type="text"  size="40"></td>
   </tr>
   <tr class="tdbg">
     <td width="20%"><div align="right"><strong>A：</strong></div></td>
@@ -112,7 +112,7 @@ function  Check_stu()
   </tr>
        <tr class="tdbg">
     <td width="40%"><div align="right"><strong>Mark</strong></div></td>
-    <td><input name="fenshu" type="text"  size="40"></td>
+    <td><input name="mark" type="text"  size="40"></td>
   </tr>
         <tr class="tdbg">
     <td width="40%"><div align="right"><strong>Name</strong></div></td>

@@ -1,4 +1,3 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
@@ -20,7 +19,7 @@ $selectResult = $contactList->displayContacts();
 </head>
 
 <!--<?php //include '../../Assets/html/header.php'?>-->
-<div class="container">
+<!--<div class="container">-->
 <body>
 <h2>List of contacts</h2>
 
@@ -64,6 +63,6 @@ $selectResult = $contactList->displayContacts();
 </table>
 
 </body>
-</div>
+<!--</div>-->
 
 </html>

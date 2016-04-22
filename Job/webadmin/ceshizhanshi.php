@@ -3,7 +3,7 @@
 session_start();
 require('conn.php');
 if($_GET["act"]=="del"){
-  $sql="delete from ceshi where id=".$_GET["id"];
+  $sql="delete from test where id=".$_GET["id"];
   $result=$db->query($sql);
   if($result->execute() or die(error())){
     echo  "<script language='javascript'>";
@@ -22,7 +22,7 @@ if($act=="search")
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
    if($_SESSION['id']!=="" ){
-  $sql="select * from  ceshi order by id desc";
+  $sql="select * from  test order by id desc";
 }
 $result=$db->query($sql)  or die("cannorworkSQL：$sql");
 $amount=$result->rowCount($result);
@@ -146,11 +146,11 @@ if($act=="search")
 {
    $type=$_POST["type"];
    $keywords=$_POST["keywords"];
-  $sql="select * from  ceshi where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
+  $sql="select * from  test where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
 }
 else
 {
-   $sql="select * from  ceshi  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+   $sql="select * from  test  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
 }
 $result=$db->query($sql)  or die("NOworkSQL：$sql");
 
