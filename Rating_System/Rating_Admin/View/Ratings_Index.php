@@ -1,4 +1,3 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
 //include '../../../autoloader.php';
