@@ -16787,7 +16787,7 @@ $__System.register('112', ['47', '48', '49', '4a', 'ea', '10f', 'eb'], function 
               case AppConstant.ADMIN_LOGIN:
                 console.log('admin logging in');
                 adminLogin(action.username, action.password).then(function (data) {
-                  if (data.success) window.location.replace('/Admin_Login/admin.php');
+                  if (data.success) window.location.replace('/Admin/home');
                   _this._isLoggedIn = data.success;
                   _this._loginError = data.error[0];
                   _this.emitChange();
