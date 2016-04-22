@@ -5,8 +5,9 @@
         <div class="logo">
         <a href="#">Welcome to admin page</a>
         </div>
- </div>
-<div id="login">
 
-</div>
-<script src="/Assets/js/adminLogin.js"></script>
+        <div id="login"></div>
+
+ </div>
+<script src="/Assets/js/adminButton.js"></script>
+

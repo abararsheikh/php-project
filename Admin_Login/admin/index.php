@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yi
- * Date: 15/04/16
- * Time: 4:14 PM
- */
 
 include '../../autoloader.php';
-include 'AdminController.php';
+include "AdminController.php";
+
 use Project\Classes\Request;
 use Project\Classes\Router\Nav;
 // single quote
@@ -21,4 +16,3 @@ Nav::group('/admin as admin', function() use($controller) {
 });
 
 Nav::start();
-
