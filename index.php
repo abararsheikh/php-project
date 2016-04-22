@@ -5,7 +5,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
 ?>
 <head>
   <script src="/Assets/js/homepage.js"></script>
+  <script src="/Assets/js/jquery.min.js"></script>
   <link href="Assets/css/homepage.css" type="text/css" rel="stylesheet">
+  <link href="Assets/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
 </head>
 
