@@ -37,10 +37,15 @@ class AdminController {
         %js%
       </head>
       <body>
-        %header%
-        <div class='content'>
-            %content%
+      <div class='container-fluid'>
+
+           %header%
+            <div class='col-md-10'>
+                %content%
+
+          </div> <!-- close row -->
         </div>
+      </div>
         %footer%
       </body>
       </html>

@@ -3,8 +3,10 @@
 use Project\Classes\DB\DB;
 //include '../../../autoloader.php';
 include '../../autoloader.php';
-require_once '../../Model/Ratings.php';
-require_once '../../database.php';
+//require_once '../../Model/Ratings.php';
+require_once '../../Rating_System/Model/Ratings.php';
+require_once '../../Rating_System/database.php';
+//require_once '../../database.php';
 $ratingList = new Ratings();
 $selectResult = $ratingList->displayRatings();
 ?>
@@ -21,7 +23,7 @@ $selectResult = $ratingList->displayRatings();
 </head>
 
 <!--<?php //include '../../../Assets/html/header.php'?>-->
-<div class="container">
+<!--<div class="container">-->
     <body>
     <h2>List of Ratings</h2>
 
@@ -65,6 +67,6 @@ $selectResult = $ratingList->displayRatings();
     </table>
 
     </body>
-</div>
+<!--</div>-->
 
 </html>
