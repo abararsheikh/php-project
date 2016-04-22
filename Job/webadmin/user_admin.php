@@ -53,7 +53,7 @@ $PageCount=0;
 
 
 
-//翻页连接
+
 
 $Page_String="";
 if ($page==1){
@@ -201,7 +201,7 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
  
  }}
 
- az
+
  ?>
 </table>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
