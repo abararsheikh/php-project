@@ -1,6 +1,6 @@
 <?php
 use Project\Classes\DB\DB;
-require_once '/Model/Ratings.php';
+require_once './Model/Ratings.php';
 require_once '../autoloader.php';
 require_once 'database.php';
 require_once '../FilmAdmin_CMS/Model/Filmadmin.php';

@@ -14,8 +14,8 @@
     <div class="container-fluid">
         <div class="page-header row">
           <h1 class="col-md-4">Food Shopping Cart</h1>
-            <div class="col-md-offset-3 col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
-            <div class="col-md-3">
+
+            <div class="col-md-offset-1  col-md-3">
                 <form action="" class="search-form ">
                 <div class="form-group has-feedback">
                     <label for="search" class="sr-only">Search</label>
@@ -24,20 +24,35 @@
                 </div>
             </form>
                 </div>
+            <div class="col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
+                <div class-="col-md-2">
+                <div class="dropdown">
+                    <a href="../order_management/index.php"> <button class="dropbtn btn btn-info order">Order management
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </button>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
+                    </div>
+
             </div>
         <form action="../order_management/index.php" method="post">
         <div class="row menu">
 
-    <ul class="nav nav-tabs menu-nav col-md-12 col-sm-12 col-xs-12">
+    <ul class="nav nav-tabs menu-nav col-md-5 col-sm-12 col-xs-12 row">
         <li role="presentation" class="active" id="selectall"><a >All Items</a></li>
         <li role="presentation"  class="" id="lowstock"><a >Low stock</a></li>
         <li role="presentation"  class="" id="reduction"><a >Price reduction</a></li>
-        <div class="col-md-offset-8"><p class="navbar-text">Selected Food: $<span>0.00</span></p>
-            <button type="submit" class="btn btn-default navbar-btn" id="checkout">Check out</button>
-        </div>
+
 
     </ul>
-
+            <div class="col-sm-12 col-md-offset-3 col-md-4"><p class="navbar-text">Selected Food: $<span>0.00</span></p>
+                <button type="submit" class="btn btn-default navbar-btn" id="checkout">Check out</button>
+            </div>
             </div>
 
         <div class="table-responsive" id="foods">

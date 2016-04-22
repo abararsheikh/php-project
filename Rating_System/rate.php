@@ -3,7 +3,7 @@
 header("Cache-Control: no-cache");
 require_once 'database.php';
 include '../autoloader.php';
-require_once '/Model/Ratings.php';
+require_once './Model/Ratings.php';
 $db = Database::getDB();
 $units = Database::unit();
 $getRollId = Project\Auth\models\AuthModel::getUser('roleId');

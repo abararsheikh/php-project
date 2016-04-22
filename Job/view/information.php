@@ -1,11 +1,10 @@
+<?php session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
-//require('conn.php');
+$act=isset($_GET['act'])?$_GET['act']:'';
+$a=0;
 include("../controller/jobinformationcontrller.php");
-
-$info=new information();
-$info->index();
 ?>
 
 <html>
@@ -47,13 +46,13 @@ width:1400px;
           <td width="135" valign="top" bgcolor="#CCCCCC">
               <table width="157" border="0">
                   <tr id="nav">
-                      <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="img/pic1.jpg"></a></td>
+                      <td height="64" align="center" valign="middle"><a href="aboutus.php?home"><img src="../public/pic1.jpg"></a></td>
                   </tr>
                   <tr>
-                      <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="img/pic2.jpg"></a></td>
+                      <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public/pic2.jpg"></a></td>
                   </tr>
                   <tr>
-                      <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="img/pic3.jpg"></a></td>
+                      <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="../public/pic3.jpg"></a></td>
                   </tr>
           </table>
           </td>
@@ -83,7 +82,7 @@ width:1400px;
           </tr>
             </table>
 
-              <form name="form1" action="information.php?act=add" method="post" enctype="multipart/form-data">
+              <form action="?act=add" method="post" enctype="multipart/form-data">
 	    <table width="692" border="0">
 	      <tr>
 	        <td height="40" colspan="2" bgcolor="#CCCCCC"><span class="STYLE1">Job（*）</span></td>
@@ -96,7 +95,7 @@ width:1400px;
 	      <tr>
 	        <td width="91" bgcolor="#CCCCCC"><p>Sex：
   </p></td>
-            <td width="591" bgcolor="#CCCCCC"><select name="xingbie">
+            <td width="591" bgcolor="#CCCCCC"><select name="sex">
               <option value="Male" selected="selected">Male</option>
               <option value="Female">Female</option>
               </select>
@@ -113,15 +112,15 @@ width:1400px;
           </tr>
 	      <tr>
 	        <td bgcolor="#CCCCCC"><p>Date of birthday： </p></td>
-            <td bgcolor="#CCCCCC"><input type="text" name="chusheng" value=""/></td>
+            <td bgcolor="#CCCCCC"><input type="text" name="birthday" value=""/></td>
           </tr>
 	      <tr>
 	        <td bgcolor="#CCCCCC"><p>Educational background： </p></td>
-            <td bgcolor="#CCCCCC"><input type="text" name="xueli" value=""/></td>
+            <td bgcolor="#CCCCCC"><input type="text" name="education" value=""/></td>
           </tr>
 	      <tr>
 	        <td bgcolor="#CCCCCC"><p>Date of graduation：</p></td>
-            <td bgcolor="#CCCCCC"><input type="text" name="biyetime" value=""/></td>
+            <td bgcolor="#CCCCCC"><input type="text" name="graduation" value=""/></td>
           </tr>
 	      <tr>
 	        <td bgcolor="#CCCCCC"><p>School：</p></td>
@@ -144,38 +143,17 @@ width:1400px;
             <td width="82" bgcolor="#CCCCCC">Online Test</td>
             <td width="598" bgcolor="#CCCCCC">&nbsp;</td>
           </tr>
-          <?php
+<h2>before questionrs</h2>
+  <?php
+      require('../conn.php');
+      include("../controller/info.php");
 
-          require('conn.php');
-          include("../controller/jobinformationcontrller.php");
-          $info=new information();
-          $info->info();
-
-          /*
-          $sqlMax = "select * from ceshi order by id desc";
-          $resMax = $db->query($sqlMax) or die($sqlMax);
-          $rsMax = $resMax->fetchObject();
-          $max = $rsMax -> id;
-
-          $sqlMin = "select * from ceshi order by id";
-          $resMin = $db->query($sqlMin) or die($sqlMin);
-          $rsMin = $resMin->fetchObject();
-          $min = $rsMin -> id;
-
-          $i = 1;
-		  while($i<=10){
-            $id = round(rand($min,$max));
-            if(!in_array($id,$ids)){
-              $sql = "select * from ceshi where id=".$id;
-              $res = $db->query($sql);
-              if($rs = $res->fetchObject()){
-                array_push($ids,$id);
-                */
       $i = 1;
+      $ids=array();
       while($i<=10){
             $id = round(rand($min,$max));
             if(!in_array($id,$ids)){
-              $sql = "select * from ceshi where id=".$id;
+              $sql = "select * from test where id=".$id;
               $res = $db->query($sql);
               if($rs = $res->fetchObject()){
                 array_push($ids,$id);
@@ -183,20 +161,20 @@ width:1400px;
         ?>
 
           <tr>
-            <td colspan="2" bgcolor="#CCCCCC"><p><?php echo $i.".".$rs->wenti; ?></p>
+            <td colspan="2" bgcolor="#CCCCCC"><p><?php echo $i.".".$rs->question; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="a"/><?php echo "A.".$rs->answer1; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="b"/><?php echo "B.".$rs->answer2; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="c"/><?php echo "C.".$rs->answer3; ?></p>
 	                <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="d"/><?php echo "D.".$rs->answer4; ?></p>		      </td>
           </tr>
           <?php
+
         $i++;
           }
         }
-		}
-
-
+		  }
       ?>
+
 <?php
      $numberrand=rand();
 
@@ -204,15 +182,11 @@ width:1400px;
 
             <tr>
             <td height="23" colspan="2" bgcolor="#CCCCCC" name="vcode">Codes：<?php echo $numberrand;?>  <input type="hidden" name="rand3" value="<?php echo $numberrand;?>">
-                <?php if(isset($error)){
-                    echo $error;
-                }
-                ?>
-
-                <input type="text" name="username32" value="">
-              <td>
-                <input name="Submit" type="submit" id="Submit" value="Submit" /></td>
+                <?php echo $error;?>
+                <input type="text" name="username32" value=""> <input name="Submit" type="submit"/></td>
           </tr>
+              <td>
+               
           </table>
 	    </form>
 
@@ -223,6 +197,7 @@ width:1400px;
     </tr>
 </table>
 
+    <h2>alasdfasdfaf</h2>
 
 
 

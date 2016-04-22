@@ -1,6 +1,6 @@
 <?php
 
-//error_reporting(0);
+error_reporting(0);
 $dsn = 'mysql:host=localhost;dbname=webadmin';
 $username = 'root';
 $password = '';
@@ -8,7 +8,7 @@ $password = '';
 // try {
 $db = new PDO($dsn, $username, $password);
 
-include("../model/PDOOperation.php");
+
 
 
 

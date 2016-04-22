@@ -12,7 +12,7 @@ if(isset($_GET["id"])){
     $cinemas=FoodDB::getFoodCinema();
    $mark=FoodDB::calculateMark($_GET["id"]);
 FoodDB::setHistory($_GET["id"]);
-
+    $cartnumber=ShoppingcartDB::getCount(7);
     include "food_product.php";
 }else if(isset($_POST["action"])){
       if($_POST["action"]=="add") {
@@ -26,7 +26,7 @@ FoodDB::setHistory($_GET["id"]);
       }
 }else if(isset($_GET["foodid"])){
     $food=FoodDB::getFoodById($_GET["foodid"]);
-
+    $cartnumber=ShoppingcartDB::getCount(7);
     include "CommentForm.php";
 }
 ?>

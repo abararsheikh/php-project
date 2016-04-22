@@ -1,6 +1,10 @@
 <html>
 
 <?php
+
+// todo: login firefox, header style
+
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
 ?>
 <head>

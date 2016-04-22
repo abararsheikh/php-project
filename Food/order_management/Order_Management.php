@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="../../Assets/css/bootstrap.min.css" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../../Assets/js/jquery.min.js" ></script>
     <script src="../../Assets/js/bootstrap.min.js" ></script>
@@ -16,9 +16,12 @@
     <div class="container-fluid">
         <div class="page-header row">
             <h1 class="col-md-4">Order Management</h1>
-            <div class="col-md-offset-8 col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
+            <div class="col-md-offset-5 col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
             <div class="container button-wrapper cart col-md-1">
-                <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items">1</span></button>
+               <a href="../foodshoppingcartmanagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
+                        echo $cartnumber;
+                        ?></span></button>
+               </a>
             </div>
             </div>
          <div>
@@ -43,5 +46,5 @@
          </div>
     </div>
 </main>
-<?php include "../,,/Assets/html/footer.php";?>
+<?php include "../../Assets/html/footer.php";?>
 </body>

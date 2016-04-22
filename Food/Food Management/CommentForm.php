@@ -17,8 +17,27 @@
 <?php include "../../Assets/html/header.php";?>
 <main>
 <div class="container-fluid">
-    <div class="page-header">
-<h2>Food Comment</h2>
+    <div class="page-header row">
+<h2 class="col-md-3">Food Comment</h2>
+        <div class="btn-group col-md-2 col-md-offset-6">
+            <div class="dropdown">
+                <a href="../order_management/index.php"> <button class="dropbtn btn btn-info order">Order management
+                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    </button>
+                </a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container button-wrapper cart col-md-1">
+            <a href="../FoodShoppingcartManagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
+                        echo $cartnumber;
+                        ?></span></button></a>
+        </div>
     </div>
     <div class="row">
 <div href="#" class="thumbnail image col-md-4 col-sm-6 col-xs-12">
@@ -74,7 +93,7 @@
             <input type="hidden" value="<?php echo $food->getId();?>" name="foodid"/>
             <input type="hidden" value="insertcomment" name="action"/>
 
-        <button type="submit" class="btn" name="submit">Submit</button>
+        <button type="submit" class="btn submit" name="submit">Submit</button>
             <div>
     </form>
     </div>

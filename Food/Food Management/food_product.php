@@ -15,18 +15,21 @@
     <div class="container-fluid">
         <div class="page-header row">
             <div class="btn-group col-md-2 col-md-offset-8">
-                <button type="button" class="btn btn-info dropdown-toggle order" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Order Management <span class="glyphicon glyphicon-triangle-bottom"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                </ul>
+                <div class="dropdown">
+                    <a href="../order_management/index.php"> <button class="dropbtn btn btn-info order">Order management
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </button>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
             </div>
             <div class="container button-wrapper cart col-md-2">
-               <a href="../FoodShoppingcartManagement"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items">1</span></button></a>
+               <a href="../FoodShoppingcartManagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span>
+                       <span class="items"><?php echo $cartnumber;?></span></button></a>
             </div>
             </div>
         <form action="#" method="post" id="">
