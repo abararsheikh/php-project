@@ -315,20 +315,16 @@ alert("123");
                         check: "checkout",
                         info: orders,
                         total: (+$('div p.navbar-text span').html())
-                    }, function (data) {
-                        console.log(data);
-                    });
-                      /*  .done(function () {
+                    }).done(function () {
                         window.location.href = "../order_management/index.php";
-                    });*/
+                    });
                 }
-//$('form').submit();
-
-
             }
         );
+
         $('input[type="date"]').bind("change",function(){
             var x=true;
+
             $('input:checked').not('#checkall').each(function(){
                 var date= $(this).parent().parent().find('td.deliverytime input').val();
                 console.log(date);
@@ -337,13 +333,15 @@ alert("123");
                     x=false;
                 }
             });
-            if(x==false){
+
+            console.log($(this).parent().parent().find('input:checkbox').is(':checked'));
+            if(x==false||!($(this).parent().parent().find('input:checkbox').is(':checked'))){
                 $('#checkout').addClass("disabled");
                 $('#checkout').prop('disabled', true);
                 $('#checkout').css("background-color","gray");
             }else{
-                $('#checkout').removeClass("disabled");
-                $('#checkout').prop('disabled', false);
+               $('#checkout').removeClass("disabled");
+               $('#checkout').prop('disabled', false);
                 $('#checkout').css("background-color","salmon");
             }
 
@@ -358,7 +356,7 @@ alert("123");
                     x=false;
                 }
             });
-            if(x==false){
+            if(x==false ||!($(this).parent().parent().find('input:checkbox').is(':checked'))){
                 $('#checkout').addClass("disabled");
                 $('#checkout').prop('disabled', true);
                 $('#checkout').css("background-color","gray");
@@ -369,65 +367,5 @@ alert("123");
             }
 
         });
-
-/*' <tr>'+
-    '<td rowspan="4"><input type="checkbox" class="check"/> </td>'+
-                        '<td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>'
-
-                       + '<td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><?php echo $item->Food_Name;?></a></td>'
-                   + '<td rowspan="4">Catatory: <?php echo $item->Food_Catagory;?></td>'
-                   + '<td rowspan="4">Cinema:<select>' +
-    '</select></td>'+
-    '<td rowspan="4" width="150">Size:'+
-                    '<select></select>'+
-    '</td><td rowspan="4" width="150">'+
-                        '<input type="hidden" value="<?php echo $item->Food_Price; ?>"/>'+
-                        '<input type="hidden" value="<?php echo $item->Discount_price;?>"/>'+
-                        'Original: $<?php if($item->Food_Price!==$item->Discount_price){?><span style="text-decoration:line-through;">'
-                   + '</span>'+
-                    '<div>Current: $<span></span></div>'+
-                    '</td> <td rowspan="4" width="150">'+
-                        '<div class="snip"><input type="button" value="-" class="m"/><input type="text" size="1" maxlength="3" class="enter" value="<?php echo $item->Quantity;?>"/><input type="button" value="+" class="p"/>'
-                        '<input type="hidden" value="<?php echo $item->Food_Instock;?>"/></div>'
-                       + '</td> <td rowspan="4" class="amount">$<span></span></td>'+
-                    '<td rowspan="4"> <input type="hidden" value="<?php echo $item->Id;?>" name="id"/>'+
-                        '<a href="" name="delete">Delete</a> </td> </tr>'+
-                        '<tr></tr><tr></tr> <tr></tr>';
-                   /!*
-                    <?php if($item->Size==1){ echo $item->Discount_price*$item->Quantity;}
-                    else if($item->Size==2){echo $item->Discount_price*$item->Quantity*1.5;}
-                    else if($item->Size==3){echo $item->Discount_price*$item->Quantity*2;}?>
-                    <?php if($item->Size==1){ echo $item->Food_Price;}else if($item->Size==2){
-                    echo $item->Food_Price*1.5;
-                    }else if($item->Size==3){
-                    echo $item->Food_Price*2;
-                    }?>
-                    <option class="small" <?php if($item->Size==1){
-                        echo "selected";
-                    }?>>Small</option>
-                    <option class="middle" <?php if($item->Size==2){
-                        echo "selected";
-                    }?>>Middle</option>
-                    <option class="large" <?php if($item->Size==3){
-                        echo "selected";
-                    }?>>Large</option>*!/
-
-    /!*' <?php
-                        foreach($cinemas as $c)
-                    { if($item->Cinema_Name==$c["Cinema_Name"]){
-
-                        ?>
-                    <option value="<?php echo $item->Cinema_Name;?>" selected><?php echo $item->Cinema_Name;?></option>
-
-                        <?php
-                    }else{
-                        ?>
-                    <option value="<?php echo $c["Cinema_Name"];?>"><?php echo $c["Cinema_Name"];?></option>
-                        <?php
-                    }
-
-                    }
-                    ?>*!/*/
-
 }
 );

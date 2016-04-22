@@ -29,15 +29,27 @@
             </form>
                 </div>
             <div class="btn-group col-md-2 ">
-                <button type="button" class="btn btn-info dropdown-toggle order" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!--<button type="button" class="btn btn-info dropdown-toggle order" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Order Management <span class="glyphicon glyphicon-triangle-bottom"></span>
                 </button>
+
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Action</a></li>
-                </ul>
+                </ul>-->
+                <div class="dropdown">
+                   <a href="order_management/index.php"> <button class="dropbtn btn btn-info order">Order management
+                        <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    </button>
+                   </a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
+                </div>
             </div>
 
             <div class="container button-wrapper cart col-md-1">

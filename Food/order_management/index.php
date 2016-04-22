@@ -44,7 +44,7 @@ if($page=="all"){
          $items[]=$item;
 
      }
-
+    $cartnumber=ShoppingcartDB::getCount(7);
     include "Order_Management.php";
 }else if($page=="delete"){
 
@@ -60,7 +60,7 @@ if(isset($_POST["check"])){
 
     foreach($_POST["info"] as $item){
        $food= ShoppingcartDB::getItemById($item[0]);
-echo $item[4];
+
         $orderdb->insertOrderItem($orderid,$item[1],$item[2],$item[3],$item[4],$food);
     }
     $orderdb->updateOrder($total,0,"",$orderid);

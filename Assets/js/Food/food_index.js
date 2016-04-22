@@ -1,6 +1,13 @@
 $(document).ready(
     function () {
         display();
+
+        $('button.dropdown').hover(function() {
+            alert("123");
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+        }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+        });
         $.getJSON("Food Management/food_init.php")
             .done(function (data) {
                 var pages = Math.ceil(Object.keys(data).length / 12);
