@@ -6,8 +6,6 @@
  * Time: 4:21 PM
  */
 
-namespace Project\Examples\admin;
-
 
 use Project\Auth\models\AuthModel;
 use Project\Classes\Request;
@@ -36,7 +34,7 @@ class AdminController {
 
   public function home(Request $request) {
     var_dump($request);
-    $this->view->render('/Admin_Login/admin/test', 'Admin Home');
+    return $this->view->render('/Admin_Login/admin/test', 'Admin Home');
   }
 
   public function news() {
