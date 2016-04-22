@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="./css/slick.css"/>
-        <link rel="stylesheet" href="./css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../Assets/css/booking/slick.css"/>
+        <link rel="stylesheet" href="../Assets/css/booking/style.css"/>
 
         <title>Homepage</title>
     </head>
@@ -156,8 +156,8 @@
     <?php require_once "../Assets/html/footer.php"?>
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
-    <script type="text/javascript" src="./js/slick.min.js"></script>
-    <script type="text/javascript" src="./js/homepage.js"></script>
-    <script type="text/javascript" src="./js/home.js"></script>
+    <script type="text/javascript" src="../Assets/js/booking/slick.min.js"></script>
+    <script type="text/javascript" src="../Assets/js/booking/homepage.js"></script>
+    <script type="text/javascript" src="../Assets/js/booking/home.js"></script>
     </body>
 </html> 

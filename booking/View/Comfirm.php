@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="./css/confirm.css"/>
+        <link rel="stylesheet" href="../Assets/css/booking/confirm.css"/>
         <title>Comfirm</title>
     </head>
         
@@ -178,6 +178,6 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-    <script src="./js/confirm.js"></script>
+    <script src="../Assets/js/booking/confirm.js"></script>
     </body>
 </html> 
