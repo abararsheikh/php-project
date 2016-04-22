@@ -3,7 +3,7 @@
 /**
 * 
 */
-
+var_dump($_POST);
 if($act=='add'){
   foreach($_POST as $key => $value){
 
@@ -40,13 +40,16 @@ if($act=='add'){
 
 }
 
-if(isset($_POST['Submit'])){
-    if ($_POST['rand3']==$_POST['username32']){
+if(isset($_POST['Submit'])) {
+    if ($_POST['rand3'] == $_POST['username32']) {
         header('location:index.php');
-      }
-    }else{
-        $error=(" <span style='color :red;'> Wrong code </span>");
+    } else {
+
+
+        $error = (" <span style='color :red;'> Wrong code </span>");
+
     }
+}
 
 
 

@@ -143,11 +143,11 @@ width:1400px;
             <td width="82" bgcolor="#CCCCCC">Online Test</td>
             <td width="598" bgcolor="#CCCCCC">&nbsp;</td>
           </tr>
-
+<h2>before questionrs</h2>
   <?php
       require('../conn.php');
       include("../controller/info.php");
-         
+
       $i = 1;
       $ids=array();
       while($i<=10){
@@ -177,12 +177,12 @@ width:1400px;
 
 <?php
      $numberrand=rand();
-       
+
    ?>
 
             <tr>
             <td height="23" colspan="2" bgcolor="#CCCCCC" name="vcode">Codes：<?php echo $numberrand;?>  <input type="hidden" name="rand3" value="<?php echo $numberrand;?>">
-              
+                <?php echo $error;?>
                 <input type="text" name="username32" value=""> <input name="Submit" type="submit"/></td>
           </tr>
               <td>
@@ -197,6 +197,7 @@ width:1400px;
     </tr>
 </table>
 
+    <h2>alasdfasdfaf</h2>
 
 
 
