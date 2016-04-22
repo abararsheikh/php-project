@@ -10,7 +10,7 @@
     <script src="../../Assets/js/Food/Order_Management.js"></script>
 </head>
 <body>
-<?php include "../Assets/html/header.php";?>
+<?php include "../../Assets/html/header.php";?>
 <main>
 
     <div class="container-fluid">
@@ -43,5 +43,5 @@
          </div>
     </div>
 </main>
-<?php include "../Assets/html/footer.php";?>
+<?php include "../,,/Assets/html/footer.php";?>
 </body>

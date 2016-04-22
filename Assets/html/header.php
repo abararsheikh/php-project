@@ -1,8 +1,10 @@
 
+
+<script src="/Assets/js/homepage.js"></script>
 <script src="/Assets/js/jquery.min.js"></script>
 <script src="/Assets/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/Assets/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="/Assets/css/style.css"/>
+<link href="/Assets/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
 
 <div class="pull-right">
   <div id="login"></div>

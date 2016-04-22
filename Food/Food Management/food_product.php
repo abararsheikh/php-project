@@ -10,7 +10,7 @@
     <script src="../../Assets/js/Food/food_product.js"></script>
 </head>
 <body>
-<?php include "../Assets/html/header.php";?>
+<?php include "../../Assets/html/header.php";?>
 <main>
     <div class="container-fluid">
         <div class="page-header row">
@@ -83,5 +83,5 @@
         </div>
         </div>
 </main>
-<?php include "../Assets/html/footer.php";?>
+<?php include "../../Assets/html/footer.php";?>
 </body>

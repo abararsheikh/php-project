@@ -6,10 +6,10 @@ include '../autoloader.php';
 include '../vendor/autoload.php';
 session_start();
 
-$paymentController = new \Project\Payment\PaymentController();
+$paymentController = '\Project\Payment\PaymentController';
 $paymentRouter = new \Project\Classes\Router\Router();
 
-$paymentRouter->post('/payment/stripe', $paymentController->action('Stripe'));
+$paymentRouter->post('/payment/stripe', "$paymentController@Stripe");
 
 $paymentRouter->startRouting();
 

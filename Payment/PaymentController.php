@@ -21,7 +21,6 @@ class PaymentController extends Controller{
 
     $token = Helper::getParam('stripeToken');
     if ($this->model->stripe($token)) {
-      //header('Refresh: 5; url=/');
       header("Location: ../Booking/View/payment.php");
       return "<h1 style='color: lightgreen;'>Thank you, you will be redirected to homepage shortly</h1>";
     }

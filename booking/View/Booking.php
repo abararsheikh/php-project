@@ -5,24 +5,24 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
         <link rel="stylesheet" href="css/chooseSeat.css"/>
         <link rel="stylesheet" href="css/booking.css"/>
 
         <title>Booking</title>
     </head>
-        
-    
+
+
     <body>
-    <?php if(isset($_GET['click'])):?>
-        <div id="login" class="selected"></div>
-    <?php endif?>
-    <?php if(!isset($_GET['click'])):?>
-        <div id="login" class=""></div>
-    <?php endif?>
-     <main>
+   <div style="height:70px">
+        <?php require_once "../Assets/html/header.php"?>
+   </div>
+
+
+<main>
      <section id="seat" class="container max-space">
       <!--film name -->
+
        <div class="row">
           <div class="col-lg-12 title">
            <h1><?php echo $filmInfo[0]->Film_Name?> <img class="concal" src="./image/seat-close.png"/></h1>
@@ -95,7 +95,9 @@
            </div>
        </div> 
     </section>
+
      <div class="shadow">
+
       <section id="film-banner" class="container-fluid click">
             <h1 id="film-title">
                 <?php if(isset($filmInfo[0]) && !isset($item)):?>
@@ -277,16 +279,16 @@
           <span>Film Discription</span><?php echo $filmInfo[0]->filmDisc?>
           </p>
       </section>
+         <?php require_once "../Assets/html/footer.php"?>
       </div>
-    </main> 
-         
+</main>
+
+
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="./js/bootstrap.min.js"></script>
+
     <script src="/Assets/js/trailerApp.js"></script>
-    <script src="/Assets/js/authApp.js"></script>
-    <script src="./js/booking.js"></script>
+   <script src="./js/booking.js"></script>
 
     </body>
 </html> 
