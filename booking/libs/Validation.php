@@ -6,6 +6,10 @@
  * Time: 2:55 PM
  */
 
+/**
+ * all the validation functions
+ * Class Validation
+ */
 class Validation{
    //private $compareArray = [];
     public function __construct(){

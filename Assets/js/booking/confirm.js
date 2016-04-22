@@ -4,6 +4,11 @@
 
 var validNavigation = false;
 
+/**
+ *  countdown Clock in comfirm page
+ * when click count to 0 clean the session
+ *
+ */
 function init(){
     paymentButton();
     var endTime = new Date();
@@ -33,7 +38,10 @@ function init(){
     //closeBrowerEmtpyShoppingCart();
     //wireUpEvents();
 }
-
+/**
+ * ajax call to delete item
+ *
+ */
 function deleteItem(){
     $(".ticket-booking").on("click",".delete",function(){
         var item_id =$(this).attr("value");
@@ -49,6 +57,12 @@ function deleteItem(){
     });
 
 }
+/**
+ * create bill html and css
+ *
+ *
+ * @param obj
+ */
 
 function createBills(obj){
 console.log(obj);
@@ -122,7 +136,12 @@ console.log(obj);
 
 
 //////////////////////////////
-
+/**
+ * get remain time for count down clock
+ *
+ * @param endTime
+ * @returns {{total: number, minutes: number, seconds: number}}
+ */
 function getTimeRemaining(endTime){
     var d =new Date();
     var t = Date.parse(endTime) - Date.parse(d);
@@ -139,22 +158,22 @@ function getTimeRemaining(endTime){
 function paymentButton(){
     $(".stripe-button-el").addClass("btn-payment");
 }
-
-function closeBrowerEmtpyShoppingCart(){
-
-    //$(window).on('beforeunload ',function() {
-    //    alert('');
-
-    //});
-
-    window.onunload=function(){
-            alert('');
-            var url="./index.php?route=DetailController/sessionExpired";
-            $.get(url, function(data, success){
-                alert("shopping cart empty");
-            })};
-
-}
+//
+//function closeBrowerEmtpyShoppingCart(){
+//
+//    //$(window).on('beforeunload ',function() {
+//    //    alert('');
+//
+//    //});
+//
+//    window.onunload=function(){
+//            alert('');
+//            var url="./index.php?route=DetailController/sessionExpired";
+//            $.get(url, function(data, success){
+//                alert("shopping cart empty");
+//            })};
+//
+//}
 
 
 

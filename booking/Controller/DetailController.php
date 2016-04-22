@@ -12,6 +12,10 @@ class DetailController{
 
     }
 
+    /**
+     *
+     * init Detail page
+     */
     public function index(){
         $editItemSession = new Session('editItem');
         $editItemSession->emptySession();
@@ -124,6 +128,11 @@ class DetailController{
        }
     }
 
+    /**
+     * when customer click delete button delete order and update database
+     *
+     * @param $item_id
+     */
     public function deleteItems($item_id){
         //echo $item_id;
         $grandPrice=0;
@@ -198,6 +207,12 @@ class DetailController{
         require_once "./View/Booking.php";
     }
 
+    /**
+     *
+     * check if the seats customer choice is already been occupied
+     * @param $item
+     * @param $item_Id
+     */
     static function seatsOccupied($item,$item_Id){
         $ErrorMessage = "<b style='color:red'>Some Seats have already been ordered !!!</b>";
         $filmBooking = new FilmBookingModel();
@@ -222,6 +237,11 @@ class DetailController{
         require_once "./View/Booking.php";
     }
 
+    /**
+     * check if customer choose seats or not before they click check out button
+     * @param $item
+     * @param $item_id
+     */
 
     static function seatsEmpty($item,$item_id){
         $ErrorMessage = "<b style='color:red'>At least one sit should be selected</b>";
@@ -247,6 +267,11 @@ class DetailController{
         require_once "./View/Booking.php";
     }
 
+    /***
+     *
+     * if customer does not pay the fee after 6 mins the shopping cart session will be clean.
+     *
+     */
     public function sessionExpired(){
         //echo"Hello World";
         $filmBooking = new FilmBookingModel();
@@ -267,6 +292,10 @@ class DetailController{
         header("Location: ./index.php");
     }
 
+    /**
+     * pay the fee and save records in to database
+     *
+     */
     public function gotoPayment(){
        // echo "goto payment";
         $totalPrice=0;
@@ -305,6 +334,13 @@ class DetailController{
 
     }
 
+    /**
+     *
+     * Create reservation records
+     * @param $orderId
+     * @param $item
+     *
+     */
    static function createReservations($orderId,$item){
        $order = new OrderModel();
 
@@ -322,6 +358,13 @@ class DetailController{
        $order->modifyOrder($param,$sql);
    }
 
+    /**
+     *
+     * check how many seats left;
+     * @param $TimeInfos
+     * @return array
+     *
+     */
     static function checkSeats($TimeInfos){
         $filmBooking = new FilmBookingModel();
         $seatsLoadArray = [];

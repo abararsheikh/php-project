@@ -9,7 +9,10 @@ function init(){
     //filmInfo();
     submitBooking();
 }
-
+/**
+ * choose Cinema
+ *
+ */
 function chooseCinema(){
     $(".films").change(function(){
         var filmId = $(this).val();
@@ -24,14 +27,20 @@ function chooseCinema(){
 
     });
 }
-
+/**
+ * click submit button
+ *
+ */
 function submitBooking (){
     $("#submitbooking").click(function(){
         filmInfo();
     });
 }
 
-
+/**
+ * create DropDownList for Cinema
+ * @param obj
+ */
 function createDropDownListCinema(obj){
     var strCinema="<option value="+'"'+"default"+'"'+">"+"Select Cinema"+"</option>";
     var strRoom="<option value="+'"'+"default"+'"'+">"+"Select Room"+"</option>";
@@ -50,7 +59,11 @@ function createDropDownListCinema(obj){
     $('#showTime').html(strTime);
 }
 
-
+/**
+ * get rooms info by ajax
+ *
+ *
+ */
 function getRooms(){
 
     $("#Cinemas").change(function(){
@@ -68,6 +81,13 @@ function getRooms(){
     });
 }
 
+
+/**
+ * create DropDownList for rooms
+ *
+ *
+ * @param obj
+ */
 function createDropDownListRoom(obj){
     var strRoom="<option value="+'"'+"default"+'"'+">"+"Select Room"+"</option>";
     var strDate="<option value="+'"'+"default"+'"'+">"+"Select Date"+"</option>";
@@ -83,7 +103,11 @@ function createDropDownListRoom(obj){
     $("#showTime").html(strTime);
 }
 
-
+/**
+ *
+ *
+ * get Date information by ajax
+ */
 function getDate(){
 
     $("#Rooms").change(function(){
@@ -102,6 +126,11 @@ function getDate(){
 
     });
 }
+
+/**
+ * get Run time information by ajax
+ *
+ */
 
 function getRuntime(){
 
@@ -123,6 +152,10 @@ function getRuntime(){
     });
 }
 
+/**
+ * create DropDownList for Show TIME
+ * @param obj
+ */
 function createDropDownListShowTime(obj){
     var str="<option value="+'"'+"default"+'"'+">"+"Select Time"+"</option>";
 
@@ -140,6 +173,11 @@ function createDropDownListShowTime(obj){
 
     // console.log($("#booking"));
 }
+
+/**
+ *
+ * Generate film information
+ */
 function filmInfo(){
     var FilmName = $(".films option:selected").text();
     var CinemaName = $("#Cinemas option:selected").text();
@@ -148,10 +186,15 @@ function filmInfo(){
     var showtime =$("#showTime option:selected").text();
     var Time = showDate+" "+showtime+":00";
     var FilmInfo =FilmName+"| " +CinemaName+"| "+RoomName+"| "+showDate+"| "+showtime+"| "+Time;
-    console.log(FilmInfo);
+   // console.log(FilmInfo);
     $("#filmInfo").val(FilmInfo);
 }
 
+/**
+ *
+ * create DropDownList for Date
+ * @param obj
+ */
 function createDropDownListDate(obj){
     var strDate="<option value="+'"'+"default"+'"'+">"+"Select Date"+"</option>";
     var strTime="<option value="+'"'+"default"+'"'+">"+"Select Time"+"</option>";
