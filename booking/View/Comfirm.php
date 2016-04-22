@@ -16,8 +16,8 @@
     
     <body>
     <!--seat map-->
-     
-    
+
+    <?php require_once "../Assets/html/header.php"?>
     <section id="film-banner" class="container-fluid">
             <h1>Hi <?php echo $_SESSION['user']['username'] ?> You film is ready to pay</h1>
     </section>
@@ -171,8 +171,8 @@
              <div class="timer timer-pay"></div>
          </section>
 
-    </main> 
-         
+    </main>
+    <?php require_once "../Assets/html/footer.php"?>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

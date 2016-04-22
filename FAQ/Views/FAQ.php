@@ -21,6 +21,7 @@
 </head>
 
 <body>
+<?php require_once "../Assets/html/header.php"?>
 	<div id="main" class="container">
 
 		<h2>FAQ & Terms</h2>
@@ -163,8 +164,8 @@
 
 		</div>
 	</div>
-	
 
+<?php require_once "../Assets/html/footer.php"?>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

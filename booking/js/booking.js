@@ -10,7 +10,7 @@ function init() {
     getRuntime();
     selectSeats();
     updateSeats();
-    forceLogin();
+   forceLogin();
 }
 
 function seatMap(){
@@ -284,10 +284,15 @@ function updateSeats(){
 
 function forceLogin(){
     //console.log($(".selected").find("button").first());
-    console.log($("#login").hasClass(".selected"));
-    if($("#login").hasClass("selected")) {
-        login.show();
-    }
+    $.getJSON('/Auth/getLogin').then(function(res) {
+        if(!res.success) {
+            window.login.show();
+        }
+    });
+    //console.log($("#login").hasClass(".selected"));
+    //if($("#login").hasClass("selected")) {
+    //    login.show();
+    //}
 }
 init();
 

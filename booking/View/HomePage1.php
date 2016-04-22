@@ -14,7 +14,8 @@
 
 
     <body>
-    <div id="login"></div>
+    <?php require_once "../Assets/html/header.php"?>
+
         <section id="slider" class="container-fluid">
            <h2 class=hidden>slide show</h2>
            <div class="row">
@@ -152,6 +153,8 @@
 
          </section>
          </main>
+
+    <?php require_once "../Assets/html/footer.php"?>
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
