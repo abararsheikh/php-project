@@ -13,6 +13,13 @@
                 <div class="col-md-2" id="sidebar">
                         <?php use Project\Classes\Router\Nav;
                         Nav::drawMenu('admin'); ?>
+                        <script>
+                                $(document).ready(function() {
+                                        $(window).resize(function() {
+                                                var bodyheight = $(this).height();
+                                                $("#sidebar").height(bodyheight);
+                                        }).resize();
+                                });
+                        </script>
                 </div>
-
 
