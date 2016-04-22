@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="../Assets/css/bootstrap.min.css" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../Assets/js/jquery.min.js" ></script>
-    <script src="../Assets/js/bootstrap.min.js" ></script>
+
     <link rel="stylesheet" type="text/css" href="../Assets/css/food-index.css" />
     <script src="../Assets/js/Food/food_index.js"></script>
 </head>
@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="page-header row">
             <h1 class="col-md-3">Food Menu</h1>
-            <div class="col-md-3 col-md-offset-3">
+            <div class="col-md-3 col-md-offset-2">
             <form action="index.php" class="search-form " method="get">
                 <div class="form-group has-feedback">
                     <label for="search" class="sr-only">Search</label>
@@ -168,7 +168,7 @@
 
   </div>
 
-            <nav class="col-md-offset-4 col-sm-offset-4 col-xs-offset-12 col-md-10 col-sm-8">
+            <nav class="col-md-offset-4 col-sm-offset-4 col-xs-12 col-md-10 col-sm-8">
                 <ul class="pagination">
                     <li class="disabled">
       <span>
