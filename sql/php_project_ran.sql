@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 22, 2016 at 06:14 AM
+-- Server version: 10.1.8-MariaDB
+-- PHP Version: 5.6.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Database: `php_project`
 --
@@ -8,6 +26,7 @@
 -- Table structure for table `cinemas`
 --
 
+DROP TABLE IF EXISTS `cinemas`;
 CREATE TABLE `cinemas` (
   `Cinema_ID` int(11) NOT NULL,
   `Cinema_Name` varchar(255) NOT NULL,
@@ -28,6 +47,7 @@ INSERT INTO `cinemas` (`Cinema_ID`, `Cinema_Name`, `Cinema_Address`) VALUES
 -- Table structure for table `faq`
 --
 
+DROP TABLE IF EXISTS `faq`;
 CREATE TABLE `faq` (
   `question_id` int(11) NOT NULL,
   `questions` varchar(255) DEFAULT NULL,
@@ -52,6 +72,7 @@ INSERT INTO `faq` (`question_id`, `questions`, `answers`, `category`) VALUES
 -- Table structure for table `films`
 --
 
+DROP TABLE IF EXISTS `films`;
 CREATE TABLE `films` (
   `Film_Id` int(11) NOT NULL,
   `Film_Time` date DEFAULT NULL,
@@ -85,6 +106,7 @@ INSERT INTO `films` (`Film_Id`, `Film_Time`, `Film_Name`, `Film_Director`, `Film
 -- Table structure for table `orders`
 --
 
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `Order_Id` int(11) NOT NULL,
   `Order_DATE` datetime DEFAULT NULL,
@@ -106,7 +128,8 @@ INSERT INTO `orders` (`Order_Id`, `Order_DATE`, `Customer_Id`, `Total_Price`) VA
 (20, '2016-04-13 08:40:27', 7, '31.64'),
 (21, '2016-04-13 08:50:04', 7, '33.9'),
 (22, '2016-04-15 02:18:38', 7, '0'),
-(23, '2016-04-15 02:20:53', 7, '22.6');
+(23, '2016-04-15 02:20:53', 7, '22.6'),
+(24, '2016-04-22 05:07:58', 3, '77.97');
 
 -- --------------------------------------------------------
 
@@ -114,6 +137,7 @@ INSERT INTO `orders` (`Order_Id`, `Order_DATE`, `Customer_Id`, `Total_Price`) VA
 -- Table structure for table `reservations`
 --
 
+DROP TABLE IF EXISTS `reservations`;
 CREATE TABLE `reservations` (
   `Reservation_Id` int(11) NOT NULL,
   `Running_films` varchar(255) NOT NULL,
@@ -142,7 +166,11 @@ INSERT INTO `reservations` (`Reservation_Id`, `Running_films`, `Cinema_Name`, `C
 (12, 'The Revenant', 'Cinema2', 'Yorkdale Shopping Centre, 3401 Dufferin Street , c/o Yorkdale Shopping Centre, Toronto, ON, M6A 2T9', '2016-04-30 15:30:00', 'ROOM2', 4, 'A5', 19, 15),
 (13, 'Deadpool', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-30 13:30:00', 'ROOM1', 1, 'A4 A5', 20, 28),
 (14, 'Mr. Six', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-29 09:30:00', 'ROOM2', 2, 'B1', 21, 33.9),
-(15, 'Steve Jobs', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-22 12:30:00', 'ROOM1', 1, 'B2', 23, 22.6);
+(15, 'Steve Jobs', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-22 12:30:00', 'ROOM1', 1, 'B2', 23, 22.6),
+(16, 'Steve Jobs', 'Cinema2', 'Yorkdale Shopping Centre, 3401 Dufferin Street , c/o Yorkdale Shopping Centre, Toronto, ON, M6A 2T9', '2016-04-29 09:30:00', 'ROOM1', 3, 'B1', 24, 22.6),
+(17, 'Kung Fu Panda 3', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-02-22 09:30:00', 'ROOM1', 1, 'B2', 24, 16.95),
+(18, 'Steve Jobs', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-22 09:30:00', 'ROOM1', 1, 'A1', 24, 22.6),
+(19, 'Deadpool', 'Cinema1', '110 Courtneypark Dr E, Mississauga, ON, L5T 2Y3', '2016-04-30 19:35:00', 'ROOM1', 1, 'A5', 24, 15.82);
 
 -- --------------------------------------------------------
 
@@ -150,6 +178,7 @@ INSERT INTO `reservations` (`Reservation_Id`, `Running_films`, `Cinema_Name`, `C
 -- Table structure for table `rooms`
 --
 
+DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE `rooms` (
   `Room_ID` int(11) NOT NULL,
   `Room_Name` varchar(255) NOT NULL,
@@ -173,6 +202,7 @@ INSERT INTO `rooms` (`Room_ID`, `Room_Name`, `Cinema_ID`, `available`) VALUES
 -- Table structure for table `running_films`
 --
 
+DROP TABLE IF EXISTS `running_films`;
 CREATE TABLE `running_films` (
   `Room_ID` int(11) NOT NULL,
   `Run_Time` datetime NOT NULL,
@@ -217,6 +247,7 @@ INSERT INTO `running_films` (`Room_ID`, `Run_Time`, `Film_Id`, `RVST`, `RVET`, `
 -- Table structure for table `seats`
 --
 
+DROP TABLE IF EXISTS `seats`;
 CREATE TABLE `seats` (
   `Seat_ID` int(11) NOT NULL,
   `Room_ID` int(11) NOT NULL,
@@ -276,7 +307,7 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (44, 1, 'A4', 'N', '2016-02-22 09:30:00'),
 (45, 1, 'A5', 'N', '2016-02-22 09:30:00'),
 (46, 1, 'B1', 'N', '2016-02-22 09:30:00'),
-(47, 1, 'B2', 'Y', '2016-02-22 09:30:00'),
+(47, 1, 'B2', 'N', '2016-02-22 09:30:00'),
 (48, 1, 'B3', 'N', '2016-02-22 09:30:00'),
 (49, 1, 'B4', 'N', '2016-02-22 09:30:00'),
 (50, 1, 'B5', 'N', '2016-02-22 09:30:00'),
@@ -294,7 +325,7 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (62, 1, 'A2', 'Y', '2016-04-30 19:35:00'),
 (63, 1, 'A3', 'Y', '2016-04-30 19:35:00'),
 (64, 1, 'A4', 'Y', '2016-04-30 19:35:00'),
-(65, 1, 'A5', 'Y', '2016-04-30 19:35:00'),
+(65, 1, 'A5', 'N', '2016-04-30 19:35:00'),
 (66, 1, 'B1', 'Y', '2016-04-30 19:35:00'),
 (67, 1, 'B2', 'Y', '2016-04-30 19:35:00'),
 (68, 1, 'B3', 'Y', '2016-04-30 19:35:00'),
@@ -310,7 +341,7 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (78, 1, 'B3', 'N', '2016-04-22 12:30:00'),
 (79, 1, 'B4', 'N', '2016-04-22 12:30:00'),
 (80, 1, 'B5', 'N', '2016-04-22 12:30:00'),
-(81, 1, 'A1', 'Y', '2016-04-22 09:30:00'),
+(81, 1, 'A1', 'N', '2016-04-22 09:30:00'),
 (82, 1, 'A2', 'N', '2016-04-22 09:30:00'),
 (83, 1, 'A3', 'N', '2016-04-22 09:30:00'),
 (84, 1, 'A4', 'N', '2016-04-22 09:30:00'),
@@ -385,12 +416,12 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (153, 3, 'A3', 'Y', '2016-04-29 09:30:00'),
 (154, 3, 'A4', 'Y', '2016-04-29 09:30:00'),
 (155, 3, 'A5', 'N', '2016-04-29 09:30:00'),
-(156, 3, 'B1', 'Y', '2016-04-29 09:30:00'),
+(156, 3, 'B1', 'N', '2016-04-29 09:30:00'),
 (157, 3, 'B2', 'Y', '2016-04-29 09:30:00'),
-(158, 3, 'B3', 'Y', '2016-04-29 09:30:00'),
+(158, 3, 'B3', 'N', '2016-04-29 09:30:00'),
 (159, 3, 'B4', 'Y', '2016-04-29 09:30:00'),
 (160, 3, 'B5', 'N', '2016-04-29 09:30:00'),
-(161, 3, 'A1', 'Y', '2016-04-29 13:30:00'),
+(161, 3, 'A1', 'N', '2016-04-29 13:30:00'),
 (162, 3, 'A2', 'Y', '2016-04-29 13:30:00'),
 (163, 3, 'A3', 'N', '2016-04-29 13:30:00'),
 (164, 3, 'A4', 'N', '2016-04-29 13:30:00'),
@@ -408,7 +439,7 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 (176, 4, 'B1', 'Y', '2016-04-30 15:30:00'),
 (177, 4, 'B2', 'Y', '2016-04-30 15:30:00'),
 (178, 4, 'B3', 'Y', '2016-04-30 15:30:00'),
-(179, 4, 'B4', 'Y', '2016-04-30 15:30:00'),
+(179, 4, 'B4', 'N', '2016-04-30 15:30:00'),
 (180, 4, 'B5', 'Y', '2016-04-30 15:30:00'),
 (181, 4, 'A1', 'Y', '2016-04-30 19:30:00'),
 (182, 4, 'A2', 'Y', '2016-04-30 19:30:00'),
@@ -447,6 +478,7 @@ INSERT INTO `seats` (`Seat_ID`, `Room_ID`, `Seat_Name`, `available`, `Run_Time`)
 -- Table structure for table `terms`
 --
 
+DROP TABLE IF EXISTS `terms`;
 CREATE TABLE `terms` (
   `terms_id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -552,12 +584,12 @@ ALTER TABLE `films`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `Reservation_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Reservation_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
