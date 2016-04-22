@@ -1,19 +1,34 @@
-
 <table class="table table-hover">
                      <thead><td>Food</td><td>Price(CAD)</td><td>Quantity</td><td>Size</td><td>Amount(CAD)</td><td>Cinema</td><td>Delivery time</td><td>Operation</td></thead>
+<?php foreach($orders as $order){
+    if($order->State==1){
 
-    <tr style="background-color:salmon;"><td>2012-3-6</td><td>Order ID:0001</td>
-        <td>Contact number: 6477725042</td><td colspan="2"></td><td>State: Successful deal</td><td>Total Amount:$100</td><td><a>Delete</a></td></tr>
-     <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
-         <td rowspan="4">2.00</td>
-         <td rowspan="4">5</td>
-         <td rowspan="4">Large</td>
-         <td rowspan="4">10.00</td>
-         <td rowspan="4">Cinema1</td>
-         <td rowspan="4">XXXX</td>
+    ?>
+    <tr style="background-color:salmon;"><td><?php echo $order->Order_time;?></td><td class="order">Order ID:<span><?php echo $order->Order_id;?></span></td>
+        <td>Contact number: <?php echo $order->Phone_number;?></td><td colspan="2"></td><td>State: Successful deal</td>
+        <td>Total Amount:$<?php echo $order->Total_price;?></td><td><a href="" class="deleteitem">Delete</a>
+        </td></tr>
+   <?php foreach($items as $i){
+            foreach($i as $item){
+
+            if($item->Order_id==$order->Order_id){
+
+                ?>
+     <tr>                <td rowspan="4"><input class="idhide" type="hidden" value="<?php echo $item->Order_id;?>" /><a href="#"><img src="../../Assets/image/food/<?php echo $item->Food_Image;?>" width="130" height="95"/></a></td>
+         <td rowspan="4"><?php echo $item->Price;?></td>
+         <td rowspan="4"><?php echo $item->Quantity;?></td>
+         <td rowspan="4"><?php if($item->Size==1){echo "Small";}else if($item->Size==2){echo "Middle";}
+             else if($item->Size==3){
+                 echo "Large";
+             }
+             ?></td>
+         <td rowspan="4"><?php echo $item->Amount;?></td>
+         <td rowspan="4"><?php echo $item->Cinema;?></td>
+         <td rowspan="4"><?php echo $item->Date;?> <?php echo $item->Time;?></td>
          <td rowspan="2">
 
-            <p> <a htef="" style="cursor: pointer;text-decoration: none;">Make a comment</a></p>
+            <p> <a href="../Food%20Management/index.php?foodid=<?php echo $item->Food_id;?>&orderitemid=<?php echo $item->Order_item_id;?>"
+                   style="cursor: pointer;text-decoration: none;">Make a comment</a></p>
          </td>
 
      </tr>
@@ -24,34 +39,28 @@
 
                      </tr>
                      <tr></tr>
-    <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
-        <td rowspan="4">2.00</td>
-        <td rowspan="4">5</td>
-        <td rowspan="4">small</td>
-        <td rowspan="4">10.00</td>
-        <td rowspan="4">Cinema2</td>
-        <td rowspan="4">XXXX</td>
-        <td rowspan="2">
-            <p> <a htef="" style="cursor: pointer;text-decoration: none;">Make a comment</a></p>
-
-        </td>
 
 
-    </tr>
-    <tr></tr>
-    <tr>
+    <?php } }}}else if($order->State==0){?>
+    <tr style="background-color:salmon;"><td><?php echo $order->Order_time;?></td><td class="order">Order ID:<span><?php echo $order->Order_id;?></span></td>
+        <td>Contact number: <input type="text"/></td><td colspan="2"></td><td>State: Unpaid</td>
+        <td>Total Amount:$<?php echo $order->Total_price;?></td><td><button class="btn pay">Pay now</button></td></tr>
+    <?php foreach($items as $i){
 
-    </tr>
-    <tr></tr>
-    <tr style="background-color:salmon;"><td>2012-3-6</td><td>Order ID:0001</td>
-        <td>Contact number: <input type="text"/></td><td colspan="2"></td><td>State: Unpaid</td><td>Total Amount:$100</td><td><button class="btn pay">Pay now</button></td></tr>
-    <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
-        <td rowspan="4">2.00</td>
-        <td rowspan="4">5</td>
-        <td rowspan="4">Large</td>
-        <td rowspan="4">10.00</td>
-        <td rowspan="4">Cinema1</td>
-        <td>XXXX</td>
+            foreach($i as $item){
+
+        if($item->Order_id==$order->Order_id){?>
+        <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/<?php echo $item->Food_Image;?>" width="130" height="95"/></a></td>
+        <td rowspan="4"><?php echo $item->Price;?></td>
+        <td rowspan="4"><?php echo $item->Quantity;?></td>
+        <td rowspan="4"><?php if($item->Size==1){echo "Small";}else if($item->Size==2){echo "Middle";}
+            else if($item->Size==3){
+            echo "Large";
+            }
+            ?></td>
+        <td rowspan="4"><?php echo $item->Amount;?></td>
+        <td rowspan="4"><?php echo $item->Cinema;?></td>
+        <td><?php echo $item->Date;?> <?php echo $item->Time;?></td>
         <td rowspan="2">
 
 
@@ -65,22 +74,6 @@
 
     </tr>
     <tr></tr>
-    <tr>                <td rowspan="4"><a href="#"><img src="../../Assets/image/food/food1.jpg" width="130" height="95"/></a></td>
-        <td rowspan="4">2.00</td>
-        <td rowspan="4">5</td>
-        <td rowspan="4">small</td>
-        <td rowspan="4">10.00</td>
-        <td rowspan="4">Cinema2</td>
-        <td>XXXX</td>
-        <td rowspan="2">
 
-
-        </td>
-
-    </tr>
-    <tr></tr>
-    <tr>
-
-    </tr>
-    <tr></tr>
+    <tr></tr><?php }}} }}?>
                  </table>

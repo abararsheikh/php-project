@@ -14,6 +14,13 @@ join food b on a.Food_id=b.Food_id where a.User_id='$id'";
 
        return $results;
     }
+    public static function getItemById($id){
+        self::$db=Database::getDB();
+        $query="select * from food_shoppingcart where Id='$id'";
+        $r=self::$db->query($query);
+        $result=$r->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
     public static function insertItemById($foodid,$userid,$quantity,$size,$cinema){
         self::$db=Database::getDB();
         $items=self::getCartByUserId($userid);

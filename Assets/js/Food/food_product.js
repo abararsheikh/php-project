@@ -1,6 +1,7 @@
 
 $(document).ready(
     function(){
+
         var oprice=+$('#op').text();
         var save=+$('#save').text();
         var dp=+$('#dp').text();
@@ -52,11 +53,20 @@ $(document).ready(
                 $("#enter").val(1);
             }
         });
-
+function change(value){
+    if(value==1){
+        return "Small";
+    }else if(value==2){
+        return "Middle";
+    }else if(value==3){
+        return "Large";
+    }
+}
         $.getJSON("getComment.php",{id:$('#foodId').val()})
             .done(function(data){
 
                 $("#ac").after(Object.keys(data).length);
+
               if(Object.keys(data).length!=0) {
                   var good=0;
                   var soso=0;
@@ -69,14 +79,15 @@ $(document).ready(
                           '<p>' + value.Comment + '</p>' +
                           '<div>' + value.Date + '</div>' +
                           '</div>' +
-                          '<div class="col-md-2 col-sm-2"><p>Size:</p></div>' +
+                          '<div class="col-md-2 col-sm-2"><p>Size:'+change(value.Size)+'</p></div>' +
                           '<div class="col-md-2 col-sm-2">Username: ' + value.username + '</div>' +
                           '</div>');
-                      if(value.Evaluation==1){
+
+                      if(value.Evaluation=="good"){
                           good++;
-                      }else if(value.Evaluation==2){
+                      }else if(value.Evaluation=="soso"){
                           soso++
-                      }else if(value.Evaluation==3){
+                      }else if(value.Evaluation=="bad"){
                           bad++;
                       }
 
@@ -95,13 +106,13 @@ $(document).ready(
                    $("#usercomment").empty();
                    $.each(data,function(index,value){
 
-                       if(value.Evaluation==1){
+                       if(value.Evaluation=="good"){
                            $("#usercomment").append('<div class="row" style="border-bottom: solid 1px orange;margin-bottom: 20px;padding-bottom:20px;">' +
                                '<div class="col-md-6 col-sm-8">' +
                                '<p>' + value.Comment + '</p>' +
                                '<div>' + value.Date + '</div>' +
                                '</div>' +
-                               '<div class="col-md-2 col-sm-2"><p>Size:</p></div>' +
+                               '<div class="col-md-2 col-sm-2"><p>Size:'+change(value.Size)+'</p></div>' +
                                '<div class="col-md-2 col-sm-2">Username: ' + value.username + '</div>' +
                                '</div>');
                        }
@@ -110,14 +121,14 @@ $(document).ready(
                 $('#soso').on("click",function(){
                     $("#usercomment").empty();
                     $.each(data,function(index,value){
-
-                        if(value.Evaluation==2){
+                        console.log(value.Size);
+                        if(value.Evaluation=="soso"){
                             $("#usercomment").append('<div class="row" style="border-bottom: solid 1px orange;margin-bottom: 20px;padding-bottom:20px;">' +
                                 '<div class="col-md-6 col-sm-8">' +
                                 '<p>' + value.Comment + '</p>' +
                                 '<div>' + value.Date + '</div>' +
                                 '</div>' +
-                                '<div class="col-md-2 col-sm-2"><p>Size:</p></div>' +
+                                '<div class="col-md-2 col-sm-2"><p>Size:'+change(value.Size)+'</p></div>' +
                                 '<div class="col-md-2 col-sm-2">Username: ' + value.username + '</div>' +
                                 '</div>');
                         }
@@ -127,13 +138,13 @@ $(document).ready(
                     $("#usercomment").empty();
                     $.each(data,function(index,value){
 
-                        if(value.Evaluation==3){
+                        if(value.Evaluation=="bad"){
                             $("#usercomment").append('<div class="row" style="border-bottom: solid 1px orange;margin-bottom: 20px;padding-bottom:20px;">' +
                                 '<div class="col-md-6 col-sm-8">' +
                                 '<p>' + value.Comment + '</p>' +
                                 '<div>' + value.Date + '</div>' +
                                 '</div>' +
-                                '<div class="col-md-2 col-sm-2"><p>Size:</p></div>' +
+                                '<div class="col-md-2 col-sm-2"><p>Size:'+change(value.Size)+'</p></div>' +
                                 '<div class="col-md-2 col-sm-2">Username: ' + value.username + '</div>' +
                                 '</div>');
                         }
@@ -149,7 +160,7 @@ $(document).ready(
                                 '<p>' + value.Comment + '</p>' +
                                 '<div>' + value.Date + '</div>' +
                                 '</div>' +
-                                '<div class="col-md-2 col-sm-2"><p>Size:</p></div>' +
+                                '<div class="col-md-2 col-sm-2"><p>Size:'+change(value.Size)+'</p></div>' +
                                 '<div class="col-md-2 col-sm-2">Username: ' + value.username + '</div>' +
                                 '</div>');
 

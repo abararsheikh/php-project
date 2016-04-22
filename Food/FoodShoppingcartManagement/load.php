@@ -9,7 +9,7 @@
 
         ?>
         <tr class="item">
-            <td rowspan="4"><input type="checkbox" class="check"/> </td>
+            <td rowspan="4"><input type="checkbox" class="check" name="checkeditem[]" value="<?php echo $item->Id;?>"/> </td>
             <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
             <td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><?php echo $item->Food_Name;?></a></td>
             <td rowspan="4">Catatory: <?php echo $item->Food_Catagory;?></td>
@@ -57,7 +57,7 @@
                 }else if($item->Size==3){
                     echo $item->Food_Price*2;
                 }?></span><?php }?>
-                <div>Current: $<span><?php if($item->Size==1){ echo $item->Discount_price;}else if($item->Size==2){
+                <div class="current">Current: $<span><?php if($item->Size==1){ echo $item->Discount_price;}else if($item->Size==2){
                             echo $item->Discount_price*1.5;
                         }else if($item->Size==3){
                             echo $item->Discount_price*2;

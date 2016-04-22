@@ -6,3 +6,6 @@
 .pay:hover{
     background-color: whitesmoke;
 }
+a{
+    cursor: pointer;
+}

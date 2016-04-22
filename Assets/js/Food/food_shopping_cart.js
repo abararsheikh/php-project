@@ -16,12 +16,23 @@ $(document).ready(
          }else{
              $('.navbar-text').find('span').text((0.00).toFixed(2));
          }
-         if((+$('ul.nav p.navbar-text span').html()).toFixed(2)=="0.00"){
+         var x=true;
+         $('input:checked').not('#checkall').each(function(){
+             var date= $(this).parent().parent().find('td.deliverytime input').val();
+
+             var time= $(this).parent().parent().find('div.timeinput input').val();
+             if((!date) || (!time)){
+                 x=false;
+             }
+         });
+         if((+$('ul.nav p.navbar-text span').html()).toFixed(2)=="0.00" || x==false){
              $('#checkout').addClass("disabled");
+             $('#checkout').prop('disabled', true);
              $('#checkout').css("background-color","gray");
 
          }else{
              $('#checkout').removeClass("disabled");
+             $('#checkout').prop('disabled', false);
              $('#checkout').css("background-color","salmon");
 
          }
@@ -158,11 +169,22 @@ $(document).ready(
                  $('.navbar-text').find('span').text( ((+$('.navbar-text').find('span').text())-
                  (+$(this).parent().parent().find('.amount span').text())).toFixed(2));
              }
-             if((+$('ul.nav p.navbar-text span').html()).toFixed(2)=="0.00"){
+             var x=true;
+             $('input:checked').not('#checkall').each(function(){
+                 var date= $(this).parent().parent().find('td.deliverytime input').val();
+
+                 var time= $(this).parent().parent().find('div.timeinput input').val();
+                 if((!date) || (!time)){
+                     x=false;
+                 }
+             });
+             if((+$('ul.nav p.navbar-text span').html()).toFixed(2)=="0.00"|| x==false){
                  $('#checkout').addClass("disabled");
+                 $('#checkout').prop('disabled', true);
                  $('#checkout').css("background-color","gray");
              }else{
                  $('#checkout').removeClass("disabled");
+                 $('#checkout').prop('disabled', false);
                  $('#checkout').css("background-color","salmon");
              }
          }
@@ -261,7 +283,93 @@ $(document).ready(
         });
 
             $('#checkout').addClass("disabled");
+        $('#checkout').prop('disabled', true);
         $('#checkout').css("background-color","gray");
+        $('#checkout').click(
+            function(e){
+                e.preventDefault();
+alert("123");
+                var orders=[];
+    var x=true;
+                $('input:checked').not('#checkall').each(function(){
+
+
+                    console.log($(this).val());
+                   var date= $(this).parent().parent().find('td.deliverytime input').val();
+                    console.log(date);
+                    var time= $(this).parent().parent().find('div.timeinput input').val();
+                    var amount= (+$(this).parent().parent().find('td.amount span').text());
+                    var price=(+$(this).parent().parent().find('td .current span').text());
+                    console.log(price);
+
+                    if((!date) || (!time)){
+                        x=false;
+                        return false;
+                    }else{
+                    var order=[$(this).val(),date,time,amount,price];
+                    orders.push(order);
+                }});
+
+                if(x==true) {
+                    $.post("../order_management/index.php", {
+                        check: "checkout",
+                        info: orders,
+                        total: (+$('div p.navbar-text span').html())
+                    }, function (data) {
+                        console.log(data);
+                    });
+                      /*  .done(function () {
+                        window.location.href = "../order_management/index.php";
+                    });*/
+                }
+//$('form').submit();
+
+
+            }
+        );
+        $('input[type="date"]').bind("change",function(){
+            var x=true;
+            $('input:checked').not('#checkall').each(function(){
+                var date= $(this).parent().parent().find('td.deliverytime input').val();
+                console.log(date);
+                var time= $(this).parent().parent().find('div.timeinput input').val();
+                if((!date) || (!time)){
+                    x=false;
+                }
+            });
+            if(x==false){
+                $('#checkout').addClass("disabled");
+                $('#checkout').prop('disabled', true);
+                $('#checkout').css("background-color","gray");
+            }else{
+                $('#checkout').removeClass("disabled");
+                $('#checkout').prop('disabled', false);
+                $('#checkout').css("background-color","salmon");
+            }
+
+        });
+        $('input[type="time"]').bind("change",function(){
+            var x=true;
+            $('input:checked').not('#checkall').each(function(){
+                var date= $(this).parent().parent().find('td.deliverytime input').val();
+                console.log(date);
+                var time= $(this).parent().parent().find('div.timeinput input').val();
+                if((!date) || (!time)){
+                    x=false;
+                }
+            });
+            if(x==false){
+                $('#checkout').addClass("disabled");
+                $('#checkout').prop('disabled', true);
+                $('#checkout').css("background-color","gray");
+            }else{
+                $('#checkout').removeClass("disabled");
+                $('#checkout').prop('disabled', false);
+                $('#checkout').css("background-color","salmon");
+            }
+
+        });
+
 /*' <tr>'+
     '<td rowspan="4"><input type="checkbox" class="check"/> </td>'+
                         '<td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>'

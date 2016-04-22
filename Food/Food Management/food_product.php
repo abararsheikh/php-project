@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="../../Assets/css/food_product.css" />
     <script src="../../Assets/js/Food/food_product.js"></script>
 </head>
+<body>
+<?php include "../Assets/html/header.php";?>
 <main>
     <div class="container-fluid">
         <div class="page-header row">
@@ -71,7 +73,7 @@
 
             <h3>Accumulated comment</h3>
             <div>
-           <label for="comment_show">Food product mark: </label>
+           <label for="comment_show">Food product mark:<span style="font-size:2em;font-weight:700;margin-right:30px;color:salmon;"> <?php echo number_format($mark, 1);?></span></label>
             <input type="radio" name="comment_show" id="all" checked/>All
             <input type="radio" name="comment_show" id="good"/>Good(<span></span>)
             <input type="radio" name="comment_show" id="soso"/>So-so(<span></span>)
@@ -81,3 +83,5 @@
         </div>
         </div>
 </main>
+<?php include "../Assets/html/footer.php";?>
+</body>
