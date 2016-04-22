@@ -16,9 +16,9 @@
 
     <body>
 
-
-
+    <?php require_once "../Assets/html/header.php"?>
      <main>
+
      <section id="seat" class="container max-space">
       <!--film name -->
 
@@ -96,7 +96,7 @@
     </section>
 
      <div class="shadow">
-         <?php require_once "../Assets/html/header.php"?>
+
       <section id="film-banner" class="container-fluid click">
             <h1 id="film-title">
                 <?php if(isset($filmInfo[0]) && !isset($item)):?>
@@ -287,7 +287,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="./js/bootstrap.min.js"></script>
     <script src="/Assets/js/trailerApp.js"></script>
-    <script src="./js/booking.js"></script>
+   <script src="./js/booking.js"></script>
 
     </body>
 </html> 

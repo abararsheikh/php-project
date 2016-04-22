@@ -286,13 +286,11 @@ function forceLogin(){
     //console.log($(".selected").find("button").first());
     $.getJSON('/Auth/getLogin').then(function(res) {
         if(!res.success) {
+            console.log('show');
             window.login.show();
         }
     });
-    //console.log($("#login").hasClass(".selected"));
-    //if($("#login").hasClass("selected")) {
-    //    login.show();
-    //}
+
 }
 init();
 

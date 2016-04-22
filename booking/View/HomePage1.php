@@ -162,6 +162,5 @@
     <script type="text/javascript" src="./js/slick.min.js"></script>
     <script type="text/javascript" src="./js/homepage.js"></script>
     <script type="text/javascript" src="./js/home.js"></script>
-    <script src="/Assets/js/authApp.js"></script>
     </body>
 </html> 
