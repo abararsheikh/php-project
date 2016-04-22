@@ -3,7 +3,7 @@
 /**
 * 
 */
-var_dump($_POST);
+
 if($act=='add'){
   foreach($_POST as $key => $value){
 

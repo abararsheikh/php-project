@@ -143,7 +143,7 @@ width:1400px;
             <td width="82" bgcolor="#CCCCCC">Online Test</td>
             <td width="598" bgcolor="#CCCCCC">&nbsp;</td>
           </tr>
-<h2>before questionrs</h2>
+
   <?php
       require('../conn.php');
       include("../controller/info.php");
@@ -161,7 +161,7 @@ width:1400px;
         ?>
 
           <tr>
-            <td colspan="2" bgcolor="#CCCCCC"><p><?php echo $i.".".$rs->question; ?></p>
+                    <td colspan="2" bgcolor="#CCCCCC"><p><?php echo $i.".".$rs->question; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="a"/><?php echo "A.".$rs->answer1; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="b"/><?php echo "B.".$rs->answer2; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="c"/><?php echo "C.".$rs->answer3; ?></p>
@@ -197,7 +197,7 @@ width:1400px;
     </tr>
 </table>
 
-    <h2>alasdfasdfaf</h2>
+
 
 
 
