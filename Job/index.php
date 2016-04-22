@@ -172,9 +172,6 @@ while($rs=$result->fetchObject())
     <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="./view/information.php" class="STYLE2">Apply right now>></a></div></td>
 
   </tr>
-    <tr>
-        <td height="90"  bgcolor="#CCCCCC" align="center"><div  id="outpyhut"><a href="web_add.php">Add Job</a></div></td>
-    </tr>
 
 
 </table>

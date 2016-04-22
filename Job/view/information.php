@@ -3,7 +3,7 @@
 
 <?php
 $act=isset($_GET['act'])?$_GET['act']:'';
-$a=0;
+//$a=0;
 include("../controller/jobinformationcontrller.php");
 ?>
 
