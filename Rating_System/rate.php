@@ -7,7 +7,7 @@ require_once '/Model/Ratings.php';
 $db = Database::getDB();
 $units = Database::unit();
 $getRollId = Project\Auth\models\AuthModel::getUser('roleId');
-if($getRollId==false)
+if($getRollId===false)
 {
     echo "Please Login First to Rate the movies !! Thank You.";
 }
