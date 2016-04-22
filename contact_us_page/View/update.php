@@ -35,7 +35,8 @@ $modifiedContact ->updateFrom($contact_id);
 
 <br>
 <div>
-   <a href ="displaycontact.php">  <input type="button" name="back" value="Back To Index" class="btn btn-primary"> </a>
+  <!-- <a href ="/contact_us_page/View/displaycontact.php">  <input type="button" name="back" value="Back To Index" class="btn btn-primary"> </a>-->
+   <a href ="/admin/contact">  <input type="button" name="back" value="Back To Index" class="btn btn-primary"> </a>
 </div>
 
 </div>

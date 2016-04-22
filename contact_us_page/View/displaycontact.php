@@ -1,8 +1,7 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-require_once '../../contact _us_page/Model/Contactus.php';
+require_once '../../contact_us_page/Model/Contactus.php';
 //require_once '../Model/Contactus.php'; // UNCOMMENT THIS LINE IF YOU ARE RUNNING THIS PAGE FROM DIRECTLY AND COMMENT ABOVE LINE
 $contactList = new Contactus();
 $selectResult = $contactList->displayContacts();
@@ -45,13 +44,13 @@ $selectResult = $contactList->displayContacts();
                 <td><?php echo $selectContact['Message'] ?> </td>
 
                 <td>
-                    <form method ="post" action ="delete.php">
+                    <form method ="post" action ="/contact_us_page/View/delete.php">
                         <input type ="hidden" name = "sel_record" value="<?php echo $selectContact['contact_id'] ?>">
                         <input type ="submit" name = "delete" value ="Delete">
                     </form>
                 </td>
                 <td>
-                    <form method ="post" action ="editform.php">
+                    <form method ="post" action ="/contact_us_page/View/editform.php">
                         <input type ="hidden" name = "sel_record" value="<?php echo $selectContact['contact_id'] ?>"/>
                         <input type ="submit" name = "update" value ="Edit">
                     </form>

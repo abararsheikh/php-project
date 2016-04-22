@@ -1,6 +1,8 @@
 <table class="table table-hover">
                      <thead><td colspan="2">Food</td><td>Price(CAD)</td><td>Quantity</td><td>Size</td><td>Amount(CAD)</td><td>Cinema</td><td>Delivery time</td><td>Operation</td></thead>
-<?php foreach($orders as $order){
+<?php use Project\Payment\Payment;
+
+foreach($orders as $order){
     if($order->State==1){
 
     ?>
@@ -45,7 +47,17 @@
     <?php } }}}else if($order->State==0){?>
     <tr style="background-color:salmon;"><td><?php echo $order->Order_time;?></td><td class="order">Order ID:<span><?php echo $order->Order_id;?></span></td>
         <td colspan="2">Contact number: <input type="text"/></td><td colspan="2"></td><td>State: Unpaid</td>
-        <td>Total Amount:$<?php echo $order->Total_price;?></td><td><button class="btn pay">Pay now</button></td></tr>
+        <td>Total Amount:$<?php
+            echo $order->Total_price;
+            $total=(string)((float)$order->Total_price*100);
+
+            $_SESSION['grandPrice'] = $total;
+
+            ?></td><td><?php
+
+            // Create a pay with stripe button on page.
+            // Pass in the amount needs to be paid.
+            echo Payment::stripeButton();?></td></tr>
     <?php foreach($items as $i){
 
             foreach($i as $item){

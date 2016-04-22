@@ -62,7 +62,7 @@ class AdminController {
   }
 
   public function contact() {
-    return $this->view->render('/contact _us_page/View/displaycontact', 'Admin contact');
+    return $this->view->render('/contact_us_page/View/displaycontact', 'Admin contact');
   }
 
   public function rating() {

@@ -27,7 +27,7 @@ $allMovies = $displayAllMovies->displayMovie();
         <div class="row">
             <div class="col-lg-8 col-sm-8 col-md-8">
                 <div class="row film-gallery">
-                    <form action="add_movie_form.php" method="post"
+                    <form action="/FilmAdmin_CMS/View/add_movie_form.php" method="post"
                           id="add_movie_form">
                         <input type="submit" value = "Add Movie" class="btn btn-default btn-booking" />
                     </form>
@@ -46,13 +46,13 @@ $allMovies = $displayAllMovies->displayMovie();
                                 <span><?php echo $displayMovie['releaseDate']?></span>
                             </p>
 
-                            <form action="../controller/delete_movie.php" method="post">
+                            <form action="/FilmAdmin_CMS/controller/delete_movie.php" method="post">
                                 <input type="hidden" name="film_id"
                                        value="<?php echo $displayMovie['film_id']; ?>" />
                                 <input type="submit" value ="Delete" class="btn btn-default btn-booking"/>
                             </form>
                             <br>
-                            <form action = "edit_movie.php" method="post">
+                            <form action = "/FilmAdmin_CMS/View/edit_movie.php" method="post">
                                 <input type="hidden" name="film_id"
                                        value="<?php echo $displayMovie['film_id']; ?>" />
                                 <input type="submit" value = "Update" class="btn btn-default btn-booking"/>

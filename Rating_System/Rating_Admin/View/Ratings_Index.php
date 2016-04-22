@@ -1,9 +1,8 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
 //include '../../../autoloader.php';
 include '../../autoloader.php';
-//require_once '../../Model/Ratings.php';
+//require_once '../../Model/Ratings.php';     UNCOMMENT THIS LINE IF YOU ARE RUNNING THIS PAGE DIRECTLY FROM HERE AND UNCOMMENT BELOW LINE
 require_once '../../Rating_System/Model/Ratings.php';
 require_once '../../Rating_System/database.php';
 //require_once '../../database.php';
@@ -21,8 +20,6 @@ $selectResult = $ratingList->displayRatings();
 
     <title>List of Ratings</title>
 </head>
-
-<!--<?php //include '../../../Assets/html/header.php'?>-->
 <!--<div class="container">-->
     <body>
     <h2>List of Ratings</h2>
@@ -48,13 +45,13 @@ $selectResult = $ratingList->displayRatings();
                 <td><?php echo $selectRating['date'] ?> </td>
 
                 <td>
-                    <form method ="post" action ="../controller/delete_rating.php">
+                    <form method ="post" action ="/Rating_System/Rating_Admin/controller/delete_rating.php">
                         <input type ="hidden" name = "rating_id" value="<?php echo $selectRating['rating_id'] ?>">
                         <input type ="submit" name = "delete" value ="Delete">
                     </form>
                 </td>
                 <td>
-                    <form method ="post" action ="edit_rating_form.php">
+                    <form method ="post" action ="/Rating_System/Rating_Admin/View/edit_rating_form.php">
                         <input type ="hidden" name = "rating_id" value="<?php echo $selectRating['rating_id'] ?>"/>
                         <input type ="submit" name = "update" value ="Edit">
                     </form>
