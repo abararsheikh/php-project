@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="../Assets/css/food-index.css" />
     <script src="../Assets/js/Food/food_index.js"></script>
 </head>
+<body>
+<?php include "../Assets/html/header.php";?>
 <main>
     <div class="container-fluid">
         <div class="page-header row">
@@ -180,3 +182,5 @@
 
     </div>
 </main>
+<?php include "../Assets/html/header.php";?>
+</body>

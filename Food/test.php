@@ -3,7 +3,7 @@ require_once "Model/Database.php";
 require_once "Model/Food.php";
 $db=Database::getDB();
 
-$query="select * from food order by Sales_volume DESC limit 5";
+/*$query="select * from food order by Sales_volume DESC limit 5";
 $results=$db->query($query);
 $all=array();
 var_dump($results);
@@ -14,5 +14,6 @@ foreach($results as $item){
     $food->setId($item["Food_id"]);
     $all[]=$food;
 }
-var_dump($all);
+var_dump($all);*/
+echo date("Y-m-d");
 //var_dump($all);

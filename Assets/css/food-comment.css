@@ -1,0 +1,91 @@
+@media screen and (max-width: 992px) {
+    p,.btn,input,div,span,h4 {
+        font-size: 95%;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    h3 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    p,.btn,input,div,span,h4 {
+        font-size: 90%;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    h3 {
+        font-size: 16px;
+    }
+}
+.image{
+
+}
+img{
+    width:90%;
+}
+.star{
+font-size:2em;
+    color:salmon;
+}
+.number{
+    margin:10px;
+    font-size: 2em;
+}
+.numbers{
+
+    clear:left;
+}
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+ float:left;
+
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}
+.changed:before,
+.change:before {
+    content: "\2605";
+    position: absolute;
+    cursor: pointer;
+}
+.cf{
+    margin-top:20px;
+}
+.score{
+   margin-right:80%;
+}
+.btn{
+    background-color: transparent;
+    border:2px solid olive;
+    color:olive;
+    font-weight: 700;
+}
+.btn:hover{
+    background-color:olive;
+    color:white;;
+}
+.image-upload> input{
+    display: none;;
+}
+.form-group{
+    clear:left;
+}
+.con{
+  float:left;
+    margin-top:5px;
+    font-size: 1.5em;
+}

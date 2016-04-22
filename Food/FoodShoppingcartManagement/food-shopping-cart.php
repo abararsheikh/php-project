@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="../../Assets/css/food-shopping-cart.css" />
     <script src="../../Assets/js/Food/food_shopping_cart.js"></script>
 </head>
-
+<body>
+<?php include "../Assets/html/header.php";?>
 <main>
     <div class="container-fluid">
         <div class="page-header row">
@@ -24,25 +25,28 @@
             </form>
                 </div>
             </div>
+        <form action="../order_management/index.php" method="post">
         <div class="row menu">
+
     <ul class="nav nav-tabs menu-nav col-md-12 col-sm-12 col-xs-12">
         <li role="presentation" class="active" id="selectall"><a >All Items</a></li>
         <li role="presentation"  class="" id="lowstock"><a >Low stock</a></li>
         <li role="presentation"  class="" id="reduction"><a >Price reduction</a></li>
         <div class="col-md-offset-8"><p class="navbar-text">Selected Food: $<span>0.00</span></p>
-            <button type="button" class="btn btn-default navbar-btn" id="checkout">Check out</button>
+            <button type="submit" class="btn btn-default navbar-btn" id="checkout">Check out</button>
         </div>
 
     </ul>
 
             </div>
+
         <div class="table-responsive" id="foods">
             <table class="table table-hover">
                 <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td><td colspan="4">Food information</td>
                 <td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td><td>Delivery Time</td></thead>
                <?php foreach($cart as $item){?>
                 <tr class="item">
-                  <td rowspan="4"><input type="checkbox" class="check"/> </td>
+                  <td rowspan="4"><input type="checkbox" class="check" name="checkeditem[]" value="<?php echo $item->Id;?>"/> </td>
                     <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
                     <td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><?php echo $item->Food_Name;?></a></td>
                     <td rowspan="4">Catatory: <?php echo $item->Food_Catagory;?></td>
@@ -90,7 +94,7 @@
                     }else if($item->Size==3){
                         echo $item->Food_Price*2;
                     }?></span><?php }?>
-                    <div>Current: $<span><?php if($item->Size==1){ echo $item->Discount_price;}else if($item->Size==2){
+                    <div class="current">Current: $<span><?php if($item->Size==1){ echo $item->Discount_price;}else if($item->Size==2){
                                 echo $item->Discount_price*1.5;
                             }else if($item->Size==3){
                                 echo $item->Discount_price*2;
@@ -109,14 +113,15 @@
                         <input type="hidden" value="<?php echo $item->Id;?>" name="id"/>
                         <a href="" name="delete">Delete</a>
                     </td>
-                    <td rowspan="4">date:<input type="date"/></td>
+                    <td rowspan="4" width="250" class="deliverytime">Date <input type="date"/> <div class="timeinput">Time <input type="time"/></div></td>
                 </tr>
 <tr></tr>
                 <tr></tr>
-                <tr><td colspan="7"></td><td>Time:<input type="time"/></td></tr>
+                <tr></tr>
                <?php }?>
             </table>
         </div>
+        </form>
         <div class="row">
             <nav>
                 <ul class="pager">
@@ -169,4 +174,6 @@
 <?php } ?>
     </div>
 </main>
+<?php include "../Assets/html/footer.php";?>
+</body>
 

@@ -104,8 +104,8 @@ public static function getAll(){
     }
     public static function  getFoodCommentById($id){
         self::$db=Database::getDB();
-        $query="select b.Comment,b.Date,c.username,b.Mark,b.Evaluation from food a join food_comment b on a.Food_id=
-         b.Food_id join users c on b.User_id=c.id where a.Food_id='$id'";
+        $query="select b.Comment,b.Date,c.username,b.Mark,b.Evaluation,d.Size,b.Mark from food a join food_comment b on a.Food_id=
+         b.Food_id join users c on b.User_id=c.id join food_order_item d on d.Order_item_id=b.Order_item_id where a.Food_id='$id'";
         $result=self::$db->query($query);
         $results = $result->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($results);
@@ -122,5 +122,44 @@ public static function getAll(){
             setcookie($foodid, $t,$t + (86400 * 30),"/");
         }
 
+    }
+    public static function insertCommentById($orderitemid,$foodid,$comment,$mark,$evaluation,$file,$userid){
+        self::$db=Database::getDB();
+        $date=date("Y-m-d");
+
+        $query="insert into food_comment (User_id,Order_item_id,Food_id,Comment,Mark,Evaluation,Date,File) values( :userid, :orderitemid,
+         :foodid, :comment, :mark, :evaluation, :date, :file)";
+        $stm=self::$db->prepare($query);
+        $stm->bindParam(":userid",$userid);
+        $stm->bindParam(":orderitemid",$orderitemid);
+        $stm->bindParam(":foodid",$foodid);
+        $stm->bindParam(":comment",$comment);
+        $stm->bindParam(":mark",$mark);
+        $stm->bindParam(":evaluation",$evaluation);
+        $stm->bindParam(":date",$date);
+        $stm->bindParam(":file",$file);
+        $count=$stm->execute();
+        return $count;
+    }
+    public static function calculateMark($foodid){
+        self::$db=Database::getDB();
+        $results=json_decode(self::getFoodCommentById($foodid));
+        $count=count($results);
+        if($count>0) {
+            $sum = 0;
+            foreach ($results as $result) {
+                $sum += $result->Mark;
+            }
+            $average = $sum / $count;
+        }else {
+            $average =5;
+        }
+            $query = "update food set Food_mark= :foodmark where Food_id= :foodid";
+            $stm = self::$db->prepare($query);
+            $stm->bindParam(":foodmark", $average);
+            $stm->bindParam(":foodid", $foodid);
+            $count = $stm->execute();
+
+        return $average;
     }
 }
