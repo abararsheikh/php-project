@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Apr 15, 2016 at 08:06 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `php_project`
 --
@@ -26,7 +8,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `food`
 --
 
-DROP TABLE IF EXISTS `food`;
 CREATE TABLE `food` (
   `Food_id` int(8) NOT NULL,
   `Food_Catagory` varchar(50) NOT NULL,
@@ -47,9 +28,9 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`Food_id`, `Food_Catagory`, `Food_Price`, `Food_Instock`, `Food_description`, `Food_mark`, `Food_Name`, `Food_Image`, `Discount_price`, `Viewed_times`, `Sales_volume`) VALUES
 (1, 'special', '1.00', 2, 'good food', '5.0', 'Salmon', 'food1.jpg', '0.40', 0, 1),
-(2, 'special', '7.00', 20, 'Good food', '5.0', 'Chicken', 'food2.jpg', '6.00', 0, 2),
+(2, 'special', '7.00', 20, 'Good food', '3.3', 'Chicken', 'food2.jpg', '6.00', 0, 2),
 (3, 'breakfast', '5.00', 20, 'Good food', '5.0', 'Sandwich', 'food3.jpg', '4.00', 0, 3),
-(4, 'breakfast', '7.00', 10, 'Good food', '5.0', 'Pancake Dippers', 'food1.jpg', '7.00', 0, 0),
+(4, 'breakfast', '7.00', 10, 'Good food', '4.0', 'Pancake Dippers', 'food1.jpg', '7.00', 0, 0),
 (5, 'breakfast', '9.00', 30, 'Applewood smoked bacon, country sausage, onions, green peppers and American cheese.', '5.0', 'The Farmer', 'food1.jpg', '9.00', 0, 0),
 (6, 'LunchAndDinner', '10.00', 10, 'Dressings: White Balsamic Vinaigrette, Blue Cheese, French, Honey Mustard, Buttermilk Ranch and Thousand Island. (Dressings may vary. Please ask your server.)', '5.0', 'Salads & Soups', 'food1.jpg', '10.00', 0, 0),
 (7, 'LunchAndDinner', '12.00', 20, 'Served with choice of fries, tots, garden salad, fruit or cup of soup. Sub Onion Rings for an additional charge. All burgers prepared medium well.', '5.0', 'Between Two Buns', 'food1.jpg', '12.00', 0, 0),
@@ -66,24 +47,30 @@ INSERT INTO `food` (`Food_id`, `Food_Catagory`, `Food_Price`, `Food_Instock`, `F
 -- Table structure for table `food_comment`
 --
 
-DROP TABLE IF EXISTS `food_comment`;
 CREATE TABLE `food_comment` (
   `Comment_id` int(8) NOT NULL,
   `Food_id` int(8) NOT NULL,
   `User_id` int(8) NOT NULL,
   `Comment` varchar(500) NOT NULL,
-  `Mark` float(3,2) NOT NULL,
-  `Evaluation` int(1) NOT NULL,
-  `Date` date NOT NULL
+  `Mark` float NOT NULL,
+  `Evaluation` varchar(50) NOT NULL,
+  `Date` date NOT NULL,
+  `File` varchar(50) NOT NULL,
+  `Order_item_id` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `food_comment`
 --
 
-INSERT INTO `food_comment` (`Comment_id`, `Food_id`, `User_id`, `Comment`, `Mark`, `Evaluation`, `Date`) VALUES
-(1, 1, 1, 'good', 5.00, 1, '2016-03-02'),
-(2, 1, 3, 'Bad', 3.00, 3, '2016-03-11');
+INSERT INTO `food_comment` (`Comment_id`, `Food_id`, `User_id`, `Comment`, `Mark`, `Evaluation`, `Date`, `File`, `Order_item_id`) VALUES
+(1, 1, 1, 'good', 5, '1', '2016-03-02', '', 0),
+(2, 1, 3, 'Bad', 3, '3', '2016-03-11', '', 0),
+(10, 2, 7, '\n            ', 3, 'good', '2016-04-22', '', 41),
+(11, 2, 7, '\n            ', 3, 'good', '2016-04-22', '', 41),
+(12, 2, 7, '\n            ', 3, 'good', '2016-04-22', '', 41),
+(17, 2, 7, '\n            ', 4, 'good', '2016-04-22', '', 41),
+(18, 4, 7, '\n            ', 4, 'good', '2016-04-22', '', 42);
 
 -- --------------------------------------------------------
 
@@ -91,7 +78,6 @@ INSERT INTO `food_comment` (`Comment_id`, `Food_id`, `User_id`, `Comment`, `Mark
 -- Table structure for table `food_order`
 --
 
-DROP TABLE IF EXISTS `food_order`;
 CREATE TABLE `food_order` (
   `Order_id` int(8) NOT NULL,
   `User_id` int(8) NOT NULL,
@@ -106,7 +92,9 @@ CREATE TABLE `food_order` (
 --
 
 INSERT INTO `food_order` (`Order_id`, `User_id`, `Order_time`, `Total_price`, `Phone_number`, `State`) VALUES
-(1, 1, '2016-03-02', '9.00', '6477725042', 0);
+(1, 1, '2016-03-02', '27.80', '', 0),
+(37, 7, '2016-04-19', '70.00', '', 0),
+(38, 7, '2016-04-20', '97.00', '6477725042', 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +102,6 @@ INSERT INTO `food_order` (`Order_id`, `User_id`, `Order_time`, `Total_price`, `P
 -- Table structure for table `food_order_item`
 --
 
-DROP TABLE IF EXISTS `food_order_item`;
 CREATE TABLE `food_order_item` (
   `Order_item_id` int(8) NOT NULL,
   `Food_id` int(8) NOT NULL,
@@ -123,15 +110,20 @@ CREATE TABLE `food_order_item` (
   `Size` int(1) NOT NULL,
   `Date` date NOT NULL,
   `Time` time NOT NULL,
-  `Cinema` varchar(50) NOT NULL
+  `Cinema` varchar(50) NOT NULL,
+  `Amount` decimal(10,2) NOT NULL,
+  `Price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `food_order_item`
 --
 
-INSERT INTO `food_order_item` (`Order_item_id`, `Food_id`, `Order_id`, `Quantity`, `Size`, `Date`, `Time`, `Cinema`) VALUES
-(1, 1, 1, 2, 0, '0000-00-00', '00:00:00', '');
+INSERT INTO `food_order_item` (`Order_item_id`, `Food_id`, `Order_id`, `Quantity`, `Size`, `Date`, `Time`, `Cinema`, `Amount`, `Price`) VALUES
+(1, 1, 1, 2, 0, '0000-00-00', '00:00:00', '', '0.00', '0.00'),
+(40, 4, 37, 5, 3, '2016-04-06', '01:00:00', 'Cinema2', '70.00', '14.00'),
+(41, 2, 38, 3, 2, '2016-04-07', '23:00:00', 'Cinema_Name', '27.00', '9.00'),
+(42, 4, 38, 5, 3, '2016-04-22', '00:59:00', 'Cinema2', '70.00', '14.00');
 
 -- --------------------------------------------------------
 
@@ -139,7 +131,6 @@ INSERT INTO `food_order_item` (`Order_item_id`, `Food_id`, `Order_id`, `Quantity
 -- Table structure for table `food_shoppingcart`
 --
 
-DROP TABLE IF EXISTS `food_shoppingcart`;
 CREATE TABLE `food_shoppingcart` (
   `Id` int(8) NOT NULL,
   `User_id` varchar(8) NOT NULL,
@@ -157,7 +148,8 @@ CREATE TABLE `food_shoppingcart` (
 INSERT INTO `food_shoppingcart` (`Id`, `User_id`, `Food_id`, `Quantity`, `Size`, `Cinema_Name`, `price`) VALUES
 (1, '1', 1, 5, 2, '0', '0.00'),
 (13, '7', 1, 2, 1, 'Cinema_Name', '0.40'),
-(14, '7', 2, 3, 2, 'Cinema_Name', '6.00');
+(14, '7', 2, 3, 2, 'Cinema_Name', '6.00'),
+(15, '7', 4, 5, 3, 'Cinema2', '7.00');
 
 -- --------------------------------------------------------
 
@@ -165,7 +157,6 @@ INSERT INTO `food_shoppingcart` (`Id`, `User_id`, `Food_id`, `Quantity`, `Size`,
 -- Table structure for table `food_test`
 --
 
-DROP TABLE IF EXISTS `food_test`;
 CREATE TABLE `food_test` (
   `Test_id` int(8) NOT NULL,
   `Score` int(3) NOT NULL,
@@ -185,7 +176,6 @@ INSERT INTO `food_test` (`Test_id`, `Score`, `User_id`) VALUES
 -- Table structure for table `food_test_question`
 --
 
-DROP TABLE IF EXISTS `food_test_question`;
 CREATE TABLE `food_test_question` (
   `Question_id` int(11) NOT NULL,
   `Question` varchar(200) NOT NULL,
@@ -209,7 +199,6 @@ INSERT INTO `food_test_question` (`Question_id`, `Question`, `Option1`, `Option2
 -- Table structure for table `food_user_recording`
 --
 
-DROP TABLE IF EXISTS `food_user_recording`;
 CREATE TABLE `food_user_recording` (
   `Record_id` int(8) NOT NULL,
   `User_id` int(8) NOT NULL,
@@ -288,22 +277,22 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `food_comment`
 --
 ALTER TABLE `food_comment`
-  MODIFY `Comment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Comment_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `food_order`
 --
 ALTER TABLE `food_order`
-  MODIFY `Order_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Order_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `food_order_item`
 --
 ALTER TABLE `food_order_item`
-  MODIFY `Order_item_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Order_item_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `food_shoppingcart`
 --
 ALTER TABLE `food_shoppingcart`
-  MODIFY `Id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `food_test`
 --
