@@ -1,7 +1,13 @@
 
 <?php
+
 require_once "../Model/OrderDB.php";
 require_once "../Model/ShoppingcartDB.php";
+include '../../autoloader.php';
+
+// Start a session, there is no need to add this line if session is active.
+\Project\Classes\Helper::startSession();
+
 $page="";
 
 if(isset($_GET["action"])){

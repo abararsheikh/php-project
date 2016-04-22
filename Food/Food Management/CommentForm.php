@@ -10,11 +10,12 @@
 
     <script src="../../Assets/js/bootstrap.min.js" ></script>
     <link rel="stylesheet" type="text/css" href="../../Assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../Assets/css/food-comment.css" />
+
     <script type="text/javascript" src="../../Assets/js/Food/food_comment.js"></script>
 </head>
 <body>
 <?php include "../../Assets/html/header.php";?>
+<link rel="stylesheet" type="text/css" href="../../Assets/css/food-comment.css" />
 <main>
 <div class="container-fluid">
     <div class="page-header row">
