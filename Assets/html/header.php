@@ -21,7 +21,7 @@ $navTemplate = [
 </div>
 
 <div id="menuDisplay" data-menuName="Main"></div>
-<script src="/Assets/js/authApp.js"></script>
+<script src="/Assets/js/adminButton.js"></script>
 <script src="/Assets/js/MenuDisplay.js"></script>
 
 
