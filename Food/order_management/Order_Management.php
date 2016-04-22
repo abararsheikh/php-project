@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../../Assets/js/jquery.min.js" ></script>
     <script src="../../Assets/js/bootstrap.min.js" ></script>
-    <link rel="stylesheet" type="text/css" href="../../Assets/css/food-order.css" />
+
     <script src="../../Assets/js/Food/Order_Management.js"></script>
 </head>
 <body>
 <?php include "../../Assets/html/header.php";?>
+<link rel="stylesheet" type="text/css" href="../../Assets/css/food-order.css" />
 <main>
 
     <div class="container-fluid">

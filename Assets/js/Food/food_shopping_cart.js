@@ -25,7 +25,7 @@ $(document).ready(
                  x=false;
              }
          });
-         if((+$('ul.nav p.navbar-text span').html()).toFixed(2)=="0.00" || x==false){
+         if((+$('p.navbar-text span').html()).toFixed(2)=="0.00" || x==false){
              $('#checkout').addClass("disabled");
              $('#checkout').prop('disabled', true);
              $('#checkout').css("background-color","gray");
@@ -178,7 +178,8 @@ $(document).ready(
                      x=false;
                  }
              });
-             if((+$('ul.nav p.navbar-text span').html()).toFixed(2)=="0.00"|| x==false){
+             console.log($('p.navbar-text span').html());
+             if((+$('p.navbar-text span').html()).toFixed(2)=="0.00"|| x==false){
                  $('#checkout').addClass("disabled");
                  $('#checkout').prop('disabled', true);
                  $('#checkout').css("background-color","gray");
@@ -327,13 +328,14 @@ alert("123");
 
             $('input:checked').not('#checkall').each(function(){
                 var date= $(this).parent().parent().find('td.deliverytime input').val();
-                console.log(date);
+
                 var time= $(this).parent().parent().find('div.timeinput input').val();
+
                 if((!date) || (!time)){
                     x=false;
                 }
             });
-
+console.log(x);
             console.log($(this).parent().parent().find('input:checkbox').is(':checked'));
             if(x==false||!($(this).parent().parent().find('input:checkbox').is(':checked'))){
                 $('#checkout').addClass("disabled");
@@ -350,13 +352,16 @@ alert("123");
             var x=true;
             $('input:checked').not('#checkall').each(function(){
                 var date= $(this).parent().parent().find('td.deliverytime input').val();
-                console.log(date);
+                console.log(!date);
                 var time= $(this).parent().parent().find('div.timeinput input').val();
+                console.log(!time);
                 if((!date) || (!time)){
                     x=false;
                 }
             });
-            if(x==false ||!($(this).parent().parent().find('input:checkbox').is(':checked'))){
+            console.log(x);
+            console.log($(this).parent().parent().find('input:checkbox'));
+            if(x==false ||!($(this).parent().parent().parent().find('input:checkbox').is(':checked'))){
                 $('#checkout').addClass("disabled");
                 $('#checkout').prop('disabled', true);
                 $('#checkout').css("background-color","gray");

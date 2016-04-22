@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../Assets/js/jquery.min.js" ></script>
 
-    <link rel="stylesheet" type="text/css" href="../Assets/css/food-index.css" />
+
     <script src="../Assets/js/Food/food_index.js"></script>
 </head>
 <body>
 <?php include "../Assets/html/header.php";?>
+<link rel="stylesheet" type="text/css" href="../Assets/css/food-index.css" />
 <main>
     <div class="container-fluid">
         <div class="page-header row">
