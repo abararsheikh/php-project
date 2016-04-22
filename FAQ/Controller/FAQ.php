@@ -20,6 +20,10 @@ class FAQ
 
     }
 
+    /**
+     * init Faq page
+     *
+     */
     static function index($error=""){
         //echo "this is FAQ index";
         $getFAQ = new FAQModel();
@@ -49,6 +53,13 @@ class FAQ
 
     }
 
+    /**
+     *
+     * sort question
+     * @param $sort
+     * @param $category
+     *
+     */
     public function sortingQuetions($sort,$category){
         $getFAQ = new FAQModel();
         if($sort==="" && $category!=="allQuestion"){
@@ -81,12 +92,26 @@ class FAQ
         echo json_encode($results);
         //var_dump($results);
     }
-
+    /**
+     *
+     * increase click rate
+     *
+     *
+     */
     public function increaseClickNumber($id){
         $getFAQ = new FAQModel();
         $getFAQ->increaseClickNumber($id);
     }
 
+
+    /**
+     *
+     * search question
+     * @param $str
+     * @param $orderBy
+     * @param $category
+     *
+     */
     public function searchQuestion($str, $orderBy, $category){
         $search =new FAQModel();
 
@@ -111,6 +136,10 @@ class FAQ
         return $results;
     }
 
+    /**
+     * Send Email
+     *
+     */
     public function SendEmail(){
           //echo "This is SendEmail";
         $email =filter_input(INPUT_POST,"email");

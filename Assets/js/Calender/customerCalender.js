@@ -10,12 +10,21 @@ function init(){
     checkedRadioButton();
 }
 
+/**
+ * when customer choose films get the information
+ *
+ */
 function chooseCalender(){
     $(".list-unstyled").on("click","label", function(){
         $(this).toggleClass("unchecked");
         $(this).prev().prop("checked", !$(this).prev().prop("checked"));
     });
 }
+
+/**
+ * ajax call find chinese movie
+ *
+ */
 function findChineseMovie(){
     $("#ChineseMovies").click(function(){
         url="../MovieCalender/index.php?route=CustomerCalender/showChineseMovies";
@@ -26,11 +35,20 @@ function findChineseMovie(){
         })
     });
 }
+
+/**
+ * change all unchecked buttons to checked
+ *
+ */
 function checkedRadioButton(){
     console.log($("input:checkbox:not(:checked)"));
     $("input:checkbox:not(:checked)").prop("checked", true);
 }
 
+/**
+ * ajax call find all movie
+ *
+ */
 function findAllMovie(){
     $("#allMovies").click(function(){
         url="../MovieCalender/index.php?route=CustomerCalender/showAllMovies";
@@ -41,6 +59,11 @@ function findAllMovie(){
         })
     })
 }
+
+/**
+ * ajax call find Chinese movie
+ *
+ */
 
 function findEnglishMovie(){
     $("#EnglishMovies").click(function(){
@@ -56,6 +79,12 @@ function findEnglishMovie(){
 //function warningGoBack(){
 //    window.onbeforeunload = function() { return "You work will be lost."; };
 //}
+
+/**
+ *
+ * Create movie list
+ * @param data
+ */
 
 function createList(data){
    var str="";

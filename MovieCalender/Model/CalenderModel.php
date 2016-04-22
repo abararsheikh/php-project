@@ -10,18 +10,19 @@ namespace Project\MovieCalender\Model;
 use Project\MovieCalender\libs\PDOOperation;
 use \stdClass;
 class CalenderModel{
+    private $db;
     public function __construct(){
-
+        $this->db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
     }
 /*
- * get specific booking informations
- *
+ * get specific Calendar informations
+ *by id
  *
  */
     function getCalenderInfoById($id,$query){
         //var_dump($id);
-        $db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
-        $result = $db->query($query,$para = ["Film_Id"=>$id]);
+
+        $result = $this->db->query($query,$para = ["Film_Id"=>$id]);
 
 
 
@@ -43,10 +44,19 @@ class CalenderModel{
     return $Booking;
     }
 
+    /**
+     *
+     * get calendar details
+     * @param $query
+     * @param null $para
+     * @return array
+     * @throws \Project\MovieCalender\libs\Exception
+     *
+     */
     function getCalenderDetail($query,$para=null){
-        $db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
+        //$db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
 
-        $result = $db->query($query,$para);
+        $result = $this->db->query($query,$para);
         //var_dump($result);
 
 

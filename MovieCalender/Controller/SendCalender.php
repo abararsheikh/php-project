@@ -18,6 +18,11 @@ class SendCalender
 
     }
 
+    /**
+     * Save Movie Calendar in a array
+     *
+     */
+
     public function index(){
 
         $movieCalender = $_POST;
@@ -43,6 +48,10 @@ class SendCalender
         require_once "./View/SendCalender.php";
     }
 
+    /**
+     * Create Movie Calendar and send email
+     *
+     */
     public function BuildMessageAndSend(){
         $movieCalenderSession = new Session('Calender');
         $email =new Session('calenderEmail');

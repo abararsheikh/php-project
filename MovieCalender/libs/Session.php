@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class for session
  * Created by PhpStorm.
  * User: ran
  * Date: 4/12/2016
