@@ -24,25 +24,45 @@ class AdminController {
         'js' => [
             '/Assets/js/jquery.min.js',
             '/Assets/js/bootstrap.min.js',
-            '/jspm_packages/system.js',
-            '/config.js'
+
         ],
         'header' => '/Admin_Login/admin/admin_header.php',
         'footer' => '/Auth/Views/footer.php'
     ]);
+    $this->view->setTemplate("
+      <html>
+      <head>
+        <title>%title%</title>
+        %css%
+        %js%
+      </head>
+      <body>
+        %header%
+        <div class='content'>
+            %content%
+        </div>
+        %footer%
+      </body>
+      </html>
+    ");
   }
 
-  public function home(Request $request) {
+  public function home() {
 
-    var_dump($request);
     return $this->view->render('/Admin_Login/admin/test', 'Admin Home');
   }
 
-  public function news() {
-    return $this->view->render('/FilmAdmin_CMS/View/IndexMovies_AdminView', 'Admin news');
+  public function movies() {
+    return $this->view->render('/FilmAdmin_CMS/View/IndexMovies_AdminView', 'Admin movie');
   }
 
+  public function contact() {
+    return $this->view->render('/contact _us_page/View/displaycontact', 'Admin contact');
+  }
 
+  public function rating() {
+    return $this->view->render('/Rating_System/Rating_Admin/View/Ratings_Index', 'Admin rating');
+  }
 
 
 

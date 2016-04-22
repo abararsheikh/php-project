@@ -1,6 +1,7 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
+//require_once '../Model/Filmadmin.php';       UNCOMMENT THIS LINE IF YOU ARE RUNNING THIS PAGE FROM DIRECTLY AND COMMENT BELOW LINE
 require_once '../../FilmAdmin_CMS/Model/Filmadmin.php';
 $db = DB::getDB();
 $displayAllMovies = new Filmadmin();

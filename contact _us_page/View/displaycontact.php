@@ -2,7 +2,8 @@
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-require_once '../Model/Contactus.php';
+require_once '../../contact _us_page/Model/Contactus.php';
+//require_once '../Model/Contactus.php'; // UNCOMMENT THIS LINE IF YOU ARE RUNNING THIS PAGE FROM DIRECTLY AND COMMENT ABOVE LINE
 $contactList = new Contactus();
 $selectResult = $contactList->displayContacts();
 ?>
@@ -18,7 +19,7 @@ $selectResult = $contactList->displayContacts();
     <title>List of contacts</title>
 </head>
 
-<?php include '../../Assets/html/header.php'?>
+<!--<?php //include '../../Assets/html/header.php'?>-->
 <div class="container">
 <body>
 <h2>List of contacts</h2>

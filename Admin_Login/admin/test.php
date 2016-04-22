@@ -6,8 +6,6 @@
 </head>
 <body>
   <h1>hello admin</h1>
-  <?php use Project\Classes\Router\Nav;
-  Nav::drawMenu('admin'); ?>
 
 </body>
 </html>

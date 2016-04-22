@@ -1,10 +1,14 @@
 <html>
 
 <?php
+
+// todo: login firefox, header style
+
+
 include_once $_SERVER['DOCUMENT_ROOT'] . '/autoloader.php';
 ?>
 <head>
-  <script src="/Assets/js/homepage.js"></script>
+  
   <link href="Assets/css/homepage.css" type="text/css" rel="stylesheet">
 
 </head>

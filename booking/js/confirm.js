@@ -112,6 +112,7 @@ console.log(obj);
 
         strSummary+="<tr><td>GRAND TOTAL</td><td>$"+grandPrice+"</td><tr/>";
         strSummary+="<tr><td colspan='2'><a href='./index.php'>ADD OTHER FILMS</a></td></tr>";
+        strSummary+="<tr><td colspan='2'><a href='./index.php?route=DetailController/sessionExpired'>CANCEL</a></td></tr>";
     //Add pay button
     //strSummary+="<tr><td colspan='2'><a href='./index.php'>PAY NOW</a></td></tr>";
 
