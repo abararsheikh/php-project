@@ -33,7 +33,7 @@
         <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public/pic2.jpg"></a></td>
       </tr>
       <tr>
-        <td height="57" align="center" valign="middle"><a href="xiangxi.php?about"><img src="../public/pic3.jpg"></a></td>
+        <td height="57" align="center" valign="middle"><a href="information.php?about"><img src="../public/pic3.jpg"></a></td>
       </tr>
     </table>
     <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Web develope</p>
@@ -50,101 +50,8 @@
 	<?php
 
 require('conn.php');
-
-
-
-$PageSize=10;
-$act=isset($_GET["action"])?$_GET["action"]:'';
-$sql="select count(*) from  zhaoadd order by id desc";
-if($act=="search")
-{
-   $type=$_POST["type"];
-   $keywords=$_POST["keywords"];
-   if($_SESSION['id']!=="" ){
-  $sql="select count(*) from  zhaoadd order by id desc";
-}
-$result=$db->query($sql)  or die("$sql");
-$amount=$result->rowCount ;
-}
-if(isset($_GET["page"]))
-{
-$page=(int)$_GET["page"];
-}
-else
-{
-
-$page=1;
-
-}
-if($amount){
-
-if ($amount<$PageSize){
-
-$PageCount=1;
-}
-if($amount%$PageSize){
-
-$PageCount= $amount/$PageSize+1;
-
-$PageCount=intval($PageCount);
-}
-else
-{
-$PageCount=$amount/$PageSize;
-}
-}
-
-else{
-
-$PageCount=0;
-}
-
-
-
-$Page_String="";
-if ($page==1){
-$Page_String.='First|Previous |';
-}
-else{
-
-$Page_String.='<a href=?page=1>First Page</a>|<a href=?page='.($page-1).'>Last page</a>|';
-
-}
-
-if(($page==$PageCount)||($PageCount==0)){
-
-
-$Page_String.='Next page|End page|';
-
-}
-else{
-
-$Page_String.='<a href=?page='.($page+1).'>Next page</a>|<a href=?page='.$PageCount.'>End page</a>';
-
-}
-$mount-($page-1)*$PageSize;
-$num=$a
-
-
-?>
-<?php 
-
-
- $upLimit   =   ($page-1)*$PageSize;   
-  $lowLimit   =  $PageSize; 
-  $act=$_GET["action"];
-if($act=="search")
-{
-   $type=$_POST["type"];
-   $keywords=$_POST["keywords"];
-  $sql="select * from  zhaoadd where ".$type." ='".$keywords."' order by id desc  limit ".$upLimit ."  ,".$lowLimit."";
-}
-else
-{
-   $sql="select * from  zhaoadd  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
-}
-$result=$db->query($sql)  or die("$sql");
-
+include("../controller/indexcontroller.php");
+include("../controller/indexinfocontroller.php");
 
 while($rs=$result->fetchObject())
 {
@@ -152,18 +59,18 @@ while($rs=$result->fetchObject())
 
 ?> 
 
-	<table  width="863" border="0">
+	 <table  width="863" border="0">
         <tr>
-          <td colspan="2"><span class="STYLE1"><?php echo $rs->zhiwei;?></span> (<?php echo $rs->qixian;?>)</td>
+          <td colspan="2"><span class="STYLE1"><?php echo $rs->jobtitle;?></span> (<?php echo $rs->hiretime;?>)</td>
         </tr>
         <tr>
           <td width="109">Number</td>
-          <td width="738" align="left"><?php echo $rs->renshu;?>&nbsp;</td>
+          <td width="738" align="left"><?php echo $rs->hirenumber;?>&nbsp;</td>
         </tr>
         <tr>
           <td><p>Requirement:</p></td>
-          <td width="738" align="left"><?php echo $rs->yaoqiu;?>&nbsp;</td>
-	  
+          <td width="738" align="left"><?php echo $rs->hirerequirement;?>&nbsp;</td>
+
         </tr>
       </table>
     <?php
@@ -173,11 +80,11 @@ while($rs=$result->fetchObject())
       </td>
   </tr>
   <tr>
-    <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="xiangxi.php" class="STYLE2">Apply right now>></a></div></td>
+    <td height="139"  bgcolor="#CCCCCC"><div  id="output"><a href="information.php" class="STYLE2">Apply right now>></a></div></td>
 
   </tr>
     <tr>
-        <td height="90"  bgcolor="#CCCCCC" align="center"><div  id="outpyhut"><a href="web_add.php">Add Job</a></div></td>
+        <td height="90"  bgcolor="#CCCCCC" align="center"><div  id="outpyhut"><a href="../webadmin/web_add.php">Add Job</a></div></td>
     </tr>
 
    

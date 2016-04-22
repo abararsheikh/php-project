@@ -1,6 +1,6 @@
 <?php
 require('conn.php');
-if($_GET["act"]=="del"){
+if($_GET=="del"){
     $sql="delete from feedback where id=".$_GET["id"];
     $result=$db->query($sql);
     if($result->execute() or die(error())){
@@ -13,11 +13,7 @@ if($_GET["act"]=="del"){
 session_start();
 
 
-
-
-$PageSize=10;
-$act=$_GET["action"];
-if($act=="search")
+if($_GET=="search")
 {
     $type=$_POST["type"];
     $keywords=$_POST["keywords"];
@@ -25,6 +21,7 @@ if($act=="search")
         $sql="select * from  feedback order by id desc";
     }
     $result=$db->query($sql)  or die("$sql");
+
     $amount=$result->rowCount($result);
 }
 if(isset($_GET["page"]))
@@ -37,6 +34,7 @@ else
     $page=1;
 
 }
+
 ?>
 
 <html>
@@ -72,9 +70,8 @@ else
     <?php
 
 
-    $upLimit  = ($page-1)*$PageSize;
-    $lowLimit =  $PageSize;
-    if($act=="search")
+
+    if($_GET=="search")
     {
         $type=$_POST["type"];
         $keywords=$_POST["keywords"];
@@ -82,14 +79,15 @@ else
     }
     else
     {
-        $sql="select * from  feedback  order by id desc  limit ".$upLimit ."  ,".$lowLimit." ";
+        $sql="select * from  feedback  order by id desc";
     }
     $result=$db->query($sql)  or die("$sql");
 
 
     while($rs=$result->fetchObject())
     {
-        if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
+
+
         {
             ?>
 
@@ -100,6 +98,8 @@ else
                 <td><div align="center"><?php echo $rs->address;?></div></td>
                 <td><div align="center"><?php echo $rs->message;?></div></td>
                 <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
+                <td><div align="center"><a href="feedback.php?id=<?php echo $rs->id;?>">Add</a></div></td>
+                <td><div align="center"><a href="feedbackupdate.php?id=<?php echo $rs->id;?>">update</a></div></td>
             </tr>
 
 
@@ -109,18 +109,7 @@ else
 
     ?>
 </table>
-<table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-        <td height="40">
-            <div align="center">
-                <label><?php echo $Page_String;?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    First<?php echo $page;?>Page&nbsp;&nbsp;All
-                    <?php echo $PageCount;?>page All<?php echo $amount;?>Message</label>
 
-            </div>
-        </td>
-    </tr>
-</table>
 
 </body>
 </html>
