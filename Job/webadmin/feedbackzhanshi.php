@@ -98,8 +98,7 @@ else
                 <td><div align="center"><?php echo $rs->address;?></div></td>
                 <td><div align="center"><?php echo $rs->message;?></div></td>
                 <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
-                <td><div align="center"><a href="feedback.php?id=<?php echo $rs->id;?>">Add</a></div></td>
-                <td><div align="center"><a href="feedbackupdate.php?id=<?php echo $rs->id;?>">update</a></div></td>
+
             </tr>
 
 
