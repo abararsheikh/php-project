@@ -63,7 +63,14 @@ class AdminController {
   public function rating() {
     return $this->view->render('/Rating_System/Rating_Admin/View/Ratings_Index', 'Admin rating');
   }
+  
+  public function menu() {
+    return $this->view->render('/JsApps/MenuEditor/editor', 'Menu Editor');
+  }
 
+  public function customPage() {
+    return $this->view->render('/JsApps/CustomPage/customPage', 'Menu Editor');
+  }
 
 
 }

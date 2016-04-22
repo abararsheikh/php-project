@@ -1,4 +1,4 @@
-<!--
+
 <div id="container">
 <div id ="header">
         <div class="logo">
@@ -17,4 +17,3 @@
     <script src="/Assets/js/adminButton.js"></script>
 
 </div>
--->
