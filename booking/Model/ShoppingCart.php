@@ -6,32 +6,29 @@
  * Time: 7:59 PM
  */
 
+
 class ShoppingCart{
     public $shoppingCart;
+
     public function __construct(){
         //$this->showCart();
         $this->shoppingCart = new Session('cart');
-//        if(count($this->shoppingCart)==0) {
-//
-//            $this->shoppingCart->data = [
-//                "Order_Id" => "",
-//                "Seat_number"=>"",
-//                "running_films_id"=>"",
-//                "Run_Time"=>"",
-//                "Cinema_Name"=>"",
-//                "Room_Name"=>"",
-//                "Cinema_Address"=>"",
-//                "Seats_Number"=>""
-//
-//            ];
-//        }
+
     }
 
+    /**
+     * @param $item
+     * add order to Cart
+     */
     public function addToCart($item){
        // var_dump($this->shoppingCart->data);
         $this->shoppingCart->data[]=$item;
     }
 
+    /**
+     * @param $item_id
+     * delete item from shoppingCart
+     */
     public function deleteItem($item_id){
         if(isset($this->shoppingCart->data[$item_id])){
                 unset($this->shoppingCart->data[$item_id]);
@@ -39,13 +36,28 @@ class ShoppingCart{
         }
     }
 
+    /**
+     * empty Shopping cart
+     *
+     */
     public function emptyCart(){
         $this->shoppingCart->data=[];
     }
 
+    /**
+     * show shopping Cart
+     *
+     */
     public function showCart(){
         var_dump($this->shoppingCart->data);
     }
+
+    /**
+     * @param $item_id
+     * @return bool
+     *
+     * get item by item id in shopping cart.
+     */
     public function getItemById($item_id){
         if(isset($this->shoppingCart->data[$item_id])) {
             return $this->shoppingCart->data[$item_id];
@@ -54,10 +66,21 @@ class ShoppingCart{
         }
     }
 
+    /**
+     * @param $item_id
+     * @param $item
+     *
+     * update Item information
+     */
+
     public function updateCartByItemId($item_id, $item){
         $this->shoppingCart->data[$item_id] = $item;
     }
 
+    /**
+     * @return bool
+     * check shopping cart is empty or not
+     */
     public function isEmpty(){
         return empty($this->shoppingCart->data)==true? true: false;
     }

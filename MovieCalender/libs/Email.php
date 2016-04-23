@@ -1,5 +1,7 @@
 <?php
 /**
+ *
+ * Class use to send email
  * Created by PhpStorm.
  * User: ran
  * Date: 4/10/2016

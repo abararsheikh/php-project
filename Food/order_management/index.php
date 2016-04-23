@@ -51,6 +51,8 @@ if($page=="all"){
 
      }
     $cartnumber=ShoppingcartDB::getCount(7);
+
+
     include "Order_Management.php";
 }else if($page=="delete"){
 

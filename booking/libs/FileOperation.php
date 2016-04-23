@@ -41,17 +41,15 @@ class FileOperation {
         }
     }
 
-//    public function click($filename){
-//        var_dump($filename);
-//        $file = "./files/" .$filename .".txt";
-//
-//        $fileArray = $this->parseInfo($file);
-//        $fileArray[1]++;
-//        $fileInfo=$fileArray[0] . "\n[movie-hit]:" .$fileArray[1];
-//        var_dump($fileInfo);
-//        $this->writeFile($file, $fileInfo);
-//
-//    }
+    /**
+     *
+     * write to file
+     * @param $file
+     * @param $fileInfo
+     * @return bool|int
+     *
+     *
+     */
 
     public function writeFile($file, $fileInfo){
         if(file_exists($file)) {

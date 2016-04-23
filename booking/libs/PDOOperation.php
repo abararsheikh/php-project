@@ -7,7 +7,12 @@
  */
 
 
-
+/**
+ *
+ *  make PDO Class easy to use
+ * Class PDOOperation
+ *
+ */
 
 class PDOOperation{
     private $pdo;

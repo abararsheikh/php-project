@@ -79,12 +79,16 @@ class TopRateModel {
      */
 
     public function clickNumber($filename){
+
         $fo = new FileOperation();
         $file = "./files/" .$filename .".txt";
         $fileArray = $fo->parseInfo($file);
+       // trim($fileArray[1]);
+       // var_dump($fileArray[1]);
         $fileArray[1]++;
         $fileInfo=$fileArray[0] . "[movie-hit]:" .$fileArray[1];
         $fo->writeFile($file, $fileInfo);
+        //var_dump($fileArray[1]);
     }
 
     /*

@@ -19,6 +19,13 @@ class FAQModel
         $this->db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
     }
 
+    /**
+     *
+     * get all question from database faq table
+     * @return array
+     * @throws \Project\MovieCalender\libs\Exception
+     *
+     */
     public function getAllQuestions(){
         $query = "Select * From faq";
         $result = $this->db->query($query);
@@ -33,6 +40,14 @@ class FAQModel
 
     }
 
+    /**
+     *
+     * Customize query and return sql results
+     * @param $query
+     * @param null $param
+     * @return array
+     * @throws \Project\MovieCalender\libs\Exception
+     */
     public function getAll($query, $param=NULL){
         //$query = "Select * From faq";
         $result = $this->db->query($query,$param);
@@ -47,6 +62,13 @@ class FAQModel
 
     }
 
+    /**
+     *
+     * read faq answer from files
+     * @param $fileName
+     * @return array|bool|string
+     *
+     */
     private function getFAQFileInfo($fileName){
         $file = "./files/faq/$fileName";
 
@@ -55,6 +77,13 @@ class FAQModel
         return $answer;
     }
 
+
+    /**
+     * format sql result put all the result in an object array
+     * @param $row
+     * @return \stdClass
+     *
+     */
     private function buildResult($row){
         // var_dump($row);
         $faq = new \stdClass();
@@ -71,6 +100,10 @@ class FAQModel
         return $faq;
     }
 
+    /**
+     * count click time save click number into files
+     * @param $id
+     */
     public function increaseClickNumber($id){
         $writeFile = new FAQFileOperation();
         $query = "Select answers From faq WHERE question_id=:question_id";
@@ -95,6 +128,15 @@ class FAQModel
         $writeFile->writeFile($filepath, $content);
     }
 
+
+    /**
+     *
+     * Search question by category
+     * @param $category
+     * @param $str
+     * @return array
+     *
+     */
     public function searchQuestion($category,$str){
         if($category==="allQuestion"){
             $query = "Select *From faq Order By question_id";

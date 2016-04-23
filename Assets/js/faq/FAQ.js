@@ -5,7 +5,10 @@ function init(){
 	searchQuestion();
 	submitForm();
 }
-
+/**
+ *
+ * hide and show answer
+ */
 function hideAndShow(){
 	$(".answer").hide();
 	$("body").on('click','.question', function(){
@@ -15,7 +18,11 @@ function hideAndShow(){
 	})
 }
 
-
+/**
+ * make a ajax call when choose different category
+ *
+ *
+ */
 function selectChange(){
 	$("#question-list").change(function() {
 		var categary =$(this).val();
@@ -29,7 +36,11 @@ function selectChange(){
 		}
 	);
 }
-
+/**
+ * make a ajax call when choose different sorting methods
+ *
+ *
+ */
 function selectSorting(){
 	$("#sort-by").change(function() {
 			var sort =$(this).val();
@@ -44,7 +55,11 @@ function selectSorting(){
 		}
 	);
 }
-
+/**
+ *
+ * Create question list
+ * @param obj
+ */
 function selectedQuestions(obj){
 	var html ='';
 	$.each(obj, function(i,question){
@@ -60,7 +75,12 @@ function selectedQuestions(obj){
 	$(".answer").hide();
 }
 
-
+/**
+ * users click to see questions answer make an ajax call
+ *
+ *
+ * @param clickedQuestion
+ */
 function increateClickNumber(clickedQuestion){
 	console.log(clickedQuestion);
 	var id=clickedQuestion.attr("name");
@@ -70,6 +90,12 @@ function increateClickNumber(clickedQuestion){
 
 	});
 }
+
+/**
+ * hint for searching question
+ *
+ *
+ */
 
 function searchQuestion(){
 	$('#searchBox').keyup(function(){
@@ -88,7 +114,10 @@ function searchQuestion(){
 	})
 
 }
-
+/**
+ * prevent sumbit search form
+ *
+ */
 function submitForm(){
 	$("#search-form").submit(
 		function(event){
