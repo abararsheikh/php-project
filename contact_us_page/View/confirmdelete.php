@@ -13,7 +13,7 @@ $last_name = $result['last_name'];
 $Email = $result['Email'];
 $Message = $result['Message'];
 
-    //show confirmation  that record has been deleted
+   //show confirmation  that record has been deleted
 echo "<div class=\"container\">" ;
 echo  "<h3>" . $first_name ." <br/>  ". $last_name ." </br>  " . $Email ." </br>  ". $Message ." <br/>" ."<h2 style ='color:green;'>"."   Has been permanently deleted.!!! "."</h2>". "</h3>";
 echo "</div>";
@@ -39,7 +39,8 @@ $deletedRecord->deletedContactDB($contact_id);
         <br>
         <h3>Go back to contact list page</h3>
         <div>
-           <a href ="displaycontact.php">  <input type="button" name="back" value="back" class="btn btn-primary"> </a>
+          <!-- <a href ="/contact_us_page/View/displaycontact.php">  <input type="button" name="back" value="back" class="btn btn-primary"> </a>-->
+            <a href ="/admin/contact">  <input type="button" name="back" value="back" class="btn btn-primary"> </a>
         </div>
     </body>
 </div>

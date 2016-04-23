@@ -20,7 +20,7 @@ $editResult = $editValues->editForm($sel_record);
 </head>
     <boby>
         <div class="container">
-                <form method ="post" action ="update.php">
+                <form method ="post" action ="/contact_us_page/View/update.php">
                     <fieldset class="form-group">
                     <input type ="hidden" name = "id" value=" <?php echo $sel_record; ?> "/>
                     </fieldset>

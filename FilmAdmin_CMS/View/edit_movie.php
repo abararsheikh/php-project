@@ -21,7 +21,7 @@ $editMovies = $updateMovie->editMovie($film_id);
 </head>
   <boby>
     <div class="container">
-        <form action="../controller/update_movie.php" method="post" enctype="multipart/form-data">
+        <form action="/FilmAdmin_CMS/controller/update_movie.php" method="post" enctype="multipart/form-data">
             <fieldset class="form-group">
             <input type="hidden" name="film_id" value="<?php echo $film_id; ?>">
             </fieldset>

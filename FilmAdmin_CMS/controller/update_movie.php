@@ -17,5 +17,6 @@ if (empty($title) || empty($releaseDate) || empty($cast) || empty($director) || 
     $updatingMovie->updateMovie($title,$releaseDate,$director,$cast,$thumbnail,$film_id);
 
     // Display the Movie List page
-    header('location: ../View/IndexMovies_AdminView.php');
+   // header('location: ../View/IndexMovies_AdminView.php');
+    header('location: /admin/movie');
 }
