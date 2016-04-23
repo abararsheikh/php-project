@@ -36,7 +36,7 @@
 
 
             <fieldset class="form-group">
-            <label>Cast :</label>
+            <label>Stars: :</label>
             <textarea  name="cast" >  </textarea>
             </fieldset>
 

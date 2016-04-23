@@ -1,6 +1,6 @@
 
         <div class="row" id ="header">
-                <div class="col-md-10" style="text-align: center;" class="logo">
+                <div class="col-md-10" style="text-align: center;padding:10px;" class="logo">
                         <a href="#" id="headText">Welcome to admin page</a>
                 </div>
                 <div class="col-md-2">
