@@ -11,6 +11,9 @@ class BookingController{
         //echo "This is Booking Controller <br/>";
     }
 
+    /**
+     *  init booking page
+     */
     public function index(){
         //echo "this is index method in booking controller";
         $getFilmInfo = new FilmBookingModel();
@@ -33,6 +36,11 @@ class BookingController{
         }
     }
 
+    /**
+     * choice room by film id and cinema id
+     * @param $filmId
+     * @param $cinemaId
+     */
     public function chooseRoom($filmId,$cinemaId){
         $getFilmInfo = new FilmBookingModel();
 
@@ -50,6 +58,12 @@ class BookingController{
 
     }
 
+    /**
+     * choose show Date by film cinema and room ids
+     * @param $filmId
+     * @param $cinemaId
+     * @param $roomId
+     */
     public function chooseDate($filmId, $cinemaId, $roomId){
         $getFilmInfo = new FilmBookingModel();
 
@@ -69,6 +83,12 @@ class BookingController{
     }
 
 
+    /**
+     * choose show Time by film cinema and room ids
+     * @param $filmId
+     * @param $cinemaId
+     * @param $roomId
+     */
     public function chooseTime($filmId, $cinemaId, $roomId, $runtime){
 
         $getFilmInfo = new FilmBookingModel();
@@ -97,6 +117,13 @@ class BookingController{
         //echo json_encode($RoomInfos);
     }
 
+    /**
+     *
+     * choice Seats
+     * @param $roomId
+     * @param $showTime
+     * @param $cinemaId
+     */
     public function chooseSeats($roomId, $showTime, $cinemaId){
         //echo "Room ID:$roomId AND Show Time:$showTime";
 
@@ -114,6 +141,14 @@ class BookingController{
         echo json_encode($SeatsInfos);
     }
 
+    /**
+     *
+     * check how many seats left
+     * @param $roomId
+     * @param $showTime
+     * @return string
+     *
+     */
     static function seatsLoadingRate($roomId, $showTime){
         //var_dump($roomId);
        //var_dump($showTime);

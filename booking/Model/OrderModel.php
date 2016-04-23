@@ -4,18 +4,27 @@
  * User: ran
  * Date: 3/10/2016
  * Time: 1:44 AM
+ * Database operation for order
  */
 class OrderModel
 {
+    private $db;
     public function __construct()
     {
-
+        $this->db = new PDOOperation(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
     }
+
+    /**
+     *
+     * get order detail by id
+     * @param $id
+     * @return array
+     */
 
     public function getOrderDetailId($id)
     {
-        $db = new PDOOperation(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
-        $result = $db->query("SELECT * FROM Orders JOIN users
+
+        $result = $this->db->query("SELECT * FROM Orders JOIN users
                                                     ON users.id = orders.Customer_Id
                                                     JOIN reservations
                                                     ON reservations.Order_Id = orders.Order_Id
@@ -47,9 +56,9 @@ class OrderModel
 
         function getOrderDetail($para, $query)
         {
-            $db = new PDOOperation(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
+           // $db = new PDOOperation(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
 
-            $result = $db->query($query, $para);
+            $result = $this->db->query($query, $para);
             //var_dump($result);
 
 
@@ -71,11 +80,18 @@ class OrderModel
             return $Order;
         }
 
+
+    /**
+     *
+     * change order
+     * @param $para
+     * @param $query
+     */
         function modifyOrder($para, $query)
         {
-            $db = new PDOOperation(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
+           // $db = new PDOOperation(DATA_SOURCE_NAME, DB_USERNAME, DB_PASSWORD);
 
-            $result = $db->execute($query, $para);
+            $result = $this->db->execute($query, $para);
         }
 
 }

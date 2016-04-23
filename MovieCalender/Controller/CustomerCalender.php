@@ -23,6 +23,11 @@ class CustomerCalender
         echo "This is CustomerCalender constructor";
     }
 
+
+    /**
+     * Validation name phone and email
+     *
+     */
     public function index(){
         //echo "This is index";
         $error="";
@@ -58,6 +63,10 @@ class CustomerCalender
 
     }
 
+    /**
+     * show only english movie
+     *
+     */
     public function showEnglishMovies(){
         $calenderInfo = new CalenderModel();
         $sql ="SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p')  AS Run_Time FROM `films`
@@ -68,6 +77,10 @@ class CustomerCalender
         echo json_encode($calender);
     }
 
+    /**
+     * show only chinese movie
+     *
+     */
     public function showChineseMovies()
     {
         $calenderInfo = new CalenderModel();
@@ -79,6 +92,11 @@ class CustomerCalender
         echo json_encode($calender);
     }
 
+    /**
+     * show all the movies
+     *
+     */
+
     public function showAllMovies(){
         $calenderInfo = new CalenderModel();
         $sql = "SELECT running_films.Film_Id, Film_Name, `LANGUAGE`, DATE_FORMAT(Run_Time, '%d-%M-%Y') AS Run_Date,Date_FORMAT(Run_Time,'%h:%i %p')  AS Run_Time FROM `films`
@@ -87,6 +105,11 @@ class CustomerCalender
         $calender = $calenderInfo->getCalenderDetail($sql);
         echo json_encode($calender);
     }
+
+    /**
+     *
+     * redirect to SendCalender page
+     */
 
     public function gotoSendCalender(){
         echo "This is gotoSendCalender in CustomerCalender";

@@ -12,7 +12,9 @@ function init() {
     updateSeats();
    forceLogin();
 }
-
+/**
+ * create seat map
+ */
 function seatMap(){
     $(document).on("click", ".btn-time",
 
@@ -100,6 +102,11 @@ function getDate(){
     });
 }
 
+/**
+ *
+ * get film run time
+ */
+
 function getRuntime(){
 
     $("#Date").change(function(){
@@ -120,7 +127,11 @@ function getRuntime(){
     });
 }
 
-
+/**
+ * create Room Drop Down List
+ *
+ * @param obj
+ */
 
 function createDropDownListRoom(obj){
     var strRoom="<option value="+'"'+"defualt"+'"'+">"+"select an option"+"</option>";
@@ -215,7 +226,14 @@ function createSeatMap(filmName, CinemaName,address,obj,Time,roomName,showDate,s
 
 
 }
-
+/**
+ * create seats by row colMum and seats info
+ *
+ *
+ * @param rows
+ * @param colNum
+ * @param obj
+ */
 function createSeats(rows,colNum, obj){
     var j=0;
     var str="";
@@ -255,6 +273,11 @@ function createSeats(rows,colNum, obj){
     $("#seatsMap").html(str);
 }
 
+/**
+ * when customer choose seats change css in booking page
+ *
+ */
+
 function selectSeats(){
     //var $selector = $(".seat").children("input[type=checkbox]");
     //$selector.click();
@@ -276,11 +299,18 @@ function selectSeats(){
     });
 
 }
-
+/**
+ * trigger seats map animation when change the order
+ *
+ */
 function updateSeats(){
     $("#selected").trigger('click');
 }
 
+/**
+ * check user login or not when user go to booking page.
+ *
+ */
 
 function forceLogin(){
     //console.log($(".selected").find("button").first());

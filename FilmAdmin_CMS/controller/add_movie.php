@@ -16,6 +16,7 @@ if (empty($title) || empty($releaseDate) || empty($cast) || empty($director)) {
     $addingMovies = new Filmadmin();
     $addingMovies->addMovie($title,$releaseDate,$director,$cast,$thumbnail);
     // Display the Movie List page
-   header('location: ../View/IndexMovies_AdminView.php');
+  // header('location: ../View/IndexMovies_AdminView.php');
+    header('location: /admin/movie');
 }
 

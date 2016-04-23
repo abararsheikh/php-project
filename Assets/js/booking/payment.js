@@ -4,7 +4,10 @@
 function init(){
     timer();
 }
-
+/**
+ * count 4 seconds and go back to homepage.
+ *
+ */
 function timer(){
     var endTime = new Date();
     endTime.setSeconds(endTime.getSeconds()+ 4);

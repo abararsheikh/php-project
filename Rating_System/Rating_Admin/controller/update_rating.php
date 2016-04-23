@@ -21,5 +21,6 @@ if (empty($total_votes) || empty($total_value) || empty($used_ips) || empty($dat
     $ratingData = new Ratings();
      $ratingData->ratingUpdate($total_votes,$total_value,$used_ips,$date,$rating_id);
     // Display the Rating List page
-    header('location: ../View/Ratings_Index.php');
+  //  header('location: ../View/Ratings_Index.php');
+    header('location: /admin/rating');
 }

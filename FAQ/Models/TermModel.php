@@ -21,6 +21,11 @@ class TermModel
         $this->db = new PDOOperation(DATA_SOURCE_NAME,DB_USERNAME,DB_PASSWORD);
     }
 
+    /**
+     * get all Terms
+     * @return array
+     * @throws \Project\FAQ\libs\Exception
+     */
     public function getAllTerms(){
         $query = "Select * From terms";
         $result = $this->db->query($query);
@@ -35,6 +40,13 @@ class TermModel
 
     }
 
+    /**
+     *
+     * format sql result
+     * @param $row
+     * @return \stdClass
+     *
+     */
     private function buildResult($row){
         // var_dump($row);
         $terms = new \stdClass();
@@ -51,6 +63,14 @@ class TermModel
         return $terms;
     }
 
+
+    /**
+     *
+     * getTerms from files
+     * @param $fileName
+     * @return array|bool|string
+     *
+     */
     private function getTermsFileInfo($fileName){
         $file = "./files/terms/$fileName";
 

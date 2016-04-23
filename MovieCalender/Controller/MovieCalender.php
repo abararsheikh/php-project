@@ -17,6 +17,10 @@ class MovieCalender
 
     }
 
+    /**
+     *
+     * load MovieCalender Page
+     */
     public function index(){
         //echo "This is MovieCalender Controller index action";
         require_once "./View/MovieCalender.php";

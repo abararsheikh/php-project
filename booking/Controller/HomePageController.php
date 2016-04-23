@@ -16,7 +16,7 @@ class HomePageController {
 //        echo "This is Home Controller Index";
 //        echo":value ";
 
-// Need to test
+
         $editItem =new Session('editItem');
 
         //var_dump($_SESSION);
@@ -36,6 +36,10 @@ class HomePageController {
         require_once "./View/HomePage1.php";
     }
 
+    /**
+     * choose Cinema by film id
+     * @param $filmId
+     */
     public function chooseCinema($filmId){
             //echo "This is Homepage chooseCinema";
         $getFilmInfo = new FilmBookingModel();
@@ -52,6 +56,11 @@ class HomePageController {
         echo json_encode($CinemaInfos);
     }
 
+    /**
+     * choose Room by film id and cinema id
+     * @param $filmId
+     * @param $cinemaId
+     */
     public function chooseRoom($filmId,$cinemaId){
         $getFilmInfo = new FilmBookingModel();
 
@@ -69,6 +78,11 @@ class HomePageController {
 
     }
 
+    /** choose Show Date by film id $cinema id and room id
+     * @param $filmId
+     * @param $cinemaId
+     * @param $roomId
+     */
     public function chooseDate($filmId, $cinemaId, $roomId){
         $getFilmInfo = new FilmBookingModel();
 
@@ -87,6 +101,11 @@ class HomePageController {
         echo json_encode($RoomInfos);
     }
 
+    /** choose Show Time by film id $cinema id and room id
+     * @param $filmId
+     * @param $cinemaId
+     * @param $roomId
+     */
     public function chooseTime($filmId, $cinemaId, $roomId){
 
         $getFilmInfo = new FilmBookingModel();
@@ -106,6 +125,11 @@ class HomePageController {
     }
 
     //HTTP POST
+    /**
+     * click submit button
+     * after choosing film redirect to Booking page
+     * @param $filmId
+     */
     public function postToBooking($filmId){
 
         //get film
@@ -145,6 +169,10 @@ class HomePageController {
 
     }
 
+    /**
+     *
+     * after fill out the booking form redirect to booking page
+     */
     public function toBookingPage(){
         //echo "this is toBookingPage";
         $validation =new Validation();
@@ -196,6 +224,11 @@ class HomePageController {
         }
     }
 
+    /**
+     * check Seats is avaliable or not
+     * @param $TimeInfos
+     * @return array
+     */
    static function checkSeats($TimeInfos){
        $filmBooking = new FilmBookingModel();
        $seatsLoadArray = [];

@@ -8,5 +8,6 @@ $deleteMovies = new Filmadmin();            // Delete the movie from the databas
 $deleteMovies->deleteMovie($film_id);
 
 // Redirect to display the Product List
-header('location: ../View/IndexMovies_AdminView.php');
+//header('location: ../View/IndexMovies_AdminView.php');
+header('location: /admin/movie');
 ?>

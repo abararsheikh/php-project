@@ -4,6 +4,8 @@
  * User: ran
  * Date: 3/10/2016
  * Time: 1:11 AM
+ *
+ * encapsulation Session in Class
  */
 class Session
 {

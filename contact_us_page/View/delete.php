@@ -40,11 +40,11 @@ $Message = $result['Message'];
 <p>
 <br/>
 
-<form action='confirmdelete.php' method='post'>
+<form action='/contact_us_page/View/confirmdelete.php' method='post'>
 <input type='hidden' name='confirmid' value='<?php echo $contact_id ?> '>
 <input type='submit' name ='confirmdelete' value='confirm delete'  class="btn btn-primary"/>
-<input type ='button' name='cancel' value ='cancel' onclick= ' location.href ="displaycontact.php" ' class="btn btn-primary"/>
-
+<!--<input type ='button' name='cancel' value ='cancel' onclick= ' location.href ="displaycontact.php" ' class="btn btn-primary"/>-->
+<input type ='button' name='cancel' value ='cancel' onclick= ' location.href ="/admin/contact" ' class="btn btn-primary"/>
 </form>
 
 
