@@ -28,7 +28,7 @@ class GitHub {
   }
 
   public function connect() {
-    header("Location: https://github.com/login/oauth/authorize?scope=user:email&client_id=76410de7fda4780c4caa");
+    header("Location: https://github.com/login/oauth/authorize?scope=user:email&client_id=786cab0ad0dd11841b29");
   }
   // need to handle errors
   public function getToken() {
