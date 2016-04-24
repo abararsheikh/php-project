@@ -4,9 +4,9 @@
                         <a href="#" id="headText">Welcome to admin page</a>
                 </div>
                 <div class="col-md-2">
-                        <div id="login">
-                                <script src="/Assets/js/adminButton.js"></script>
-                        </div>
+                        <div id="login"></div>
+                        <script src="/Assets/js/adminButton.js"></script>
+
                 </div>
         </div>
         <div class="row">

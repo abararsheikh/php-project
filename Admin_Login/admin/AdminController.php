@@ -19,12 +19,10 @@ class AdminController {
         'css' => [
             '/Assets/css/bootstrap.min.css',
             '/Assets/css/admin.css',
-
         ],
         'js' => [
-            '/Assets/js/jquery.min.js',
+            'https://code.jquery.com/jquery-2.2.3.min.js',
             '/Assets/js/bootstrap.min.js',
-
         ],
         'header' => '/Admin_Login/admin/admin_header.php',
         'footer' => '/Auth/Views/footer.php'
@@ -38,7 +36,6 @@ class AdminController {
       </head>
       <body>
       <div class='container-fluid'>
-
            %header%
             <div class='col-md-10'>
                 %content%
@@ -74,7 +71,7 @@ class AdminController {
   }
 
   public function customPage() {
-    return $this->view->render('/JsApps/CustomPage/customPage', 'Menu Editor');
+    return $this->view->render('/JsApps/CustomPage/customPage', 'Custom Page');
   }
 
 
