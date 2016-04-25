@@ -48,7 +48,7 @@ $allMovies = $indexMovies->movieIndex();
                              <img alt="film1" src="<?php echo $displayMovie['img'] ?>" />
                              <p class="film-title"><?php echo $displayMovie['title'] ?>(U)</p>
                              <p class="film-detail">
-Cast :
+Stars: :
                                  <span><?php echo $displayMovie['cast']?></span><br>
 Director :
                                  <span><?php echo $displayMovie['director']?></span><br>

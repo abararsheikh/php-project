@@ -8,7 +8,7 @@ import MenuActions from '../actions/MenuActions';
 import PageActions from '../actions/PageActions'
 import MenuDisplay from '../../MenuDisplay/components/MenuDisplay';
 import '../css/menu.css!';
-import 'jquery-ui';
+// import 'jquery-ui';
 
 Array.prototype.deepSplice = function (indexArray, deleteCount, ...replacement) {
   if (!indexArray) return;
