@@ -6,7 +6,7 @@
     ?>
     <tr style="background-color:salmon;"><td><?php echo $order->Order_time;?></td><td class="order">Order ID:<span><?php echo $order->Order_id;?></span></td>
         <td colspan="2">Contact number: <?php echo $order->Phone_number;?></td><td colspan="2"></td><td>State: Successful deal</td>
-        <td>Total Amount:$<?php echo $order->Total_price;?></td><td><a href="" class="deleteitem">Delete</a>
+        <td>Total Amount:$<span name="pricetotal"><?php echo $order->Total_price;?></span></td><td><a href="" class="deleteitem">Delete</a>
         </td></tr>
    <?php foreach($items as $i){
             foreach($i as $item){
@@ -43,9 +43,15 @@
 
 
     <?php } }}}else if($order->State==0){?>
-    <tr style="background-color:salmon;"><td><?php echo $order->Order_time;?></td><td class="order">Order ID:<span><?php echo $order->Order_id;?></span></td>
-        <td colspan="2">Contact number: <input type="text"/></td><td colspan="2"></td><td>State: Unpaid</td>
-        <td>Total Amount:$<?php echo $order->Total_price;?></td><td><a><button class="btn">Pay now</button></a></td></tr>
+    <tr style="background-color:salmon;"><form action="index.php" method="post"><td><?php echo $order->Order_time;?></td>
+            <td class="order">Order ID:<span><?php echo $order->Order_id;?></span>
+                <input type="hidden" name="id" value="<?php echo $order->Order_id;?>"/></td>
+        <td colspan="2">Contact number: <input type="text" name="phone"/></td><td colspan="2"></td><td>State: Unpaid</td>
+        <td>Total Amount:$<?php echo $order->Total_price;?>
+            <input type="hidden" name="total" value="<?php echo $order->Total_price;?>"/></td><td>
+                <input type="hidden" name="action" value="pay"/>
+                <button class="btn" type="submit" name="payment">Pay now</button>
+            </td></form></tr>
     <?php foreach($items as $i){
 
             foreach($i as $item){
