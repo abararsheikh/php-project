@@ -1,13 +1,7 @@
-
 <table class="table table-hover">
-    <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td>
-    <td colspan="4">Food information</td><td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td><td>Delivery Time</td></thead>
-    <?php
-    foreach($results as $item){
-
-
-
-        ?>
+    <thead><td><input type="checkbox" class="check" id="checkall"></td><td>Select all</td><td colspan="4">Food information</td>
+    <td>Price(CAD)</td><td>Quantity</td><td>Amount</td><td>Operation</td><td>Delivery Time</td></thead>
+    <?php foreach($results as $item){?>
         <tr class="item">
             <td rowspan="4"><input type="checkbox" class="check" name="checkeditem[]" value="<?php echo $item->Id;?>"/> </td>
             <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
@@ -76,10 +70,10 @@
                 <input type="hidden" value="<?php echo $item->Id;?>" name="id"/>
                 <a href="" name="delete">Delete</a>
             </td>
-            <td rowspan="4">date:<input type="date"/></td>
+            <td rowspan="4" width="250" class="deliverytime">Date <input type="date"/> <div class="timeinput">Time <input type="time"/></div></td>
         </tr>
         <tr></tr>
         <tr></tr>
-        <tr><td colspan="7"></td><td>Time:<input type="time"/></td></tr>
+        <tr></tr>
     <?php }?>
 </table>

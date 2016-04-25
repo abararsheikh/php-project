@@ -33,7 +33,7 @@
       "css": "github:systemjs/plugin-css@^0.1.20",
       "events": "github:jspm/nodelibs-events@^0.1.1",
       "flux": "npm:flux@^2.1.1",
-      "jquery": "npm:jquery@^2.2.2",
+      "jquery": "npm:jquery@^2.2.3",
       "jquery-ui": "github:components/jqueryui@^1.11.4",
       "jsx": "github:floatdrop/plugin-jsx@^1.2.1",
       "keymirror": "npm:keymirror@^0.1.1",

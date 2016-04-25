@@ -22,9 +22,16 @@ class OAuthController extends Controller{
       $gitHub->connect();
     }
 
-    if($gitHub->getToken()) {
-      $this->model->logIn('github', $gitHub->getUser(), $gitHub->getEmail());
-      header("Location: http://php.project");
+    $token = $gitHub->getToken();
+
+
+    if($token) {
+      $username = $gitHub->getUser();
+      $email = $gitHub->getEmail();
+
+      $this->model->logIn('github', $username, $email);
+      header("Refresh: 3;url=http://php-project.yizhao.me/");
+      echo "login success, redirecting back to home page";
     }
 
   }

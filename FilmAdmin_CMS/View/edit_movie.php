@@ -42,7 +42,7 @@ $editMovies = $updateMovie->editMovie($film_id);
             </fieldset>
 
             <fieldset class="form-group">
-            <label>Cast :</label>
+            <label>Stars: :</label>
             <textarea  name="cast" > <?php echo $editMovies['cast']; ?> </textarea>
             </fieldset>
 

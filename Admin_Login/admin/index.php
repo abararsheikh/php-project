@@ -6,9 +6,11 @@ include "AdminController.php";
 use Project\Classes\Request;
 use Project\Classes\Router\Nav;
 // single quote
-$controller = 'AdminController';
 
-Nav::group('/admin as admin', function() use($controller) {
+
+Nav::group('/admin as admin', function() {
+  $controller = 'AdminController';
+
   Nav::get('/home as Home', "$controller@home");
   Nav::get('/movie as Add Movies', "$controller@movies");
   Nav::get('/contact as Admin Contact ', "$controller@contact");

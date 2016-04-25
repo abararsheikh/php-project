@@ -1,8 +1,8 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import EventEmitter from 'events';
 import PageConstants from '../constants/PageConstants';
-import toastr from 'toastr';
-import 'toastr/build/toastr.min.css!';
+// import toastr from 'toastr';
+// import 'toastr/build/toastr.min.css!';
 
 const CHANGE_EVENT = 'change';
 
