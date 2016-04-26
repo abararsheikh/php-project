@@ -75,16 +75,16 @@ img{
 
 #seat table tr td.disable .seat label {
     
-    background: url('../../../Booking/image/seat-ic.png') no-repeat -35px 0px;
+    background: url('/booking/image/seat-ic.png') no-repeat -35px 0px;
 }
 
 #seat table tr td.avalible .seat label {
-    background: url('../../../Booking/image/seat-ic.png') no-repeat -91px 0px;
+    background: url('/booking/image/seat-ic.png') no-repeat -91px 0px;
     
 }
 
 #seat table tr td.current .seat label {
-    background: url('../../../Booking/image/seat-ic.png') no-repeat -16px 0px;
+    background: url('/booking/image/seat-ic.png') no-repeat -16px 0px;
 
 }
 #seat table {
