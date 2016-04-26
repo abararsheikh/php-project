@@ -1,20 +1,20 @@
 <?php
 ?>
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../Assets/js/jquery.min.js" ></script>
 
-    <link href="../../Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="../../Assets/js/bootstrap.min.js" ></script>
 
-    <script src="../Assets/js/Food/food_index.js"></script>
+
+
 </head>
 <body>
 <?php include "../Assets/html/header.php";?>
 <link rel="stylesheet" type="text/css" href="../Assets/css/food-index.css" />
+<script src="../Assets/js/Food/food_index.js"></script>
 <main>
     <div class="container-fluid">
         <div class="page-header row">

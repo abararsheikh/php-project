@@ -2,15 +2,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link href="../../Assets/css/bootstrap.min.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../../Assets/js/jquery.min.js" ></script>
-    <script src="../../Assets/js/bootstrap.min.js" ></script>
 
-    <script src="../../Assets/js/Food/food_product.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
 </head>
 <body>
 <?php include "../../Assets/html/header.php";?>
+<script src="../../Assets/js/Food/food_product.js"></script>
 <link rel="stylesheet" type="text/css" href="../../Assets/css/food_product.css" />
 <main>
     <div class="container-fluid">
