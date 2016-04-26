@@ -2,17 +2,17 @@
 
 
 //#### CONTENT FOR HOME PAGE ====
-var contentHome = "公司荣誉";
+var contentHome = "";
 contentHome += "dd";
 //==== END OF CONTENT FOR HOME PAGE ####
 
 //#### CONTENT FOR PRODUCTS PAGE ==== 
-var contentProducts = "意见反馈";
+var contentProducts = "Feedback";
 contentProducts += "xxx";
 //==== END OF CONTENT FOR PRODUCTS PAGE #### 
 
 //#### CONTENT FOR ABOUT US PAGE ====
-var contentAbout = "关于我们";
+var contentAbout = "About us";
 contentAbout += "vvv";
 
 //==== END OF CONTENT FOR ABOUT US PAGE ####

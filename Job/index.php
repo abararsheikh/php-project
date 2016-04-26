@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Career</title>
 
-<script type="text/javascript" src="../public/11-2-routing.js"></script>
+<script type="text/javascript" src="public/11-2-routing.js"></script>
 <style type="text/css">
 .STYLE1 {
 	color: #FF0000;
