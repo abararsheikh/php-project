@@ -13,7 +13,7 @@ img{
 }
 
 #film-banner{
-    background-image:url('../../../Booking/image/book-ticketbanner.jpg');
+    background-image:url('/booking/image/book-ticketbanner.jpg');
     background-position: center;
     background-repeat: no-repeat
 }
@@ -159,7 +159,7 @@ img{
     right: 0;
     font-family: 'roboto-regular';
     font-size: 14px;
-    background: url(../../../Booking/image/timer-bg.png) no-repeat;
+    background: url(/booking/image/timer-bg.png) no-repeat;
     color: #fff;
     top: 85%;
     width: 122px;

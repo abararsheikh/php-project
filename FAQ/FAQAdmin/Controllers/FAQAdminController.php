@@ -148,11 +148,11 @@ class FAQAdminController
         }
 
         if(filter_input(INPUT_POST, 'route')){
-            //var_dump($_POST);
+//            var_dump($_POST);
 
             $file = $_FILES['upfile'];
             $faq = new FAQ();
-            $faq->question = $_POST['question'];
+            $faq->question = $_POST['questions'];
             $faq->category = $_POST['category'];
             $faqAdmin = new FAQAdminModels();
             $result = $faqAdmin->createFAQ($file, $faq);

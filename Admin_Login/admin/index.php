@@ -3,7 +3,6 @@
 include '../../autoloader.php';
 include "AdminController.php";
 
-use Project\Classes\Request;
 use Project\Classes\Router\Nav;
 // single quote
 
