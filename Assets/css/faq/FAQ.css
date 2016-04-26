@@ -150,3 +150,7 @@ textarea {
 #errorMessage{
     color:red;
 }
+
+.form-admin-space{
+    margin-bottom:10px;
+}

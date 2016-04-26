@@ -42,7 +42,7 @@ class Nav {
   /**
    * Groups whatever inside, this method should first, then add routes or groups inside.
    * @param string $baseAsName Base dir and name of this group, separated by 'as', for example, '/ as Home'
-   * @param callable $callback Should be either routes of groups.
+   * @param \Closure $callback Should be either routes of groups.
    */
   public static function group($baseAsName, $callback) {
     list($base, $name) = self::separateName($baseAsName);

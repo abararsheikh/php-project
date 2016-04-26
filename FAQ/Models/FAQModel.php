@@ -110,18 +110,17 @@ class FAQModel
         $param=['question_id'=>$id];
         $result = $this->getAll($query,$param);
         //var_dump($result);
-        $content='';
-        $i=0;
-        foreach ($result[0]->answer as $value){
-            $i++;
-            //var_dump($i);
-            if($i==1) {
-                $content .= $value;
-            }else{
-                $content .= "*".$value;
-            }
-           // var_dump($content);
-        }
+        $content=$result[0]->answer;
+//        foreach ($result[0]->answer as $value){
+//            $i++;
+//            //var_dump($i);
+//            if($i==1) {
+//                $content .= $value;
+//            }else{
+//                $content .= "*".$value;
+//            }
+//           // var_dump($content);
+//        }
         $num = $result[0]->frequency+1;
         $content .="[FAQ-hit]:".$num;
         $filepath = "./files/faq/".$result[0]->answers;

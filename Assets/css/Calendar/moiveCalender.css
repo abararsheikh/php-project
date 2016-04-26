@@ -113,7 +113,7 @@ font-family: 'Archivo Narrow', sans-serif;
 }
 
 .checked{
-    background: url(../../../Booking/image/mp_chk.png) no-repeat 0 5px;
+    background: url(/booking/image/mp_chk.png) no-repeat 0 5px;
 
 }
 
@@ -127,7 +127,7 @@ font-family: 'Archivo Narrow', sans-serif;
 }
 
  .unchecked{
-     background: url(../../../Booking/image/mp_unchk.png) no-repeat 0 5px;
+     background: url(/booking/image/mp_unchk.png) no-repeat 0 5px;
  }
 
 .time-float{

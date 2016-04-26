@@ -16,7 +16,7 @@
     <h2 class="hidden">slide show</h2>
     <div class="row">
         <div class="col-lg-12">
-            <img alt="pic" src="../../Booking/image/slide.jpg" class="img-responsive image-center"/>
+            <img alt="pic" src="/booking/image/slide.jpg" class="img-responsive image-center"/>
         </div>
     </div>
 </section>
@@ -94,7 +94,7 @@
             </div>
 
             <div class="col-lg-12">
-                <button type="submit" class="moviedem-submit">Continue to next step<span><img src="../../Booking/image/btn-arrow.png" class="btn-arrow"/></span></button>
+                <button type="submit" class="moviedem-submit">Continue to next step<span><img src="/booking/image/btn-arrow.png" class="btn-arrow"/></span></button>
             </div>
         </div>
             </form>

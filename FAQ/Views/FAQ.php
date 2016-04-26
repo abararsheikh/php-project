@@ -70,21 +70,17 @@
 						</div>
 
 						<div class="question-list">
-
+							<?php $i=1?>
 							<?php foreach($results as $result):?>
 
 							<div class="row question" name="<?php echo $result->question_id?>">
-								<div class="col-lg-12 no-padding"><span><?php echo $result->question_id?>.</span><?php echo $result->questions?></div>
+								<div class="col-lg-12 no-padding"><span><?php echo $i?>.</span><?php echo $result->questions?></div>
 							</div>
 
 							<div class="row answer">
-								<?php foreach($result->answer as $row):?>
-								<p class="col-lg-12">
-									<?php echo $row?>
-								</p>
-								<?php endforeach?>
+								<?php echo $result->answer?>
 							</div>
-
+							<?php $i++?>
 							<?php endforeach?>
 
 						</div>

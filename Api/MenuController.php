@@ -13,11 +13,12 @@ class MenuController extends Controller{
 
   public function __construct() {
     $this->view = new View();
+    $this->model = new Menu();
   }
 
   // GET /menu/:name
   public function Menu($name) {
-    $menus = Menu::getMenuAll();
+    $menus = $this->model->getMenuAll();
     if (isset($name)) {
       foreach ($menus as $menu) {
         if ( $menu['name'] == $name ) return $this->view->json($menu['menu']);
@@ -28,13 +29,13 @@ class MenuController extends Controller{
 
   // GET /menu
   public function MenuAll() {
-    $menus = Menu::getMenuAll();
+    $menus = $this->model->getMenuAll();
     return $this->view->json($menus);
   }
 
   // POST /menu
   public function SaveMenu(Request $request) {
-    $result = Menu::saveMenu($request->param('menu'));
+    $result = $this->model->saveMenu($request->param('menu'));
     return $this->view->json($this->resultArray($result, null));
   }
 
