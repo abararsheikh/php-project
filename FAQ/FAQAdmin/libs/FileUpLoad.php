@@ -37,7 +37,7 @@ class FileUpLoad
 //            move_uploaded_file($this->fileTemp, $target_path);
 //        }else{
             $target_path = DEFAULT_FILE_PATH . $fileName;
-        var_dump($target_path);
+        //var_dump($target_path);
             move_uploaded_file($this->fileTemp, $target_path);
         //}
 
