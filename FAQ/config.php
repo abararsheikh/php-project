@@ -11,4 +11,4 @@
 define('DATA_SOURCE_NAME','mysql:host=localhost;dbname=php_project');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','');
-?>git
+?>
