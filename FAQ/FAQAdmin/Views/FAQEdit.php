@@ -25,7 +25,7 @@
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <script src="./ckeditor/ckeditor.js"></script>
+    <script src="/FAQ/FAQAdmin/ckeditor/ckeditor.js"></script>
 
 
 </head>
@@ -33,7 +33,7 @@
 <body>
 <div id="main" class="container">
     <h2>FAQ Admin</h2>
-    <form role="form" method="post" action="./index.php" enctype="multipart/form-data" id="createFAQ">
+    <form role="form" method="post" action="faq" enctype="multipart/form-data" id="createFAQ">
         <input type="hidden" name="route" value ="FAQAdminController/EditFAQPost"/>
         <input type="hidden" name="clickrate" value="<?php echo $fileInfo[1]?>"/>
         <div class="form-horizontal">
@@ -52,7 +52,7 @@
 
             <div class="col-md-12">
                 <input type="submit" value="Save" class="btn btn-default">
-                <a href="./index.php" class="btn btn-default">Cancel</a>
+                <a href="./faq" class="btn btn-default">Cancel</a>
             </div>
         </div>
         <span class="field-validation-valid text-danger" id="error"><?php echo $error?></span>

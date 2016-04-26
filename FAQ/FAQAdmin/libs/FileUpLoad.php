@@ -29,16 +29,17 @@ class FileUpLoad
 
     private function moveFile(){
         $fileName = $this->fileName;
-        $result=$this->isImage($this->fileType);
-        //var_dump($result);
+        //$this->isImage($this->fileType);
+       // var_dump($this->fileTemp);
 
-        if($result ==true){
-            $target_path = DEFAULT_IMAGE_PATH . $fileName;
-            move_uploaded_file($this->fileTemp, $target_path);
-        }else{
+//        if($result ==true){
+//            $target_path = DEFAULT_IMAGE_PATH . $fileName;
+//            move_uploaded_file($this->fileTemp, $target_path);
+//        }else{
             $target_path = DEFAULT_FILE_PATH . $fileName;
+       // var_dump($target_path);
             move_uploaded_file($this->fileTemp, $target_path);
-        }
+        //}
 
     }
 

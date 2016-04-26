@@ -1,9 +1,9 @@
 <?php
 
 //config
-require_once "./config.php";
-require_once "../../autoloader.php";
-require './libs/phpMailer/PHPMailerAutoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FAQ/FAQAdmin/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] ."/autoloader.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/FAQ/FAQAdmin/libs/phpMailer/PHPMailerAutoload.php";
 use \Project\FAQ\FAQAdmin\libs\Router;
 
 new Router();

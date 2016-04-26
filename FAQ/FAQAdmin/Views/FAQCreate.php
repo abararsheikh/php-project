@@ -33,7 +33,7 @@
 
 <div id="main" class="container">
     <h2>FAQ Admin</h2>
-    <form role="form" method="post" action="./index.php" enctype="multipart/form-data" id="createFAQ">
+    <form role="form" method="post" action="./faq" enctype="multipart/form-data" id="createFAQ">
         <input type="hidden" name="route" value ="FAQAdminController/CreateFAQ"/>
        <div class="form-horizontal">
         <?php echo $createFAQForm ?>
@@ -47,7 +47,7 @@
 
            <div class="col-md-offset-2 col-md-10">
                <input type="submit" value="Create" class="btn btn-default">
-               <a href="./index.php" class="btn btn-default">Cancel</a>
+               <a href="./faq" class="btn btn-default">Cancel</a>
            </div>
        </div>
         <span class="field-validation-valid text-danger" id="error"><?php echo $error?></span>

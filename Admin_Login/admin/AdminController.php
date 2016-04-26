@@ -74,5 +74,9 @@ class AdminController {
     return $this->view->render('/JsApps/CustomPage/customPage', 'Custom Page');
   }
 
+  public function FAQAdmin() {
+    return $this->view->render('/FAQ/FAQAdmin/index', 'FAQ Admin');
+  }
+
 
 }

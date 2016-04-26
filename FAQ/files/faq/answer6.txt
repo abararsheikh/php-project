@@ -1,2 +1,0 @@
-<p>add &nbsp;some thing</p>
-[FAQ-hit]:23

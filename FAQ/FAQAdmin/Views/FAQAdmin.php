@@ -32,7 +32,7 @@
 <?php require_once "../../Assets/html/header.php"?>
 <div id="main" class="container">
     <h2>FAQ Admin</h2>
-    <form role="form" method="get" action="./index.php">
+    <form role="form" method="get" action="">
         <div class="form-group">
             <input type="hidden" class="form-control" name="route" value="FAQAdminController/CreateFAQ">
             <button type="submit" class="btn btn-default">Create New FAQ</button>

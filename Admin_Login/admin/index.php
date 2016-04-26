@@ -16,6 +16,8 @@ Nav::group('/admin as admin', function() {
   Nav::get('/rating as Admin Rating ', "$controller@rating");
   Nav::get('/menu as Menu Editor', "$controller@menu");
   Nav::get('/page as Custom Page', "$controller@customPage");
+  Nav::get('/faq as FAQ Admin', "$controller@FAQAdmin");
+  Nav::post('/faq', "$controller@FAQAdmin");
 });
 
 Nav::start();

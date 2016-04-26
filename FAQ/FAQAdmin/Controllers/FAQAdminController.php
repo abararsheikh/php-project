@@ -42,12 +42,14 @@ class FAQAdminController
             foreach ($row as $key=>$value){
                 $allRows .="<td>$value</td>";
             }
-            $allRows .="<td><a href ='./index.php?route=FAQAdminController/EditFAQ/$id/$file' >Edit</a></td>";
-            $allRows .="<td><a href ='./index.php?route=FAQAdminController/DeleteFAQ/$id/$file' class='delete'>Delete</a></td>";
+            $path="faq?route=FAQAdminController/DeleteFAQ/$id/$file";
+            $path1="faq?route=FAQAdminController/EditFAQ/$id";
+            $allRows .="<td><a href =\"$path\" class='delete'>Delete</a></td>";
+            $allRows .="<td><a href =\"$path1\" class='edit'>Edit</a></td>";
             $allRows .="</tr>";
         }
         //var_dump($allQuestion);
-        require_once "./Views/FAQAdmin.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] ."/FAQ/FAQAdmin/Views/FAQAdmin.php";
     }
 
     /**
@@ -86,7 +88,7 @@ class FAQAdminController
         $fileInfo = new FileOperationAdmin();
         $fileInfo= $fileInfo->readFAQFile($oldFile);
 
-        require_once "./Views/FAQEdit.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] ."/FAQ/FAQAdmin/Views/FAQEdit.php";
 
     }
 
@@ -105,7 +107,7 @@ class FAQAdminController
         $id = $_POST['id'];
         $faqAdmin = new FAQAdminModels();
         $faqAdmin->updateFAQ($content,$faq,$id);
-        require_once "./Views/FAQEditSuccess.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] ."/FAQ/FAQAdmin/Views/FAQEditSuccess.php";
     }
 
 
@@ -120,7 +122,7 @@ class FAQAdminController
         //echo "This is delete FAQ $id";
         $faqAdmin = new FAQAdminModels();
         $faqAdmin->deleteFAQ($file,$id);
-        header('Location: ./index.php');
+        header('Location: faq');
     }
 
 
@@ -164,6 +166,6 @@ class FAQAdminController
             }
         }
 
-        require_once "./Views/FAQCreate.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] ."/FAQ/FAQAdmin/Views/FAQCreate.php";
     }
 }

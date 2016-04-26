@@ -26,7 +26,7 @@ class FileOperationAdmin extends FileOperation
      */
 
    public function updateFile($file){
-       $file = "../files/faq/$file";
+       $file = DEFAULT_FILE_PATH."/$file";
       // var_dump($file);
        if(file_exists($file)) {
            $result = $this->readFile($file);
@@ -47,7 +47,7 @@ class FileOperationAdmin extends FileOperation
      *
      */
     public function saveFile($file,$result){
-        $file = "../files/faq/$file";
+        $file = DEFAULT_FILE_PATH."/$file";
          //var_dump($file);
         //var_dump($result);
         if(file_exists($file)) {
@@ -68,7 +68,7 @@ class FileOperationAdmin extends FileOperation
      *
      */
    public function readFAQFile($file){
-       $file = "../files/faq/$file";
+       $file = DEFAULT_FILE_PATH."/$file";
 
        if(file_exists($file)) {
            $result = $this->readFile($file);
@@ -90,7 +90,7 @@ class FileOperationAdmin extends FileOperation
      */
    public function deleteFile($file){
 
-       $file = "../files/faq/$file";
+       $file = DEFAULT_FILE_PATH."/$file";
        if(file_exists($file)) {
            $result = unlink($file);
            return $result;

@@ -33,7 +33,7 @@
 <?php require_once "../../Assets/html/header.php"?>
     <div class="container">
         <div>Edit Success</div>
-    <a href="./index.php" class="btn btn-default">GO BACK TO FAQ ADMIN</a>
+    <a href="faq" class="btn btn-default">GO BACK TO FAQ ADMIN</a>
     </div>
 <?php require_once "../../Assets/html/footer.php"?>
 
