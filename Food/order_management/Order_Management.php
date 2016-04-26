@@ -8,9 +8,10 @@
 
 </head>
 <body>
+
+<?php include "../../Assets/html/header.php";?>
 <script src="../../Assets/js/Food/Order_Management.js"></script>
 <link rel="stylesheet" type="text/css" href="../../Assets/css/food-order.css" />
-<?php include "../../Assets/html/header.php";?>
 <main>
 
     <div class="container-fluid">

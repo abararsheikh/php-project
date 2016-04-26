@@ -44,6 +44,24 @@ join food b on a.Food_id=b.Food_id where a.User_id='$id'";
        $count=self::$db->exec($query);
         return $count;
     }
+    public static function updateSizeById($id,$size){
+        self::$db=Database::getDB();
+        $query="update food_shoppingcart set Size='$size' where Id='$id'";
+        $count=self::$db->exec($query);
+        return $count;
+    }
+    public static function updateCinemaById($id,$cinema){
+        self::$db=Database::getDB();
+        $query="update food_shoppingcart set Cinema_Name='$cinema' where Id='$id'";
+        $count=self::$db->exec($query);
+        return $count;
+    }
+    public static function updateQuantityById($id,$quantity){
+        self::$db=Database::getDB();
+        $query="update food_shoppingcart set Quantity='$quantity' where Id='$id'";
+        $count=self::$db->exec($query);
+        return $count;
+    }
     public static function deleteById($cartId){
         self::$db=Database::getDB();
         $query="delete from food_shoppingcart where Id='$cartId'";

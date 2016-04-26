@@ -51,7 +51,8 @@
 
 
     </ul>
-            <div class="col-sm-12 col-md-offset-3 col-md-4"><p class="navbar-text">Selected Food: $<span>0.00</span></p>
+            <div class="col-sm-12 col-md-offset-3 col-md-4">
+                <p class="navbar-text">Selected Food: $<span>0.00</span></p>
                 <button type="submit" class="btn btn-default navbar-btn" id="checkout">Check out</button>
             </div>
             </div>
@@ -63,10 +64,12 @@
                <?php foreach($cart as $item){?>
                 <tr class="item">
                   <td rowspan="4"><input type="checkbox" class="check" name="checkeditem[]" value="<?php echo $item->Id;?>"/> </td>
-                    <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
-                    <td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>"><?php echo $item->Food_Name;?></a></td>
+                    <td rowspan="4" ><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>">
+                            <img src="../../Assets/image/food/<?php echo $item->Food_Image?>" width="130" height="95"/></a></td>
+                    <td rowspan="4"><a href="../Food%20Management/index.php?id=<?php echo $item->Food_id;?>">
+                            <?php echo $item->Food_Name;?></a></td>
                     <td rowspan="4">Catatory: <?php echo $item->Food_Catagory;?></td>
-                    <td rowspan="4">Cinema:<select> <?php
+                    <td rowspan="4">Cinema:<select class="cinemas"> <?php
                         foreach($cinemas as $c)
                         { if($item->Cinema_Name==$c["Cinema_Name"]){
 
@@ -83,7 +86,7 @@
                         }
                         ?></select></td>
                     <td rowspan="4" width="150">Size:
-                        <select>
+                        <select class="foodsize">
                             <option class="small" <?php if($item->Size==1){
                                 echo "selected";
                             }?>>Small</option>
@@ -129,7 +132,8 @@
                         <input type="hidden" value="<?php echo $item->Id;?>" name="id"/>
                         <a href="" name="delete">Delete</a>
                     </td>
-                    <td rowspan="4" width="250" class="deliverytime">Date <input type="date"/> <div class="timeinput">Time <input type="time"/></div></td>
+                    <td rowspan="4" width="250" class="deliverytime">Date <input type="date"/>
+                        <div class="timeinput">Time <input type="time"/></div></td>
                 </tr>
 <tr></tr>
                 <tr></tr>

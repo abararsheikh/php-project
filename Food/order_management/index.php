@@ -40,7 +40,14 @@ if($page=="all"){
     }
     include "show.php";
 }else if($page=="comment"){
-  include "show.php";
+    $orders=$orderdb->getUncomment(7);
+    $items=array();
+    foreach($orders as $order){
+        $item= $orderdb->getItemByOrder($order->Order_id);
+        $items[]=$item;
+
+    }
+    include "show.php";
 }else if($page=="original"){
 
     $orders=$orderdb->getAllOrders(7);

@@ -2,30 +2,38 @@
 $(document).ready(
     function(){
 
-        var oprice=+$('#op').text();
-        var save=+$('#save').text();
-        var dp=+$('#dp').text();
+        var oprice=parseFloat(+$('#op').text());
+        var save=parseFloat(+$('#save').text());
+        var dp=parseFloat(+$('#dp').text());
+
         $('#small').click(
             function(){
-                $('#op').text(oprice);
-                $('#save').text(save);
-                $('#dp').text(dp);
+                $('#op').text(round2(oprice,2));
+                $('#save').text(round2(save,2));
+                $('#dp').text(round2(dp,2));
             }
         );
         $('#middle').click(
             function(){
-                $('#op').text(oprice*1.5);
-                $('#save').text(save*1.5);
-                $('#dp').text(dp*1.5);
+
+
+                $('#op').text(round2(oprice*1.5,2));
+                $('#save').text(round2(save*1.5,2));
+                $('#dp').text(round2(dp*1.5,2));
             }
         );
         $('#large').click(
             function(){
-                $('#op').text(oprice*2);
-                $('#save').text(save*2);
-                $('#dp').text(dp*2);
+                $('#op').text(round2(oprice*2,2));
+                $('#save').text(round2(save*2,2));
+                $('#dp').text(round2(dp*2,2));
             }
         );
+        function round2(number,fractiondigits){
+            with(Math){
+                return round(number*pow(10,fractiondigits))/pow(10,fractiondigits);
+            }
+        }
         $("#p").click(function(){
             console.log($('#stock').text());
 

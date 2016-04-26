@@ -56,4 +56,11 @@ values($food->Food_id,$orderid,$food->Quantity,$food->Size,'$date','$time',
      $this->db->exec($query1);
 
    }
+    public function getUncomment($userid){
+        $this->db= Database::getDB();
+        $query="select * from food_order where User_id='$userid'and State=1";
+        $result= $this->db->query($query);
+        $results=$result->fetchAll(PDO::FETCH_OBJ);
+        return $results;
+    }
 }

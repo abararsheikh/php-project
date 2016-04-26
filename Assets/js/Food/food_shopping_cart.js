@@ -67,6 +67,7 @@ $(document).ready(
          }
          $(this).parent().parent().next().find('span').html("");
          $(this).parent().parent().next().find('span').text(((+$(this).parent().parent().prev().find('span').last().text())*(+$(this).prev().val())).toFixed(2));
+         $.get("index.php",{quantity:$(this).prev().val(),action:"updateq",id:$(this).parent().parent().parent().find('input:checkbox').val()});
      });
      $(".m").click(function(){
 
@@ -86,7 +87,12 @@ $(document).ready(
          }
          $(this).parent().parent().next().find('span').html("");
          $(this).parent().parent().next().find('span').text(((+$(this).parent().parent().prev().find('span').last().text())*(+$(this).next().val())).toFixed(2));
-
+         console.log($(this).next().val());
+         console.log($(this).parent().parent().parent().find('input:checkbox').val());
+         $.get("index.php",{quantity:$(this).next().val(),action:"updateq",id:$(this).parent().parent().parent().find('input:checkbox').val()},
+         function(data){
+             console.log(data);
+         });
      });
      $(".enter").focusout(function(){
          var instock=$(this).next().next().val();
@@ -105,21 +111,23 @@ $(document).ready(
          }
          $(this).parent().parent().next().find('span').html("");
          $(this).parent().parent().next().find('span').text(((+$(this).parent().parent().prev().find('span').last().text())*(+$(this).val())).toFixed(2));
-
+         $.get("index.php",{quantity:$(this).val(),action:"updateq",id:$(this).parent().parent().parent().find('input:checkbox').val()});
      });
 
+      $('.cinemas').change(function(){
+          $.get("index.php",{cinema:$(this).val(),action:"updatecinema",id:$(this).parent().parent().find('input:checkbox').val()});
+      });
 
-
-     $('select').change(function(){
+     $('.foodsize').change(function(){
          var original=$(this).parent().next().find('input').first().val();
          var current=$(this).parent().next().find('input').last().val();
          var quantity=$(this).parent().parent().find('input.enter').val();
 
          if($(this).find('option:selected').text()=="Small"){
 
-
-             $(this).parent().next().find('span').first().text(original);
-             $(this).parent().next().find('span').last().text(current);
+             $.get("index.php",{size:1,action:"update",id:$(this).parent().parent().find('input:checkbox').val()});
+             $(this).parent().next().find('span').first().text(round2((+original),2));
+             $(this).parent().next().find('span').last().text(round2((+current),2));
              if($(this).parent().parent().find('td input:checkbox').prop('checked')==true) {
 
                  $('.navbar-text').find('span').text((+$('.navbar-text').find('span').text())-
@@ -130,8 +138,12 @@ $(document).ready(
              $(this).parent().parent().find('td.amount span').text(((+current)*(+quantity)).toFixed(2));
 
          }else if($(this).find('option:selected').text()=="Middle"){
-             $(this).parent().next().find('span').first().text((+original)*1.5);
-             $(this).parent().next().find('span').last().text((+current)*1.5);
+             $.get("index.php",{size:2,action:"update",id:$(this).parent().parent().find('input:checkbox').val()},
+             function(data){
+                 console.log(data);
+             });
+             $(this).parent().next().find('span').first().text(round2((+original)*1.5,2));
+             $(this).parent().next().find('span').last().text(round2((+current)*1.5,2));
              if($(this).parent().parent().find('td input:checkbox').prop('checked')==true) {
 
                  $('.navbar-text').find('span').text((+$('.navbar-text').find('span').text())-
@@ -142,8 +154,9 @@ $(document).ready(
              $(this).parent().parent().find('td.amount span').text(((+current)*(+quantity)*1.5).toFixed(2));
 
          }else if($(this).find('option:selected').text()=="Large"){
-             $(this).parent().next().find('span').first().text((+original)*2);
-             $(this).parent().next().find('span').last().text((+current)*2);
+             $.get("index.php",{size:3,action:"update",id:$(this).parent().parent().find('input:checkbox').val()});
+             $(this).parent().next().find('span').first().text(round2((+original)*2,2));
+             $(this).parent().next().find('span').last().text(round2((+current)*2,2));
              if($(this).parent().parent().find('td input:checkbox').prop('checked')==true) {
 
                  $('.navbar-text').find('span').text((+$('.navbar-text').find('span').text())-
@@ -155,7 +168,13 @@ $(document).ready(
 
          }
 
+
      });
+     function round2(number,fractiondigits){
+         with(Math){
+             return round(number*pow(10,fractiondigits))/pow(10,fractiondigits);
+         }
+     }
      $('input:checkbox').not('#checkall').click(
          function(){
 
