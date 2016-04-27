@@ -17,7 +17,9 @@ $(document).ready(
                 $.each(data,function(index,value){
 
                     $('#listchosen').append('<option value="'+value.Food_Name+'"></option>');
+
                 });
+
                 if($(".menu nav li").last().prev().attr("class")=="active"){
                     $(".menu nav li").last().addClass("disabled");
 
@@ -54,12 +56,14 @@ if($(this).attr("class")!="disabled"){
 
 
     });
+    addtocart();
     $(".menu nav li").removeClass("active");
     $(this).prev().addClass("active");
     $(".menu nav li").first().removeClass("disabled");
 
 }
                });
+
                 $(".menu nav li").first().on("click",function(){
                     if($(this).attr("class")!="disabled"){
                         $(".menu .row").empty();
@@ -85,14 +89,18 @@ if($(this).attr("class")!="disabled"){
                                 $(".menu .row").append($html);
 
                                 display();
+
                             }
 
                         });
+                        addtocart();
                         $(".menu nav li").removeClass("active");
                         $(this).next().addClass("active");
                         $(".menu nav li").last().removeClass("disabled");
                         $(this).addClass("disabled");
+
                     }
+
                 });
 
                 $(".pagination li").on("click", function () {
@@ -130,8 +138,10 @@ if($(this).attr("class")!="disabled"){
                                 $(".menu .row").append($html);
 
                                 display();
+
                             }
                         });
+                        addtocart();
                     }
                     if($(".menu nav li").last().prev().attr("class")=="active"){
                         $(".menu nav li").last().addClass("disabled");
@@ -139,6 +149,7 @@ if($(this).attr("class")!="disabled"){
                     }else{
                         $(".menu nav li").last().removeClass("disabled");
                     }
+
                 });
             });
         $("#MainMenu a").click(
@@ -189,11 +200,13 @@ if($(this).attr("class")!="disabled"){
                                 '</div>';
                             if (index < 12) {
                                 $(".menu .row").append($html);
+
                             }
 
                             display();
-                        });
 
+                        });
+                        addtocart();
                         $(".menu").append($html2);
                         for (var i = pages; i > 0; i--) {
                             if (i == 1) {
@@ -237,9 +250,11 @@ if($(this).attr("class")!="disabled"){
                                         $(".menu .row").append($html);
 
                                         display();
+
                                     }
 
                                 });
+                                addtocart();
                                 $(".menu nav li").removeClass("active");
                                 $(this).prev().addClass("active");
                                 $(".menu nav li").first().removeClass("disabled");
@@ -271,9 +286,11 @@ if($(this).attr("class")!="disabled"){
                                         $(".menu .row").append($html);
 
                                         display();
+
                                     }
 
                                 });
+                                addtocart();
                                 $(".menu nav li").removeClass("active");
                                 $(this).next().addClass("active");
                                 $(".menu nav li").last().removeClass("disabled");
@@ -312,8 +329,10 @@ if($(this).attr("class")!="disabled"){
                                         $(".menu .row").append($html);
 
                                         display();
+
                                     }
                                 });
+                                addtocart();
                             }
                                 if($(".menu nav li").last().prev().attr("class")=="active"){
                                     $(".menu nav li").last().addClass("disabled");
@@ -362,12 +381,25 @@ if($(this).attr("class")!="disabled"){
 
                     display();
 
-                 });}
+                 }); addtocart();
+                    }
 
             });
         }
     });
+        addtocart();
+function addtocart(){
 
+    $('button.plus').click(function(){
+
+alert("Add to cart successfully!");
+        var id=$(this).parent().next().val();
+        console.log($(this).parent().next().val());
+        $.get("index.php",{foodid:id,action:"plus"},function(data){
+            console.log(data);
+        });
+    });
+}
         function display() {
             $(".menu .plus").hover(
                 function () {

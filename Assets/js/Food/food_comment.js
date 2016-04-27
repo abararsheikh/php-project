@@ -10,7 +10,7 @@ $(document).ready(
 
             mark=5-$(this).index();
         });
-        $('[type="submit"]').click(function(e){
+        $('form').submit(function(e){
             e.preventDefault();
             var action=$(this).prev().val();
             var id=$(this).prev().prev().val();
@@ -33,10 +33,26 @@ $(document).ready(
                         comment: comment
                     },
                     function (data) {
+                        $(this).unbind('submit').submit();
+                        //  window.location.href="../order_management/index.php";
+                    });
 
-                       window.location.href="../order_management/index.php";
-                    })
+                 /*$.ajax({
+                 url: "index.php", // Url to which the request is send
+                 type: "POST",             // Type of request to be send, called as method
+                 data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                 contentType: false,       // The content type used when sending data to the server.
+                 cache: false,             // To unable request pages to be cached
+                 processData:false,        // To send DOMDocument or non processed data file it is set to false
+                 success: function(data)   // A function to be called if request succeeds
+                 {
+                 alert("suceess");
+                 }
+                 });*/
+
+
             }
         });
+
     }
 );

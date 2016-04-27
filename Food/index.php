@@ -12,7 +12,11 @@ if(isset($_POST["page"])){
 }else{
     $page="all";
 }
-if(isset($_GET["search"])){
+if(isset($_GET["action"])){
+    if($_GET["action"]=="plus"){
+      echo  ShoppingcartDB::plus(7,$_GET["foodid"]);
+    }
+}else if(isset($_GET["search"])){
     $foods= FoodDB::search($_GET["search"]);
 
     echo $foods;

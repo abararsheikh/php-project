@@ -1,6 +1,6 @@
 $(document).ready(
     function(){
-       var iframe=$('iframe');
+  /*     var iframe=$('iframe');
 
 iframe.load(function(){
     alert("123");
@@ -13,9 +13,15 @@ iframe.load(function(){
         var phone=$('[name="phone"]').val();
         $.get("index.php", {action: "paid",total:total,id:id,phone:phone});
     });
-});
-
-
+});*/
+        $('.stripe-button-el').click(function(){
+            var id=$('[name="id"]').val();
+            var phone=$('[name="phone"]').val();
+            var total=(+$('p span').text());
+            $.get('index.php',{action:"paid",id:id,phone:phone,total:total},function(data){
+                console.log(data);
+            });
+        });
 
 
     }

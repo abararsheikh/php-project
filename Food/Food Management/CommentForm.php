@@ -46,7 +46,7 @@
 </div>
         <div class="col-md-8 col-sm-6 col-xs-12">
             <h3 style="margin-top:10px;"><?php echo $food->getName();?></h3>
-    <form>
+    <form enctype="multipart/form-data" action="index.php" method="post" >
 
         <div class="form-group ">
      <label class="score">Score:</label>

@@ -139,7 +139,7 @@
 
 <?php foreach($topfoods as $food){?>
              <div class="col-xs-12 col-sm-12 col-md-12">
-                 <form action="Food Management/food_product.php" method="get">
+                 <form action="Food Management/index.php" method="get">
                  <div href="#" class="thumbnail">
                      <img src="../Assets/image/food/<?php echo $food->getImage();?>" alt="..." class="">
 

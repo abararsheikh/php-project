@@ -21,6 +21,24 @@ join food b on a.Food_id=b.Food_id where a.User_id='$id'";
         $result=$r->fetch(PDO::FETCH_OBJ);
         return $result;
     }
+    public static function plus($userid,$foodid){
+        self::$db=Database::getDB();
+        $items=self::getCartByUserId($userid);
+        $price=FoodDB::getFoodById($foodid)->getDiscountPrice();
+        $flag=true;
+        foreach($items as $item){
+            if($item->Food_id==$foodid){
+            $flag=false;
+
+            }
+        }
+        if($flag==true) {
+            $query = "insert into food_shoppingcart (User_id,Food_id,Quantity,Size,Cinema_Name,price)
+        VALUES ('$userid','$foodid',1,1,'Cinema1','$price')";
+            $count = self::$db->exec($query);
+        }
+        return $flag;
+    }
     public static function insertItemById($foodid,$userid,$quantity,$size,$cinema){
         self::$db=Database::getDB();
         $items=self::getCartByUserId($userid);
