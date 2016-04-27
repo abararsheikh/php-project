@@ -5,7 +5,7 @@ $act=$_GET['act']?$_GET['act']:'';
 if($act=='add')
 {
 
-  $sql="insert into test(question,answer1,answer2,answer3,answer4,mark,rights,name)values('".$_POST['question']."','".$_POST['answer1']."','".$_POST['answer2']."','".$_POST['answer3']."','".$_POST['answer4']."','".$_POST['rights']."','".$_POST['mark']."','".$_POST['name']."')";
+  $sql="insert into test(question,answer1,answer2,answer3,answer4,rights,mark,name)values('".$_POST['question']."','".$_POST['answer1']."','".$_POST['answer2']."','".$_POST['answer3']."','".$_POST['answer4']."','".$_POST['rights']."','".$_POST['mark']."','".$_POST['name']."')";
    $result=$db->exec($sql);
   if($result)
   {
