@@ -4,13 +4,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../../Assets/js/jquery.min.js" ></script>
-    <script src="../../Assets/js/bootstrap.min.js" ></script>
 
-    <script src="../../Assets/js/Food/Order_Management.js"></script>
+
 </head>
 <body>
+
 <?php include "../../Assets/html/header.php";?>
+<script src="../../Assets/js/Food/Order_Management.js"></script>
 <link rel="stylesheet" type="text/css" href="../../Assets/css/food-order.css" />
 <main>
 
@@ -19,7 +19,7 @@
             <h1 class="col-md-4">Order Management</h1>
             <div class="col-md-offset-5 col-md-2"><h3><a href="../index.php">Food menu</a></h3></div>
             <div class="container button-wrapper cart col-md-1">
-               <a href="../foodshoppingcartmanagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
+               <a href="../FoodShoppingcartManagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
                         echo $cartnumber;
                         ?></span></button>
                </a>

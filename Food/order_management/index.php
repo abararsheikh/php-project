@@ -3,10 +3,10 @@
 
 require_once "../Model/OrderDB.php";
 require_once "../Model/ShoppingcartDB.php";
-include '../../autoloader.php';
+
 
 // Start a session, there is no need to add this line if session is active.
-\Project\Classes\Helper::startSession();
+
 
 $page="";
 
@@ -40,7 +40,14 @@ if($page=="all"){
     }
     include "show.php";
 }else if($page=="comment"){
-  include "show.php";
+    $orders=$orderdb->getUncomment(7);
+    $items=array();
+    foreach($orders as $order){
+        $item= $orderdb->getItemByOrder($order->Order_id);
+        $items[]=$item;
+
+    }
+    include "show.php";
 }else if($page=="original"){
 
     $orders=$orderdb->getAllOrders(7);
@@ -58,6 +65,13 @@ if($page=="all"){
 
     $orderdb->deleteById($_POST["id"]);
 
+}else if($page=="pay"){
+    $total=$_POST["total"];
+    $id=$_POST["id"];
+    $phone=$_POST['phone'];
+ include "payment.php";
+}else if($page=="paid"){
+$orderdb->updateOrder($_GET['total'],1,$_GET['phone'],$_GET['id']);
 }
 
 if(isset($_POST["check"])){

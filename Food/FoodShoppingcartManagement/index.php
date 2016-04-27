@@ -9,8 +9,10 @@ require_once "../Model/ShoppingcartDB.php";
 session_start();
 $page="";
 $action="";
+
 //if(isset($_SESSION["user"])) {
 if(isset($_GET['action'])){
+
     $action=$_GET['action'];
 }else if(isset($_POST['action'])){
     $action=$_POST['action'];
@@ -47,6 +49,18 @@ if($action=="delete"){
 }else if($action=="guess"){
     $foods=ShoppingcartDB::getGuess(7,6);
     include "bottomload.php";
+}else if($action=="update"){
+
+    ShoppingcartDB::updateSizeById($_GET["id"],$_GET["size"]);
+
+}else if($action=="updatecinema"){
+
+    ShoppingcartDB::updateCinemaById($_GET["id"],$_GET["cinema"]);
+
+}else if($action=="updateq"){
+
+   ShoppingcartDB::updateQuantityById($_GET["id"],$_GET["quantity"]);
+echo $_GET["id"]." ".$_GET["quantity"];
 }else{
     if ($page == "cart_list") {
         $cart = ShoppingcartDB::getCartByUserId(7);

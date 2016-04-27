@@ -43,6 +43,23 @@ $('.idhide').each(function(){
 
 
         });
+
+        $('[name="payment"]').click(function(e){
+
+            var phone=$(this).parent().parent().find('[name="phone"]').val();
+            var total=$(this).parent().parent().find('[name="pricetotal"]').text();
+            var id=(+$(this).parent().parent().find('.order span').text());
+
+            var pattern=/\d{10,}/;
+
+            if(phone.length==0){
+                alert("Please enter your phone number!");
+                e.preventDefault();
+            }else if(!pattern.test(phone)){
+                alert("Please enter a valid phone number!");
+                e.preventDefault();
+            }
+        });
     });
 
 

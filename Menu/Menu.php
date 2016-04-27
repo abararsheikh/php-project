@@ -14,11 +14,11 @@ class Menu {
     $this->db = DB::getDB();
   }
 
-  public static function getMenuAll() {
+  public function getMenuAll() {
     $menuList = DB::find('SELECT * FROM menus', null);
     return $menuList;
   }
-  public static function saveMenu(array $menus) {
+  public function saveMenu(array $menus) {
     // truncate, very bad
     DB::getDB()->exec('TRUNCATE menus');
     $stmt = DB::getDB()->prepare('INSERT INTO menus VALUES (:name, :menu)

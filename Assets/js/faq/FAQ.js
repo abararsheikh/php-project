@@ -63,12 +63,14 @@ function selectSorting(){
 function selectedQuestions(obj){
 	var html ='';
 	$.each(obj, function(i,question){
+		    i=i+1;
 			var id ="'"+question.question_id+"'";
-			html +="<div class='row question' name="+id+"><div class='col-lg-12 no-padding'><span>"+question.question_id+".</span>"+question.questions+"</div></div>";
+			html +="<div class='row question' name="+id+"><div class='col-lg-12 no-padding'><span>"+i+".</span>"+question.questions+"</div></div>";
 			html +="<div class='row answer'>";
-		$.each(question.answer, function(k,para){
-			html +="<p class='col-lg-12'>"+para+"</p>";
-		});
+		//$.each(question.answer, function(k,para){
+		//	html +="<p class='col-lg-12'>"+para+"</p>";
+		//});
+		html +=question.answer;
 		html +="</div>";
 	});
 	$(".question-list").html(html);

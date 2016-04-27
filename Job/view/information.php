@@ -52,7 +52,7 @@ width:1400px;
                       <td height="68" align="center" valign="middle"><a href="Feedback.php?products"><img src="../public/pic2.jpg"></a></td>
                   </tr>
                   <tr>
-                      <td height="57" align="center" valign="middle"><a href="index.php?about"><img src="../public/pic3.jpg"></a></td>
+                      <td height="57" align="center" valign="middle"><a href="information.php?about"><img src="../public/pic3.jpg"></a></td>
                   </tr>
           </table>
           </td>

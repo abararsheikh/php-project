@@ -19,7 +19,7 @@ class FAQFileOperation extends FileOperation
         $info = $this->readFile($file);
         if($info!=false){
             $info = explode("[FAQ-hit]:",$info);
-            $info[0] = explode("*",$info[0]);
+            //$info[0] = explode("*",$info[0]);
             //var_dump($info);
             return $info;
         }else{
