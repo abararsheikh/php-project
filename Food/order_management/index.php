@@ -72,8 +72,9 @@ if($page=="all"){
  include "payment.php";
 }else if($page=="paid"){
 $orderdb->updateOrder($_GET['total'],1,$_GET['phone'],$_GET['id']);
+}else if($page=="ajax"){
+  echo "ajax";
 }
-
 if(isset($_POST["check"])){
 
 
