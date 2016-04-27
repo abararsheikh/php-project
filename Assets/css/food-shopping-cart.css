@@ -65,13 +65,13 @@
     left: initial;
     font-size: 14px;
 }
-.btn-default{
+#checkout{
     border-color: salmon;
     font-weight: 800;
     background-color: salmon;
  color:white;
 }
-.btn-default:hover{
+#checkout:hover{
     background-color: black;
     color: white;
 }
