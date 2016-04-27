@@ -19,7 +19,7 @@ function timer(){
         $("#timer").html(timer.seconds+" S");
 
         if(timer.total<=0){
-            ajaxfoodOrder();
+            //ajaxfoodOrder();
             //alert("Session Expired");
             var url="../index.php?route=DetailController/gotoPayment";
             //console.log(url);
