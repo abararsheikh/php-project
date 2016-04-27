@@ -165,7 +165,7 @@ width:1400px;
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="a"/><?php echo "A.".$rs->answer1; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="b"/><?php echo "B.".$rs->answer2; ?></p>
 		              <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="c"/><?php echo "C.".$rs->answer3; ?></p>
-	                <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="d"/><?php echo "D.".$rs->answer4; ?></p>		      </td>
+	                  <p><input type="radio" name="<?php echo $i; ?>answer<?php echo $rs->id; ?>" value="d"/><?php echo "D.".$rs->answer4; ?></p>		      </td>
           </tr>
           <?php
 
