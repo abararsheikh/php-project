@@ -26,14 +26,15 @@ class FileOperationAdmin extends FileOperation
      */
 
    public function updateFile($file){
-       $file = DEFAULT_FILE_PATH."/$file";
-      // var_dump($file);
+       $file = DEFAULT_FILE_PATH."$file";
+       //var_dump($file);
        if(file_exists($file)) {
            $result = $this->readFile($file);
            $result .= "[FAQ-hit]:0";
            $result = $this->writeFile($file, $result);
            return $result;
        }else{
+           echo "Hi can not find filse";
            return false;
        }
    }
@@ -47,7 +48,7 @@ class FileOperationAdmin extends FileOperation
      *
      */
     public function saveFile($file,$result){
-        $file = DEFAULT_FILE_PATH."/$file";
+        $file = DEFAULT_FILE_PATH."$file";
          //var_dump($file);
         //var_dump($result);
         if(file_exists($file)) {
@@ -68,14 +69,17 @@ class FileOperationAdmin extends FileOperation
      *
      */
    public function readFAQFile($file){
-       $file = DEFAULT_FILE_PATH."/$file";
 
+        $file = DEFAULT_FILE_PATH."$file";
+       //var_dump($file);
        if(file_exists($file)) {
            $result = $this->readFile($file);
             $result =explode("[FAQ-hit]:",$result);
-           //var_dump($result);
+
            return $result;
        }else{
+           //var_dump();
+           echo "Hi can not find filse";
            return false;
        }
    }
@@ -90,11 +94,12 @@ class FileOperationAdmin extends FileOperation
      */
    public function deleteFile($file){
 
-       $file = DEFAULT_FILE_PATH."/$file";
+       $file = DEFAULT_FILE_PATH."$file";
        if(file_exists($file)) {
            $result = unlink($file);
            return $result;
        }else{
+           echo "Hi can not find filse";
            return false;
        }
    }
