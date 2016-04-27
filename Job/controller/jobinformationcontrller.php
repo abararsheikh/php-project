@@ -26,7 +26,7 @@ if($act=='add'&& $_POST['rand3'] == $_POST['username32']){
 
 			if($value["answer"] == $rs->rights){
 
-				$fenshu += $rs->fenshu;
+				$fenshu += $rs->mark;
 			}
 		}
  	}

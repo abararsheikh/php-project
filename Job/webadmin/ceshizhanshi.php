@@ -162,14 +162,14 @@ if($rs->adminID==$_SESSION["id"] || $_SESSION["admin"]!=='')
 ?> 
   <tr class="tdbg">
     <td>
-      <div align="center"><?php echo $rs->wenti;?></div></td>
+      <div align="center"><?php echo $rs->question;?></div></td>
          <td><div align="center"><?php echo $rs->answer1;?></div></td>
 	 <td><div align="center"><?php echo $rs->answer2;?></div></td>
 	  <td><div align="center"><?php echo $rs->answer3;?></div></td>
 	     <td>
       <div align="center"><?php echo $rs->answer4;?></div></td>
-         <td><div align="center"><?php echo $rs->fenshu;?></div></td>
-	 <td><div align="center"><?php echo $rs->rights;?></div></td>
+         <td><div align="center"><?php echo $rs->rights;?></div></td>
+	 <td><div align="center"><?php echo $rs->mark;?></div></td>
       <td><div align="center"><?php echo $rs->name;?></div></td>
 	        <td><div align="center"><a href="?act=del&id=<?php echo $rs->id;?>">Deleted</a></div></td>
  
