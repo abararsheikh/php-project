@@ -150,7 +150,7 @@ width:1400px;
 
       $i = 1;
       $ids=array();
-      while($i<=10){
+      while($i<=5){
             $id = round(rand($min,$max));
             if(!in_array($id,$ids)){
               $sql = "select * from test where id=".$id;
