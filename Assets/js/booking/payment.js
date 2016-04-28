@@ -19,15 +19,36 @@ function timer(){
         $("#timer").html(timer.seconds+" S");
 
         if(timer.total<=0){
-            ajaxfoodOrder();
+
             //alert("Session Expired");
-            var url="../index.php?route=DetailController/gotoPayment";
-            //console.log(url);
-            $.get(url, function(data, status){
-                alert('ORDER SAVED');
-                window.location.replace("../index.php");
-            })
-            clearInterval(timeinterval);
+            var url1="../../Food/order_management/index.php";
+            $.get(url1,{action:"ajax"},function(data){
+
+                if(data==1){
+                    $.getJSON(url1,{action:"paying"},function(data){
+
+                        $.get(url1,{itemquantity:data.itemquantity,action:"paid",id:data.id,phone:data.phone,total:data.total,foodid:data.foodid},function(data){
+                         alert("Food payment successfully!");
+
+                        });
+
+                        window.location.replace("../../Food/order_management/index.php");
+
+                    });
+
+                }else{
+                    var url="../index.php?route=DetailController/gotoPayment";
+                    //console.log(url);
+                    $.get(url, function(data, status){
+                        alert('ORDER SAVED');
+                        window.location.replace("../index.php");
+                    })
+                    clearInterval(timeinterval);
+                }
+
+
+            });
+
         }
     },1000);
 }
@@ -48,13 +69,7 @@ function getTimeRemaining(endTime){
 }
 
 
-function ajaxfoodOrder(){
-    //alert();
-    var url="../../Food/Order_Management/index.php";
-    $.get(url,{action:"ajax"},function(data){
-        alert(data);
-    })
-}
+
 
 
 init();

@@ -110,6 +110,12 @@ public static function getAll(){
         $results = $result->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($results);
     }
+    public static function updateFoodById($foodid,$stock,$sales){
+       self::$db= Database::getDB();
+        $query="update food set Sales_volume=$sales,Food_Instock=$stock where Food_id='$foodid'";
+        $count=self::$db->exec($query);
+        return $count;
+    }
     public static function setHistory($foodid){
         $t=time();
 
@@ -123,6 +129,7 @@ public static function getAll(){
         }
 
     }
+
     public static function insertCommentById($orderitemid,$foodid,$comment,$mark,$evaluation,$file,$userid){
         self::$db=Database::getDB();
         $date=date("Y-m-d");

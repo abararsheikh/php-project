@@ -14,7 +14,7 @@ iframe.load(function(){
         $.get("index.php", {action: "paid",total:total,id:id,phone:phone});
     });
 });*/
-        $('.stripe-button-el').click(function(){
+      /*  $('.stripe-button-el').click(function(){
             var id=$('[name="id"]').val();
             var phone=$('[name="phone"]').val();
             var total=(+$('p span').text());
@@ -22,7 +22,7 @@ iframe.load(function(){
                 console.log(data);
             });
         });
-
+*/
 
     }
 );

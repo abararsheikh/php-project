@@ -1,10 +1,12 @@
 
 <?php
-
+use Project\Auth\models\AuthModel;
+include '../../autoloader.php';
 require_once "../Model/OrderDB.php";
 require_once "../Model/ShoppingcartDB.php";
-
-
+require_once "../Model/FoodDB.php";
+require_once "../Model/Food.php";
+session_start();
 // Start a session, there is no need to add this line if session is active.
 
 
@@ -21,7 +23,7 @@ $page=$_POST["action"];
 }
 $orderdb=new OrderDB();
 if($page=="all"){
-    $orders=$orderdb->getAllOrders(7);
+    $orders=$orderdb->getAllOrders(AuthModel::getUser('id'));
     $items=array();
     foreach($orders as $order){
         $item= $orderdb->getItemByOrder($order->Order_id);
@@ -31,7 +33,7 @@ if($page=="all"){
 
     include "show.php";
 }else if($page=="payment"){
-    $orders=$orderdb->getUnpaidOrder(7);
+    $orders=$orderdb->getUnpaidOrder(AuthModel::getUser('id'));
     $items=array();
     foreach($orders as $order){
         $item= $orderdb->getItemByOrder($order->Order_id);
@@ -40,7 +42,7 @@ if($page=="all"){
     }
     include "show.php";
 }else if($page=="comment"){
-    $orders=$orderdb->getUncomment(7);
+    $orders=$orderdb->getUncomment(AuthModel::getUser('id'));
     $items=array();
     foreach($orders as $order){
         $item= $orderdb->getItemByOrder($order->Order_id);
@@ -49,15 +51,15 @@ if($page=="all"){
     }
     include "show.php";
 }else if($page=="original"){
-
-    $orders=$orderdb->getAllOrders(7);
+if(isset($_SESSION["food"])){unset($_SESSION["food"]);}
+    $orders=$orderdb->getAllOrders(AuthModel::getUser('id'));
     $items=array();
      foreach($orders as $order){
         $item= $orderdb->getItemByOrder($order->Order_id);
          $items[]=$item;
 
      }
-    $cartnumber=ShoppingcartDB::getCount(7);
+    $cartnumber=ShoppingcartDB::getCount(AuthModel::getUser('id'));
 
 
     include "Order_Management.php";
@@ -69,17 +71,40 @@ if($page=="all"){
     $total=$_POST["total"];
     $id=$_POST["id"];
     $phone=$_POST['phone'];
+    $itemid=$_POST['itemid'];
+    $itemquantity=$_POST['itemquantity'];;
+
+    $_SESSION["food"]=true;
+    $_SESSION["food1"]["total"]=$total;
+    $_SESSION["food1"]["phone"]=$phone;
+    $_SESSION["food1"]["id"]=$id;
+    $_SESSION["food1"]["foodid"]=$itemid;
+    $_SESSION["food1"]["itemquantity"]=$itemquantity;
+
  include "payment.php";
+
 }else if($page=="paid"){
-$orderdb->updateOrder($_GET['total'],1,$_GET['phone'],$_GET['id']);
+
+  $orderdb->updateOrder($_GET['total'],1,$_GET['phone'],$_GET['id']);
+
+  foreach($_GET['foodid'] as $key => $id) {
+        $food = FoodDB::getFoodById($id);
+        $stock=$food->getInstock()-$_GET['itemquantity'][$key];
+        $sale=$food->getSalesVolume()+1;
+        FoodDB::updateFoodById($id,$stock,$sale);
+    }
+
 }else if($page=="ajax"){
-  echo "ajax";
+  echo  $_SESSION["food"];
+}else if($page=="paying"){
+    echo  json_encode($_SESSION["food1"]);
+
 }
 if(isset($_POST["check"])){
 
 
    $total=$_POST["total"];
-   $orderid= $orderdb->insertOrder(7);
+   $orderid= $orderdb->insertOrder(AuthModel::getUser('id'));
 
     foreach($_POST["info"] as $item){
        $food= ShoppingcartDB::getItemById($item[0]);

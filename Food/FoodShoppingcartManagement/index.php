@@ -2,6 +2,8 @@
 
 
 <?php
+use Project\Auth\models\AuthModel;
+include '../../autoloader.php';
 require_once "../Model/Food.php";
 require_once "../Model/FoodDB.php";
 require_once "../Model/Shoppingcart.php";
@@ -28,17 +30,17 @@ if($action=="delete"){
     ShoppingcartDB::deleteById($_POST['id']);
 
 }else if($action=="stock"){
- $results= ShoppingcartDB::getLowstock(5,7);
+ $results= ShoppingcartDB::getLowstock(5,AuthModel::getUser('id'));
     $cinemas = FoodDB::getFoodCinema();
    include "load.php";
 
 }else if($action=="all"){
-    $results = ShoppingcartDB::getCartByUserId(7);
+    $results = ShoppingcartDB::getCartByUserId(AuthModel::getUser('id'));
     $cinemas = FoodDB::getFoodCinema();
     include "load.php";
 
 }else if($action=="reduction"){
-    $results = ShoppingcartDB::getReduction(7);
+    $results = ShoppingcartDB::getReduction(AuthModel::getUser('id'));
     $cinemas = FoodDB::getFoodCinema();
     include "load.php";
 
@@ -47,7 +49,7 @@ if($action=="delete"){
 
     include "bottomload.php";
 }else if($action=="guess"){
-    $foods=ShoppingcartDB::getGuess(7,6);
+    $foods=ShoppingcartDB::getGuess(AuthModel::getUser('id'),6);
     include "bottomload.php";
 }else if($action=="update"){
 
@@ -63,9 +65,9 @@ if($action=="delete"){
 echo $_GET["id"]." ".$_GET["quantity"];
 }else{
     if ($page == "cart_list") {
-        $cart = ShoppingcartDB::getCartByUserId(7);
+        $cart = ShoppingcartDB::getCartByUserId(AuthModel::getUser('id'));
         $cinemas = FoodDB::getFoodCinema();
-        $guess=ShoppingcartDB::getGuess(7,6);
+        $guess=ShoppingcartDB::getGuess(AuthModel::getUser('id'),6);
         include "food-shopping-cart.php";
     } else if ($page == "order_management") {
         include "Order_Management.php";

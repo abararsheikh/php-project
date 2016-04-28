@@ -32,18 +32,9 @@
             </form>
                 </div>
             <div class="btn-group col-md-2 ">
-                <!--<button type="button" class="btn btn-info dropdown-toggle order" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Order Management <span class="glyphicon glyphicon-triangle-bottom"></span>
-                </button>
 
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                </ul>-->
                 <div class="dropdown">
-                   <a href="order_management/index.php"> <button class="dropbtn btn btn-info order">Order management
+                   <a href="order_management/index.php" id="goorder"> <button class="dropbtn btn btn-info order">Order management
                         <span class="glyphicon glyphicon-triangle-bottom"></span>
                     </button>
                    </a>
@@ -56,7 +47,7 @@
             </div>
 
             <div class="container button-wrapper cart col-md-1">
-               <a href="FoodShoppingcartManagement/index.php"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
+               <a href="FoodShoppingcartManagement/index.php" id="goshop"> <button class="btn btn-success btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"><?php
                            echo $cartnumber;
                            ?></span></button></a>
             </div>
@@ -64,20 +55,8 @@
         </div>
 
 
-        <!--<div class="container">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-                <span class="icon-bar" style="background-color: #0A0A0A"></span>
-                <span class="icon-bar" style="background-color: #0A0A0A"></span>
-                <span class="icon-bar" style="background-color: #0A0A0A"></span>
-            </button>
-            <div class="collapse navbar-collapse navHeaderCollapse">
-                    <ul class="nav nav-pills nav-stacked ">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Messages</a></li>
-                    </ul>
-            </div>
-        </div>--><div class="sidebar-nav col-xs-12 col-sm-3 col-md-3  ">
+
+        <div class="sidebar-nav col-xs-12 col-sm-3 col-md-3  ">
             <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainMenu">
                 <span class="sr-only" style="background-color:crimson">Toggle navigation</span>
@@ -86,25 +65,7 @@
                 <span class="icon-bar" style="background-color: #0A0A0A"></span>
             </button>
                 </div>
-          <!--  <div class=" collapse navbar-collapse ctlist sidebar-navbar-collapse">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Messages</a></li>
-                </ul>
-            </div>-->
+
             <div id="MainMenu" class="collapse navbar-collapse ctlist">
                 <div class="list-group panel">
                     <a href="#demo1" id="allFoods" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">All foods</a>

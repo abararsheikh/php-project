@@ -388,15 +388,45 @@ if($(this).attr("class")!="disabled"){
         }
     });
         addtocart();
+        $('#goorder').click(function(e){
+            e.preventDefault();
+
+            $.get("index.php",{action:"userlogin"},function(data){
+
+                if(data==false){
+
+                    window.login.show();
+                }else{
+                    window.location.href="order_management/index.php";
+                }
+            });
+        });
+        $('#goshop').click(function(e){
+            e.preventDefault();
+
+            $.get("index.php",{action:"userlogin"},function(data){
+
+                if(data==false){
+
+                    window.login.show();
+                }else{
+                    window.location.href="FoodShoppingcartManagement/index.php";
+                }
+            });
+        });
 function addtocart(){
 
     $('button.plus').click(function(){
 
-alert("Add to cart successfully!");
+
         var id=$(this).parent().next().val();
         console.log($(this).parent().next().val());
         $.get("index.php",{foodid:id,action:"plus"},function(data){
-            console.log(data);
+            if(data==0){
+                window.login.show();
+            }else{
+                alert("Add to cart successfully!");
+            }
         });
     });
 }
