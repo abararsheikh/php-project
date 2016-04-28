@@ -312,7 +312,7 @@ $(document).ready(
         $('#checkout').click(
             function(e){
                 e.preventDefault();
-alert("123");
+
                 var orders=[];
     var x=true;
                 $('input:checked').not('#checkall').each(function(){
