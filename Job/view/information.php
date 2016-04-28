@@ -75,7 +75,7 @@ width:1400px;
               <td height="249" colspan="2" bgcolor="#CCCCCC"><p>1.Ensure technical feasibility of UI/UX designs</p>
             <p>2.Strong understanding of communications, marketing, and customer service principles</p>
             <p>3.Digital Advertising experience a major asset</p>
-            <p>4.Excellent understanding of web markup</p>
+            <p>4.Excellent understanding ofXML or PHP or JS or CSS or asp.net</p>
 
             <p>salary：</p>
             <p>$3000+</p></td>
