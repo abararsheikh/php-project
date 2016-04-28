@@ -84,7 +84,7 @@ class Nav {
    * @param array $menu
    * @param string $base
    */
-  private function matchRoute(array $menu, $base = '') {
+  private static function matchRoute(array $menu, $base = '') {
     foreach ($menu as $item) {
       if (is_object($item) && $item->match($base)) {
         self::$hasMatch = true;
@@ -133,7 +133,7 @@ class Nav {
    * @param array $menu A group of routes
    * @return array  Ordered menu
    */
-  private function makeLink(array $menu) {
+  private static function makeLink(array $menu) {
     $baseDir = $menu['base'];
     return array_reduce($menu['menu'], function ($acc, $currRoute) use ($baseDir) {
       $r = [];
@@ -159,7 +159,7 @@ class Nav {
    * @param array $target
    * @throws \Exception
    */
-  private function getMenu(array &$target) {
+  private static function getMenu(array &$target) {
     if (!array_key_exists('callback', $target)) return;
     // Clear routes
     self::$routes = [];
@@ -196,7 +196,7 @@ class Nav {
   }
 
   // Find the index of any routes which has the same name
-  private function findParent(array $possibleFather, $childName) {
+  private static function findParent(array $possibleFather, $childName) {
     foreach ($possibleFather as $index => $p) {
       if (is_object($p) && $p->getProp('name') == $childName) {
         return $index;
@@ -204,7 +204,7 @@ class Nav {
     }
   }
 
-  private function draw($menu, array $template = null) {
+  private static function draw($menu, array $template = null) {
     $defaultTemplate = [
         "<ul>", "<li><a href='%link%'>%name%</a></li>", "</ul>"
     ];
@@ -229,12 +229,12 @@ class Nav {
     echo '<h1 style="color: hotpink;">Sorry, page not found...</h1>';
   }
 
-  private function add($pathAsName, $action, $method = 'GET') {
+  private static function add($pathAsName, $action, $method = 'GET') {
     list($path, $name) = self::separateName($pathAsName);
     return new Route($path, $name, $method, $action);
   }
 
-  private function separateName($pathAsName) {
+  private static function separateName($pathAsName) {
     return strpos($pathAsName, ' as ') ? explode(' as ', $pathAsName) : [$pathAsName, null];
   }
 
