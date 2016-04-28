@@ -41,10 +41,7 @@
             </tr>
     </table>
     <td height="92" bordercolor="#CCCCCC" bgcolor="#CCCCCC"><p class="STYLE1">Web develope</p>
-      <p><strong>Seach Job：
-            <input type="text" name="neirong"/>
-            <input name="submit" type="submit" value="submit seach" />
-    </strong></p>
+
       </td>
   </tr>
   <tr>
