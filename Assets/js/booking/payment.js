@@ -27,7 +27,8 @@ function timer(){
                 if(data==1){
                     $.getJSON(url1,{action:"paying"},function(data){
 
-                        $.get(url1,{itemquantity:data.itemquantity,action:"paid",id:data.id,phone:data.phone,total:data.total,foodid:data.foodid},function(data){
+                        $.get(url1,{itemquantity:data.itemquantity,action:"paid",id:data.id,phone:data.phone,total:data.total,foodid:data.foodid},
+                            function(data){
                          alert("Food payment successfully!");
 
                         });
