@@ -10,7 +10,7 @@ function init(){
  */
 function timer(){
     var endTime = new Date();
-    endTime.setSeconds(endTime.getSeconds()+ 4);
+    endTime.setSeconds(endTime.getSeconds()+4);
     //console.log(endTime);
     //getTimeRemaining(endTime);
     var timeinterval = setInterval(function(){
@@ -19,7 +19,7 @@ function timer(){
         $("#timer").html(timer.seconds+" S");
 
         if(timer.total<=0){
-
+            //ajaxfoodOrder();
             //alert("Session Expired");
             var url="../index.php?route=DetailController/gotoPayment";
             //console.log(url);
@@ -46,5 +46,15 @@ function getTimeRemaining(endTime){
         'seconds': seconds
     };
 }
+
+
+function ajaxfoodOrder(){
+    //alert();
+    var url="../../Food/Order_Management/index.php";
+    $.get(url,{action:"ajax"},function(data){
+        alert(data);
+    })
+}
+
 
 init();
