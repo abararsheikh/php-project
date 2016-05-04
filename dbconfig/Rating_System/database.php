@@ -4,7 +4,7 @@ class Database{
 
     private static $dsn = 'mysql:host=localhost;dbname=php_project';
     private static $username = 'php_project';
-    private static $password = 'FJtKJsepzpev64JS';
+    private static $password = 'dSRLJurwvR4A3AMc';
     //reference to db connection
     private static $db;
 

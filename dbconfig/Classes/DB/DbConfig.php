@@ -9,6 +9,6 @@ namespace Project\Classes\DB;
 class DbConfig {
   const SERVER = 'localhost:3306';
   const DB_USER = 'php_project';
-  const DB_PASS = 'FJtKJsepzpev64JS';
+  const DB_PASS = 'dSRLJurwvR4A3AMc';
   const DB_NAME = 'php_project';
 }

@@ -5,7 +5,7 @@ class Database
     private static $db;
     private static $dsn="mysql:host=localhost;dbname=php_project";
     private static $username="php_project";
-    private static $password="FJtKJsepzpev64JS";
+    private static $password="dSRLJurwvR4A3AMc";
     public static function getDB(){
        if(!isset(self::$db)) {
            try {
