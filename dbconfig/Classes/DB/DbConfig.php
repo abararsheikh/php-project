@@ -8,7 +8,7 @@ namespace Project\Classes\DB;
  */
 class DbConfig {
   const SERVER = 'localhost:3306';
-  const DB_USER = 'aircmiao_yi_php';
-  const DB_PASS = 'a12345';
-  const DB_NAME = 'aircmiao_yi_phpproject';
+  const DB_USER = 'php_project';
+  const DB_PASS = 'FJtKJsepzpev64JS';
+  const DB_NAME = 'php_project';
 }

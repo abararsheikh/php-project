@@ -8,7 +8,7 @@
 
 
 //DB
-define('DATA_SOURCE_NAME','mysql:host=localhost;dbname=aircmiao_yi_phpproject');
-define('DB_USERNAME','aircmiao_yi_php');
-define('DB_PASSWORD','a12345');
+define('DATA_SOURCE_NAME','mysql:host=localhost;dbname=php_project');
+define('DB_USERNAME','php_project');
+define('DB_PASSWORD','FJtKJsepzpev64JS');
 ?>

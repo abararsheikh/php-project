@@ -2,9 +2,9 @@
 <?php
 class Database{
 
-    private static $dsn = 'mysql:host=localhost;dbname=aircmiao_yi_phpproject';
-    private static $username = 'aircmiao_yi_php';
-    private static $password = 'a12345';
+    private static $dsn = 'mysql:host=localhost;dbname=php_project';
+    private static $username = 'php_project';
+    private static $password = 'FJtKJsepzpev64JS';
     //reference to db connection
     private static $db;
 
