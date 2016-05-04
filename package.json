@@ -16,7 +16,7 @@
     "babel-preset-react": "^6.5.0",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.0",
-    "jspm": "^0.16.30",
+    "jspm": "^0.16.30"
   },
   "jspm": {
     "dependencies": {
