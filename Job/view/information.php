@@ -1,10 +1,12 @@
 <?php session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php include "../../Assets/html/header.php";?>
 
 <?php
 $act=isset($_GET['act'])?$_GET['act']:'';
 //$a=0;
 include("../controller/jobinformationcontrller.php");
+
 ?>
 
 <html>
@@ -209,6 +211,6 @@ width:1400px;
 <script>
     
 </script>
-
+<?php require_once ("../Assets/html/footer.php");?>
 </body>
 </html>
