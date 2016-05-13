@@ -1,9 +1,9 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
-require_once '../../../autoloader.php';
-require_once '../../Model/Ratings.php';
-require_once '../../database.php';
+//require_once '../../../autoloader.php';
+require_once '../../autoloader.php';
+require_once '../../Rating_System/Model/Ratings.php';
+require_once '../../Rating_System/database.php';
 $db = Database::getDB();
 $rating_id = $_POST['rating_id'];     // Get the product data
 $updateRating = new Ratings();
@@ -21,7 +21,7 @@ $editRatings = $updateRating->editRating($rating_id);
 </head>
 <body>
 <div class="container">
-    <form action="../controller/update_rating.php" method="post">
+    <form action="/admin/editedRating" method="post">
         <fieldset class="form-group">
             <input type="hidden" name="rating_id" value="<?php echo $rating_id; ?>">
         </fieldset>

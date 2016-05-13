@@ -2,6 +2,7 @@
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
 require_once '../Model/Filmadmin.php';
+//require_once '../../FilmAdmin_CMS/Model/Filmadmin.php';
 require_once 'manage_movie.php';
 $db = DB::getDB();
 //validate date

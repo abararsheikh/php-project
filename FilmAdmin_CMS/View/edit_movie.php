@@ -1,7 +1,7 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
-require_once '../Model/Filmadmin.php';
+//require_once '../Model/Filmadmin.php';
+require_once '../../FilmAdmin_CMS/Model/Filmadmin.php';
 include '../../autoloader.php';
 $db = DB::getDB();
 $film_id = $_POST['film_id'];       // Get the product data

@@ -47,13 +47,13 @@ $selectResult = $ratingList->displayRatings();
                 <td>
                     <form method ="post" action ="/Rating_System/Rating_Admin/controller/delete_rating.php">
                         <input type ="hidden" name = "rating_id" value="<?php echo $selectRating['rating_id'] ?>">
-                        <input type ="submit" name = "delete" value ="Delete">
+                        <input type ="submit" name = "delete" value ="Delete" class="btn btn-primary">
                     </form>
                 </td>
                 <td>
-                    <form method ="post" action ="/Rating_System/Rating_Admin/View/edit_rating_form.php">
+                    <form method ="post" action ="/admin/editRating">
                         <input type ="hidden" name = "rating_id" value="<?php echo $selectRating['rating_id'] ?>"/>
-                        <input type ="submit" name = "update" value ="Edit">
+                        <input type ="submit" name = "update" value ="Edit" class="btn btn-primary">
                     </form>
                 </td>
 

@@ -1,8 +1,8 @@
 <?php
 use Project\Classes\DB\DB;
-include '../../../autoloader.php';
-require_once '../../Model/Ratings.php';
-require_once '../../database.php';
+include '../../autoloader.php';
+require_once '../../Rating_System/Model/Ratings.php';
+require_once '../../Rating_System/database.php';
 $db = Database::getDB();
 // Get the value from the form
 $rating_id = $_POST['rating_id'];

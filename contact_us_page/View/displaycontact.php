@@ -46,13 +46,13 @@ $selectResult = $contactList->displayContacts();
                 <td>
                     <form method ="post" action ="/contact_us_page/View/delete.php">
                         <input type ="hidden" name = "sel_record" value="<?php echo $selectContact['contact_id'] ?>">
-                        <input type ="submit" name = "delete" value ="Delete">
+                        <input type ="submit" name = "delete" value ="Delete" class="btn btn-primary">
                     </form>
                 </td>
                 <td>
-                    <form method ="post" action ="/contact_us_page/View/editform.php">
+                    <form method ="post" action ="/admin/editContact">
                         <input type ="hidden" name = "sel_record" value="<?php echo $selectContact['contact_id'] ?>"/>
-                        <input type ="submit" name = "update" value ="Edit">
+                        <input type ="submit" name = "update" value ="Edit" class="btn btn-primary">
                     </form>
                 </td>
 

@@ -78,5 +78,22 @@ class AdminController {
     return $this->view->render('/FAQ/FAQAdmin/index', 'FAQ Admin');
   }
 
-
+  public function addMovie() {
+    return $this->view->render('/FilmAdmin_CMS/View/add_movie_form', 'Add movie');
+  }
+  public function editMovie() {
+    return $this->view->render('/FilmAdmin_CMS/View/edit_movie', 'Edit movie');
+  }
+  public function editContact() {
+    return $this->view->render('/contact_us_page/View/editform', 'Edit contact');
+  }
+  public function editedContact() {
+    return $this->view->render('/contact_us_page/View/update', 'Edited contact');
+  }
+  public function editRating() {
+    return $this->view->render('/Rating_System/Rating_Admin/View/edit_rating_form', 'Edit Rating');
+  }
+  public function editedRating() {
+    return $this->view->render('/Rating_System/Rating_Admin/controller/update_rating', 'Edited Rating');
+  }
 }

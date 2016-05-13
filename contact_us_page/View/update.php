@@ -1,8 +1,8 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-require_once '../Model/Contactus.php';
+//require_once '../Model/Contactus.php';
+require_once '../../contact_us_page/Model/Contactus.php';
 $contact_id =  $_POST["id"];
 $first_name = htmlspecialchars($_POST["firstname"]);
 $last_name =  htmlspecialchars($_POST["lastname"]);

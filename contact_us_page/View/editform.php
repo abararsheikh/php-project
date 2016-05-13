@@ -1,8 +1,8 @@
-<body style="background-color:#CEF6D8;">
 <?php
 use Project\Classes\DB\DB;
 include '../../autoloader.php';
-require_once '../Model/Contactus.php';
+//require_once '../Model/Contactus.php';
+require_once '../../contact_us_page/Model/Contactus.php';
 $sel_record = $_POST['sel_record'];
 $editValues = new Contactus();
 $editResult = $editValues->editForm($sel_record);
@@ -20,7 +20,7 @@ $editResult = $editValues->editForm($sel_record);
 </head>
     <boby>
         <div class="container">
-                <form method ="post" action ="/contact_us_page/View/update.php">
+                <form method ="post" action ="/admin/editedContact">
                     <fieldset class="form-group">
                     <input type ="hidden" name = "id" value=" <?php echo $sel_record; ?> "/>
                     </fieldset>
