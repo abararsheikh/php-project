@@ -211,6 +211,6 @@ width:1400px;
 <script>
     
 </script>
-<?php require_once ("../Assets/html/footer.php");?>
+<?php include "../../Assets/html/footer.php";?>
 </body>
 </html>
